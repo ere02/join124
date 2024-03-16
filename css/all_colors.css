@@ -1,40 +1,43 @@
 
 :root{
     /* FARBEN RANDOM für MITGLIEDER BUBBLES */
-    --var-orange: rgb(255,122,0);
-    --var-pink:rgb(255,94,179);
-    --var-lila: rgb(110,82,255);
-    --var-violett: rgb(147,39,255);
-    --var-cyan:rgb(0,190,232);
-    --var-aquamarin:rgb(31,215,193);
-    --var-redorange:rgb(255,116,94);
-    --var-brightorange:rgb(255,163,94);
-    --var-fuchsia:rgb(252,113,255);
-    --var-blue:rgb(0,56,255);
-    --var-yelloworange:rgb(255,199,1);
+    --color-orange: rgb(255,122,0);
+    --color-pink:rgb(255,94,179);
+    --color-lila: rgb(110,82,255);
+    --color-violett: rgb(147,39,255);
+    --color-cyan:rgb(0,190,232);
+    --color-aquamarin:rgb(31,215,193);
+    --color-redorange:rgb(255,116,94);
+    --color-brightorange:rgb(255,163,94);
+    --color-fuchsia:rgb(252,113,255);
+    --color-blue:rgb(0,56,255);
+    --color-yelloworange:rgb(255,199,1);
 
      /* FARBEN ZU HELL ODER NUR für STYLE-ELEMENTE) */
-    --var-sunnyyellow:rgb(255,230,43);
-    --var-red:rgb(255,70,70);
-    --var-yellow:rgb(255,230,43);
-    --var-lightlila:rgb(226,230,236);
-    --var-yellowgreen:rgb(195,255,43);
-    --var-darker-bg:rgb(9,25,49);
-    --var-dark-bg:rgb(42,54,71);
+    --color-sunnyyellow:rgb(255,230,43);
+    --color-red:rgb(255,70,70);
+    --color-yellow:rgb(255,230,43);
+    --color-lightlila:rgb(226,230,236);
+    --color-yellowgreen:rgb(195,255,43);
+    --color-darker-bg:rgb(9,25,49);
+    --color-dark-bg:rgb(42,54,71);
 
 
     /* VARIABLEN für alle ITEMS mit der selben FARBE */
-    --var_border-button-bg:var(--var-dark-bg);
-    --var_border-button-bg-hover:var(--var-cyan);
-    --var_border-button-bg-focus:var(--var-darker-bg);
+    --use_border-button-bg:var(--var-dark-bg);
+    --use_border-button-bg-hover:var(--var-cyan);
+    --use_border-button-bg-focus:var(--var-darker-bg);
 
-    --var_border-wrong:var(--var-red);
-    --var_bg-urgent:var(--var-red);
-    --var_bg-medium:var(--var-yelloworange);
-    --var_bg-low:var(--var-yellowgreen);
-    --var_bg-userstory:var(--var-blue);
-    --var-bg-technical-task:var(--var-aquamarin);
+    --use_border-wrong:var(--var-red);
+    --use_urgent:var(--var-red);
+    --use_medium:var(--var-yelloworange);
+    --use_low:var(--var-yellowgreen);
+    --use_bg-userstory:var(--var-blue);
+    --use_bg-technical-task:var(--var-aquamarin);
 
 
 }
 
+.class{
+    background-color:var(--use_border-button-bg);
+}
