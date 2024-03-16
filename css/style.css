@@ -7,3 +7,8 @@
     font-style: normal;
 
 }
+
+h1{
+    font-size:10rem;
+    color:var(--use_border-button-bg-text);
+}

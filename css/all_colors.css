@@ -24,9 +24,9 @@
 
 
     /* VARIABLEN für alle ITEMS mit der selben FARBE */
-    --use_border-button-bg:var(--var-dark-bg);
-    --use_border-button-bg-hover:var(--var-cyan);
-    --use_border-button-bg-focus:var(--var-darker-bg);
+    --use_border-button-bg-text:var(--var-dark-bg);
+    --use_border-button-bg-text-hover:var(--var-cyan);
+    --use_border-button-bg-text-focus:var(--var-darker-bg);
 
     --use_border-wrong:var(--var-red);
     --use_urgent:var(--var-red);
@@ -39,10 +39,10 @@
 }
 
 .class{
-    background-color:var(--use_border-button-bg);
+    background-color:var(--use_border-button-bg-text);
 }
 .class:hover{
-    background-color:var(--use_border-button-bg-hover);
+    background-color:var(--use_border-button-bg-text-hover);
     color:white;
 
 }
