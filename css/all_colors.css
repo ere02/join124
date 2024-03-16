@@ -41,3 +41,8 @@
 .class{
     background-color:var(--use_border-button-bg);
 }
+.class:hover{
+    background-color:var(--use_border-button-bg-hover);
+    color:white;
+
+}
