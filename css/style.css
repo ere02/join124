@@ -1,0 +1,9 @@
+
+@font-face {
+    font-family: 'archivo';
+    src: url('../assets/font/archivoblack-regular-webfont.woff2') format('woff2'),
+         url('../assets/font/archivoblack-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
