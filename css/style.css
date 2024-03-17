@@ -40,11 +40,11 @@ header {
     height: 56px;
     width: 56px;
     border-radius: 50%;
-    border: 3px solid rgba(42, 54, 71, 1);
+    border: 3px solid var(--color-dark-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(41, 171, 226, 1);
+    color:var(--color-cyan);
     font-weight: 600;
     font-size: 1.25rem;
 }
@@ -60,7 +60,7 @@ header {
 .help-user {
     display: flex;
     justify-content: center;
-    align-items: baseline;
+    align-items: center;
     gap: 1rem;
 }
 
@@ -81,7 +81,7 @@ header {
     padding-bottom: 4rem;
     width: 14.5rem;
     height: 100vh;
-    background-color: #2a3647;
+    background-color: var(--color-dark-bg);
     position: fixed;
     z-index: 998;
 }
@@ -98,7 +98,7 @@ header {
 .nav-menu {
     display: flex;
     flex-direction: column;
-    color: #cdcdcd;
+    color: rgb(205, 205, 205);
     align-items: flex-start;
     gap: 1rem;
     width: 14.5rem;
@@ -107,7 +107,7 @@ header {
 .a-nav {
     display: flex;
     align-items: center;
-    color: #cdcdcd;
+    color: rgb(205, 205, 205);
     justify-content: left;
     width: 6.9rem;
     padding: 8px 61px 8px 61px;
@@ -119,23 +119,24 @@ header {
 }
 
 .a-nav:hover {
-    background-color: rgba(9, 25, 49, 0.4);
+    background-color:var(--color-darker-bg)
 }
 
 .legal-notice {
     display: flex;
     flex-direction: column;
-    color: #a8a8a8;
+    color: rgb(168, 168, 168);
     gap: 0.5rem;
 }
 
 .legal-notice-link {
     font-size: 1rem;
     padding: 0.5rem;
-    color: rgba(168, 168, 168, 1);
+    color: rgb(168, 168, 168);
 }
 
 .legal-notice-link:hover {
-    color: rgba(41, 171, 226, 1);
+    color: rgb(0,190,232);
     background-color: transparent;
+    font-weight: bold;
   }
