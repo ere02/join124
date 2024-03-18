@@ -26,8 +26,14 @@ h1 {
     color: var(--use_border-button-bg-text);
 }
 h2{
-    font-size:2rem;
+    font-size:2.2rem;
+    font-weight:600;
 }
+h3{
+    font-size:2rem;
+    font-weight:600;
+}
+
 .start-container{
     display:flex;
     flex-direction: column;
@@ -39,6 +45,9 @@ h2{
     padding:20px;
 
 }
+.highlightedText{
+    color:var(--use_border-button-bg-text-hover);
+}
 .left-border-2px{
     border-left: 2px solid var(--use_border-button-bg-text-hover);
 }
@@ -49,25 +58,38 @@ h2{
 .padding20{
     padding:0 20px 0 20px;
 }
-.welcome{
-    font-size:1rem;
-    color: var(--use_border-button-bg-text);
-    .username{
-        font-size:2rem;
+ .username{
+        font-size:3rem;
         color:var(--use_border-button-bg-text-hover);
     }
-}
+
+
+
+
 .summarycontainer{
+    width:820px;
     display: grid;
-    grid-template-rows: repeat(3, 1fr); /* 3 Reihen mit gleicher Höhe */
-    grid-gap: 10px; /* Abstand zwischen den Divs */
+    grid-template-areas:
+    'todo todo todo done done done greet'
+    'urgent urgent urgent urgent urgent urgent greet'
+    'board board inprogress inprogress feedback feedback greet';
+    grid-gap: 20px; /* Abstand zwischen den Divs */
+    margin:100px;
 }
+
+#summary-todo { grid-area: todo; }
+#summary-done { grid-area: done; }
+#summary-greet { grid-area: greet; width: calc(1-(560/820)*100)px; display:flex; flex-direction:column; justify-content:center; align-items:left;}
+#summary-urgent{ grid-area: urgent; }
+#summary-board { grid-area: board; }
+#summary-progress{ grid-area: inprogress; }
+#summary-feedback { grid-area: feedback; }
 
 .border-bg{
     border:1px solid rgb(0 0 0 /30%);
     border-radius: 18px;
     height: calc(580px/3 - 40px);
-    width: 560px;
+    background-color:white;
 
 }
 
