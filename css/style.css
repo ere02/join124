@@ -1,7 +1,16 @@
 @font-face {
-    font-family: 'archivo';
-    src: url('../assets/font/archivoblack-regular-webfont.woff2') format('woff2'),
-        url('../assets/font/archivoblack-regular-webfont.woff') format('woff');
+    font-family: 'inter-tight';
+    src: url('../assets/font/intertight-variablefont_wght-webfont.woff2') format('woff2'),
+        url('../assets/font/intertight-variablefont_wght-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'inter-tight italic';
+    src: url('../assets/font/intertight-italic-variablefont_wght-webfont.woff2') format('woff2'),
+        url('../assets/font/intertight-italic-variablefont_wght-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -32,7 +41,10 @@ h2{
 }
 .left-border-2px{
     border-left: 2px solid var(--use_border-button-bg-text-hover);
-
+}
+.right-border-2px{
+    border-right: 2px solid var(--use_border-button-bg-text-hover);
+    line-height:1.8rem;
 }
 .padding20{
     padding:0 20px 0 20px;
@@ -45,6 +57,12 @@ h2{
         color:var(--use_border-button-bg-text-hover);
     }
 }
+.todasandtasks{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr); /* 3 Reihen mit gleicher Höhe */
+    grid-gap: 10px; /* Abstand zwischen den Divs */
+}
+
 * {
     margin: 0;
     margin-block-start: 0px;
