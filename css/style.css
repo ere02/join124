@@ -7,8 +7,9 @@
 
 }
 body{
-    font-family:"archivo";
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color:var(--use_background);
+    font-size:0.8rem;
 }
 
 h1 {
@@ -17,6 +18,24 @@ h1 {
 }
 h2{
     font-size:2rem;
+}
+.start-container{
+    display:flex;
+    flex-direction: column;
+}
+.start-head{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+
+}
+.left-border-2px{
+    border-left: 2px solid var(--use_border-button-bg-text-hover);
+
+}
+.padding20{
+    padding:0 20px 0 20px;
 }
 .welcome{
     font-size:1rem;
