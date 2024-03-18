@@ -6,9 +6,12 @@
     font-style: normal;
 
 }
+body{
+    font-family:"archivo";
+}
 
 h1 {
-    font-size: 10rem;
+    font-size: 3rem;
     color: var(--use_border-button-bg-text);
 }
 
