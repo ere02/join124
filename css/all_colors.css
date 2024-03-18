@@ -24,16 +24,17 @@
 
 
     /* VARIABLEN für alle ITEMS mit der selben FARBE */
-    --use_border-button-bg-text:var(--var-dark-bg);
-    --use_border-button-bg-text-hover:var(--var-cyan);
-    --use_border-button-bg-text-focus:var(--var-darker-bg);
+    --use_border-button-bg-text:var(--color-dark-bg);
+    --use_border-button-bg-text-hover:var(--color-cyan);
+    --use_border-button-bg-text-focus:var(--color-darker-bg);
+    --use_background:var(--color-lightlila);
 
-    --use_border-wrong:var(--var-red);
-    --use_urgent:var(--var-red);
-    --use_medium:var(--var-yelloworange);
-    --use_low:var(--var-yellowgreen);
-    --use_bg-userstory:var(--var-blue);
-    --use_bg-technical-task:var(--var-aquamarin);
+    --use_border-wrong:var(--color-red);
+    --use_urgent:var(--color-red);
+    --use_medium:var(--color-yelloworange);
+    --use_low:var(--color-yellowgreen);
+    --use_bg-userstory:var(--color-blue);
+    --use_bg-technical-task:var(--color-aquamarin);
 
 
 }

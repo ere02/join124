@@ -8,13 +8,24 @@
 }
 body{
     font-family:"archivo";
+    background-color:var(--use_background);
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 10rem;
     color: var(--use_border-button-bg-text);
 }
-
+h2{
+    font-size:2rem;
+}
+.welcome{
+    font-size:1rem;
+    color: var(--use_border-button-bg-text);
+    .username{
+        font-size:2rem;
+        color:var(--use_border-button-bg-text-hover);
+    }
+}
 * {
     margin: 0;
     margin-block-start: 0px;
