@@ -16,7 +16,7 @@
 
 }
 body{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'inter-tight';
     background-color:var(--use_background);
     font-size:0.8rem;
 }
@@ -57,10 +57,18 @@ h2{
         color:var(--use_border-button-bg-text-hover);
     }
 }
-.todasandtasks{
+.summarycontainer{
     display: grid;
     grid-template-rows: repeat(3, 1fr); /* 3 Reihen mit gleicher Höhe */
     grid-gap: 10px; /* Abstand zwischen den Divs */
+}
+
+.border-bg{
+    border:1px solid rgb(0 0 0 /30%);
+    border-radius: 18px;
+    height: calc(580px/3 - 40px);
+    width: 560px;
+
 }
 
 * {
