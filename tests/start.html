@@ -12,13 +12,13 @@
     const stunde = jetzt.getHours();
     
         if (stunde >= 5 && stunde < 12) {
-            return "Guten Morgen!";
+            return "Guten Morgen,";
         } else if (stunde >= 12 && stunde < 18) {
-            return "Guten Tag!";
+            return "Guten Tag,";
         } else if (stunde >= 18 && stunde < 22) {
-            return "Guten Abend!";
+            return "Guten Abend,";
         } else {
-            return "Gute Nacht!";
+            return "Gute Nacht,";
         }
     
 }
@@ -31,16 +31,23 @@
     </div>
     <div class ="summarycontainer">
        
-            <div id="summary-todo" class="tile border-bg">
-                <div id="todo" class="circle"><img src="../assets/svg/edit_white.svg"></div>
-                <div class="flex-center"><h2>1</h2><br>
+            <div id="summary-todo" class="tile flex-center border-bg">
+                <div id="todo" class="circle"><img src="../assets/svg/edit_white.svg" class="icon-big"></div>
+                <div class="flex-center flex-column"><h2>1</h2><br>
                 <h4>To-do</h4></div>
             </div>
-            <div id="summary-done" class="border-bg">2</div>
+            <div id="summary-done" class="tile flex-center border-bg">
+                <div id="done" class="circle"><img src="../assets/svg/check_white.svg" class="icon-big"></div>
+                <div class="flex-center flex-column"><h2>1</h2><br>
+                <h4>Done</h4></div>
+            </div>
             <div id="summary-urgent" class="border-bg">3</div>
-            <div id="summary-board" class="border-bg">4</div>   
-            <div id="summary-progress" class="border-bg">5</div>   
-            <div id="summary-feedback" class="border-bg">6</div>    
+            <div id="summary-board" class="border-bg"><div class=" tile flex-center flex-column"><h2>5</h2><br>
+                <h4>Tasks in <br>Board</h4></div></div>   
+            <div id="summary-progress" class="border-bg"><div class="tile flex-center flex-column"><h2>2</h2><br>
+                <h4>Tasks in <br>Progress</h4></div></div>   
+            <div id="summary-feedback" class="border-bg"><div class="tile flex-center flex-column"><h2>2</h2><br>
+                <h4>Awaiting <br>Feedback</h4></div></div>    
             <div id="summary-greet">7</div>
     </div>
 

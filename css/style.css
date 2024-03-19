@@ -45,11 +45,22 @@ h4{
     align-items:center;
 }
 .tile{
+    gap:20px;
+    box-sizing:border-box;
+    padding:20px;
+}
+.flex-column{
+    flex-direction: column;
+}
+.flex-center{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:20px;
 }
+.icon-big{
+    height:25px;
+}
+
 
 .start-container{
     display:flex;
