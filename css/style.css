@@ -57,7 +57,7 @@ h4 {
 }
 .icon-big{
     height:25px;
-
+}
 .tile {
     display: flex;
     justify-content: center;
@@ -280,7 +280,7 @@ header {
     background-color: transparent;
 }
 
-.login {
+.login{
     margin-left: 65rem;
     margin-top: 30rem;
 }
