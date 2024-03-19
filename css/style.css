@@ -27,7 +27,7 @@ h1 {
 }
 h2{
     font-size:2.2rem;
-    font-weight:600;
+    font-weight:700;
 }
 h3{
     font-size:2rem;
@@ -40,9 +40,9 @@ h3{
 }
 .start-head{
     display:flex;
-    justify-content:center;
+    justify-content:left;
     align-items:center;
-    padding:20px;
+    padding:20px 100px;
 
 }
 .highlightedText{
@@ -74,12 +74,12 @@ h3{
     'urgent urgent urgent urgent urgent urgent greet'
     'board board inprogress inprogress feedback feedback greet';
     grid-gap: 20px; /* Abstand zwischen den Divs */
-    margin:100px;
+    margin:30px 100px;
 }
 
 #summary-todo { grid-area: todo; }
 #summary-done { grid-area: done; }
-#summary-greet { grid-area: greet; width: calc(1-(560/820)*100)px; display:flex; flex-direction:column; justify-content:center; align-items:left;}
+#summary-greet { grid-area: greet; width: calc(1-(560px/820px)*100); display:flex; flex-direction:column; justify-content:center; align-items:left;}
 #summary-urgent{ grid-area: urgent; }
 #summary-board { grid-area: board; }
 #summary-progress{ grid-area: inprogress; }
