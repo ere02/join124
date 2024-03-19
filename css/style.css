@@ -1,20 +1,13 @@
 @font-face {
-    font-family: 'inter-tight';
-    src: url('../assets/font/intertight-variablefont_wght-webfont.woff2') format('woff2'),
-        url('../assets/font/intertight-variablefont_wght-webfont.woff') format('woff');
+    font-family: 'inter';
+    src: url('../assets/font/inter-variablefont_slntwght-webfont.woff2') format('woff2'),
+        url('../assets/font/inter-variablefont_wght-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
 }
 
-@font-face {
-    font-family: 'inter-tight italic';
-    src: url('../assets/font/intertight-italic-variablefont_wght-webfont.woff2') format('woff2'),
-        url('../assets/font/intertight-italic-variablefont_wght-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
 
-}
 body{
     font-family:'inter-tight';
     background-color:var(--use_background);
