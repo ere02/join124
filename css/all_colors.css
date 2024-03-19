@@ -17,7 +17,7 @@
     --color-sunnyyellow:rgb(255,230,43);
     --color-red:rgb(255,70,70);
     --color-yellow:rgb(255,230,43);
-    --color-lightlila:rgb(226,230,236);
+    --color-lightlila:rgba(226,230,236,0.4);
     --color-yellowgreen:rgb(195,255,43);
     --color-darker-bg:rgb(9,25,49);
     --color-dark-bg:rgb(42,54,71);
