@@ -312,6 +312,7 @@ header {
     font-weight: bold;
     margin-top: 3rem;
     text-decoration: underline;
+    text-underline-offset: 8px;
     text-decoration-color: blue;
     text-decoration-thickness: 2px;
     /* Optional für eine dickere Linie */
