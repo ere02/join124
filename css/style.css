@@ -363,6 +363,11 @@ header {
     height: 3rem;
     gap: 0.5rem;
     border-radius: 0.5rem;
+    padding-left: 1rem;
+}
+
+.input-wrapper {
+    display: flex;
 }
 
 .login-page {
@@ -373,22 +378,24 @@ header {
     background-color: var(--color-lightgrey);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .input-container {
-    position: absolute;
-    margin-left: 30vw;
-    margin-top: 20vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 3rem;
     align-items: center;
     width: 41rem;
     height: 31rem;
@@ -423,6 +430,10 @@ header {
     align-items: center;
     gap: 3rem;
     margin-bottom: 2rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .new-user {
