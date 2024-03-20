@@ -1,18 +1,45 @@
-<div class="start-overlay">
-    <div class="login-container">
-        <p class="headline">Log in</p>
-        <div class="input-container">
-                <input type="text" name="username" placeholder="Username" required />
-                <input type="password" name="password" placeholder="Password" required />
-                <div class="checkbox-container">
-                    <input type="checkbox" name="remember" id="remember" />
-                    <label for="remember">Remember me</label>
-                </div>
-                <div class="submit-container" id="submit">
-                    <input type="submit" value="Log in" />
-                    <input type="submit" value="Guest login" />
-                </div>
-            </form>
-        </div>
+<link rel="stylesheet" href="/css/all_colors.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<div class="login-page">
+  <div class="login-header">
+    <img src="/assets/svg/Capa 2.png" alt="logo" class="logo" />
+    <div class="new-user">
+      <h4>Not a Join user?</h4>
+      <button class="button" id="signUp" onclick="function signUp()">
+        Sign up
+      </button>
     </div>
+  </div>
+  <div class="input-container">
+    <p class="headline">Log in</p>
+    <div class="input-icon">
+      <input
+        class="input-field"
+        type="text"
+        name="email"
+        placeholder="email"
+        required
+      />
+      <img src="/assets/svg/mail.svg" alt="email icon" class="icon" />
+    </div>
+    <input
+      class="input-field"
+      type="password"
+      name="password"
+      placeholder="Password"
+      required
+    />
+    <!--  <img src="/assets/svg/lock.svg" alt="lock icon" class="icon" /> -->
+    <div class="checkbox-container">
+      <input type="checkbox" name="remember" id="remember" />
+      <label for="remember">Remember me</label>
+    </div>
+    <div class="submit-container" id="submit">
+      <button class="button" type="submitLogin">Log in</button>
+      <button class="button2" type="submitGuest">Guest Log in</button>
+    </div>
+  </div>
+  <div class="login-footer">
+    <a href="#">Privacy Policy</a><a href="#">Legal notice</a>
+  </div>
 </div>
