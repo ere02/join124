@@ -309,13 +309,22 @@ header {
     justify-content: center;
     font-family: 'inter';
     font-size: 3rem;
-    font-weight: bold;
+    font-weight: bolder;
     margin-top: 3rem;
-    text-decoration: underline;
-    text-underline-offset: 8px;
-    text-decoration-color: blue;
-    text-decoration-thickness: 2px;
-    /* Optional für eine dickere Linie */
+
+}
+
+.headline-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.underline {
+    border: 2px solid var(--color-cyan);
+    width: 80%;
 }
 
 .headline:after {
