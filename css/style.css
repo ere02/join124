@@ -33,13 +33,17 @@ h4 {
     font-weight: 100;
 }
 
-a {
+HEAD a {
     color: black 0, 3;
     text-decoration: none;
 }
 
+.bold {
+    font-weight: 800;
+
+}
+
 .circle {
-    background-color: var(--use_border-button-bg-text);
     border-radius: 30px;
     height: 60px;
     aspect-ratio: 1;
@@ -48,11 +52,39 @@ a {
     align-items: center;
 }
 
+.bg-dark {
+    background-color: var(--use_border-button-bg-text);
+}
+
+.tile {
+    gap: 20px;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-big {
+    height: 25px;
+}
+
 .tile {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+
+.bg-urgent {
+    background-color: var(--use_urgent);
 }
 
 .start-container {
@@ -72,7 +104,8 @@ a {
 }
 
 .left-border-2px {
-    border-left: 2px solid var(--use_border-button-bg-text-hover);
+    border-left: 2px solid rgb(0 0 0 / 20%);
+    ;
 }
 
 .right-border-2px {
@@ -306,7 +339,8 @@ header {
 }
 
 .button2 {
-    background-color: white color: var(--color-dark-bg);
+    background-color: white;
+    color: var(--color-dark-bg);
     font-family: 'Inter';
     font-weight: bold;
     border-radius: 0.5rem;
@@ -390,5 +424,5 @@ header {
 }
 
 .icon {
-    margin-left:-2rem
+    margin-left: -2rem
 }

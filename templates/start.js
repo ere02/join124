@@ -41,13 +41,13 @@ function sayHello(){
     const stunde = jetzt.getHours();
     
         if (stunde >= 5 && stunde < 12) {
-            return "Guten Morgen!";
+            return "Guten Morgen, ";
         } else if (stunde >= 12 && stunde < 18) {
-            return "Guten Tag!";
+            return "Guten Tag,";
         } else if (stunde >= 18 && stunde < 22) {
-            return "Guten Abend!";
+            return "Guten Abend, ";
         } else {
-            return "Gute Nacht!";
+            return "Gute Nacht, ";
         }
     
 }
