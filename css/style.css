@@ -421,7 +421,7 @@ header {
     right: 0;
 }
 
-.input-container {
+.input-container-login {
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -432,6 +432,16 @@ header {
     border-radius: 2.5rem;
 }
 
+.input-container-signup {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    width: 41rem;
+    height: 31rem;
+    background-color: white;
+    border-radius: 2.5rem;
+}
 /* hover effect */
 /* 
 .input-container:hover {
