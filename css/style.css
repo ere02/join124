@@ -58,10 +58,25 @@ HEAD a {
     justify-content:center;
     align-items: center;
 }
-.animation{
-    height:335px;
-    transition:position 3s;
+#animation{
+
+        transform: translate(-50%, -50%);
+        height: 335px; /* Anfangsgröße */
+        transition: all 1s ease-in-out; /* Animationsübergang */
+
+}
+#animation.logo{
+    margin-top: 5rem;
+    margin-left: 4.8125rem;
+    width: 6.25rem;
+    height: 7.5rem;
+}
+
+#content.opacity{
     
+    transform: opacity (1);
+    height: 335px; /* Anfangsgröße */
+    transition: all 2s ease-in-out;
 }
 .bg-dark {
     background-color: var(--use_border-button-bg-text);
@@ -75,6 +90,9 @@ HEAD a {
 
 .flex-column {
     flex-direction: column;
+}
+.displaynone{
+    display:none;
 }
 
 .flex-center {
