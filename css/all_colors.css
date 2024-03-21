@@ -28,7 +28,7 @@
     --use_border-button-bg-text:var(--color-dark-bg);
     --use_border-button-bg-text-hover:var(--color-cyan);
     --use_border-button-bg-text-focus:var(--color-darker-bg);
-    --use_background:var(--color-lightlila);
+    --use_background:var(--color-lightgrey);
 
     --use_border-wrong:var(--color-red);
     --use_urgent:var(--color-red);
