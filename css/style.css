@@ -51,7 +51,18 @@ HEAD a {
     justify-content: center;
     align-items: center;
 }
-
+#start-layer{
+    height:100vw;
+    width:100vh;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.animation{
+    height:335px;
+    transition:position 3s;
+    
+}
 .bg-dark {
     background-color: var(--use_border-button-bg-text);
 }
