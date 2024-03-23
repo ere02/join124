@@ -50,9 +50,10 @@ HEAD a {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
-.start-layer{
+
+.start-layer {
     /*width: 100vw;
     height: 100vh;*/
     display: flex;
@@ -60,6 +61,7 @@ HEAD a {
     align-items: center;
     z-index: 200;
 }
+
 /*
 #logo{
     height: 18rem;
@@ -68,49 +70,61 @@ HEAD a {
 }*/
 
 @keyframes example {
-    0%   {width:4.2rem;left:-38vw; top:-30vh;scale:1.5}
-    100%  {top:0vh; left:0vw;scale:4}
-  
-  }
+    0% {
+        width: 4.2rem;
+        left: -38vw;
+        top: -30vh;
+        scale: 1.5
+    }
 
-#logo.animation{
+    100% {
+        top: 0vh;
+        left: 0vw;
+        scale: 4
+    }
+
+}
+
+#logo.animation {
     width: 4.2rem;
     left: -38vw;
     top: -30vh;
-scale:1.5;
-position: relative;
-animation-name: example;
-animation-duration: 2500ms;
-animation-direction: reverse;  
+    scale: 1.5;
+    position: relative;
+    animation-name: example;
+    animation-duration: 2500ms;
+    animation-direction: reverse;
 }
 
-#content{
+#content {
     opacity: 0;
     transition: opacity 4s ease-in-out;
 }
 
-#content.visible{
-     opacity:1;
+#content.visible {
+    opacity: 1;
 }
 
 .bg-dark {
     background-color: var(--use_border-button-bg-text);
 }
-.edit{
-    background-image:url(/assets/svg/edit_white.svg);
+
+.edit {
+    background-image: url(/assets/svg/edit_white.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 25px;
 }
-.check{
-    background-image:url(/assets/svg/check_white.svg);
+
+.check {
+    background-image: url(/assets/svg/check_white.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 25px;
 }
-.urgent
-{
-    background-image:url(/assets/svg/urgent_white.svg);
+
+.urgent {
+    background-image: url(/assets/svg/urgent_white.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 25px;
@@ -119,8 +133,9 @@ animation-direction: reverse;
 .flex-column {
     flex-direction: column;
 }
-.displaynone{
-    display:none;
+
+.displaynone {
+    display: none;
 }
 
 .flex-center {
@@ -137,24 +152,30 @@ animation-direction: reverse;
 
     gap: 20px;
     box-sizing: border-box;
-    padding:20px;
+    padding: 20px;
 }
-.tile:hover{
-    background-color:var(--use_border-button-bg-text);
 
-    .edit{
-        background-image:url('/assets/svg/edit.svg');
+.tile:hover {
+    background-color: var(--use_border-button-bg-text);
+
+    .edit {
+        background-image: url('/assets/svg/edit.svg');
         background-color: var(--use_bg-text-white);
     }
-    .check{
-        background-image:url('/assets/svg/check.svg');
-        background-color:var(--use_bg-text-white);
+
+    .check {
+        background-image: url('/assets/svg/check.svg');
+        background-color: var(--use_bg-text-white);
     }
-    .border-bg{
+
+    .border-bg {
         background-color: unset;
     }
-    h2,h4,.span{
-        color:var(--use_bg-text-white);
+
+    h2,
+    h4,
+    .span {
+        color: var(--use_bg-text-white);
     }
 
 }
@@ -180,8 +201,9 @@ animation-direction: reverse;
 .highlightedText {
     color: var(--use_border-button-bg-text-hover);
 }
-.lineheight1{
-    line-height:1;
+
+.lineheight1 {
+    line-height: 1;
 }
 
 .left-border-2px {
@@ -207,8 +229,8 @@ animation-direction: reverse;
 .summarycontainer {
     width: 820px;
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr)); 
-  grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: repeat(3, auto);
     grid-template-areas:
         'todo todo todo done done done greet'
         'urgent urgent urgent urgent urgent urgent greet'
@@ -248,15 +270,16 @@ animation-direction: reverse;
 #summary-feedback {
     grid-area: feedback;
 }
-.span{
+
+.span {
     padding: 0 10px;
 }
 
 .border-bg {
-    border:1px solid var(--use_border-text-light);
+    border: 1px solid var(--use_border-text-light);
     border-radius: 18px;
     height: calc(580px / 3 - 40px);
-    background-color:var(--use_bg-text-white);
+    background-color: var(--use_bg-text-white);
 }
 
 * {
@@ -290,7 +313,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    color:var(--color-cyan);
+    color: var(--color-cyan);
     font-weight: 600;
     font-size: 1.25rem;
 }
@@ -368,7 +391,7 @@ header {
 }
 
 .a-nav:hover {
-    background-color:var(--use_border-button-bg-text-focus);
+    background-color: var(--use_border-button-bg-text-focus);
 }
 
 .legal-notice {
@@ -388,7 +411,7 @@ header {
     color: var(--use_border-button-bg-text-hover);
     background-color: transparent;
     font-weight: bold;
-  }
+}
 
 /* from here login template */
 .headline {
@@ -398,11 +421,10 @@ header {
     font-family: 'inter';
     font-size: 3rem;
     font-weight: bolder;
-    margin-top: 3rem;
-
 }
 
 .headline-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -488,7 +510,7 @@ header {
     width: 41rem;
     height: 31rem;
     background-color: var(--use_bg-text-white);
-    border:1px solid var(--use_border-text-light);
+    border: 1px solid var(--use_border-text-light);
     border-radius: 2.5rem;
 }
 
@@ -508,6 +530,7 @@ header {
     align-items: center;
     gap: 0.5rem;
 }
+
 /* hover effect */
 /* 
 .input-container:hover {
@@ -516,11 +539,14 @@ header {
     box-shadow: 0 5px 20px 0 rgba(10, 10, 10, 0.25), 0 2px 10px 0 rgba(10, 10, 10, 0.25);
 } */
 
-.button:hover,.button2:hover,.tile:hover {
+.button:hover,
+.button2:hover,
+.tile:hover {
     transform: scale(1.05);
     transition: all .2s;
     box-shadow: 0 5px 20px 0 var(--use_border-text-light), 0 2px 10px 0 var(--use_border-text-light);
 }
+
 /*
 .button2:hover {
     transform: scale(1.05);
@@ -549,6 +575,14 @@ header {
     margin-right: 2rem;
 }
 
+.go-back-arrow {
+    position: absolute;
+    left: -7rem;
+}
+
 .icon {
-    margin-left: -2rem
+    position: relative;
+    right: 2rem;
+    top: 0;
+    bottom: 0;
 }
