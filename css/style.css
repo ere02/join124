@@ -478,13 +478,13 @@ header {
 .button:hover {
     transform: scale(1.05);
     transition: all .2s;
-    box-shadow: 0 5px 20px 0 rgba(10, 10, 10, 0.25), 0 2px 10px 0 rgba(10, 10, 10, 0.25);
+    box-shadow: 0 5px 20px 0 var(--use_border-text-light), 0 2px 10px 0 var(--use_border-text-light);
 }
 
 .button2:hover {
     transform: scale(1.05);
     transition: all .2s;
-    box-shadow: 0 5px 20px 0 rgba(10, 10, 10, 0.25), 0 2px 10px 0 rgba(10, 10, 10, 0.25);
+    box-shadow: 0 5px 20px 0 var(--use_border-text-light), 0 2px 10px 0 var(--use_border-text-light);
 }
 
 
