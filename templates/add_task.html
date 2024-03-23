@@ -7,18 +7,20 @@
   <link rel="stylesheet" href="../css/add_task.css">
   <link rel="stylesheet" href="../css/all_colors.css">
   <link rel="stylesheet" href="../css/style.css">
+  <!-- <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
   <title>Join</title>
   <script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
 
 <body>
+  <div class="add-task-container">
 
   <div w3-include-html="../templates/header.html"></div>
 
   <nav w3-include-html="../templates/navbar.html"></nav>
 
 
-  <div class="add-task-container">
+  <!-- <div class="add-task-container"> -->
     <div class="add-task-header-container">
       <h1 class="add-task-headline">Add Task</h1>
     </div>
@@ -26,7 +28,7 @@
     <div class="add-task-content d-flex-ai-center-jc-center">
       <div class="add-task-container-left">
         <form>
-          <h3>Title <span class="required-star">*</span></h3>
+          <h3 class="h3">Title <span class="required-star">*</span></h3>
           <label for="title" class="add-task-label" id="">
             <input type="text" name="title" class="add-task-title" id="" minlength="3" maxlength="20"
               placeholder="Enter a Title" required="">
@@ -34,13 +36,13 @@
 
           <div class="extra-small d-none" id="">This field is required</div>
 
-          <h3 class="m-top-40">Description</h3>
+          <h3 class="m-top-40 h3">Description</h3>
           <label for="description" class="add-task-label m-bottom-40">
             <textarea name="description" id="" placeholder="Enter a Description"
               class="add-task-description"></textarea>
           </label>
 
-          <h3>Assigned to:</h3>
+          <h3 class="h3">Assigned to:</h3>
           <label for="assigned" class="add-task-label bgC-white" onclick="">
             <input type="text" name="assigned" id="" class="add-task-title add-task-assigned-to"
               placeholder="Choose contacts" autocomplete="off" onclick="">
@@ -65,14 +67,14 @@
 
       <div class="add-task-container-right" id="">
 
-        <h3>Due date <span class="required-star">*</span></h3>
+        <h3 class="h3">Due date <span class="required-star">*</span></h3>
         <label for="dueDate" class="add-task-label" id="">
           <input type="date" name="dueDate" class="add-task-due-date" id="" required="">
         </label>
 
         <div class="extra-small d-none" id="">This field is required</div>
 
-        <h3 class="m-top-40">Prio</h3>
+        <h3 class="m-top-40 h3">Prio</h3>
         <div class="add-task-prio">
           <div id="" class="add-task-prio-high" onclick="">
             Urgent
@@ -88,7 +90,7 @@
           </div>
         </div>
 
-        <h3>Category<span class="required-star">*</span></h3>
+        <h3 class="h3">Category<span class="required-star">*</span></h3>
 
         <label for="category" class="add-task-label bgC-white" id="">
           <div class="add-task-category-input" id="" onclick="">User Story</div>
