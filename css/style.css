@@ -34,7 +34,7 @@ h4 {
 }
 
 HEAD a {
-    color: black 0, 3;
+    color: var(--color-dark-bg);
     text-decoration: none;
 }
 
@@ -52,32 +52,40 @@ HEAD a {
     align-items: center;
 }
 .start-layer{
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
+    /*width: 100vw;
+    height: 100vh;*/
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 200;
 }
+/*
 #logo{
     height: 18rem;
     transition: all 1s ease-in-out;
 
-}
+}*/
+
+@keyframes example {
+    0%   {width:4.2rem;left:-38vw; top:-30vh;scale:1.5}
+    100%  {top:0vh; left:0vw;scale:4}
+  
+  }
+
 #logo.animation{
-    z-index: 200;
-    height: 7rem;
-    top: -9rem;
-    left: -6.2rem;
-    position: absolute;
-    transform: translate(130%, 100%);
- 
-    
+    width: 4.2rem;
+    left: -38vw;
+    top: -30vh;
+scale:1.5;
+position: relative;
+animation-name: example;
+animation-duration: 2500ms;
+animation-direction: reverse;  
 }
+
 #content{
     opacity: 0;
-    transition: opacity 3s ease-in-out;
+    transition: opacity 4s ease-in-out;
 }
 
 #content.visible{
@@ -139,7 +147,7 @@ HEAD a {
 }
 
 .left-border-2px {
-    border-left: 2px solid rgb(0 0 0 / 20%);
+    border-left: 2px solid var(--use_border-text-light);
     ;
 }
 
@@ -202,10 +210,11 @@ HEAD a {
 }
 
 .border-bg {
-    border: 1px solid rgb(0 0 0 / 30%);
+    border:1px solid var(--use_border-text);
+    /*border: 1px solid rgb(0 0 0 / 30%);*/
     border-radius: 18px;
     height: calc(580px / 3 - 40px);
-    background-color: white;
+    background-color:var(--use_background-white);
 }
 
 * {
@@ -228,7 +237,7 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: #fff;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 4px 0px var(--use_border-text-light);
     cursor: pointer;
 }
 
@@ -247,7 +256,7 @@ header {
 
 .header-initials:hover {
     cursor: pointer;
-    background-color: lightgray;
+    background-color: var(--use_background);
 }
 
 .help-icon:hover {
@@ -297,7 +306,7 @@ header {
 .nav-menu {
     display: flex;
     flex-direction: column;
-    color: rgb(205, 205, 205);
+    color: var(--use_border-text-light);
     align-items: flex-start;
     gap: 1rem;
     width: 14.5rem;
@@ -306,7 +315,7 @@ header {
 .a-nav {
     display: flex;
     align-items: center;
-    color: rgb(205, 205, 205);
+    color: var(--use_border-text-light);
     justify-content: left;
     width: 6.9rem;
     padding: 8px 61px 8px 61px;
@@ -318,24 +327,24 @@ header {
 }
 
 .a-nav:hover {
-    background-color:var(--color-darker-bg)
+    background-color:var(--use_border-button-bg-text-hover);
 }
 
 .legal-notice {
     display: flex;
     flex-direction: column;
-    color: rgb(168, 168, 168);
+    color: var(--use_border-text-light);
     gap: 0.5rem;
 }
 
 .legal-notice-link {
     font-size: 1rem;
     padding: 0.5rem;
-    color: rgb(168, 168, 168);
+    color: var(--use_border-text-light);
 }
 
 .legal-notice-link:hover {
-    color: rgb(0,190,232);
+    color: var(--use_border-button-bg-text-hover);
     background-color: transparent;
     font-weight: bold;
   }
@@ -361,7 +370,7 @@ header {
 }
 
 .underline {
-    border: 2px solid var(--color-cyan);
+    border: 2px solid var(--use_border-button-bg-text-hover);
     width: 80%;
 }
 
@@ -377,8 +386,8 @@ header {
 }
 
 .button {
-    background-color: var(--color-dark-bg);
-    color: white;
+    background-color: var(--use_border-button-bg-text);
+    color: var(--use_bg-text-white);
     font-family: 'Inter';
     font-weight: bold;
     border-radius: 0.5rem;
@@ -433,11 +442,12 @@ header {
 .input-container-login {
     display: flex;
     flex-direction: column;
-    gap: 2,5rem;
+    gap: 2.5rem;
     align-items: center;
     width: 41rem;
     height: 31rem;
-    background-color: white;
+    background-color: var(--use_bg-text-white);
+    border:1px solid var(--use_border-text-light);
     border-radius: 2.5rem;
 }
 
@@ -448,7 +458,7 @@ header {
     align-items: center;
     width: 41rem;
     height: 35rem;
-    background-color: white;
+    background-color: var(--use_background-white);
     border-radius: 2.5rem;
 }
 
@@ -468,13 +478,13 @@ header {
 .button:hover {
     transform: scale(1.05);
     transition: all .2s;
-    box-shadow: 0 5px 20px 0 rgba(10, 10, 10, 0.25), 0 2px 10px 0 rgba(10, 10, 10, 0.25);
+    box-shadow: 0 5px 20px 0 var(--use_border-text-light), 0 2px 10px 0 var(--use_border-text-light);
 }
 
 .button2:hover {
     transform: scale(1.05);
     transition: all .2s;
-    box-shadow: 0 5px 20px 0 rgba(10, 10, 10, 0.25), 0 2px 10px 0 rgba(10, 10, 10, 0.25);
+    box-shadow: 0 5px 20px 0 var(--use_border-text-light), 0 2px 10px 0 var(--use_border-text-light);
 }
 
 
