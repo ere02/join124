@@ -349,7 +349,7 @@ header {
 }
 
 .a-nav:hover {
-    background-color:var(--use_border-button-bg-text-hover);
+    background-color:var(--color-hover-darkblue);
 }
 
 .legal-notice {
