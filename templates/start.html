@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
     <link rel="stylesheet" type="text/css" href="../css/all_colors.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="../js/script.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
     <title>Document</title>
     <script>
         function sayHello(){
@@ -26,6 +29,11 @@
     </script>
 </head>
 <body>
+    
+    <div w3-include-html="header.html"></div>
+
+    <navbar w3-include-html="navbar.html"></navbar>
+
     <div class="start-container">
         <div class="start-head"><h2 class="padding20 right-border-2px">Join 360</h2><h4 class="padding20">Key Metrics at a Glance</h4>
     </div>
@@ -63,7 +71,7 @@
                 </div>
             <div id="summary-progress" class="tile flex-center border-bg"><div class="flex-center flex-column"><h2>2</h2><br>
                 <h4>Tasks in <br>Progress</h4></div></div>   
-            <div id="summary-feedback" class="tile flex-center border-bg"><div class="flex-center flex-column"><h2>2</h2><br>
+            <div id="summary-feedback" class="ftile flex-center border-bg"><div class="flex-center flex-column"><h2>2</h2><br>
                 <h4>Awaiting <br>Feedback</h4></div></div>    
             <div id="summary-greet">7</div>
     </div>
@@ -75,7 +83,9 @@
                    <h2 class="highlightedText lineheight1">Sophia Müller-Hinterdupfingen</h2>
                         `;
 
-
     </script>
+                            <script>
+                                w3.includeHTML();
+                            </script>
 </body>
 </html>

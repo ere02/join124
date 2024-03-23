@@ -139,6 +139,25 @@ animation-direction: reverse;
     box-sizing: border-box;
     padding:20px;
 }
+.tile:hover{
+    cursor:pointer;
+    background-color:var(--use_border-button-bg-text);
+    .edit{
+        background-image:url(/assets/svg/edit.svg);
+        background-color: var(--use_background-white);
+    }
+    .check{
+        background-image:url(/assets/svg/check.svg);
+        background-color:var(--use_bg-text-white);
+    }
+    .border-bg{
+        background-color: unset;
+    }
+    h2,h4,span{
+        color:var(--use_bg-text-white);
+    }
+
+}
 
 .bg-urgent {
     background-color: var(--use_urgent);
@@ -147,6 +166,8 @@ animation-direction: reverse;
 .start-container {
     display: flex;
     flex-direction: column;
+    margin-left: 200px;
+    margin-top: 150px;
 }
 
 .start-head {
@@ -233,7 +254,6 @@ span{
 
 .border-bg {
     border:1px solid var(--use_border-text-light);
-    /*border: 1px solid rgb(0 0 0 / 30%);*/
     border-radius: 18px;
     height: calc(580px / 3 - 40px);
     background-color:var(--use_bg-text-white);
