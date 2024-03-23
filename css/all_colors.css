@@ -18,17 +18,21 @@
     --color-red:rgb(255,70,70);
     --color-yellow:rgb(255,230,43);
     --color-lightgrey:rgb(246,247,248);
+    --color-grey:rgb(209,209,209);
     --color-lightlila:rgba(226,230,236,0.4);
     --color-yellowgreen:rgb(195,255,43);
     --color-darker-bg:rgb(9,25,49);
     --color-dark-bg:rgb(42,54,71);
+    --color-white:rgb(255,255,255);
 
 
     /* VARIABLEN für alle ITEMS mit der selben FARBE */
     --use_border-button-bg-text:var(--color-dark-bg);
     --use_border-button-bg-text-hover:var(--color-cyan);
     --use_border-button-bg-text-focus:var(--color-darker-bg);
+    --use_border-text-light:var(--color-grey);
     --use_background:var(--color-lightgrey);
+    --use_background_white:var(--color-white);
 
     --use_border-wrong:var(--color-red);
     --use_urgent:var(--color-red);

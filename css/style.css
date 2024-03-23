@@ -34,7 +34,7 @@ h4 {
 }
 
 HEAD a {
-    color: black 0, 3;
+    color: var(--color-dark-bg);
     text-decoration: none;
 }
 
@@ -60,24 +60,33 @@ HEAD a {
     align-items: center;
     z-index: 200;
 }
+/*
 #logo{
     height: 18rem;
     transition: all 1s ease-in-out;
 
-}
+}*/
+
+@keyframes example {
+    0%   {width:4.2rem;left:-38vw; top:-30vh;scale:1.5}
+    100%  {top:0vh; left:0vw;scale:4}
+  
+  }
+
 #logo.animation{
-    z-index: 200;
-    height: 7rem;
-    top: -9rem;
-    left: -6.2rem;
-    position: absolute;
-    transform: translate(130%, 100%);
- 
-    
+    width: 4.2rem;
+    left: -38vw;
+    top: -30vh;
+scale:1.5;
+position: relative;
+animation-name: example;
+animation-duration: 2500ms;
+animation-direction: reverse;  
 }
+
 #content{
     opacity: 0;
-    transition: opacity 3s ease-in-out;
+    transition: opacity 4s ease-in-out;
 }
 
 #content.visible{
@@ -202,10 +211,11 @@ HEAD a {
 }
 
 .border-bg {
-    border: 1px solid rgb(0 0 0 / 30%);
+    border:1px solid var(--use_border-text);
+    /*border: 1px solid rgb(0 0 0 / 30%);*/
     border-radius: 18px;
     height: calc(580px / 3 - 40px);
-    background-color: white;
+    background-color:var(--use_background-white);
 }
 
 * {
@@ -434,7 +444,8 @@ header {
     align-items: center;
     width: 41rem;
     height: 31rem;
-    background-color: white;
+    background-color: var(--use_background-white);
+    border:1px solid var(--use_border-text-light);
     border-radius: 2.5rem;
 }
 
