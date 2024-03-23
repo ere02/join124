@@ -442,7 +442,7 @@ header {
 .input-container-login {
     display: flex;
     flex-direction: column;
-    gap: 2,5rem;
+    gap: 2.5rem;
     align-items: center;
     width: 41rem;
     height: 31rem;
