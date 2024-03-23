@@ -52,9 +52,8 @@ HEAD a {
     align-items: center;
 }
 .start-layer{
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
+    /*width: 100vw;
+    height: 100vh;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -446,7 +445,7 @@ header {
     align-items: center;
     width: 41rem;
     height: 31rem;
-    background-color: var(--use_background-white);
+    background-color: var(--use_bg-text-white);
     border:1px solid var(--use_border-text-light);
     border-radius: 2.5rem;
 }
