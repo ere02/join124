@@ -148,7 +148,7 @@ animation-direction: reverse;
 }
 
 .left-border-2px {
-    border-left: 2px solid rgb(0 0 0 / 20%);
+    border-left: 2px solid var(--use_border-text-light);
     ;
 }
 
@@ -238,7 +238,7 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: #fff;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 4px 0px var(--use_border-text-light);
     cursor: pointer;
 }
 
@@ -257,7 +257,7 @@ header {
 
 .header-initials:hover {
     cursor: pointer;
-    background-color: lightgray;
+    background-color: var(--use_background);
 }
 
 .help-icon:hover {
@@ -306,7 +306,7 @@ header {
 .nav-menu {
     display: flex;
     flex-direction: column;
-    color: rgb(205, 205, 205);
+    color: var(--use_border-text-light);
     align-items: flex-start;
     gap: 1rem;
     width: 14.5rem;
@@ -315,7 +315,7 @@ header {
 .a-nav {
     display: flex;
     align-items: center;
-    color: rgb(205, 205, 205);
+    color: var(--use_border-text-light);
     justify-content: left;
     width: 6.9rem;
     padding: 8px 61px 8px 61px;
@@ -327,24 +327,24 @@ header {
 }
 
 .a-nav:hover {
-    background-color:var(--color-darker-bg)
+    background-color:var(--use_border-button-bg-text-hover);
 }
 
 .legal-notice {
     display: flex;
     flex-direction: column;
-    color: rgb(168, 168, 168);
+    color: var(--use_border-text-light);
     gap: 0.5rem;
 }
 
 .legal-notice-link {
     font-size: 1rem;
     padding: 0.5rem;
-    color: rgb(168, 168, 168);
+    color: var(--use_border-text-light);
 }
 
 .legal-notice-link:hover {
-    color: rgb(0,190,232);
+    color: var(--use_border-button-bg-text-hover);
     background-color: transparent;
     font-weight: bold;
   }
@@ -370,7 +370,7 @@ header {
 }
 
 .underline {
-    border: 2px solid var(--color-cyan);
+    border: 2px solid var(--use_border-button-bg-text-hover);
     width: 80%;
 }
 
@@ -386,8 +386,8 @@ header {
 }
 
 .button {
-    background-color: var(--color-dark-bg);
-    color: white;
+    background-color: var(--use_border-button-bg-text);
+    color: var(--use_bg-text-white);
     font-family: 'Inter';
     font-weight: bold;
     border-radius: 0.5rem;
@@ -458,7 +458,7 @@ header {
     align-items: center;
     width: 41rem;
     height: 35rem;
-    background-color: white;
+    background-color: var(--use_background-white);
     border-radius: 2.5rem;
 }
 

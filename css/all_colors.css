@@ -33,7 +33,7 @@
     --use_border-button-bg-text-focus:var(--color-darker-bg);
     --use_border-text-light:var(--color-grey);
     --use_background:var(--color-lightgrey);
-    --use_background_white:var(--color-white);
+    --use_bg-text-white:var(--color-white);
 
     --use_border-wrong:var(--color-red);
     --use_urgent:var(--color-red);
