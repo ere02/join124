@@ -39,7 +39,7 @@
 }
 
 .add-task-seperator {
-  height: 424px;
+  height: 464px;
   width: 1px;
   background-color: var(--color-grey);
 }
@@ -220,7 +220,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .add-task-add-button {
-  height: 58px;
+  height: 56px;
   margin-left: 15px;
   width: 183px;
   border-radius: 10px;
@@ -230,6 +230,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border: 0px;
   font-size: 21px;
   gap: 10px;
+  transition: background-color 0.3s ease;
 }
 
 .add-task-add-button img {
@@ -240,33 +241,30 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .add-task-add-button:hover {
   cursor: pointer;
   background-color: var(--color-cyan);
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .add-subtask-img:hover {
   cursor: pointer;
+  box-shadow: 0px 0px 2px 0px var(--color-grey);
+  background-color: var(--color-grey);
+  border-radius: 50%;
 }
 
 .add-subtask-img {
-  margin-right: 5px;
-  height: 22px;
-  width: 22px;
+  margin-right: 10px;
+  height: 24px;
+  width: 24px;
 }
 
 .add-task-clear-button {
   height: 56px;
   width: 110px;
-  gap: 4px;
   border-radius: 10px;
   padding: 16px;
   color: var(--color-dark-bg);
   font-size: 21px;
   border: 1px solid var(--color-dark-bg);
-}
-
-.add-task-clear-button img {
-  height: 11px;
-  width: 11px;
+  transition: background-color 0.3s ease;
 }
 
 .add-task-clear-button:hover {
@@ -422,10 +420,6 @@ label input {
   color: #ffffff;
 }
 
-.initialsOverview{
-  background-color: var(--color-blue);
-}
-
 .selectName {
   font-size: 20px;
   font-weight: 400;
@@ -505,6 +499,7 @@ label input {
   color: #ffffff;
   flex-grow: 0;
   flex-shrink: 0;
+  background-color: var(--color-blue);
 }
 
 .initialsOverview:hover {
