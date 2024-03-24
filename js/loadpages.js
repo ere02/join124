@@ -1,7 +1,24 @@
+/** JSDOC 
+ * Hiermit wird die Start-Seite mit der Übersicht aller Tasks erstellt
+ */
+
+const summary = document.getElementById("summary");
+const add_task = document.getElementById("add_task");
+const board = document.getElementById("board");
+const contacts = document.getElementById("contacts");
+const policy = document.getElementById("policy");
+
+
+
 
 
 function loadSummary() {
-    let summary = document.getElementById("content");
+    summary.classList.remove("displaynone");
+add_task.classList.add("displaynone");
+board.classList.add("displaynone");
+contacts.classList.add("displaynone");
+policy.classList.add("displaynone");
+
     summary.innerHTML = renderSummary();
     renderSayHello();
 }
