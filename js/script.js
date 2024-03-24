@@ -6,5 +6,6 @@ function init(){
 
 function introAnimation(){
     document.getElementById("logo").classList.add("animation");
+    document.getElementById("layer").classList.add("small");
     document.getElementById("content").classList.add("visible");
 }
