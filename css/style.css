@@ -67,20 +67,26 @@ HEAD a {
     transition: all 1s ease-in-out;
 
 }*/
-
-@keyframes example {
-    0%   {width:4.2rem;left:-38vw; top:-30vh;scale:1.5}
-    100%  {top:0vh; left:0vw;scale:4}
-  
+@keyframes movinglogo {
+  0% {
+    width: 4.2rem;
+    left: 10vw;
+    top: -38vh;
+    scale: 1.5;
   }
-
+  100% {
+    top: 0;
+    left: 50vw;
+    scale: 4;
+  }
+}
 #logo.animation{
     width: 4.2rem;
     left: -38vw;
     top: -30vh;
 scale:1.5;
 position: relative;
-animation-name: example;
+animation-name: movinglogo;
 animation-duration: 2500ms;
 animation-direction: reverse;  
 }
