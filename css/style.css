@@ -150,9 +150,6 @@ HEAD a {
   height: 25px;
 }
 
-  h2, h4, .span {
-    color: var(--use_bg-text-white);
-  }
 
 
 .bg-urgent {
@@ -536,12 +533,12 @@ header {
     0 2px 10px 0 var(--use_border-text-light);
 }
 
-
 .tile {
   gap: 20px;
   box-sizing: border-box;
   padding: 20px;
 }
+
 .tile:hover {
   background-color: var(--use_border-button-bg-text);
 
@@ -556,7 +553,12 @@ header {
   .border-bg {
     background-color: unset;
   }
+  h2, h4, .span {
+    color: var(--use_bg-text-white);
+  }
+}
   
+
 /*
 .button2:hover {
     transform: scale(1.05);
@@ -587,5 +589,4 @@ header {
 
 .icon {
   margin-left: -2rem;
-}
 }
