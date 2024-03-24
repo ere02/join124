@@ -44,22 +44,23 @@ HEAD a {
 }
 
 .circle {
-  border-radius: 30px;
-  height: 60px;
-  aspect-ratio: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
+    border-radius: 30px;
+    height: 60px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:10px;
 }
-.start-layer {
-  height: 100vh;
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
+.start-layer{
+    /*width: 100vw;
+    height: 100vh;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
 }
+
 /*
 #logo{
     height: 18rem;
@@ -67,77 +68,60 @@ HEAD a {
 
 }*/
 
-@keyframes movinglogo {
-  0% {
+@keyframes example {
+    0%   {width:4.2rem;left:-38vw; top:-30vh;scale:1.5}
+    100%  {top:0vh; left:0vw;scale:4}
+  
+  }
+
+#logo.animation{
     width: 4.2rem;
-    left: 10vw;
-    top: -38vh;
-    scale: 1.5;
-  }
-  100% {
-    top: 0;
-    left: 50vw;
-    scale: 4;
-  }
-}
-#logo.animation {
-  width: 4.2rem;
-  scale: 1.5;
-  position: relative;
-  animation-name: movinglogo;
-  animation-duration: 500ms;
-  animation-direction: reverse;
-  top: -38vh;
-  left: 10vw;
-}
-/*
-#layer{ 
-
-    transition:width 2s ;
-}
-#layer.small{
-    width:4.2rem;
-    top:calc(100vh/2 - 14rem);
-
-
-}*/
-
-#content {
-  opacity: 0;
-  transition: opacity 2s ease-in;
+    left: -38vw;
+    top: -30vh;
+scale:1.5;
+position: relative;
+animation-name: example;
+animation-duration: 2500ms;
+animation-direction: reverse;  
 }
 
-#content.visible {
-  opacity: 1;
+#content{
+    opacity: 0;
+    transition: opacity 4s ease-in-out;
+}
+
+#content.visible{
+     opacity:1;
 }
 
 .bg-dark {
   background-color: var(--use_border-button-bg-text);
 }
-.edit {
-  background-image: url(/assets/svg/edit_white.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 25px;
+.edit{
+    background-image:url(/assets/svg/edit_white.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 25px;
 }
-.check {
-  background-image: url(/assets/svg/check_white.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 25px;
+.check{
+    background-image:url(/assets/svg/check_white.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 25px;
 }
-.urgent {
-  background-image: url(/assets/svg/urgent_white.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 25px;
+.urgent
+{
+    background-image:url(/assets/svg/urgent_white.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 25px;
 }
 
 .flex-column {
   flex-direction: column;
 }
-.displaynone {
-  display: none;
+.displaynone{
+    display:none;
 }
 
 .flex-center {
@@ -150,7 +134,31 @@ HEAD a {
   height: 25px;
 }
 
+.tile {
 
+    gap: 20px;
+    box-sizing: border-box;
+    padding:20px;
+}
+.tile:hover{
+    background-color:var(--use_border-button-bg-text);
+
+    .edit{
+        background-image:url('/assets/svg/edit.svg');
+        background-color: var(--use_bg-text-white);
+    }
+    .check{
+        background-image:url('/assets/svg/check.svg');
+        background-color:var(--use_bg-text-white);
+    }
+    .border-bg{
+        background-color: unset;
+    }
+    h2,h4,.span{
+        color:var(--use_bg-text-white);
+    }
+
+}
 
 .bg-urgent {
   background-color: var(--use_urgent);
@@ -173,8 +181,8 @@ HEAD a {
 .highlightedText {
   color: var(--use_border-button-bg-text-hover);
 }
-.lineheight1 {
-  line-height: 1;
+.lineheight1{
+    line-height:1;
 }
 
 .left-border-2px {
@@ -198,16 +206,16 @@ HEAD a {
 }
 
 .summarycontainer {
-  width: 820px;
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+    width: 820px;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr)); 
   grid-template-rows: repeat(3, auto);
-  grid-template-areas:
-    "todo todo todo done done done greet"
-    "urgent urgent urgent urgent urgent urgent greet"
-    "board board inprogress inprogress feedback feedback greet";
-  grid-gap: 20px;
-  margin: 30px 100px;
+    grid-template-areas:
+        'todo todo todo done done done greet'
+        'urgent urgent urgent urgent urgent urgent greet'
+        'board board inprogress inprogress feedback feedback greet';
+    grid-gap: 20px;
+    margin: 30px 100px;
 }
 
 #summary-todo {
@@ -241,15 +249,15 @@ HEAD a {
 #summary-feedback {
   grid-area: feedback;
 }
-.span {
-  padding: 0 10px;
+.span{
+    padding: 0 10px;
 }
 
 .border-bg {
-  border: 1px solid var(--use_border-text-light);
-  border-radius: 18px;
-  height: calc(580px / 3 - 40px);
-  background-color: var(--use_bg-text-white);
+    border:1px solid var(--use_border-text-light);
+    border-radius: 18px;
+    height: calc(580px / 3 - 40px);
+    background-color:var(--use_bg-text-white);
 }
 
 * {
@@ -276,16 +284,16 @@ header {
 }
 
 .header-initials {
-  height: 48px;
-  width: 48px;
-  border-radius: 50%;
-  border: 3px solid var(--color-dark-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-cyan);
-  font-weight: 600;
-  font-size: 1.25rem;
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    border: 3px solid var(--color-dark-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:var(--color-cyan);
+    font-weight: 600;
+    font-size: 1.25rem;
 }
 
 .header-initials:hover {
@@ -362,7 +370,7 @@ header {
 }
 
 .a-nav:hover {
-  background-color: var(--use_nav-hover);
+    background-color:var(--use_border-button-bg-text-focus);
 }
 
 .legal-notice {
@@ -379,27 +387,29 @@ header {
 }
 
 .legal-notice-link:hover {
-  color: var(--use_border-button-bg-text-hover);
-  background-color: transparent;
-  font-weight: bold;
-}
+    color: var(--use_border-button-bg-text-hover);
+    background-color: transparent;
+    font-weight: bold;
+  }
 
 /* from here login template */
 .headline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "inter";
-  font-size: 3rem;
-  font-weight: bolder;
-  margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'inter';
+    font-size: 3rem;
+    font-weight: bolder;
+    margin-top: 3rem;
+
 }
 
 .headline-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .underline {
@@ -480,15 +490,15 @@ header {
 }
 
 .input-container-login {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  align-items: center;
-  width: 41rem;
-  height: 31rem;
-  background-color: var(--use_bg-text-white);
-  border: 1px solid var(--use_border-text-light);
-  border-radius: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    width: 41rem;
+    height: 31rem;
+    background-color: var(--use_bg-text-white);
+    border:1px solid var(--use_border-text-light);
+    border-radius: 2.5rem;
 }
 
 .input-container-signup {
@@ -507,6 +517,7 @@ header {
   align-items: center;
   gap: 0.5rem;
 }
+
 /* hover effect */
 /* 
 .input-container:hover {
@@ -525,41 +536,11 @@ header {
 
 }
 
-.button:hover,
-.button2:hover,
-.tile:hover {
-  transform: scale(1.02);
-  transition: all 0.2s;
-  box-shadow: 0 5px 20px 0 var(--use_border-text-light),
-    0 2px 10px 0 var(--use_border-text-light);
+.button:hover,.button2:hover,.tile:hover {
+    transform: scale(1.05);
+    transition: all .2s;
+    box-shadow: 0 5px 20px 0 var(--use_border-text-light), 0 2px 10px 0 var(--use_border-text-light);
 }
-
-.tile {
-  gap: 20px;
-  box-sizing: border-box;
-  padding: 20px;
-}
-
-.tile:hover {
-  background-color: var(--use_border-button-bg-text);
-
-  .edit {
-    background-image: url("/assets/svg/edit.svg");
-    background-color: var(--use_bg-text-white);
-  }
-  .check {
-    background-image: url("/assets/svg/check.svg");
-    background-color: var(--use_bg-text-white);
-  }
-  .border-bg {
-    background-color: unset;
-  }
-  h2, h4, .span {
-    color: var(--use_bg-text-white);
-  }
-}
-  
-
 /*
 .button2:hover {
     transform: scale(1.05);
@@ -588,6 +569,11 @@ header {
   margin-right: 2rem;
 }
 
+.go-back-arrow {
+    position: absolute;
+    left: -7rem;
+}
+
 .icon {
-  margin-left: -2rem;
+    margin-left: -2rem
 }

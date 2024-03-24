@@ -265,6 +265,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 21px;
   border: 1px solid var(--color-dark-bg);
   transition: background-color 0.3s ease;
+  background-image: url('../assets/svg/close.svg'); /* Standard-SVG */
+  background-repeat: no-repeat;
+  background-position: right 5px center; /* Bild rechts mit 10px Abstand */
 }
 
 .add-task-clear-button:hover {
@@ -272,6 +275,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border: 1px solid var(--color-cyan);
   color: var(--color-dark-cyan);
   cursor: pointer;
+  background-image: url('../assets/svg/close-1.svg'); /* SVG beim Hover */
+  background-position: right 5px center; /* Behält die gleiche Position wie im normalen Zustand bei */
 }
 
 .m-bottom-32 {
