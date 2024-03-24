@@ -150,31 +150,10 @@ HEAD a {
   height: 25px;
 }
 
-.tile {
-  gap: 20px;
-  box-sizing: border-box;
-  padding: 20px;
-}
-.tile:hover {
-  background-color: var(--use_border-button-bg-text);
-
-  .edit {
-    background-image: url("/assets/svg/edit.svg");
-    background-color: var(--use_bg-text-white);
-  }
-  .check {
-    background-image: url("/assets/svg/check.svg");
-    background-color: var(--use_bg-text-white);
-  }
-  .border-bg {
-    background-color: unset;
-  }
-  h2,
-  h4,
-  .span {
+  h2, h4, .span {
     color: var(--use_bg-text-white);
   }
-}
+
 
 .bg-urgent {
   background-color: var(--use_urgent);
@@ -556,6 +535,28 @@ header {
   box-shadow: 0 5px 20px 0 var(--use_border-text-light),
     0 2px 10px 0 var(--use_border-text-light);
 }
+
+
+.tile {
+  gap: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.tile:hover {
+  background-color: var(--use_border-button-bg-text);
+
+  .edit {
+    background-image: url("/assets/svg/edit.svg");
+    background-color: var(--use_bg-text-white);
+  }
+  .check {
+    background-image: url("/assets/svg/check.svg");
+    background-color: var(--use_bg-text-white);
+  }
+  .border-bg {
+    background-color: unset;
+  }
+  
 /*
 .button2:hover {
     transform: scale(1.05);
@@ -586,4 +587,5 @@ header {
 
 .icon {
   margin-left: -2rem;
+}
 }
