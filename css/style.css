@@ -279,6 +279,10 @@ header {
   box-shadow: 0px 4px 4px 0px var(--use_border-text-light);
 }
 
+.kanbanheader{
+  font-size: 20px;
+}
+
 .header-initials {
   height: 48px;
   width: 48px;
