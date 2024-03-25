@@ -18,10 +18,23 @@ add_task.classList.add("displaynone");
 board.classList.add("displaynone");
 contacts.classList.add("displaynone");
 policy.classList.add("displaynone");
+const nav_summary = document.getElementById("nav-summary");
+nav_summary.style.backgroundColor = "var(--use_border-button-bg-text-focus)";
 
     summary.innerHTML = renderSummary();
     renderSayHello();
+
+Event.preventDefault();
 }
+
+/**
+ * DISABLED the Menu Button after beeing clicked.
+ * @returns false
+ */
+function preventDefault(){
+    return false;
+}
+
 /** JSDoc 
  * Die Funktion generiert die Buttons für den Bereich der Summary-Content mit allen Informationen
  * @param ${Name}: this is the User, who is logged in.
