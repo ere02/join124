@@ -3,25 +3,25 @@
 <div class="nav-desktop">
     <img class="nav-logo" src="../assets/svg/join-icon.svg">
     <div class="nav-menu">
-      <div id="nav-summary" class="a-nav active-menu-link" onclick="loadSummary()">
+      <div id="nav-summary" class="a-nav" onclick="LinkBehaviorAfterClick('nav-summary')">
         <img class="p-right" src="../assets/svg/summary.svg">
         Summary
       </div>
-      <a class="a-nav" href="add_task.html">
+      <div id="nav-addtask" class="a-nav" href="add_task.html">
         <img class="p-right" src="../assets/svg/edit_square.svg">
         Add Task
-      </a>
-      <a class="a-nav" href="board.html">
+      </div>
+      <div id="nav-board" class="a-nav" href="board.html">
         <img class="p-right" src="../assets/svg/canban-1.svg">
         Board
-      </a>
-      <a class="a-nav" href="contact.html">
+      </div>
+      <div id="nav-contacts" class="a-nav" href="contact.html">
         <img class="p-right" src="../assets/svg/perm_contact_calendar.svg">
         Contacts
-      </a>
+      </div>
     </div>
     <div class="legal-notice">
-      <a class="legal-notice-link" href="privacy_policy.html">Privacy Policy</a>
-      <a class="legal-notice-link" href="legal_notice.html">Legal Notice</a>
+      <a id="nav-privacy" class="legal-notice-link" href="privacy_policy.html">Privacy Policy</a>
+      <a id="nav-legal" class="legal-notice-link" href="legal_notice.html">Legal Notice</a>
     </div>
   </div>

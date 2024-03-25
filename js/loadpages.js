@@ -2,15 +2,28 @@
  * Declaring all sections that wil be filled up with content per Click on NavBar-Menu-point
  */
 
-const summary = document.getElementById("summary");
-const add_task = document.getElementById("add_task");
-const board = document.getElementById("board");
-const contacts = document.getElementById("contacts");
-const policy = document.getElementById("policy");
+const summary = document.getElementById("section-summary");
+const add_task = document.getElementById("section-add_task");
+const board = document.getElementById("section-board");
+const contacts = document.getElementById("section-contacts");
+const policy = document.getElementById("section-policy");
+
+/**
+ * Declaring all Menu Points
+ */
+let nav_summary = document.getElementById("nav-summary");
+const nav_addtask = document.getElementById("nav-addtask");
+const nav_board = document.getElementById("nav-board");
+const nav_contacts = document.getElementById("nav-contacs");
+const nav_privacy = document.getElementById("nav-privacy");
+const nav_legal = document.getElementById("nav-legal");
+
+console.table(nav_summary)
 
 /**
  * CASE: Loading Summary
  */
+
 
 function loadSummary() {
     summary.classList.remove("displaynone");
@@ -18,22 +31,30 @@ add_task.classList.add("displaynone");
 board.classList.add("displaynone");
 contacts.classList.add("displaynone");
 policy.classList.add("displaynone");
-const nav_summary = document.getElementById("nav-summary");
-nav_summary.style.backgroundColor = "var(--use_border-button-bg-text-focus)";
 
     summary.innerHTML = renderSummary();
     renderSayHello();
-
-Event.preventDefault();
 }
 
-/**
- * DISABLED the Menu Button after beeing clicked.
- * @returns false
- */
-function preventDefault(){
-    return false;
+/** 
+ * VERARBEITUNG DER MENULinks 
+ * */
+
+function LinkBehaviorAfterClick(id){
+    if(id == "nav-summary"){
+        nav_summary.style.backgroundColor = "var(--use_border-button-bg-text-focus)";
+        nav_summary.addEventListener("click", function (event) {
+        loadSummary();
+        event.preventDefault(); 
+        });
+    } else if (id == "nav-addtask"){
+        
+
+    }
+
 }
+
+
 
 /** JSDoc 
  * Die Funktion generiert die Buttons für den Bereich der Summary-Content mit allen Informationen
