@@ -17,7 +17,6 @@
      /* FARBEN ZU HELL ODER NUR für STYLE-ELEMENTE) */
     --color-sunnyyellow:rgb(255,230,43);
     --color-red:rgb(255,70,70);
-    --color-yellow:rgb(255,230,43);
     --color-lightgrey:rgb(246,247,248);
     --color-grey:rgb(209,209,209);
     --color-lightlila:rgba(226,230,236,0.4);
@@ -54,6 +53,6 @@
 }
 .class:hover{
     background-color:var(--use_border-button-bg-text-hover);
-    color:white;
+    color:var(--use_bg-text-white);
 
 }

@@ -150,9 +150,9 @@ HEAD a {
 .icon-big {
   height: 25px;
 }
-
+/* ich ändere von --use_bg-text-white auf --use_border-button-bg-text Falls es an anderer STelle stört, bitte mitteilen, damit wir das lösen*/
   h2, h4, .span {
-    color: var(--use_bg-text-white);
+    color: var(--use_border-button-bg-text);
   }
 
 
