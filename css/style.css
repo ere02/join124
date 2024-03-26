@@ -658,9 +658,8 @@ header {
 .label-wrapper {
   background-color: var(--color-dark-bg);
   display: flex;
-  flex-direction: column;
-  justify-content:center;
-  align-items: flex-start;
+  justify-content:space-between;
+  align-items: center;
   width: 28rem;
   height: 37rem;
   border-radius: 1.875rem 0 0 1.875rem;
