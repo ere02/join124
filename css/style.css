@@ -644,8 +644,6 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
-  width: 76rem;
-  height: 37rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -668,7 +666,7 @@ header {
   border-radius: 1.875rem 0 0 1.875rem;
 }
 
-.label-wrapper {
+.edit-task-wrapper {
   background-color: var(--color-white);
   display: flex;
   flex-direction: column;
