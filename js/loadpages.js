@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("navsummary");
   document.getElementById("navboard");
   document.getElementById("navcontacts");
-  document.getElementById("navpolicy");
+  document.getElementById("navprivacy");
+  document.getElementById("navlegal");
 });
 
 
@@ -32,7 +33,8 @@ function resetAllNavButtons() {
   document.getElementById("navaddtask").classList.remove("bg-darker");
   document.getElementById("navboard").classList.remove("bg-darker");
   document.getElementById("navcontacts").classList.remove("bg-darker");
-  //document.getElementById("navpolicy").classList.remove("bg-darker");
+  document.getElementById("navprivacy").classList.remove("bg-darker");
+  document.getElementById("navlegal").classList.remove("bg-darker");
 }
 
 /** CONTENT loads in its Section 
@@ -75,7 +77,7 @@ function loadContacts(id) {
 function loadPrivacy(id) {
   allNavButton(id);
   policy.classList.remove("displaynone");
-  policy.innerHTML = renderPrivacy();
+  policy.innerHTML = renderPrivacy("DE");
 }
 /** CONTENT loads in its Section 
  * CASE: Loading Legal Notice
