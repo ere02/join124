@@ -3,7 +3,7 @@
  */
 
 const summary = document.getElementById("section-summary");
-const add_task = document.getElementById("section-add_task");
+const addtask = document.getElementById("section-addtask");
 const board = document.getElementById("section-board");
 const contacts = document.getElementById("section-contacts");
 const policy = document.getElementById("section-policy");
@@ -20,8 +20,9 @@ function loadsummary() {
  * CASE: Loading add_task
  */
 function loadAddTask() {
-    add_task.classList.remove("displaynone");
-    add_task.innerHTML = renderAddTask();
+ 
+    addtask.classList.remove("displaynone");
+    addtask.innerHTML = renderAddTask("DE");
   }
 
     /**
@@ -33,22 +34,23 @@ function loadAddTask() {
 /**
  * VERARBEITUNG DER MENULinks
  * */
+  const nav_summary = document.getElementById("nav-summary");
+  const nav_addtask = document.getElementById("nav-addtask");
+  const nav_board = document.getElementById("nav-board");
+  const nav_contacts = document.getElementById("nav-contacts");
+  const nav_policy= document.getElementById("nav-policy");
 
 function LinkBehaviorAfterClick(id) {
     
     summary.classList.add("displaynone");
-    add_task.classList.add("displaynone");
+    addtask.classList.add("displaynone");
     board.classList.add("displaynone");
     contacts.classList.add("displaynone");
     policy.classList.add("displaynone");
   /**
    * Declaring all Menu Points
    */
-  const nav_summary = document.getElementById("nav-summary");
-  const nav_addtask = document.getElementById("nav-addtask");
-  const nav_board = document.getElementById("nav-board");
-  const nav_contacts = document.getElementById("nav-contacts");
-  const nav_policy= document.getElementById("nav-policy");
+
 
   switch(id){
     case id:

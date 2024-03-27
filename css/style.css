@@ -12,6 +12,11 @@ body {
   font-size: 0.8rem;
 }
 
+section{
+  margin-top: 10rem;
+  margin-left: 20rem;
+}
+
 h1 {
   font-size: 10rem;
   color: var(--use_border-button-bg-text);
