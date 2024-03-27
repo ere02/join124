@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
 /** CONTENT loads in its Section 
  * CASE: Loading Summary
  */
-function loadsummary() {
+function loadsummary(id) {
+  allNavButton(id);
   summary.classList.remove("displaynone");
   summary.innerHTML = renderSummary();
   renderSayHello();
@@ -30,14 +31,18 @@ function loadsummary() {
 /** CONTENT loads in its Section 
  * CASE: Loading add_task
  */
-function loadAddTask() {
-  const navaddtask = document.getElementById("navaddtask");
-  navaddtask.classList.add("bg-darker");
-  navaddtask.addEventListener("click", function (event) {
-    event.preventDefault();
-  });
+function loadAddTask(id) {
+  allNavButton(id);
     addtask.classList.remove("displaynone");
     addtask.innerHTML = renderAddTask("DE");
+  }
+
+  function allNavButton(id){
+    const navbutton = document.getElementById(id);
+    navbutton.classList.add("bg-darker");
+    navbutton.addEventListener("click", function (event) {
+      event.preventDefault();
+    });
   }
 
     /**
@@ -59,8 +64,8 @@ function LinkBehaviorAfterClick(id) {
     case id:
   //let navSelection = id.replace("nav-","nav_");  
   
-      this.classList.add("bg-darker");
-      navsummary.addEventListener("click", function (event) {
+      id.classList.add("bg-darker");
+      id.addEventListener("click", function (event) {
         event.preventDefault();
       });
       break;
