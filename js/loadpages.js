@@ -1,4 +1,14 @@
 /**
+ * Being Aware that all NavButtons are loaded
+ * */
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById("navsummary");
+  document.getElementById("navboard");
+  document.getElementById("navcontacts");
+  document.getElementById("navpolicy");
+});
+
+/**
  * Declaring all sections that wil be filled up with content per Click on NavBar-Menu-point
  */
 
@@ -7,69 +17,78 @@ const addtask = document.getElementById("section-addtask");
 const board = document.getElementById("section-board");
 const contacts = document.getElementById("section-contacts");
 const policy = document.getElementById("section-policy");
-
 /**
- * VERARBEITUNG DER MENULinks
- * */
-document.addEventListener('DOMContentLoaded', function() {
-  const navsummary = document.getElementById("navsummary");
-  const navboard = document.getElementById("navboard");
-  const navcontacts = document.getElementById("navcontacts");
-  const navpolicy= document.getElementById("navpolicy");
-});
+ * Declaring all  NavBar-Menu-points
+ */
+const navsummary = document.getElementById("navsummary");
+const navaddtask = document.getElementById("navaddtask");
+const navboard = document.getElementById("navboard");
+const navcontacts = document.getElementById("navcontacts");
+const navpolicy = document.getElementById("navpolicy");
+
+
+function resetAllSections() {
+  summary.classList.add("displaynone");
+  addtask.classList.add("displaynone");
+  board.classList.add("displaynone");
+  contacts.classList.add("displaynone");
+  policy.classList.add("displaynone");
+}
+function resetAllNavButtons() {
+  navsummary.classList.remove("bg-darker");
+  navaddtask.classList.remove("bg-darker");
+  navboard.classList.remove("bg-darker");
+  navcontacts.classList.remove("bg-darker");
+  navpolicy.classList.remove("bg-darker");
+}
 
 
 /** CONTENT loads in its Section 
  * CASE: Loading Summary
  */
-function loadsummary(id) {
+function loadSummary(id) {
   allNavButton(id);
   summary.classList.remove("displaynone");
   summary.innerHTML = renderSummary();
   renderSayHello();
 }
 /** CONTENT loads in its Section 
- * CASE: Loading add_task
+ * CASE: Loading addtask
  */
 function loadAddTask(id) {
   allNavButton(id);
-    addtask.classList.remove("displaynone");
-    addtask.innerHTML = renderAddTask("DE");
-  }
+  addtask.classList.remove("displaynone");
+  addtask.innerHTML = renderAddTask();
+}
 
-  function allNavButton(id){
-    const navbutton = document.getElementById(id);
-    navbutton.classList.add("bg-darker");
-    navbutton.addEventListener("click", function (event) {
-      event.preventDefault();
-    });
-  }
+/** CONTENT loads in its Section 
+ * CASE: Loading board
+ */
+function loadBoard(id) {
+  allNavButton(id);
+  board.classList.remove("displaynone");
+}
 
-    /**
-   * Disable all Content-Areas after Klick
-   
+/** CONTENT loads in its Section 
+ * CASE: Loading CONTACTS
+ */
+function loadContacts(id) {
+  allNavButton(id);
+  contacts.classList.remove("displaynone");
+}
 
-*/
 
-
-function LinkBehaviorAfterClick(id) {
-    
-    summary.classList.add("displaynone");
-    addtask.classList.add("displaynone");
-    board.classList.add("displaynone");
-    contacts.classList.add("displaynone");
-    policy.classList.add("displaynone");
-
- switch(id){
-    case id:
-  //let navSelection = id.replace("nav-","nav_");  
-  
-      id.classList.add("bg-darker");
-      id.addEventListener("click", function (event) {
-        event.preventDefault();
-      });
-      break;
-  }
+/** Control the behavior of the Nav-Button 
+ * USED for all Menu-Points
+ */
+function allNavButton(id) {
+  resetAllSections();
+  resetAllNavButtons();
+  const navbutton = document.getElementById(id);
+  navbutton.classList.add("bg-darker");
+  navbutton.addEventListener("click", function (event) {
+    event.preventDefault();
+  });
 }
 
 /** JSDoc
