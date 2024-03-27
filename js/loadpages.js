@@ -11,11 +11,12 @@ const policy = document.getElementById("section-policy");
 /**
  * VERARBEITUNG DER MENULinks
  * */
+document.addEventListener('DOMContentLoaded', function() {
   const navsummary = document.getElementById("navsummary");
- 
-  const nav_board = document.getElementById("nav-board");
-  const nav_contacts = document.getElementById("nav-contacts");
-  const nav_policy= document.getElementById("nav-policy");
+  const navboard = document.getElementById("navboard");
+  const navcontacts = document.getElementById("navcontacts");
+  const navpolicy= document.getElementById("navpolicy");
+});
 
 
 /** CONTENT loads in its Section 
