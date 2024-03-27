@@ -1,4 +1,6 @@
 function renderSummary() {
+
+
 return /*html*/ `
     <div class="start-container">
         <div class="start-head"><h2 class="padding20 right-border-2px">Join 360</h2><h4 class="padding20">Key Metrics at a Glance</h4>

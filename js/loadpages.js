@@ -8,6 +8,16 @@ const board = document.getElementById("section-board");
 const contacts = document.getElementById("section-contacts");
 const policy = document.getElementById("section-policy");
 
+/**
+ * VERARBEITUNG DER MENULinks
+ * */
+  const navsummary = document.getElementById("navsummary");
+ 
+  const nav_board = document.getElementById("nav-board");
+  const nav_contacts = document.getElementById("nav-contacts");
+  const nav_policy= document.getElementById("nav-policy");
+
+
 /** CONTENT loads in its Section 
  * CASE: Loading Summary
  */
@@ -20,7 +30,11 @@ function loadsummary() {
  * CASE: Loading add_task
  */
 function loadAddTask() {
- 
+  const navaddtask = document.getElementById("navaddtask");
+  navaddtask.classList.add("bg-darker");
+  navaddtask.addEventListener("click", function (event) {
+    event.preventDefault();
+  });
     addtask.classList.remove("displaynone");
     addtask.innerHTML = renderAddTask("DE");
   }
@@ -31,14 +45,6 @@ function loadAddTask() {
 
 */
 
-/**
- * VERARBEITUNG DER MENULinks
- * */
-  const nav_summary = document.getElementById("nav-summary");
-  const nav_addtask = document.getElementById("nav-addtask");
-  const nav_board = document.getElementById("nav-board");
-  const nav_contacts = document.getElementById("nav-contacts");
-  const nav_policy= document.getElementById("nav-policy");
 
 function LinkBehaviorAfterClick(id) {
     
@@ -47,118 +53,18 @@ function LinkBehaviorAfterClick(id) {
     board.classList.add("displaynone");
     contacts.classList.add("displaynone");
     policy.classList.add("displaynone");
-  /**
-   * Declaring all Menu Points
-   */
 
-
-  switch(id){
+ switch(id){
     case id:
-  let  navSelection = id.replace("nav-","nav_");  
-   
-      navSelection.classList.add("bg-darker");
-      navSelection.addEventListener("click", function (event) {
+  //let navSelection = id.replace("nav-","nav_");  
+  
+      this.classList.add("bg-darker");
+      navsummary.addEventListener("click", function (event) {
         event.preventDefault();
       });
       break;
   }
 }
-/*
-  function loadSummary{}
-    let nextStep = id.replace("nav_","load");
-    nextSTep();
-
-  }
-
-
- /* switch (id) {
-    case "nav-summary":
-      loadSummary();
-      nav_summary.style.backgroundColor =
-        "var(--use_border-button-bg-text-focus)";
-      nav_summary.addEventListener("click", function (event) {
-        event.preventDefault();
-      });
-      break;
-    case "nav-addtask":
-      loadAddTask();
-      nav_addtask.style.backgroundColor =
-        "var(--use_border-button-bg-text-focus)";
-      nav_addtask.addEventListener("click", function (event) {
-        event.preventDefault();
-      });
-      break;
-    case "nav-board":
-      loadBoard();
-      nav_board.style.backgroundColor =
-        "var(--use_border-button-bg-text-focus)";
-      nav_board.addEventListener("click", function (event) {
-        event.preventDefault();
-      });
-      break;
-    case "nav-board":
-      loadBoard();
-      nav_board.style.backgroundColor =
-        "var(--use_border-button-bg-text-focus)";
-      nav_board.addEventListener("click", function (event) {
-        event.preventDefault();
-      });
-      break;
-      case "nav-contacts":
-        loadContacts();
-        nav_contacts.style.backgroundColor =
-          "var(--use_border-button-bg-text-focus)";
-        nav_contacts.addEventListener("click", function (event) {
-          event.preventDefault();
-        });
-        break;
-    case "nav-privacy":
-        loadPrivacy();
-        nav_privacy.style.backgroundColor =
-          "var(--use_border-button-bg-text-focus)";
-         nav_privacy.addEventListener("click", function (event) {
-           event.preventDefault();
-         });
-         break;
-         case "nav-legal":
-            loadlegal();
-            nav_legal.style.backgroundColor =
-              "var(--use_border-button-bg-text-focus)";
-             nav_legal.addEventListener("click", function (event) {
-               event.preventDefault();
-             });
-             break;
-  }
-}
-/*
-    if(id == "nav-summary"){
-        nav_summary.style.backgroundColor = "var(--use_border-button-bg-text-focus)";
-        nav_summary.addEventListener("click", function (event) {
-        loadSummary();
-        event.preventDefault(); 
-        });
-    } else if (id == "nav-addtask"){
-        nav_addtask.style.backgroundColor = "var(--use_border-button-bg-text-focus)";
-        nav_addtask.addEventListener("click", function (event) {
-        loadSummary();
-        event.preventDefault(); 
-        });
-    } else if (id == "nav-board"){
-        nav_board.style.backgroundColor = "var(--use_border-button-bg-text-focus)";
-        nav_board.addEventListener("click", function (event) {
-        loadAddTasks();
-        event.preventDefault(); 
-        });
-    } else if (id == "nav-contacts"){
-        nav_contacts.style.backgroundColor = "var(--use_border-button-bg-text-focus)";
-        nav_contacts.addEventListener("click", function (event) {
-        loadSummary();
-        event.preventDefault(); 
-        });
-    } else if (id == "nav-addtask"){
-        
-
-    }*/
 
 /** JSDoc
  * Die Funktion generiert die Buttons für den Bereich der Summary-Content mit allen Informationen
