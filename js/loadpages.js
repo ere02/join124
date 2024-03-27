@@ -69,6 +69,22 @@ function loadContacts(id) {
   contacts.classList.remove("displaynone");
 }
 
+/** CONTENT loads in its Section 
+ * CASE: Loading Privacy Policy
+ */
+function loadPrivacy(id) {
+  allNavButton(id);
+  policy.classList.remove("displaynone");
+  policy.innerHTML = renderPrivacy();
+}
+/** CONTENT loads in its Section 
+ * CASE: Loading Legal Notice
+ */
+function loadLegalk(id) {
+  allNavButton(id);
+  policy.classList.remove("displaynone");
+  policy.innerHTML = renderLegal();
+}
 
 /** Control the behavior of the Nav-Button 
  * USED for all Menu-Points

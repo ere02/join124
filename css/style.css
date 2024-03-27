@@ -224,7 +224,7 @@ header {
   display: flex;
   flex-direction: column;
   color: var(--use_border-text-light);
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
   width: 14.5rem;
 }
@@ -244,10 +244,6 @@ header {
   background-color: var(--use_nav-hover);
 }
 
-.a-nav:active{
- background-color:var(--use_bg-darker);
-
-}
 
 .p-right {
   padding-right: 0.5rem;
@@ -261,7 +257,6 @@ header {
 
 .legal-notice-link {
   font-size: 1rem;
-  padding: 0.5rem;
   color: var(--use_border-text-light);
 }
 
@@ -270,6 +265,7 @@ header {
   background-color: transparent;
   font-weight: bold;
 }
+
 
 /* from here login template */
 .headline {
