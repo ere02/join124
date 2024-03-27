@@ -378,14 +378,18 @@ header {
   cursor: pointer;
 }
 
-.p-right {
-  padding-right: 0.5rem;
-}
-
 .a-nav:hover {
   background-color: var(--use_nav-hover);
 }
 
+.a-nav:active{
+ background-color:var(--use_bg-darker);
+
+}
+
+.p-right {
+  padding-right: 0.5rem;
+}
 .legal-notice {
   display: flex;
   flex-direction: column;

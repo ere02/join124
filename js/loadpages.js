@@ -34,6 +34,7 @@ function resetAllSections() {
   contacts.classList.add("displaynone");
   policy.classList.add("displaynone");
 }
+
 function resetAllNavButtons() {
   navsummary.classList.remove("bg-darker");
   navaddtask.classList.remove("bg-darker");
@@ -83,9 +84,9 @@ function loadContacts(id) {
  */
 function allNavButton(id) {
   resetAllSections();
-  resetAllNavButtons();
+ // resetAllNavButtons();
   const navbutton = document.getElementById(id);
-  navbutton.classList.add("bg-darker");
+ // navbutton.classList.add("bg-darker");
   navbutton.addEventListener("click", function (event) {
     event.preventDefault();
   });
