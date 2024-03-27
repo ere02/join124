@@ -115,6 +115,9 @@ HEAD a {
 .bg-dark {
   background-color: var(--use_border-button-bg-text);
 }
+.bg-darker{
+  background-color:var(--use_border-button-bg-text-focus);
+}
 .edit {
   background-image: url(/assets/svg/edit_white.svg);
   background-position: center;
