@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="icon" href="../favicon.ico" />
     <link rel="stylesheet" type="text/css" href="../css/all_colors.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css"> 
-    <script src="../templates/summary.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/add_task.css">
+    <link rel="stylesheet" type="text/css" href="../css/summary.css">
     <script src="../js/script.js"></script>
+    <script src="../templates/summary.js"></script>
+    <script src="../templates/add_task.js"></script>
+  
 
+ 
 
-    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <!--<script src="https://www.w3schools.com/lib/w3.js"></script>-->
     <title>JOIN - Ease up your projects - 124</title>
 
 </head>
-<body>
+<body onload="includeHTML()">
     
     <div w3-include-html="../templates/header.html"></div>
 
@@ -22,7 +27,7 @@
 
     <section id="section-summary" class="displaynone">
     </section>
-    <section id="section-add_task" class="displaynone">
+    <section id="section-addtask" class="displaynone">
     </section>
     <section id="section-board" class="displaynone">
     </section>
@@ -30,9 +35,10 @@
     </section>
     <section id="section-policy" class="displaynone"></section>
 
-        <script>
-            w3.includeHTML();
-        </script>
-   <script src="../js/loadpages.js"></script>
+  
+               <script src="../js/loadpages.js">
+              // await includeHTML();
+   </script>
+ 
 </body>
 </html>
