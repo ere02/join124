@@ -79,12 +79,6 @@ HEAD a {
   z-index: 2;
 }
 
-/*
-#logo{
-    height: 18rem;
-    transition: all 1s ease-in-out;
-
-}*/
 
 @keyframes movinglogo {
   0% {
@@ -112,21 +106,10 @@ HEAD a {
   left: 10vw;
 }
 
-/*
-#layer{ 
-
-    transition:width 2s ;
-}
-#layer.small{
-    width:4.2rem;
-    top:calc(100vh/2 - 14rem);
-
-
-}*/
 
 #content {
   opacity: 0;
-  transition: opacity 2s ease-in;
+  transition: opacity 1.5s ease-in;
 }
 
 #content.visible {
