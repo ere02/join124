@@ -9,7 +9,8 @@
 body {
   font-family: "inter";
   background-color: var(--use_background);
-  font-size: 0.8rem;
+  color:var(--use_border-button-bg-text);
+  font-size: 1rem;
 }
 
 section{
@@ -17,25 +18,37 @@ section{
   margin-left: 20rem;
 }
 
+/** Seitenüberschriften 
+*/
 h1 {
-  font-size: 10rem;
+  font-size: 3.8rem;
+  font-weight:700;
   color: var(--use_border-button-bg-text);
 }
 
+/** Summary-Numbers and Sofia Müller
+*/
 h2 {
-  font-size: 2.4rem;
-  font-weight: 800;
-  line-height: 0.3;
+  font-size: 4rem;
+  font-weight:700;
+  line-height: 2rem;
 }
-
+/** Summary Begrüßung : Good Morning
+*/
 h3 {
-  font-size: 2rem;
+  font-size: 2.9rem;
   font-weight: 500;
 }
-
+/** Summary Zusatztext für Seiten Überschriften "Key Metrics at a Glance"
+*/
 h4 {
-  font-size: 1rem;
-  font-weight: 100;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+/** Bezeichnung im Header "Kanban Project Management Tool" und Kachelbeschriftung z.B."Done"
+*/
+h5{
+  font-size:1.25rem
 }
 
 HEAD a {
