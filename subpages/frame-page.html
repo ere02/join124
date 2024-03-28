@@ -8,9 +8,12 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/add_task.css">
     <link rel="stylesheet" type="text/css" href="../css/summary.css">
+<!--<link rel="stylesheet" type="text/css" href="../css/privacy_policy.css">-->
     <script src="../js/script.js"></script>
     <script src="../templates/summary.js"></script>
     <script src="../templates/add_task.js"></script>
+    <script src="../templates/privacy_policy.js"></script>
+
   
 
  
@@ -19,26 +22,24 @@
     <title>JOIN - Ease up your projects - 124</title>
 
 </head>
-<body onload="includeHTML()">
+<body onload="startContent()">
     
     <div w3-include-html="../templates/header.html"></div>
 
     <navbar w3-include-html="../templates/navbar.html"></navbar>
 
-    <section id="section-summary" class="displaynone">
+    <section id="section-summary" class="contentsection displaynone">
     </section>
-    <section id="section-addtask" class="displaynone">
+    <section id="section-addtask" class="contentsection displaynone">
     </section>
-    <section id="section-board" class="displaynone">
+    <section id="section-board" class="contentsection displaynone">
     </section>
-    <section id="section-contacts" class="displaynone">
+    <section id="section-contacts" class="contentsection displaynone">
     </section>
-    <section id="section-policy" class="displaynone"></section>
+    <section id="section-policy" class="contentsection displaynone"></section>
 
   
-               <script src="../js/loadpages.js">
-              // await includeHTML();
-   </script>
+               <script src="../js/loadpages.js"></script>
  
 </body>
 </html>

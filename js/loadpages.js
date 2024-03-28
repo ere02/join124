@@ -5,8 +5,10 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("navsummary");
   document.getElementById("navboard");
   document.getElementById("navcontacts");
-  document.getElementById("navpolicy");
+  document.getElementById("navprivacy");
+  document.getElementById("navlegal");
 });
+
 
 /**
  * Declaring all sections that wil be filled up with content per Click on NavBar-Menu-point
@@ -17,15 +19,6 @@ const addtask = document.getElementById("section-addtask");
 const board = document.getElementById("section-board");
 const contacts = document.getElementById("section-contacts");
 const policy = document.getElementById("section-policy");
-/**
- * Declaring all  NavBar-Menu-points
- */
-const navsummary = document.getElementById("navsummary");
-const navaddtask = document.getElementById("navaddtask");
-const navboard = document.getElementById("navboard");
-const navcontacts = document.getElementById("navcontacts");
-const navpolicy = document.getElementById("navpolicy");
-
 
 function resetAllSections() {
   summary.classList.add("displaynone");
@@ -36,18 +29,18 @@ function resetAllSections() {
 }
 
 function resetAllNavButtons() {
-  navsummary.classList.remove("bg-darker");
-  navaddtask.classList.remove("bg-darker");
-  navboard.classList.remove("bg-darker");
-  navcontacts.classList.remove("bg-darker");
-  navpolicy.classList.remove("bg-darker");
+  document.getElementById("navsummary").classList.remove("bg-darker");
+  document.getElementById("navaddtask").classList.remove("bg-darker");
+  document.getElementById("navboard").classList.remove("bg-darker");
+  document.getElementById("navcontacts").classList.remove("bg-darker");
+  document.getElementById("navprivacy").classList.remove("bg-darker");
+  document.getElementById("navlegal").classList.remove("bg-darker");
 }
-
 
 /** CONTENT loads in its Section 
  * CASE: Loading Summary
  */
-function loadSummary(id) {
+async function loadSummary(id) {
   allNavButton(id);
   summary.classList.remove("displaynone");
   summary.innerHTML = renderSummary();
@@ -78,18 +71,35 @@ function loadContacts(id) {
   contacts.classList.remove("displaynone");
 }
 
+/** CONTENT loads in its Section 
+ * CASE: Loading Privacy Policy
+ */
+function loadPrivacy(id) {
+  allNavButton(id);
+  policy.classList.remove("displaynone");
+  policy.innerHTML = renderPrivacy("DE");
+}
+/** CONTENT loads in its Section 
+ * CASE: Loading Legal Notice
+ */
+function loadLegalk(id) {
+  allNavButton(id);
+  policy.classList.remove("displaynone");
+  policy.innerHTML = renderLegal();
+}
 
 /** Control the behavior of the Nav-Button 
  * USED for all Menu-Points
  */
 function allNavButton(id) {
   resetAllSections();
- // resetAllNavButtons();
+  resetAllNavButtons();
   const navbutton = document.getElementById(id);
- // navbutton.classList.add("bg-darker");
-  navbutton.addEventListener("click", function (event) {
+  navbutton.classList.add("bg-darker");
+  /*navbutton.addEventListener("click", function (event) { 
+
     event.preventDefault();
-  });
+  });*/
 }
 
 /** JSDoc
@@ -121,3 +131,4 @@ function sayHello() {
     return "Gute Nacht,";
   }
 }
+

@@ -9,7 +9,11 @@ function introAnimation(){
     document.getElementById("layer").classList.add("small");
     document.getElementById("content").classList.add("visible");
 }
-  
+
+async function startContent(){
+    await includeHTML();
+    await loadSummary('navsummary');
+}
 
 
 async function includeHTML() {
