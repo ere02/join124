@@ -1,8 +1,12 @@
 function renderPrivacy(lan){
     switch(lan){
     case "DE": return /*html*/ `
-    <h1>Datenschutzrichtlinie für JOIN Group 124</h1>
 
+<div class="start-container">
+        <div class="start-head"><h1 class="padding20 right-border-2px">Datenschutzrichtlinie </h1><h4 class="padding20">für JOIN Group 124</h4>
+    </div>
+
+    <div class ="policy">
 <p>Auf www.join.de, erreichbar über www.join.de, ist die Privatsphäre unserer Besucher eine unserer Hauptprioritäten. Diese Datenschutzerklärung enthält Arten von Informationen, die von www.join.de gesammelt und aufgezeichnet werden, und wie wir sie verwenden.</p>
 
 <p>Wenn Sie weitere Fragen haben oder weitere Informationen zu unserer Datenschutzrichtlinie benötigen, zögern Sie nicht, uns zu kontaktieren. Unsere Datenschutzrichtlinie wurde mit Hilfe des <a href="https://www.gdprprivacypolicy.net/">GDPR Privacy Policy Generator</a></p> erstellt
@@ -69,6 +73,11 @@ function renderPrivacy(lan){
 <h4>Einwilligung</h4>
 
 <p>Durch die Nutzung unserer Website stimmen Sie hiermit unserer Datenschutzrichtlinie zu und stimmen deren Bedingungen zu.</p>
+<p class="logo124">
+    <img src="../assets/svg/124logo.svg" class="logo124">
+    </p>
+
+    </div>
 
 `;
 
@@ -143,7 +152,15 @@ case "EN":
 <h4>Consent</h4>
 
 <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
+
+    <p>
+    <img src="../assets/svg/124logo.svg">
+    </p>
+
+</div>
     `;
     }
 
 }
+
+
