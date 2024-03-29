@@ -9,11 +9,11 @@
 body {
   font-family: "inter";
   background-color: var(--use_background);
-  color:var(--use_border-button-bg-text);
+  color: var(--use_border-button-bg-text);
   font-size: 1rem;
 }
 
-.contentsection{
+.contentsection {
   margin-top: 10rem;
   margin-left: 20rem;
 }
@@ -22,7 +22,7 @@ body {
 */
 h1 {
   font-size: 3.8rem;
-  font-weight:700;
+  font-weight: 700;
   color: var(--use_border-button-bg-text);
 }
 
@@ -30,25 +30,28 @@ h1 {
 */
 h2 {
   font-size: 4rem;
-  font-weight:700;
+  font-weight: 700;
   line-height: 2rem;
 }
+
 /** Summary Begrüßung : Good Morning
 */
 h3 {
   font-size: 2.9rem;
   font-weight: 400;
 }
+
 /** Summary Zusatztext für Seiten Überschriften "Key Metrics at a Glance"
 */
 h4 {
   font-size: 1.6rem;
   font-weight: 400;
 }
+
 /** Bezeichnung im Header "Kanban Project Management Tool" und Kachelbeschriftung z.B."Done", KanbanHeader
 */
-h5{
-  font-size:1.25rem
+h5 {
+  font-size: 1.25rem
 }
 
 HEAD a {
@@ -119,8 +122,9 @@ HEAD a {
 .bg-dark {
   background-color: var(--use_border-button-bg-text);
 }
-.bg-darker{
-  background-color:var(--use_border-button-bg-text-focus);
+
+.bg-darker {
+  background-color: var(--use_border-button-bg-text-focus);
 }
 
 .span {
@@ -248,6 +252,7 @@ header {
 .p-right {
   padding-right: 0.5rem;
 }
+
 .legal-notice {
   display: flex;
   flex-direction: column;
@@ -353,6 +358,9 @@ header {
 
 .input-wrapper {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
 }
 
 .login-page {
@@ -504,7 +512,6 @@ header {
 .edit-task {
   position: absolute;
   width: 76rem;
-  height: 37rem;
   top: 0;
   left: 0;
   right: 0;
@@ -523,9 +530,9 @@ header {
 .label-wrapper {
   background-color: var(--color-dark-bg);
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
-  width: 28rem;
+  width: 28.25rem;
   height: 37rem;
   border-radius: 1.875rem 0 0 1.875rem;
 }
@@ -534,7 +541,7 @@ header {
   background-color: var(--color-white);
   display: flex;
   flex-direction: column;
-  justify-content:center;
+  justify-content: center;
   align-items: flex-start;
   width: 47.75rem;
   height: 37rem;
