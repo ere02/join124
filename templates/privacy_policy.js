@@ -3,7 +3,7 @@ function renderPrivacy(lan){
     case "DE": return /*html*/ `
 
 <div class="start-container">
-        <div class="start-head"><h1 class="padding20 right-border-2px">Datenschutzrichtlinie </h1><h4 class="padding20">für JOIN Group 124</h4>
+        <div class="back-head"><h1 class="padding20 right-border-2px">Datenschutzrichtlinie </h1><img src="../assets/svg/back.svg" class="backarrow">
     </div>
 
     <div class ="policy">
