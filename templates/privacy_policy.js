@@ -153,9 +153,10 @@ case "EN":
 
 <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
 
-    <p>
-    <img src="../assets/svg/124logo.svg">
+<p class="logo124">
+    <img src="../assets/svg/124logo.svg" class="logo124">
     </p>
+
 
 </div>
     `;
