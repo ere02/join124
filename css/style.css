@@ -503,6 +503,8 @@ header {
 /*Edit Task*/
 .edit-task {
   position: absolute;
+  width: 76rem;
+  height: 37rem;
   top: 0;
   left: 0;
   right: 0;
