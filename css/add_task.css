@@ -267,7 +267,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   transition: background-color 0.3s ease;
   background-image: url('../assets/svg/close.svg'); /* Standard-SVG */
   background-repeat: no-repeat;
-  background-position: right 5px center; /* Bild rechts mit 10px Abstand */
+  background-position: right 11px center; /* Bild rechts mit 10px Abstand */
 }
 
 .add-task-clear-button:hover {
