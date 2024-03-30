@@ -11,7 +11,7 @@ function renderPrivacy(lan){
 
 <p>Wenn Sie weitere Fragen haben oder weitere Informationen zu unserer Datenschutzrichtlinie benötigen, zögern Sie nicht, uns zu kontaktieren. Unsere Datenschutzrichtlinie wurde mit Hilfe des <a href="https://www.gdprprivacypolicy.net/">GDPR Privacy Policy Generator</a></p> erstellt
 
-<h4>Datenschutz-Grundverordnung (DSGVO)</h4>
+<h4 class=".bold">Datenschutz-Grundverordnung (DSGVO)</h4>
 <p>Wir sind der Datenverantwortliche für Ihre Daten.</p>
  
 <p>Die Rechtsgrundlage der JOIN Group 124 für die Erhebung und Nutzung der in dieser Datenschutzrichtlinie beschriebenen personenbezogenen Daten hängt von den von uns erfassten personenbezogenen Daten und dem spezifischen Kontext ab, in dem wir die Daten erfassen:</p>
@@ -36,17 +36,17 @@ function renderPrivacy(lan){
      <li>Das Recht, die Einwilligung zu widerrufen</li>
 </ul>
 
-<h4>Protokolldateien</h4>
+<h4 class=".bold">Protokolldateien</h4>
 
 <p>www.join.de folgt einem Standardverfahren zur Verwendung von Protokolldateien. Diese Dateien protokollieren Besucher, wenn sie Websites besuchen. Alle Hosting-Unternehmen führen dies und einen Teil der Analysen der Hosting-Dienste durch. Zu den durch Protokolldateien gesammelten Informationen gehören Internetprotokolladressen (IP), Browsertyp, Internetdienstanbieter (ISP), Datums- und Zeitstempel, Verweis-/Ausstiegsseiten und möglicherweise die Anzahl der Klicks. Diese werden nicht mit personenbezogenen Daten verknüpft. Der Zweck der Informationen besteht darin, Trends zu analysieren, die Website zu verwalten, die Bewegungen der Benutzer auf der Website zu verfolgen und demografische Informationen zu sammeln.</p>
 
-<h4>Cookies und Web Beacons</h4>
+<h4 class=".bold">Cookies und Web Beacons</h4>
 
 <p>Wie jede andere Website verwendet auch www.join.de „Cookies“. Diese Cookies werden verwendet, um Informationen zu speichern, einschließlich der Präferenzen der Besucher und der Seiten der Website, auf die der Besucher zugegriffen oder die er besucht hat. Die Informationen werden verwendet, um das Benutzererlebnis zu optimieren, indem der Inhalt unserer Webseite basierend auf dem Browsertyp der Besucher und/oder anderen Informationen angepasst wird.</p>
 
 
 
-<h4>Datenschutzrichtlinien</h4>
+<h4 class=".bold">Datenschutzrichtlinien</h4>
 
 <P>In dieser Liste finden Sie die Datenschutzbestimmungen für jeden Werbepartner von www.join.de.</p>
 
@@ -54,23 +54,23 @@ function renderPrivacy(lan){
 
 <p>Beachten Sie, dass www.join.de keinen Zugriff auf oder keine Kontrolle über diese Cookies hat, die von Drittwerbetreibenden verwendet werden.</p>
 
-<h4>Datenschutzrichtlinien Dritter</h4>
+<h4 class=".bold">Datenschutzrichtlinien Dritter</h4>
 
 <p>Die Datenschutzbestimmungen von www.join.de gelten nicht für andere Werbetreibende oder Websites. Wir empfehlen Ihnen daher, für detailliertere Informationen die jeweiligen Datenschutzrichtlinien dieser Drittanbieter-Adserver zu konsultieren. Es kann deren Praktiken und Anweisungen zum Deaktivieren bestimmter Optionen enthalten. </p>
 
 <p>Sie können Cookies über Ihre individuellen Browseroptionen deaktivieren. Ausführlichere Informationen zur Cookie-Verwaltung mit bestimmten Webbrowsern finden Sie auf den jeweiligen Websites der Browser.</p>
 
-<h4>Informationen für Kinder</h4>
+<h4 class=".bold">Informationen für Kinder</h4>
 
 <p>Eine weitere Priorität für uns ist der Schutz von Kindern bei der Nutzung des Internets. Wir ermutigen Eltern und Erziehungsberechtigte, ihre Online-Aktivitäten zu beobachten, daran teilzunehmen und/oder sie zu überwachen und zu leiten.</p>
 
 <p>www.join.de sammelt wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren. Wenn Sie der Meinung sind, dass Ihr Kind diese Art von Informationen auf unserer Website bereitgestellt hat, empfehlen wir Ihnen dringend, sich umgehend mit uns in Verbindung zu setzen, und wir werden dies auch tun tun wir unser Bestes, um solche Informationen umgehend aus unseren Aufzeichnungen zu entfernen.</p>
 
-<h4>Nur Online-Datenschutzrichtlinie</h4>
+<h4 class=".bold">Nur Online-Datenschutzrichtlinie</h4>
 
 <p>Unsere Datenschutzrichtlinie gilt nur für unsere Online-Aktivitäten und gilt für Besucher unserer Website in Bezug auf die Informationen, die sie auf www.join.de geteilt und/oder gesammelt haben. Diese Richtlinie gilt nicht für Informationen, die offline oder über andere Kanäle als diese Website erfasst werden.</p>
 
-<h4>Einwilligung</h4>
+<h4 class=".bold">Einwilligung</h4>
 
 <p>Durch die Nutzung unserer Website stimmen Sie hiermit unserer Datenschutzrichtlinie zu und stimmen deren Bedingungen zu.</p>
 <p class="logo124">
@@ -90,7 +90,7 @@ case "EN":
 
 <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. Our Privacy Policy was generated with the help of <a href="https://www.gdprprivacypolicy.net/">GDPR Privacy Policy Generator</a></p>
 
-<h4>General Data Protection Regulation (GDPR)</h4>
+<h4 class=".bold">General Data Protection Regulation (GDPR)</h4>
 <p>We are a Data Controller of your information.</p>
  
 <p>JOIN Group 124 legal basis for collecting and using the personal information described in this Privacy Policy depends on the Personal Information we collect and the specific context in which we collect the information:</p>
@@ -115,17 +115,17 @@ case "EN":
     <li>The right to withdraw consent</li>
 </ul>
 
-<h4>Log Files</h4>
+<h4 class=".bold">Log Files</h4>
 
 <p>www.join.de follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.</p>
 
-<h4>Cookies and Web Beacons</h4>
+<h4 class=".bold">Cookies and Web Beacons</h4>
 
 <p>Like any other website, www.join.de uses "cookies". These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
 
 
 
-<h4>Privacy Policies</h4>
+<h4 class=".bold">Privacy Policies</h4>
 
 <P>You may consult this list to find the Privacy Policy for each of the advertising partners of www.join.de.</p>
 
@@ -133,23 +133,23 @@ case "EN":
 
 <p>Note that www.join.de has no access to or control over these cookies that are used by third-party advertisers.</p>
 
-<h4>Third Party Privacy Policies</h4>
+<h4 class=".bold">Third Party Privacy Policies</h4>
 
 <p>www.join.de's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options. </p>
 
 <p>You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers' respective websites.</p>
 
-<h4>Children's Information</h4>
+<h4 class=".bold">Children's Information</h4>
 
 <p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>
 
 <p>www.join.de does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
 
-<h4>Online Privacy Policy Only</h4>
+<h4 class=".bold">Online Privacy Policy Only</h4>
 
 <p>Our Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in www.join.de. This policy is not applicable to any information collected offline or via channels other than this website.</p>
 
-<h4>Consent</h4>
+<h4 class=".bold">Consent</h4>
 
 <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
 
