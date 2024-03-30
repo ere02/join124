@@ -558,7 +558,7 @@ header {
 */
 .logo124{
   img{
-    width:10rem;
+    width:6rem;
   }
   margin-top:2rem;
   width: 100%;
@@ -567,8 +567,15 @@ header {
 }
 
 .policy{
+  position: relative;
+  z-index:10;
   padding:20px 5rem 5rem 20px;
   max-width:65rem;
+  right:0;
+  
+  top: 0;
+  background-color: var(--use_background);
+  transition: right 1s ease-out;
   h4{
     margin-top:30px;
   }
@@ -580,3 +587,14 @@ header {
     max-width:30rem;
   }
 }
+.back-head{
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.removePolicy{
+  right:-100vw;
+  transition: right 2s ease-in;
+}
+

@@ -1,7 +1,7 @@
 /**
  * Being Aware that all NavButtons are loaded
  * */
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("navsummary");
   document.getElementById("navboard");
   document.getElementById("navcontacts");
@@ -9,9 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("navlegal");
 });
 
-
 /**
- * Declaring all sections that wil be filled up with content per Click on NavBar-Menu-point
+ * Declaring all sections that will be filled up with content per Click on NavBar-Menu-point
  */
 
 const summary = document.getElementById("section-summary");
@@ -37,69 +36,84 @@ function resetAllNavButtons() {
   document.getElementById("navlegal").classList.remove("bg-darker");
 }
 
-/** CONTENT loads in its Section 
+/**
+ * GoBockToContent - Arrow : close the Policy-Layer.
+ */
+
+function backToContent() {
+  policy.classList.add("removePolicy");
+  setTimeout(2000);
+  policy.classList.remove("removePolicy");
+  policy.classList.add("displaynone");
+}
+
+/** CONTENT loads in its Section
  * CASE: Loading Summary
  */
 async function loadSummary(id) {
+  /* goBackToContent.push(() => loadSummary(id));
+  console.log(goBackToContent);*/
+  resetAllSections();
   allNavButton(id);
   summary.classList.remove("displaynone");
   summary.innerHTML = renderSummary();
   renderSayHello();
 }
-/** CONTENT loads in its Section 
+/** CONTENT loads in its Section
  * CASE: Loading addtask
  */
 function loadAddTask(id) {
+  /* goBackToContent.push(() => loadAddTask(id));*/
+  resetAllSections();
   allNavButton(id);
   addtask.classList.remove("displaynone");
   addtask.innerHTML = renderAddTask();
 }
 
-/** CONTENT loads in its Section 
+/** CONTENT loads in its Section
  * CASE: Loading board
  */
 function loadBoard(id) {
+  resetAllSections();
   allNavButton(id);
   board.classList.remove("displaynone");
 }
 
-/** CONTENT loads in its Section 
+/** CONTENT loads in its Section
  * CASE: Loading CONTACTS
  */
 function loadContacts(id) {
+  resetAllSections();
   allNavButton(id);
   contacts.classList.remove("displaynone");
 }
 
-/** CONTENT loads in its Section 
+/** CONTENT loads in its Section
  * CASE: Loading Privacy Policy
  */
 function loadPrivacy(id) {
   allNavButton(id);
   policy.classList.remove("displaynone");
   policy.innerHTML = renderPrivacy("DE");
+
 }
-/** CONTENT loads in its Section 
+/** CONTENT loads in its Section
  * CASE: Loading Legal Notice
  */
-function loadLegalk(id) {
+function loadLegal(id) {
   allNavButton(id);
   policy.classList.remove("displaynone");
   policy.innerHTML = renderLegal();
+
 }
 
-/** Control the behavior of the Nav-Button 
+/** Control the behavior of the Nav-Button
  * USED for all Menu-Points
  */
 function allNavButton(id) {
-  resetAllSections();
   resetAllNavButtons();
   const navbutton = document.getElementById(id);
   navbutton.classList.add("bg-darker");
-  /*navbutton.addEventListener("click", function (event) { 
-
-    event.preventDefault();
-  });*/
 }
 
 /** JSDoc
@@ -131,4 +145,3 @@ function sayHello() {
     return "Gute Nacht,";
   }
 }
-
