@@ -1,13 +1,14 @@
 @font-face {
-  font-family: "inter";
-  src: url("../assets/font/inter-variablefont_slntwght-webfont.woff2") format("woff2"),
-    url("../assets/font/inter-variablefont_wght-webfont.woff") format("woff");
+  font-family: 'inter';
+  src: url('../assets/font/inter-variablefont_slntwght-webfont.woff2')
+      format('woff2'),
+    url('../assets/font/inter-variablefont_wght-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 body {
-  font-family: "inter";
+  font-family: 'inter';
   background-color: var(--use_background);
   color: var(--use_border-button-bg-text);
   font-size: 1rem;
@@ -51,7 +52,7 @@ h4 {
 /** Bezeichnung im Header "Kanban Project Management Tool" und Kachelbeschriftung z.B."Done", KanbanHeader
 */
 h5 {
-  font-size: 1.25rem
+  font-size: 1.25rem;
 }
 
 HEAD a {
@@ -82,7 +83,6 @@ HEAD a {
   z-index: 2;
 }
 
-
 @keyframes movinglogo {
   0% {
     width: 4.2rem;
@@ -108,7 +108,6 @@ HEAD a {
   top: -38vh;
   left: 10vw;
 }
-
 
 #content {
   opacity: 0;
@@ -161,7 +160,6 @@ header {
   box-shadow: 0px 4px 4px 0px var(--use_border-text-light);
 }
 
-
 .header-initials {
   height: 48px;
   width: 48px;
@@ -194,7 +192,7 @@ header {
 /* --- AB HIER BEGINNT SIDEBAR/NAVBAR --- */
 
 .nav-desktop {
-  font-family: "Inter";
+  font-family: 'Inter';
   margin: 0;
   box-sizing: border-box;
   margin-block-start: 0px;
@@ -216,7 +214,7 @@ header {
 }
 
 .nav-logo {
-  font-family: "Inter";
+  font-family: 'Inter';
   margin: 0;
   box-sizing: border-box;
   margin-block-start: 0px;
@@ -248,7 +246,6 @@ header {
   background-color: var(--use_nav-hover);
 }
 
-
 .p-right {
   padding-right: 0.5rem;
 }
@@ -271,13 +268,12 @@ header {
   font-weight: bold;
 }
 
-
 /* from here login template */
 .headline {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "inter";
+  font-family: 'inter';
   font-size: 3rem;
   font-weight: bolder;
   margin-top: 3rem;
@@ -287,7 +283,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "inter";
+  font-family: 'inter';
   font-size: 3rem;
   font-weight: bolder;
   margin-top: 3rem;
@@ -377,7 +373,7 @@ header {
 
 .login-header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   position: absolute;
   width: 100vw;
@@ -426,13 +422,11 @@ header {
 .button:hover {
   background-color: var(--use_border-button-bg-text-hover);
   border-color: var(--use_border-button-bg-text-hover);
-  ;
 }
 
 .button-guest:hover {
   color: var(--use_border-button-bg-text-hover);
   border-color: var(--use_border-button-bg-text-hover);
-
 }
 
 .button:hover,
@@ -444,7 +438,6 @@ header {
     0 2px 10px 0 var(--use_border-text-light);
 }
 
-
 .tile {
   gap: 20px;
   box-sizing: border-box;
@@ -455,12 +448,12 @@ header {
   background-color: var(--use_border-button-bg-text);
 
   .edit {
-    background-image: url("/assets/svg/edit.svg");
+    background-image: url('/assets/svg/edit.svg');
     background-color: var(--use_bg-text-white);
   }
 
   .check {
-    background-image: url("/assets/svg/check.svg");
+    background-image: url('/assets/svg/check.svg');
     background-color: var(--use_bg-text-white);
   }
 
@@ -474,7 +467,6 @@ header {
     color: var(--use_bg-text-white);
   }
 }
-
 
 /*
 .button2:hover {
@@ -556,27 +548,28 @@ header {
 /** Privacy Policy and Legal 
 
 */
-.logo124{
-  img{
-    width:10rem;
-  }
-  margin-top:2rem;
+.logo124 {
+  width: 10rem;
+  margin-top: 2rem;
   width: 100%;
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
 }
 
-.policy{
-  padding:20px 5rem 5rem 20px;
-  max-width:65rem;
-  h4{
-    margin-top:30px;
+.policy {
+  padding: 20px 5rem 5rem 20px;
+  max-width: 65rem;
+
+  h4 {
+    margin-top: 30px;
   }
-  p{
-    margin-top:20px;
+
+  p {
+    margin-top: 20px;
   }
-  ul{
-    margin-top:10px;
-    max-width:30rem;
+
+  ul {
+    margin-top: 10px;
+    max-width: 30rem;
   }
 }
