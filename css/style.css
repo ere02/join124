@@ -1,7 +1,6 @@
 @font-face {
   font-family: 'inter';
-  src: url('../assets/font/inter-variablefont_slntwght-webfont.woff2')
-      format('woff2'),
+  src: url('../assets/font/inter-variablefont_slntwght-webfont.woff2') format('woff2'),
     url('../assets/font/inter-variablefont_wght-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
@@ -354,9 +353,8 @@ header {
 
 .input-wrapper {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: end;
+  align-items: center;
+  justify-content: center;g
 }
 
 .login-page {
@@ -548,28 +546,30 @@ header {
 /** Privacy Policy and Legal 
 
 */
-.logo124{
-  img{
-    width:6rem;
+.logo124 {
+  img {
+    width: 6rem;
   }
+
   margin-top:2rem;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.policy{
+.policy {
   position: relative;
-  z-index:10;
-  padding:20px 5rem 5rem 20px;
-  max-width:65rem;
-  right:0;
-  
+  z-index: 10;
+  padding: 20px 5rem 5rem 20px;
+  max-width: 65rem;
+  right: 0;
+
   top: 0;
   background-color: var(--use_background);
   transition: right 1s ease-out;
-  h4{
-    margin-top:30px;
+
+  h4 {
+    margin-top: 30px;
   }
 
   p {
@@ -581,14 +581,14 @@ header {
     max-width: 30rem;
   }
 }
-.back-head{
-  display:flex;
+
+.back-head {
+  display: flex;
   justify-content: space-between;
   margin-bottom: 3rem;
 }
 
-.removePolicy{
-  right:-100vw;
+.removePolicy {
+  right: -100vw;
   transition: right 2s ease-in;
 }
-
