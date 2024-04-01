@@ -560,10 +560,8 @@ header {
 .backarrow:hover{
 
   cursor:pointer;
-  background-color:var(--use_border-text-light);
-  scale:1.001;
-  
-  
+  background-color:var(--color-lightlila);
+
 
 }
 
