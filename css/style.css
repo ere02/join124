@@ -597,3 +597,12 @@ header {
   right: -100vw;
   transition: right 2s ease-in;
 }
+.highlighted{
+  color:var(--use_border-button-bg-text-hover);
+}
+
+ol.helplist{
+  li{margin-top:10px;
+    }
+}
+  

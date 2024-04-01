@@ -7,7 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("navcontacts");
   document.getElementById("navprivacy");
   document.getElementById("navlegal");
+  document.getElementById("headerIcons");
+  document.getElementById("helpIcon");
 });
+
+
 
 let goBackToPage = [];
 /**
@@ -36,6 +40,7 @@ function resetAllNavButtons() {
   document.getElementById("navprivacy").classList.remove("bg-darker");
   document.getElementById("navlegal").classList.remove("bg-darker");
 }
+
 
 /**
  * GoBockToContent - Arrow : close the Policy-Layer.
@@ -114,6 +119,15 @@ function loadLegal(id) {
   allNavButton(id);
   policy.classList.remove("displaynone");
   policy.innerHTML = renderLegal("DE");
+}
+/** CONTENT loads in Policy Section
+ * CASE: Loading HELP Information
+ */
+function loadHelp(id) {
+  allNavButton(id);
+  policy.classList.remove("displaynone");
+  policy.innerHTML = renderHelp("DE");
+
 
 }
 
@@ -121,6 +135,7 @@ function loadLegal(id) {
  * USED for all Menu-Points
  */
 function allNavButton(id) {
+  disableHeaderIcons(id)
   resetAllSections();
   resetAllNavButtons();
   const navbutton = document.getElementById(id);
@@ -155,4 +170,28 @@ function sayHello() {
   } else {
     return "Gute Nacht,";
   }
+}
+
+function disableHeaderIcons(id){
+  let headericons = document.getElementById("headerIcons");
+let helpicon = document.getElementById("helpIcon");
+
+  switch (id){
+    case "navprivacy": 
+    case "navlegal": 
+    headericons.classList.add("displaynone");
+    break;
+    case "navhelp": 
+    helpicon.classList.add("displaynone");
+    break;
+    case "navsummary":
+    case "navaddtask":
+    case "navboard":
+    case "navcontacts":
+    headericons.classList.remove("displaynone");
+    helpicon.classList.remove("displaynone");
+    break;
+  }
+
+
 }
