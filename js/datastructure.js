@@ -1,4 +1,61 @@
-const allusers = {
+const allUsers = [
+  { 
+    nickname: "christina",
+    email: "christina@troitzsch.de",
+    pword: "*****",
+    items:{
+      todos:[
+        { 
+          status: "medium",
+          title: "Blumen gießen",
+          description: "jeden Donnerstag",
+          due: "08.02.2024",
+          created: "01.01.2024"
+        },
+        {
+          status: "urgent",
+          title: "Schokolade",
+          description: "dringend in ausreichenden Mengen zuführen",
+          due: "01.02.2024",
+          created: "01.02.2024"
+        }
+      ],
+      done:[
+        {
+          status: "medium",
+          title: "Blumen gießen",
+          description: "jeden Donnerstag",
+          due: "08.02.2024",
+          created: "01.01.2024"
+        },
+        {
+          status: "urgent",
+          title: "Blumen gießen",
+          description: "jeden Donnerstag",
+          due: "08.02.2024",
+          created: "01.01.2024"
+        }
+      ]
+    }
+  },
+  {
+    nickname: "erwin",
+    pword: "*****",
+    email: "ere02@bavarian.de",
+    items:{
+      todos:[
+        {
+          status: "urgent",
+          title: "Schokolade",
+          description: "dringend in ausreichenden Mengen zuführen",
+          due: "gestern", // this should be a valid date or string in a real application
+          created: "01.02.2024"
+        }
+      ]
+    }
+  }
+];
+/* const allusers = {
 
 [{ nickname: christina,
 
@@ -62,7 +119,5 @@ const allusers = {
 
 
 }]}
-}
-]
-};
 
+ */
