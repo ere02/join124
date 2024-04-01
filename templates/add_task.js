@@ -8,7 +8,7 @@ function renderAddTask(){
 
     <div class="add-task-content d-flex-ai-center-jc-center">
       <div class="add-task-container-left">
-        <form>
+        <form id="newTask">
           <h3 class="h3">Title <span class="required-star">*</span></h3>
           <label for="title" class="add-task-label" id="">
             <input type="text" name="title" class="add-task-title" id="" minlength="3" maxlength="20"
@@ -98,7 +98,7 @@ function renderAddTask(){
         <div class="add-task-bottom-container">
           <div class="add-task-required-info-bottom">* This field is required</div>
           <div class="add-task-buttons-container">
-            <button type="reset" class="add-task-clear-button d-flex-ai-center-jc-center" onclick="">Clear</button>
+            <button type="reset" class="add-task-clear-button d-flex-ai-center-jc-center" onclick="resetForm()">Clear</button>
             <button class="add-task-add-button d-flex-ai-center-jc-center" id="">Create Task<img
                 src="../assets/svg/check_white.svg"></button>
           </div>
@@ -115,4 +115,8 @@ function renderAddTask(){
 
 `;
 
+}
+
+function resetForm() {
+  document.getElementById("newTask").reset();
 }

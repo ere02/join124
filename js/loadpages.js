@@ -53,7 +53,7 @@ function backToContent() {
 async function loadSummary(id) {
   /* goBackToContent.push(() => loadSummary(id));
   console.log(goBackToContent);*/
-  resetAllSections();
+
   allNavButton(id);
   summary.classList.remove("displaynone");
   summary.innerHTML = renderSummary();
@@ -64,7 +64,7 @@ async function loadSummary(id) {
  */
 function loadAddTask(id) {
   /* goBackToContent.push(() => loadAddTask(id));*/
-  resetAllSections();
+
   allNavButton(id);
   addtask.classList.remove("displaynone");
   addtask.innerHTML = renderAddTask();
@@ -74,7 +74,7 @@ function loadAddTask(id) {
  * CASE: Loading board
  */
 function loadBoard(id) {
-  resetAllSections();
+
   allNavButton(id);
   board.classList.remove("displaynone");
 }
@@ -83,7 +83,7 @@ function loadBoard(id) {
  * CASE: Loading CONTACTS
  */
 function loadContacts(id) {
-  resetAllSections();
+
   allNavButton(id);
   contacts.classList.remove("displaynone");
 }
@@ -111,6 +111,7 @@ function loadLegal(id) {
  * USED for all Menu-Points
  */
 function allNavButton(id) {
+  resetAllSections();
   resetAllNavButtons();
   const navbutton = document.getElementById(id);
   navbutton.classList.add("bg-darker");
