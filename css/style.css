@@ -1,7 +1,6 @@
 @font-face {
   font-family: 'inter';
-  src: url('../assets/font/inter-variablefont_slntwght-webfont.woff2')
-      format('woff2'),
+  src: url('../assets/font/inter-variablefont_slntwght-webfont.woff2') format('woff2'),
     url('../assets/font/inter-variablefont_wght-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
@@ -194,6 +193,7 @@ header {
 .mainNav {
   overflow: hidden;
 }
+
 .nav-desktop {
   font-family: 'Inter';
   margin: 0;
@@ -355,10 +355,11 @@ header {
   padding-left: 1rem;
 }
 
+/*Attention! is needed for logIn*/
 .input-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-page {
@@ -375,7 +376,7 @@ header {
 
 .login-header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   position: absolute;
   width: 100vw;
@@ -559,6 +560,7 @@ header {
   border-radius: 30px;
   aspect-ratio: 1;
 }
+
 .backarrow:hover {
   cursor: pointer;
   background-color: var(--color-lightlila);
@@ -595,6 +597,7 @@ header {
   right: -100vw;
   transition: right 2s ease-in;
 }
+
 .highlighted {
   color: var(--use_border-button-bg-text-hover);
 }
