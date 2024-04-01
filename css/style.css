@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'inter';
-  src: url('../assets/font/inter-variablefont_slntwght-webfont.woff2') format('woff2'),
+  src: url('../assets/font/inter-variablefont_slntwght-webfont.woff2')
+      format('woff2'),
     url('../assets/font/inter-variablefont_wght-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
@@ -190,8 +191,8 @@ header {
 
 /* --- AB HIER BEGINNT SIDEBAR/NAVBAR --- */
 
-.mainNav{
- overflow:hidden;
+.mainNav {
+  overflow: hidden;
 }
 .nav-desktop {
   font-family: 'Inter';
@@ -356,8 +357,8 @@ header {
 
 .input-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .login-page {
@@ -469,8 +470,6 @@ header {
   }
 }
 
-
-
 .login-footer {
   display: flex;
   justify-content: center;
@@ -548,30 +547,26 @@ header {
     width: 6rem;
   }
 
-  margin-top:2rem;
+  margin-top: 2rem;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.backarrow{
-  padding:5px;
-  background-color:unset;
-  border-radius:30px;
-  aspect-ratio:1;
+.backarrow {
+  padding: 5px;
+  background-color: unset;
+  border-radius: 30px;
+  aspect-ratio: 1;
 }
-.backarrow:hover{
-
-  cursor:pointer;
-  background-color:var(--color-lightlila);
-
-
+.backarrow:hover {
+  cursor: pointer;
+  background-color: var(--color-lightlila);
 }
 
-.policy{
-
-  padding:20px 5rem 5rem 20px;
-  max-width:65rem;
+.policy {
+  padding: 20px 5rem 5rem 20px;
+  max-width: 65rem;
 
   background-color: var(--use_background);
   transition: right 1s ease-out;
@@ -600,12 +595,12 @@ header {
   right: -100vw;
   transition: right 2s ease-in;
 }
-.highlighted{
-  color:var(--use_border-button-bg-text-hover);
+.highlighted {
+  color: var(--use_border-button-bg-text-hover);
 }
 
-ol.helplist{
-  li{margin-top:10px;
-    }
+ol.helplist {
+  li {
+    margin-top: 10px;
+  }
 }
-  
