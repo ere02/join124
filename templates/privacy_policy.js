@@ -8,7 +8,7 @@ function renderPrivacy(lan) {
 <div class="start-container">
    
     <div class ="policy">
-             <div class="back-head"><h1 class="">Datenschutzrichtlinie </h1><div onclick="backToContent()"><img src="../assets/svg/back.svg" class="backarrow"></div>
+             <div class="back-head"><h1 class="">Datenschutzrichtlinie </h1><div id="backButton" onclick="goBackButton()"><img src="../assets/svg/back.svg" class="backarrow"></div>
     </div>
 
 <p>Auf www.join.de, erreichbar über www.join.de, ist die Privatsphäre unserer Besucher eine unserer Hauptprioritäten. Diese Datenschutzerklärung enthält Arten von Informationen, die von www.join.de gesammelt und aufgezeichnet werden, und wie wir sie verwenden.</p>

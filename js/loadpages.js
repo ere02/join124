@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("navlegal");
 });
 
+let goBackToPage = [];
 /**
  * Declaring all sections that will be filled up with content per Click on NavBar-Menu-point
  */
@@ -40,20 +41,26 @@ function resetAllNavButtons() {
  * GoBockToContent - Arrow : close the Policy-Layer.
  */
 
-function backToContent() {
-  policy.classList.add("removePolicy");
-  setTimeout(2000);
-  policy.classList.remove("removePolicy");
-  policy.classList.add("displaynone");
+function goBackButton() {
+  
+  let readLastPage = goBackToPage.pop();
+
+if (readLastPage) {
+  readLastPage(); 
+    }
+
+    policy.classList.add("displaynone");
+
 }
 
+
+
 /** CONTENT loads in its Section
- * CASE: Loading Summary
+ * CASE: Loading Summary, Nav-Button-Treatment for the Case "Summary" and "Greet the User" by Daytime
  */
 async function loadSummary(id) {
-  /* goBackToContent.push(() => loadSummary(id));
-  console.log(goBackToContent);*/
-
+ goBackToPage.splice(0,1);
+  goBackToPage.push(() => loadSummary(id));
   allNavButton(id);
   summary.classList.remove("displaynone");
   summary.innerHTML = renderSummary();
@@ -63,7 +70,8 @@ async function loadSummary(id) {
  * CASE: Loading addtask
  */
 function loadAddTask(id) {
-  /* goBackToContent.push(() => loadAddTask(id));*/
+  goBackToPage.splice(0,1);
+  goBackToPage.push(() => loadAddTask(id));
 
   allNavButton(id);
   addtask.classList.remove("displaynone");
@@ -74,7 +82,8 @@ function loadAddTask(id) {
  * CASE: Loading board
  */
 function loadBoard(id) {
-
+  goBackToPage.splice(0,1);
+  goBackToPage.push(() => loadBoard(id));
   allNavButton(id);
   board.classList.remove("displaynone");
 }
@@ -83,12 +92,13 @@ function loadBoard(id) {
  * CASE: Loading CONTACTS
  */
 function loadContacts(id) {
-
+  goBackToPage.splice(0,1);
+  goBackToPage.push(() => loadContacts(id));
   allNavButton(id);
   contacts.classList.remove("displaynone");
 }
 
-/** CONTENT loads in its Section
+/** CONTENT loads in Policy Section
  * CASE: Loading Privacy Policy
  */
 function loadPrivacy(id) {
@@ -97,13 +107,13 @@ function loadPrivacy(id) {
   policy.innerHTML = renderPrivacy("DE");
 
 }
-/** CONTENT loads in its Section
+/** CONTENT loads in Policy Section
  * CASE: Loading Legal Notice
  */
 function loadLegal(id) {
   allNavButton(id);
   policy.classList.remove("displaynone");
-  policy.innerHTML = renderLegal();
+  policy.innerHTML = renderLegal("DE");
 
 }
 
