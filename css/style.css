@@ -190,6 +190,9 @@ header {
 
 /* --- AB HIER BEGINNT SIDEBAR/NAVBAR --- */
 
+.mainNav{
+ overflow:hidden;
+}
 .nav-desktop {
   font-family: 'Inter';
   margin: 0;
