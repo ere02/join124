@@ -155,7 +155,7 @@ header {
   padding: 20px 40px 20px 350px;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--use_bg-text-white);
   box-shadow: 0px 4px 4px 0px var(--use_border-text-light);
 }
 
@@ -334,7 +334,7 @@ header {
 }
 
 .button-guest {
-  background-color: white;
+  background-color: var(--use_bg-text-white);
   color: var(--color-dark-bg);
   /*font-family: "Inter";*/
   font-weight: bold;

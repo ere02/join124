@@ -141,7 +141,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-radius: 10px;
   padding: 12px 2px 7px;
   border: 0px;
-  background-color: #ffffff;
+  background-color: var(--use_bg-text-white);
   font-size: 20px;
   font-weight: 400;
   text-align: center;
@@ -165,17 +165,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .add-task-prio-low-pressed-button {
   background-color: var(--color-yellowgreen);
-  color: #ffffff;
+  color: var(--use_bg-text-white);
 }
 
 .add-task-prio-medium-pressed-button {
   background-color: var(--color-brightorange);
-  color: #ffffff;
+  color: var(--use_bg-text-white);
 }
 
 .add-task-prio-high-pressed-button {
   background-color: var(--color-red);
-  color: #ffffff;
+  color: var(--use_bg-text-white);
 }
 
 .required-star {
@@ -226,7 +226,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-radius: 10px;
   padding: 16px;
   background-color: var(--color-dark-bg);
-  color: #ffffff;
+  color: var(--use_bg-text-white);
   border: 0px;
   font-size: 21px;
   gap: 10px;
@@ -271,7 +271,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .add-task-clear-button:hover {
-  background-color: #ffffff;
+  background-color: var(--use_bg-text-white);
   border: 1px solid var(--color-cyan);
   color: var(--color-dark-cyan);
   cursor: pointer;
@@ -301,7 +301,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .bgC-white {
-  background-color: #ffffff;
+  background-color: var(--use_bg-text-white);
 }
 
 .add-task-select-field-container {
@@ -310,7 +310,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   position: relative;
   z-index: 999;
   height: 200px;
-  background-color: #ffffff;
+  background-color: var(--use_bg-text-white);
   margin-bottom: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
@@ -394,7 +394,7 @@ label input {
   padding: 12px 5px;
   font-size: 16px;
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: var(--use_bg-text-white);
   background-origin: content-box;
   background-size: auto;
 }
@@ -422,7 +422,7 @@ label input {
   justify-content: center;
   align-items: center;
   border: 2px solid rgba(255, 255, 255, 1);
-  color: #ffffff;
+  color: var(--use_bg-text-white);
 }
 
 .selectName {
@@ -432,12 +432,12 @@ label input {
 
 .selectedContact {
   background-color: var(--color-dark-bg);
-  color: #ffffff;
+  color: var(--use_bg-text-white);
 }
 
 .selectedContact:hover {
   background-color: var(--color-dark-bg);
-  color: #ffffff;
+  color: var(--use_bg-text-white);
 }
 
 .margin-right {
@@ -496,12 +496,12 @@ label input {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 3px solid #ffffff;
+  border: 3px solid var(--use_bg-text-white);
   text-align: center;
   line-height: 50px;
   margin-right: 10px;
   position: relative;
-  color: #ffffff;
+  color: var(--use_bg-text-white);
   flex-grow: 0;
   flex-shrink: 0;
   background-color: var(--color-blue);
@@ -525,7 +525,7 @@ label input {
 }
 
 [contenteditable]:focus {
-  outline: 1px solid #29abe2;
+  outline: 1px solid var(--use_border-button-bg-text-hover);
 }
 
 .borderColorMistake {
