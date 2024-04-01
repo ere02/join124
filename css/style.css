@@ -300,6 +300,16 @@ header {
   justify-content: center;
 }
 
+.headline-wrapper-signup {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.arrow-icon {
+  margin-left: -6rem;
+}
+
 .underline {
   border: 2px solid var(--use_border-button-bg-text-hover);
   width: 80%;
