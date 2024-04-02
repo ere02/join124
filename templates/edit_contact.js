@@ -42,6 +42,7 @@ function rendereditTask(){
 </div>`
 }
 
+
 /* genauer anschauen!
 /* function resetForm() {
     document.getElementById("newTask").reset();
