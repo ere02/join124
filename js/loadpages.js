@@ -11,9 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("helpIcon");
 });
 
-
-
-let goBackToPage = [];
 /**
  * Declaring all sections that will be filled up with content per Click on NavBar-Menu-point
  */
@@ -41,30 +38,25 @@ function resetAllNavButtons() {
   document.getElementById("navlegal").classList.remove("bg-darker");
 }
 
-
 /**
- * GoBockToContent - Arrow : close the Policy-Layer.
+ * GoBockToContent - Arrow : close the Policy-Container and open the previous Content-Container.
  */
 
 function goBackButton() {
-  
   let readLastPage = goBackToPage.pop();
-
-if (readLastPage) {
-  readLastPage(); 
-    }
-
-    policy.classList.add("displaynone");
-
+  if (readLastPage) {
+    readLastPage();
+  }
+  policy.classList.add("displaynone");
 }
 
-
-
 /** CONTENT loads in its Section
- * CASE: Loading Summary, Nav-Button-Treatment for the Case "Summary" and "Greet the User" by Daytime
+ * CASE: Loading Summary
+ * Nav-Button-Treatment for the Case "Summary" and "Greet the User" by Daytime
+ * Fill the loadSummary()-Function in the goBacktoPage-Array
  */
 async function loadSummary(id) {
- goBackToPage.splice(0,1);
+  goBackToPage.splice(0, 1);
   goBackToPage.push(() => loadSummary(id));
   allNavButton(id);
   summary.classList.remove("displaynone");
@@ -75,7 +67,7 @@ async function loadSummary(id) {
  * CASE: Loading addtask
  */
 function loadAddTask(id) {
-  goBackToPage.splice(0,1);
+  goBackToPage.splice(0, 1);
   goBackToPage.push(() => loadAddTask(id));
 
   allNavButton(id);
@@ -87,17 +79,18 @@ function loadAddTask(id) {
  * CASE: Loading board
  */
 function loadBoard(id) {
-  goBackToPage.splice(0,1);
+  goBackToPage.splice(0, 1);
   goBackToPage.push(() => loadBoard(id));
   allNavButton(id);
   board.classList.remove("displaynone");
+  board.innerHTML = renderBoard();
 }
 
 /** CONTENT loads in its Section
  * CASE: Loading CONTACTS
  */
 function loadContacts(id) {
-  goBackToPage.splice(0,1);
+  goBackToPage.splice(0, 1);
   goBackToPage.push(() => loadContacts(id));
   allNavButton(id);
   contacts.classList.remove("displaynone");
@@ -110,8 +103,8 @@ function loadPrivacy(id) {
   allNavButton(id);
   policy.classList.remove("displaynone");
   policy.innerHTML = renderPrivacy("DE");
-
 }
+
 /** CONTENT loads in Policy Section
  * CASE: Loading Legal Notice
  */
@@ -127,15 +120,13 @@ function loadHelp(id) {
   allNavButton(id);
   policy.classList.remove("displaynone");
   policy.innerHTML = renderHelp("DE");
-
-
 }
 
 /** Control the behavior of the Nav-Button
  * USED for all Menu-Points
  */
 function allNavButton(id) {
-  disableHeaderIcons(id)
+  disableHeaderIcons(id);
   resetAllSections();
   resetAllNavButtons();
   const navbutton = document.getElementById(id);
@@ -172,26 +163,24 @@ function sayHello() {
   }
 }
 
-function disableHeaderIcons(id){
+function disableHeaderIcons(id) {
   let headericons = document.getElementById("headerIcons");
-let helpicon = document.getElementById("helpIcon");
+  let helpicon = document.getElementById("helpIcon");
 
-  switch (id){
-    case "navprivacy": 
-    case "navlegal": 
-    headericons.classList.add("displaynone");
-    break;
-    case "navhelp": 
-    helpicon.classList.add("displaynone");
-    break;
+  switch (id) {
+    case "navprivacy":
+    case "navlegal":
+      headericons.classList.add("displaynone");
+      break;
+    case "navhelp":
+      helpicon.classList.add("displaynone");
+      break;
     case "navsummary":
     case "navaddtask":
     case "navboard":
     case "navcontacts":
-    headericons.classList.remove("displaynone");
-    helpicon.classList.remove("displaynone");
-    break;
+      headericons.classList.remove("displaynone");
+      helpicon.classList.remove("displaynone");
+      break;
   }
-
-
 }

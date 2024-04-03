@@ -29,7 +29,7 @@ Wie man es benutzt</h4>
 <p>
 Im Folgenden wird Schritt für Schritt erklärt, wie du <span class="highlighted">JOIN</span> verwendest:
 <ol class="helplist">
-<li><span class="bold">Erkundung der Plattform</span><br>
+<li><span class="bold">Erkunde die Plattform</span><br>
 Wenn du dich bei <span class="highlighted">JOIN</span> anmeldest, findest du ein Standard-Board vor. Diese Tafel repräsentiert dein Projekt und enthält vier Standardlisten: "Todo", "In Progress", "Awaiting Feedback" und "Done".</li>
 <li><span class="bold">Kontakte erstellen</span><br>
 In <span class="highlighted">JOIN</span> kannst du Kontakte hinzufügen, um an deinen Projekten mitzuarbeiten. Gehe zum Abschnitt "Kontakte", klicke auf "Neuer Kontakt" und gib die erforderlichen Informationen ein. Nach dem Hinzufügen können diesen Kontakten Aufgaben zugewiesen werden und sie können mit den Aufgaben auf dem Board interagieren.
