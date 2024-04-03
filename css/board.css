@@ -30,7 +30,7 @@
     align-items: center;
 }
 
-.pr-8{
+.pr-8 {
     padding-right: 8px;
 }
 
@@ -191,7 +191,6 @@ input:focus {
     top: 0;
     background-color: #F6F7F8;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     width: 248px;
@@ -233,6 +232,11 @@ input:focus {
     transition: ease-out;
     transition-duration: 0.3s;
     cursor: pointer;
+}
+
+.board-add-task-add-icon {
+    border: 2px solid black;
+    border-radius: 8px;
 }
 
 .board-no-task-feedback {
@@ -415,8 +419,9 @@ p.board-task-card-preview {
 
 .drag-area {
     height: 200px;
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 1px dashed black;
+    background-color: rgb(255, 255, 255);
+    /* border: 1px solid rgba(0 0 0 0.5); */
+    border-radius: 20px;
     margin-bottom: 50px;
     display: flex;
     align-items: flex-start;

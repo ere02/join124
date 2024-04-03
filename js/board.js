@@ -1,42 +1,55 @@
 let todos = [{
     'id': 0,
     'title': 'Putzen',
-    'category': 'open'
+    'category': 'toDo'
 }, {
     'id': 1,
     'title': 'Kochen',
-    'category': 'open'
+    'category': 'inProgress'
 }, {
     'id': 2,
     'title': 'Einkaufen',
-    'category': 'closed'
+    'category': 'awaitFeedback'
 }, {
     'id': 3,
     'title': 'Trainieren',
-    'category': 'closed' 
+    'category': 'done'
 }];
 
 let currentDraggedElement;
 
+
 function updateHTML() {
-    let open = todos.filter(t => t['category'] == 'open');
+    let toDo = todos.filter(t => t['category'] == 'toDo');
+    let inProgress = todos.filter(t => t['category'] == 'inProgress');
+    let awaitFeedback = todos.filter(t => t['category'] == 'awaitFeedback');
+    let done = todos.filter(t => t['category'] == 'done');
 
-    document.getElementById('open').innerHTML = '';
-
-    for (let index = 0; index < open.length; index++) {
-        const element = open[index];
-        document.getElementById('open').innerHTML += generateTodoHTML(element);
+    document.getElementById('toDo').innerHTML = '';
+    for (let index = 0; index < toDo.length; index++) {
+        const element = toDo[index];
+        document.getElementById('toDo').innerHTML += generateTodoHTML(element);
     }
 
-    let closed = todos.filter(t => t['category'] == 'closed');
+    document.getElementById('inProgress').innerHTML = '';
+    for (let index = 0; index < inProgress.length; index++) {
+        const element = inProgress[index];
+        document.getElementById('inProgress').innerHTML += generateTodoHTML(element);
+    }
 
-    document.getElementById('closed').innerHTML = '';
+    document.getElementById('awaitFeedback').innerHTML = '';
+    for (let index = 0; index < awaitFeedback.length; index++) {
+        const element = awaitFeedback[index];
+        document.getElementById('awaitFeedback').innerHTML += generateTodoHTML(element);
+    }
 
-    for (let index = 0; index < closed.length; index++) {
-        const element = closed[index];
-        document.getElementById('closed').innerHTML += generateTodoHTML(element);
+    document.getElementById('done').innerHTML = '';
+    for (let index = 0; index < done.length; index++) {
+        const element = done[index];
+        document.getElementById('done').innerHTML += generateTodoHTML(element);
     }
 }
+
 
 function startDragging(id) {
     currentDraggedElement = id;
@@ -51,6 +64,9 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
+    console.log("Moving element to category:", category);
+    console.log("Current dragged element:", currentDraggedElement);
+
     todos[currentDraggedElement]['category'] = category;
     updateHTML();
 }

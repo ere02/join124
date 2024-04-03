@@ -21,7 +21,7 @@
                 <div class="board-headline">
                     <div class="board-headline-button">
                         <span class="board-headline-text">Board</span>
-                        <button class="board-button-addTask-mobile"><img src="./img/board/add.svg" alt=""
+                        <button class="board-button-addTask-mobile"><img src="../assets/svg/add.svg" alt=""
                                 onclick=""></button>
                     </div>
                     <div class="board-headline-container-search-add">
@@ -29,76 +29,57 @@
                             <input id="" class="board-input-search" type="search" placeholder="Find Task"
                                 autocomplete="off">
                             <div class="board-input-search-icons">
-                                <svg width="2" height="32" viewBox="0 0 2 32" fill="none" xmlns="./img/board/svg">
-                                    <path id="" />
-                                </svg>
-                                <svg class="board-input-search-icon" onclick="" width="32" height="32"
-                                    viewBox="0 0 32 32" fill="none" xmlns="./img/board/svg">
-                                </svg>
+                                <img class="board-input-search-icons" src="../assets/svg/search.svg" alt="">
                             </div>
                         </div>
                         <button class="board-button-addTask" onclick=""><span class="board-text-addTask">Add
-                                task</span><img src="./img/board/add.svg" alt=""></button>
+                                task</span><img src="../assets/svg/add.svg" alt=""></button>
                     </div>
                 </div>
                 <div class="board-task-main">
 
-                    <div id="" class="board-task-category">
+                    <div class="board-task-category">
                         <div class="board-task-headline">
                             <span class="board-add-task-headline">To do</span>
-                            <svg onclick="" class="board-add-task-category" width="10" height="11" viewBox="0 0 10 11"
-                                fill="color" xmlns="./img/board/svg">
-                            </svg>
+                            <img class="board-add-task-add-icon" src="../assets/svg/add.svg" alt="">
                         </div>
-                        <div id="" class="board-task-container">
-                            <div class="drag-area" id="open" ondrop="moveTo('open')"
-                                ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')">
-                            </div>
+                        <div class="board-task-container drag-area" id="toDo" ondrop="moveTo('toDo')"
+                            ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')">
                         </div>
                     </div>
 
-                    <div id="" class="board-task-category">
+                    <div class="board-task-category">
                         <div class="board-task-headline">
                             <span class="board-add-task-headline">In progress</span>
-                            <svg onclick="" class="board-add-task-category" width="10" height="11" viewBox="0 0 10 11"
-                                fill="color" xmlns="./img/board/svg">
-                            </svg>
+                            <img class="board-add-task-add-icon" src="../assets/svg/add.svg" alt="">
                         </div>
-                        <div id="" class="board-task-container">
-                            <div class="drag-area" id="open" ondrop="moveTo('open')"
-                                ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')">
-                            </div>
-
+                        <div class="board-task-container drag-area" id="inProgress" ondrop="moveTo('inProgress')"
+                            ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')">
                         </div>
                     </div>
-                    <div id="" class="board-task-category">
+                    <div class="board-task-category">
                         <div class="board-task-headline">
                             <span class="board-add-task-headline">Await feedback</span>
-                            <svg onclick="" class="board-add-task-category" width="10" height="11" viewBox="0 0 10 11"
-                                fill="color" xmlns="./img/board/svg">
-                            </svg>
+                            <img class="board-add-task-add-icon" src="../assets/svg/add.svg" alt="">
                         </div>
-                        <div id="" class="board-task-container">
-                            <div class="drag-area" id="closed" ondrop="moveTo('closed')"
-                                ondragleave="removeHighlight('closed')"
-                                ondragover="allowDrop(event); highlight('closed')"></div>
+                        <div class="board-task-container drag-area" id="awaitFeedback" ondrop="moveTo('awaitFeedback')"
+                            ondragleave="removeHighlight('awaitFeedback')" ondragover="allowDrop(event); highlight('awaitFeedback')">
                         </div>
                     </div>
-                    <div id="" class="board-task-category">
+                    <div class="board-task-category">
                         <div class="board-task-headline">
                             <span class="board-add-task-headline">Done</span>
                         </div>
-                        <div id="" class="board-task-container">
-                            <div class="drag-area" id="closed" ondrop="moveTo('closed')"
-                                ondragleave="removeHighlight('closed')"
-                                ondragover="allowDrop(event); highlight('closed')"></div>
-
+                        <div class="board-task-container drag-area" id="done" ondrop="moveTo('done')"
+                            ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
                         </div>
-                    </div>
 
+                    </div>
                 </div>
+
             </div>
         </div>
+    </div>
     </div>
 
     <script src="../js/board.js"></script>
