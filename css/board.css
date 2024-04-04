@@ -51,9 +51,6 @@
 }
 
 .board-main-container {
-    margin-left: 232px;
-    margin-top: 96px;
-    height: calc(100% - 96px);
     display: flex;
     flex-direction: column;
 }
@@ -63,7 +60,6 @@
     max-width: 1208px;
     justify-content: space-between;
     align-items: center;
-    padding: 79.5px 88px 48px 64px;
 }
 
 .board-headline-button {
@@ -72,13 +68,13 @@
     align-items: center;
 }
 
-.board-headline-text {
+/* .board-headline-text {
     color: #000;
     font-size: 61px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
-}
+} */
 
 .board-headline-container-search-add {
     display: flex;

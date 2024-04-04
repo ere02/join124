@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/all_colors.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/board.css">
-
-    <title>Join</title>
-</head>
-
-<body onload="updateHTML()">
-
-
+function renderBoard(){
+    return /*html*/ `
+    
     <div class="main-container">
         <div class="main-container-body">
 
@@ -21,7 +8,7 @@
                 <div class="board-headline">
                     <div class="board-headline-button">
                         <h1>Board</h1>
-                        <!-- <span class="board-headline-text">Board</span> -->
+                        <!-- <span class="board-headline-text h1">Board</span> -->
                         <button class="board-button-addTask-mobile"><img src="../assets/svg/add.svg" alt=""
                                 onclick=""></button>
                     </div>
@@ -82,9 +69,6 @@
         </div>
     </div>
     </div>
-
     <script src="../js/board.js"></script>
-
-</body>
-
-</html>
+    `;
+}
