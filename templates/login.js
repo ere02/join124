@@ -1,3 +1,5 @@
+function renderlogin(){
+    return /*html*/  `
 <link rel="stylesheet" href="/css/all_colors.css" />
 <link rel="stylesheet" href="/css/style.css" />
 <div class="login-page">
@@ -16,11 +18,11 @@
       <hr class="underline" />
     </div>
     <div class="input-wrapper">
-      <input class="input-field" type="text" name="email" id="email" placeholder="E-mail" required />
+      <input class="input-field" type="text" name="email" placeholder="E-mail" required />
       <img src="/assets/svg/mail.svg" alt="email icon" class="icon" />
     </div>
     <div class="input-wrapper">
-      <input class="input-field" type="password" name="password" id="password" placeholder="Password" required />
+      <input class="input-field" type="password" name="password" placeholder="Password" required />
       <img src="/assets/svg/lock.svg" alt="lock icon" class="icon" />
     </div>
     <div class="checkbox-container">
@@ -36,4 +38,5 @@
     <span class="legal-notice-link" onclick="callFramePageSinLogin('privacy')">
       Privacy Policy</span><span class="legal-notice-link" onclick="callFramePageSinLogin('legal')">Legal notice</span>
   </div>
-</div>
+</div>`
+}
