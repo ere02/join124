@@ -89,7 +89,6 @@ function renderBoard(){
         </div>
     </div>
     </div>
-    <!-- <script src="../js/board.js"></script> -->
     `;
 }
 
@@ -123,7 +122,6 @@ function updateHTML() {
         document.getElementById('done').innerHTML += generateTodoHTML(element);
     }
 }
-
 
 function startDragging(id) {
     currentDraggedElement = id;

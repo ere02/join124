@@ -84,6 +84,7 @@ function loadBoard(id) {
   allNavButton(id);
   board.classList.remove("displaynone");
   board.innerHTML = renderBoard();
+  updateHTML();
 }
 
 /** CONTENT loads in its Section

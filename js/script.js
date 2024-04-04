@@ -14,6 +14,7 @@ function introAnimation(){
 async function startContent(){
     await includeHTML();
     await loadSummary('navsummary');
+    await updateHTML();
 }
 
 function callFramePageSinLogin(from){
