@@ -1,51 +1,50 @@
 // TOKEN FÜR SPÄTER REMOTE DATENSPEICHERUNG  VJOV8Y8IUZO3FYNKTN886RO1F4GPQUZG86SP8SQP
 let goBackToPage = [];
 
-async function init(){
+async function init() {
     introAnimation();
 }
 
-function introAnimation(){
+function introAnimation() {
     document.getElementById("logo").classList.add("animation");
     document.getElementById("layer").classList.add("small");
     document.getElementById("content").classList.add("visible");
 }
 
-async function startContent(){
+async function startContent() {
     await includeHTML();
     await loadSummary('navsummary');
-    await updateHTML();
 }
 
-function callFramePageSinLogin(from){
+function callFramePageSinLogin(from) {
     const url = `../subpages/frame-page_sinLogin.html?from=${from}`;
-            window.location = url;
-        }
+    window.location = url;
+}
 
-async function startContentSinLogin(){
-     await includeHTML();
+async function startContentSinLogin() {
+    await includeHTML();
     loadSinLogin();
 }
 
-function loadSinLogin(){
+function loadSinLogin() {
     goBackToPage.push(() => loadIntro());
     const params = new URLSearchParams(window.location.search);
     const from = params.get("from");
-    
+
     document.getElementById("mainNav").classList.add("sinLogin");
     document.getElementById("headerIcons").classList.add("displaynone");
 
-    switch (from){
-      case "privacy":
-        loadPrivacy('navprivacy');
-        break;
-      case "legal":
-        loadLegal('navlegal');
-        break;
+    switch (from) {
+        case "privacy":
+            loadPrivacy('navprivacy');
+            break;
+        case "legal":
+            loadLegal('navlegal');
+            break;
     }
-  }
+}
 
-function loadIntro(){
+function loadIntro() {
     window.location = `../index.html`;
 }
 async function includeHTML() {
