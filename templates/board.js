@@ -1,7 +1,7 @@
 let todos = [{
     'id': 0,
     'title': 'Putzen',
-    'category': 'toDo'
+    'category': 'inTodo'
 }, {
     'id': 1,
     'title': 'Kochen',
@@ -19,33 +19,37 @@ let todos = [{
 let currentDraggedElement;
 
 function updateHTML() {
-    let toDo = todos.filter(t => t['category'] == 'toDo');
+    let toDo = todos.filter(t => t['category'] == 'inTodo');
     let inProgress = todos.filter(t => t['category'] == 'inProgress');
     let awaitFeedback = todos.filter(t => t['category'] == 'awaitFeedback');
-    let done = todos.filter(t => t['category'] == 'done');
+    let done = todos.filter(t => t['category'] == 'inDone');
 
-    document.getElementById('toDo').innerHTML = '';
+    let laneTodo = document.getElementById('inTodo');
+    laneTodo.innerHTML = '';
     for (let index = 0; index < toDo.length; index++) {
         const element = toDo[index];
-        document.getElementById('toDo').innerHTML += generateTodoHTML(element);
+        laneTodo.innerHTML += generateTodoHTML(element);
     }
 
-    document.getElementById('inProgress').innerHTML = '';
+    let laneProgress = document.getElementById('inProgress');
+    laneProgress.innerHTML = '';
     for (let index = 0; index < inProgress.length; index++) {
         const element = inProgress[index];
-        document.getElementById('inProgress').innerHTML += generateTodoHTML(element);
+        laneProgress.innerHTML += generateTodoHTML(element);
     }
 
-    document.getElementById('awaitFeedback').innerHTML = '';
+    let laneAwait = document.getElementById('awaitFeedback');
+    laneAwait.innerHTML = '';
     for (let index = 0; index < awaitFeedback.length; index++) {
         const element = awaitFeedback[index];
-        document.getElementById('awaitFeedback').innerHTML += generateTodoHTML(element);
+        laneAwait.innerHTML += generateTodoHTML(element);
     }
 
-    document.getElementById('done').innerHTML = '';
+    let laneDone = document.getElementById('inDone');
+    laneDone.innerHTML = '';
     for (let index = 0; index < done.length; index++) {
         const element = done[index];
-        document.getElementById('done').innerHTML += generateTodoHTML(element);
+        laneDone.innerHTML += generateTodoHTML(element);
     }
 }
 
@@ -54,7 +58,7 @@ function startDragging(id) {
 }
 
 function generateTodoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
+    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
 }
 
 function allowDrop(ev) {
@@ -78,7 +82,7 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
-function renderBoard(){
+function renderBoard() {
     return /*html*/ `
     
     <div class="main-container">
@@ -111,8 +115,8 @@ function renderBoard(){
                             <span class="board-add-task-headline">To do</span>
                             <img class="board-add-task-add-icon" src="../assets/svg/add.svg" alt="">
                         </div>
-                        <div class="board-task-container drag-area" id="toDo" ondrop="moveTo('toDo')"
-                            ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')">
+                        <div class="board-task-container drag-area" id="inTodo" ondrop="moveTo('inTodo')"
+                            ondragleave="removeHighlight('inTodo')" ondragover="allowDrop(event); highlight('inTodo')">
                         </div>
                     </div>
 
@@ -125,6 +129,7 @@ function renderBoard(){
                             ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')">
                         </div>
                     </div>
+
                     <div class="board-task-category">
                         <div class="board-task-headline">
                             <span class="board-add-task-headline">Await feedback</span>
@@ -134,21 +139,21 @@ function renderBoard(){
                             ondragleave="removeHighlight('awaitFeedback')" ondragover="allowDrop(event); highlight('awaitFeedback')">
                         </div>
                     </div>
+
                     <div class="board-task-category">
                         <div class="board-task-headline">
                             <span class="board-add-task-headline">Done</span>
                         </div>
-                        <div class="board-task-container drag-area" id="done" ondrop="moveTo('done')"
-                            ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
+                        <div class="board-task-container drag-area" id="inDone" ondrop="moveTo('inDone')"
+                            ondragleave="removeHighlight('inDone')" ondragover="allowDrop(event); highlight('inDone')">
                         </div>
-
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-    </div>
+   
     `;
 }
 
