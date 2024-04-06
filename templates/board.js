@@ -134,7 +134,7 @@ function renderBoard(){
                             ondragleave="removeHighlight('awaitFeedback')" ondragover="allowDrop(event); highlight('awaitFeedback')">
                         </div>
                     </div>
-                    <div class="board-task-category">
+                    <!-- <div class="board-task-category">
                         <div class="board-task-headline">
                             <span class="board-add-task-headline">Done</span>
                         </div>
@@ -142,7 +142,16 @@ function renderBoard(){
                             ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
                         </div>
 
-                    </div>
+                    </div> -->
+                    <div class="board-task-category">
+    <div class="board-task-headline">
+        <span class="board-add-task-headline">Done</span>
+    </div>
+    <div class="board-task-container drag-area" id="done" ondrop="moveTo('done')"
+        ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
+    </div>
+</div>
+
                 </div>
 
             </div>
