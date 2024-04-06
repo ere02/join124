@@ -1,4 +1,4 @@
-let tasks = [
+[
     {
         id: 0,
         category: "todo",

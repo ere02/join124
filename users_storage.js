@@ -1,7 +1,6 @@
-const allUsers = [
 
-    { 
-        id:0,
+   [  {
+        id: 0,
       nickname: "guest",
       items:{
         todos:[],
@@ -59,5 +58,4 @@ const allUsers = [
           done:[2,4,6,7]   
         }
     }
-
-  ];
+];

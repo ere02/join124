@@ -13,8 +13,25 @@ let todos = [{
 }, {
     'id': 3,
     'title': 'Trainieren',
-    'category': 'done'
+    'category': 'inDone'
 }];
+
+const loadUsers = "../users_storage.js";
+const loadTasks = "../tasks_storage.js";
+
+
+async function loadAllTasks() {
+   let userResponse = await fetch(loadUsers).catch(errorFunction);
+   let taskResponse = await fetch(loadTasks).catch(errorFunction);
+   let currentUser = await userResponse.json();
+   let currentTasks = await taskResponse.json();
+
+    console.log("loaded User:", currentUser,"loades Tasks:", currentTasks);
+}
+
+function errorFunction() {
+    console.log("Fehler aufgetreten");
+  }
 
 let currentDraggedElement;
 
