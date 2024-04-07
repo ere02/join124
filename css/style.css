@@ -380,6 +380,7 @@ header {
   gap: 0.5rem;
   border-radius: 0.5rem;
   padding-left: 1rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 /*Attention! is needed for logIn*/
