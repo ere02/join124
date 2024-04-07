@@ -634,3 +634,7 @@ ol.helplist {
     margin-top: 10px;
   }
 }
+
+.text-greyish{
+  color:var(--color-greyish-icon);
+}

@@ -425,7 +425,9 @@ p.board-task-card-preview {
 .drag-area-highlight {
     background-color: rgba(0, 0, 0, 0.2);
 }
-
+/**
+Here are designed all Task and Todo-Cards
+*/
 .task {
     display:flex;
     flex-direction:column;
