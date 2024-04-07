@@ -53,6 +53,7 @@
 .board-main-container {
     display: flex;
     flex-direction: column;
+    gap:64px;
 }
 
 .board-headline {

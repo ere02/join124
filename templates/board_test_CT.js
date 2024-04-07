@@ -1,32 +1,114 @@
 let todos = [{
-    'id': 0,
-    'title': 'Putzen',
-    'category': 'inTodo'
-}, {
-    'id': 1,
-    'title': 'Kochen',
-    'category': 'inProgress'
-}, {
-    'id': 2,
-    'title': 'Einkaufen',
-    'category': 'awaitFeedback'
-}, {
-    'id': 3,
-    'title': 'Trainieren',
-    'category': 'inDone'
+    "id": 0,
+    "category": "inTodo",
+    "title": "[0] Putzen",
+    "description": "nicht nur sauber, sondern rein",
+    "priority": "urgent",
+    "workers": [4],
+    "type": "User Story"
+},
+{
+    "id": 1,
+    "title": "[1] Omas über die Straße helfen",
+    "category": "inProgress",
+    "description": "auch wenn sie nicht wollen",
+    "priority": "medium",
+    "workers": [1, 2, 3,4],
+    "type": "User Story"
+   },
+{
+    "id": 2,
+    "title": "[2] Schokolade aufessen",
+    "category": "inDone",
+    "description": "... super task",
+    "priority": "urgent",
+    "workers": [1, 2, 3,4],
+    "type": "Technical Task"
+},
+{
+   "id": 3,
+    "title": "[3] Hirn benutzen",
+    "category": "inProgress",
+    "description": "morgen vielleicht",
+    "priority": "medium",
+    "workers": [1, 2, 3],
+   "type": "Technical Task"
+},
+{
+    "id": 4,
+    "title": "[4] krasse Sachen machen",
+    "category": "inDone",
+    "description": "die Nachbarn gegrüßt",
+    "priority": "low",
+    "workers": [1, 2, 3],
+    "type": "User Story"
+},
+{
+    "id": 5,
+    "title": "[5] Schäfchen zählen",
+    "category": "inProgress",
+    "description":
+        "Wenn Schäfchen Schäfchen zählen, zählen sie sich dann mit? ",
+    "priority": "low",
+    "workers": [1, 2, 3],
+    "type": "Technical Task"
+    },
+{
+    "id": 6,
+    "title": "[6] Schäfchen zählen",
+    "category": "inDone",
+    "description":
+        "Wenn Schäfchen Schäfchen zählen, zählen sie sich dann mit? ",
+    "priority": "low",
+    "workers": [1, 2, 3],
+    "type": "User Story"
+},
+{
+    "id":7,
+    "title": "[7] Schäfchen zählen",
+    "category": "inDone",
+    "description":
+        "Wenn Schäfchen Schäfchen zählen, zählen sie sich dann mit? ",
+    "priority": "medium",
+    "workers": [1, 2, 3],
+    "type": "Technical Task"
+},
+{
+    "id":8,
+    "title": "[8] Schäfchen zählen",
+    "category": "awaitFeedback",
+    "description":
+        "Wenn Schäfchen Schäfchen zählen, zählen sie sich dann mit? ",
+    "priority": "low",
+    "workers": [1, 2, 3,4],
+    "type": "Technical Task"
+},
+{
+    "id": 9,
+    "title": "[9] Schäfchen zählen",
+    "category": "inProgress",
+    "description":
+        "Wenn Schäfchen Schäfchen zählen, zählen sie sich dann mit? ",
+    "priority": "low",
+    "workers": [1, 2, 3,4],
+    "type": "User Story"
 }];
 
 const loadUsers = "../users_storage.js";
-const loadTasks = "../tasks_storage.js";
+//const loadTasks = "../tasks_storage.js";
+let currentUser;
+let currentTasks;
 
 
 async function loadAllTasks() {
    let userResponse = await fetch(loadUsers).catch(errorFunction);
-   let taskResponse = await fetch(loadTasks).catch(errorFunction);
-   let currentUser = await userResponse.json();
-   let currentTasks = await taskResponse.json();
+   //let taskResponse = await fetch(todos).catch(errorFunction);
+   currentUser = await userResponse.json();
+   //currentTasks = await taskResponse.json();
 
-    console.log("loaded User:", currentUser,"loades Tasks:", currentTasks);
+    console.log("loaded User:", currentUser);
+    console.log("loaded Tasks:", currentTasks);
+
 }
 
 function errorFunction() {
@@ -35,7 +117,9 @@ function errorFunction() {
 
 let currentDraggedElement;
 
-function updateHTML() {
+async function updateHTML() {
+    await loadAllTasks();
+  //  await loadTodoLane();
     let toDo = todos.filter(t => t['category'] == 'inTodo');
     let inProgress = todos.filter(t => t['category'] == 'inProgress');
     let awaitFeedback = todos.filter(t => t['category'] == 'awaitFeedback');
@@ -70,6 +154,25 @@ function updateHTML() {
     }
 }
 
+async function loadTodoLane(){
+ let todoTasks = currentUser[1].items.todos;
+ let laneTodo = document.getElementById('inTodo');
+for(let i = 0; i < todoTasks.length; i++){
+    let todoId = currentTasks.todoTasks;
+    laneTodo.innerHTML += generateTodoHTML(todoId);
+}
+}
+
+function fillCard(id){
+ let laneTodo = document.getElementById('inTodo');
+ laneTodo.innerHTML = '';
+ for (let i = 0; i < toDo.length; i++) {
+     const element = toDo[i];
+     laneTodo.innerHTML += generateTodoHTML(element);
+ }
+
+}
+
 function startDragging(id) {
     currentDraggedElement = id;
 }
@@ -100,6 +203,7 @@ function removeHighlight(id) {
 }
 
 function renderBoard() {
+
     return /*html*/ `
     
     <div class="main-container">
