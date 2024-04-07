@@ -322,6 +322,9 @@ header {
 
 .arrow-icon {
   margin-left: -6rem;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+  
 }
 
 .underline {
