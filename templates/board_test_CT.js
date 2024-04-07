@@ -128,38 +128,33 @@ async function updateHTML() {
     let laneTodo = document.getElementById('inTodo');
     laneTodo.innerHTML = '';
     for (let index = 0; index < toDo.length; index++) {
-     
         const element = toDo[index];
-        taskId = element.id; 
-        laneTodo.innerHTML += renderTaskHTML(element, taskId);
-        backgroundType(element,taskId);
+        laneTodo.innerHTML += await renderTaskHTML(element);
+        await backgroundType(element);
     }
 
     let laneProgress = document.getElementById('inProgress');
     laneProgress.innerHTML = '';
     for (let index = 0; index < inProgress.length; index++) {
         const element = inProgress[index];
-        taskId = todos[index].id;
-        laneProgress.innerHTML += renderTaskHTML(element, taskId);
-        backgroundType(element,taskId);
+        laneProgress.innerHTML += await renderTaskHTML(element);
+        await backgroundType(element);
     }
 
     let laneAwait = document.getElementById('awaitFeedback');
     laneAwait.innerHTML = '';
     for (let index = 0; index < awaitFeedback.length; index++) {
         const element = awaitFeedback[index];
-        taskId = todos[index].id;
-        laneAwait.innerHTML += renderTaskHTML(element, taskId);
-        backgroundType(element,taskId);
+        laneAwait.innerHTML += await renderTaskHTML(element);
+        await backgroundType(element);
     }
 
     let laneDone = document.getElementById('inDone');
     laneDone.innerHTML = '';
     for (let index = 0; index < done.length; index++) {
         const element = done[index];
-        taskId = todos[index].id;
-        laneDone.innerHTML += renderTaskHTML(element, taskId);
-        backgroundType(element,taskId);
+        laneDone.innerHTML += await renderTaskHTML(element);
+        await backgroundType(element);
     }
 }
 
@@ -190,11 +185,11 @@ function generateTodoHTML(element) {
     return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
 }
 
-function renderTaskHTML(element, taskId){
-    debugger;
+async function renderTaskHTML(element){
+   
     return /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${taskId})" class="task">
-            <div id='type${taskId}' class="task-type">${element['type']}</div>
+        <div draggable="true" ondragstart="startDragging(${element['id']})" class="task">
+            <div id='type${element['id']}' class="task-type">${element['type']}</div>
                 <div>
                     <div class="task-title bold"> ${element['title']} </div>
                     <div class="task-description text-greyish">${element['description']}</div>
@@ -207,12 +202,12 @@ function renderTaskHTML(element, taskId){
     `;
 }
 
-function backgroundType(element,taskId){
+async function backgroundType(element){
 
  if (element['type'] == "Technical Task"){
-    document.getElementById(`type${taskId}`).classList.add("bg-technicaltask");
+    document.getElementById(`type${element['id']}`).classList.add("bg-technicaltask");
 } else {
-    document.getElementById(`type${taskId}`).classList.add("bg-userstory")
+    document.getElementById(`type${element['id']}`).classList.add("bg-userstory")
 };
 }
 
