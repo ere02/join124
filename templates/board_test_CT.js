@@ -4,7 +4,7 @@ let todos = [{
     "title": "[0] Putzen",
     "description": "nicht nur sauber, sondern rein",
     "priority": "urgent",
-    "workers": [4],
+    "workers": [],
     "type": "User Story"
 },
 {
@@ -39,7 +39,7 @@ let todos = [{
     "title": "[4] krasse Sachen machen",
     "category": "inDone",
     "description": "die Nachbarn gegrüßt",
-    "priority": "low",
+    "priority":"low",
     "workers": [1, 2, 3],
     "type": "User Story"
 },
@@ -49,7 +49,7 @@ let todos = [{
     "category": "inProgress",
     "description":
         "Wenn Schäfchen Schäfchen zählen, zählen sie sich dann mit? ",
-    "priority": "low",
+        "priority": "low",
     "workers": [1, 2, 3],
     "type": "Technical Task"
     },
@@ -69,7 +69,7 @@ let todos = [{
     "category": "inDone",
     "description":
         "Wenn Schäfchen Schäfchen zählen, zählen sie sich dann mit? ",
-    "priority": "medium",
+        "priority":"medium",
     "workers": [1, 2, 3],
     "type": "Technical Task"
 },
@@ -128,33 +128,42 @@ async function updateHTML() {
     let laneTodo = document.getElementById('inTodo');
     laneTodo.innerHTML = '';
     for (let index = 0; index < toDo.length; index++) {
+     
         const element = toDo[index];
-        laneTodo.innerHTML += generateTodoHTML(element);
+        taskId = element.id; 
+        laneTodo.innerHTML += renderTaskHTML(element, taskId);
+        backgroundType(element,taskId);
     }
 
     let laneProgress = document.getElementById('inProgress');
     laneProgress.innerHTML = '';
     for (let index = 0; index < inProgress.length; index++) {
         const element = inProgress[index];
-        laneProgress.innerHTML += generateTodoHTML(element);
+        taskId = todos[index].id;
+        laneProgress.innerHTML += renderTaskHTML(element, taskId);
+        backgroundType(element,taskId);
     }
 
     let laneAwait = document.getElementById('awaitFeedback');
     laneAwait.innerHTML = '';
     for (let index = 0; index < awaitFeedback.length; index++) {
         const element = awaitFeedback[index];
-        laneAwait.innerHTML += generateTodoHTML(element);
+        taskId = todos[index].id;
+        laneAwait.innerHTML += renderTaskHTML(element, taskId);
+        backgroundType(element,taskId);
     }
 
     let laneDone = document.getElementById('inDone');
     laneDone.innerHTML = '';
     for (let index = 0; index < done.length; index++) {
         const element = done[index];
-        laneDone.innerHTML += generateTodoHTML(element);
+        taskId = todos[index].id;
+        laneDone.innerHTML += renderTaskHTML(element, taskId);
+        backgroundType(element,taskId);
     }
 }
 
-async function loadTodoLane(){
+/* async function loadTodoLane(){
  let todoTasks = currentUser[1].items.todos;
  let laneTodo = document.getElementById('inTodo');
 for(let i = 0; i < todoTasks.length; i++){
@@ -171,7 +180,7 @@ function fillCard(id){
      laneTodo.innerHTML += generateTodoHTML(element);
  }
 
-}
+}*/
 
 function startDragging(id) {
     currentDraggedElement = id;
@@ -179,6 +188,32 @@ function startDragging(id) {
 
 function generateTodoHTML(element) {
     return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
+}
+
+function renderTaskHTML(element, taskId){
+    debugger;
+    return /*html*/ `
+        <div draggable="true" ondragstart="startDragging(${taskId})" class="task">
+            <div id='type${taskId}' class="task-type">${element['type']}</div>
+                <div>
+                    <div class="task-title bold"> ${element['title']} </div>
+                    <div class="task-description text-greyish">${element['description']}</div>
+                </div>
+            <div class="task-footer">
+                <div class="task-worker"></div>
+                <div class="task-prio"><img src="../assets/svg/${element['priority']}.svg"></div>
+            </div>
+        </div>
+    `;
+}
+
+function backgroundType(element,taskId){
+
+ if (element['type'] == "Technical Task"){
+    document.getElementById(`type${taskId}`).classList.add("bg-technicaltask");
+} else {
+    document.getElementById(`type${taskId}`).classList.add("bg-userstory")
+};
 }
 
 function allowDrop(ev) {
