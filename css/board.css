@@ -419,7 +419,8 @@ p.board-task-card-preview {
     margin-bottom: 50px;
     gap:16px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    padding:8px;
 }
 
 .drag-area-highlight {
@@ -438,7 +439,7 @@ Here are designed all Task and Todo-Cards
     min-height:100px;
     box-shadow: 0 0 10px 2px var(--color-grey);
     border-radius: 24px;
-    padding: 10px;
+    padding: 16px;
 
 }
 .task:hover{
@@ -468,7 +469,11 @@ Here are designed all Task and Todo-Cards
 
     }
 }
-
+.task-text{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
 .task-type{
     border-radius:8px;
@@ -485,4 +490,20 @@ Here are designed all Task and Todo-Cards
 }
 .bg-technicaltask{
     background-color:var(--use_bg-technicaltask)
+}
+.emptylane{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color: var(--color-greyish-icon);
+    background-color: var(--color-grey);
+    width:230px;
+    min-height:50px;
+    border: 2px dotted var(--color-greyish-icon);
+    border-radius: 24px;
+    padding: 16px;
+}
+
+.prioSVG{
+    width:32px;
 }
