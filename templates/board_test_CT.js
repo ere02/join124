@@ -4,7 +4,7 @@ let todos = [{
     "title": "[0] Putzen",
     "description": "nicht nur sauber, sondern rein",
     "priority": "urgent",
-    "workers": [4],
+    "workers": [],
     "type": "User Story"
 },
 {
@@ -12,7 +12,10 @@ let todos = [{
     "title": "[1] Omas über die Straße helfen",
     "category": "inProgress",
     "description": "auch wenn sie nicht wollen",
-    "priority": "medium",
+    "priority": {
+       "name": "medium",
+       "url": "../assets/svg/medium.svg",
+        },
     "workers": [1, 2, 3,4],
     "type": "User Story"
    },
@@ -129,7 +132,9 @@ async function updateHTML() {
     laneTodo.innerHTML = '';
     for (let index = 0; index < toDo.length; index++) {
         const element = toDo[index];
-        laneTodo.innerHTML += generateTodoHTML(element);
+        taskId = todos.id;
+        laneTodo.innerHTML += renderTaskHTML(element, taskId);
+        backgroundType(element,taskId);
     }
 
     let laneProgress = document.getElementById('inProgress');
@@ -154,7 +159,7 @@ async function updateHTML() {
     }
 }
 
-async function loadTodoLane(){
+/* async function loadTodoLane(){
  let todoTasks = currentUser[1].items.todos;
  let laneTodo = document.getElementById('inTodo');
 for(let i = 0; i < todoTasks.length; i++){
@@ -171,7 +176,7 @@ function fillCard(id){
      laneTodo.innerHTML += generateTodoHTML(element);
  }
 
-}
+}*/
 
 function startDragging(id) {
     currentDraggedElement = id;
@@ -179,6 +184,29 @@ function startDragging(id) {
 
 function generateTodoHTML(element) {
     return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
+}
+
+function renderTaskHTML(element, taskId){
+    return /*html*/ `
+        <div draggable="true" ondragstart="startDragging(${taskId})" class="task">
+            <div id='type${taskId}' class="task-type">${element['type']}</div>
+            <div class="task-title bold"> ${element['title']} </div>
+            <div class="task-description">${element['description']}</div>
+            <div class="task-footer">
+                <div class="task-worker"></div>
+                <div class="task-prio"><img src="${element['priority']['url']}"></div>
+            </div>
+        </div>
+    `;
+}
+
+function backgroundType(element,taskId){
+
+ if (element['type'] == "Technical Task"){
+    document.getElementById(`type${taskId}`).classList.add("bg-technicaltask");
+} else {
+    document.getElementById(`type${taskId}`).classList.add("bg-userstory")
+};
 }
 
 function allowDrop(ev) {
