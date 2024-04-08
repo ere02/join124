@@ -496,11 +496,12 @@ Here are designed all Task and Todo-Cards
     justify-content:center;
     align-items:center;
     color: var(--color-greyish-icon);
-    background-color: var(--color-grey);
+    background-color: rgba(230, 240, 240, 0.6);
     width:230px;
-    min-height:50px;
+    height:30px;
+    box-sizing:border-box;
     border: 2px dotted var(--color-greyish-icon);
-    border-radius: 24px;
+    border-radius: 16px;
     padding: 16px;
 }
 
