@@ -41,8 +41,36 @@ async function loadUsers(){
     }
 }
 
-
 async function register() {
+  registerBtn.disabled = true;
+
+  const user = {
+    name: name.value,
+    email: email.value,
+    password: password.value,
+  };
+
+  const payload = {
+    value: user,
+    token: STORAGE.TOKEN,
+  };
+
+  try {
+    await fetch(STORAGE.URL, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+
+    alert('Registration Successful!');
+  } catch (e) {
+    console.error('Registration Error:', e);
+    alert('There was an error during registration.');
+  } finally {
+    resetForm();
+  }
+}
+
+/* async function register() {
     registerBtn.disabled = true;
     users.push({
         email: email.value,
@@ -66,3 +94,4 @@ function resetForm() {
     password.value = '';
     registerBtn.disabled = false;
 }
+ */
