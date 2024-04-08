@@ -13,7 +13,7 @@ let todos = [{
 }, {
     'id': 3,
     'title': 'Trainieren',
-    'category': 'done'
+    'category': 'inDone'
 }];
 
 let currentDraggedElement;
@@ -92,7 +92,6 @@ function renderBoard() {
                 <div class="board-headline">
                     <div class="board-headline-button">
                         <h1>Board</h1>
-                        <!-- <span class="board-headline-text h1">Board</span> -->
                         <button class="board-button-addTask-mobile"><img src="../assets/svg/add.svg" alt=""
                                 onclick=""></button>
                     </div>
@@ -104,7 +103,7 @@ function renderBoard() {
                                 <img class="board-input-search-icons" src="../assets/svg/search.svg" alt="">
                             </div>
                         </div>
-                        <button class="board-button-addTask" onclick=""><span class="board-text-addTask">Add
+                        <button class="board-button-addTask" onclick="addTask()"><span class="board-text-addTask">Add
                                 task</span><img src="../assets/svg/add-white.svg" alt=""></button>
                     </div>
                 </div>
@@ -139,39 +138,19 @@ function renderBoard() {
                             ondragleave="removeHighlight('awaitFeedback')" ondragover="allowDrop(event); highlight('awaitFeedback')">
                         </div>
                     </div>
-<<<<<<< HEAD
-                    <!-- <div class="board-task-category">
-=======
 
                     <div class="board-task-category">
->>>>>>> f1f2e60e0d4b1b293d902857c9258c0bd21e73bf
                         <div class="board-task-headline">
                             <span class="board-add-task-headline">Done</span>
                         </div>
                         <div class="board-task-container drag-area" id="inDone" ondrop="moveTo('inDone')"
                             ondragleave="removeHighlight('inDone')" ondragover="allowDrop(event); highlight('inDone')">
                         </div>
-<<<<<<< HEAD
-
-                    </div> -->
-                    <div class="board-task-category">
-    <div class="board-task-headline">
-        <span class="board-add-task-headline">Done</span>
-    </div>
-    <div class="board-task-container drag-area" id="done" ondrop="moveTo('done')"
-        ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
-    </div>
-</div>
-
-=======
                     </div>
->>>>>>> f1f2e60e0d4b1b293d902857c9258c0bd21e73bf
                 </div>
 
             </div>
         </div>
     </div>
-   
     `;
 }
-

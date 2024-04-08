@@ -72,13 +72,19 @@ function renderAddTask(){
         <h3 class="h3">Category<span class="required-star">*</span></h3>
 
         <label for="category" class="add-task-label bgC-white" id="">
-          <div class="add-task-category-input" id="" onclick="">User Story</div>
+          <!-- <div class="add-task-category-input" id="" onclick="">Select task category</div> -->
+       
+        <select placeholder="Select task category" class="add-task-category-input">
+              <option>Select task category</option>      
+              <option>Technical Task</option>
+              <option>User Story</option>
+            </select>  
         </label>
 
-        <div class="d-none" id="">
+        <!-- <div class="d-none" id="">
           <div class="addTaskCategorySelect" onclick="">Technical Task</div>
           <div class="addTaskCategorySelect" onclick="">User Story</div>
-        </div>
+        </div> -->
 
         <div class="extra-small d-none" id="">This field is required</div>
 
