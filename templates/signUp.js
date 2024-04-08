@@ -1,3 +1,37 @@
+let users = [];
+
+
+async function init(){
+    loadUsers();
+}
+
+async function loadUsers(){
+    try {
+        users = JSON.parse(await getItem('users'));
+    } catch(e){
+        console.error('Loading error:', e);
+    }
+}
+
+
+async function register() {
+    registerBtn.disabled = true;
+    users.push({
+        email: email.value,
+        password: password.value,
+    });
+    await setItem('users', JSON.stringify(users));
+    resetForm();
+}
+
+function resetForm() {
+    email.value = '';
+    password.value = '';
+    registerBtn.disabled = false;
+}
+
+
+
 function rendersignUp(){
     return /*html*/  `
 <link rel="stylesheet" href="/css/all_colors.css" />
@@ -61,8 +95,8 @@ function rendersignUp(){
       <div class="input-wrapper">
         <input
           class="input-field"
-          type="confirm password"
-          name="password"
+          type="password"
+          name="confirm password"
           placeholder="Confirm Password"
           required
         />

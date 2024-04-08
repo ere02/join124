@@ -322,6 +322,9 @@ header {
 
 .arrow-icon {
   margin-left: -6rem;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+  
 }
 
 .underline {
@@ -377,6 +380,7 @@ header {
   gap: 0.5rem;
   border-radius: 0.5rem;
   padding-left: 1rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 /*Attention! is needed for logIn*/
@@ -630,4 +634,8 @@ ol.helplist {
   li {
     margin-top: 10px;
   }
+}
+
+.text-greyish{
+  color:var(--color-greyish-icon);
 }

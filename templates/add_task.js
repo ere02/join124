@@ -57,15 +57,15 @@ function renderAddTask(){
         <div class="add-task-prio">
           <div id="" class="add-task-prio-high" onclick="">
             Urgent
-            <img id="" src="../assets/svg/high.svg">
+            <img id="" src="../assets/svg/urgent.svg" class="prioSVG">
           </div>
           <div id="" class="add-task-prio-medium add-task-prio-medium-pressed-button" onclick="">
             Medium
-            <img id="" src="../assets/svg/Medium.svg">
+            <img id="" src="../assets/svg/medium_white.svg" class="prioSVG">
           </div>
           <div id="add_task_prio_low" class="add-task-prio-low" onclick="">
             Low
-            <img id="" src="../assets/svg/Low.svg">
+            <img id="" src="../assets/svg/low.svg" class="prioSVG">
           </div>
         </div>
 

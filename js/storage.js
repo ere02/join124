@@ -2,7 +2,7 @@ const STORAGE_TOKEN = 'YMBIP9ZQY2061ZX52YW92ECD5MIETSERB6CTSZBD';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 
-async function setItem(key, value) {
+async function setItem(name, email, password) {
     const payload = { key, value, token: STORAGE_TOKEN };
     return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload)})
     .then(res => res.json());

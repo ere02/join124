@@ -21,6 +21,10 @@ const board = document.getElementById("section-board");
 const contacts = document.getElementById("section-contacts");
 const policy = document.getElementById("section-policy");
 
+
+/**
+ * Makes sure that all NavBar-Menu-Points are not highlighted anymore - then highlighting clicked Nav Point
+ */
 function resetAllSections() {
   summary.classList.add("displaynone");
   addtask.classList.add("displaynone");

@@ -11,16 +11,14 @@
   <div class="signup-wrapper">
     <div class="input-container-signup">
       <div class="headline-wrapper-signup">
-        <div class="go-back-arrow" onclick="goBack()">
-          <img
-            src="/assets/svg/arrow-left-line.svg"
-            alt="go back"
-            class="arrow-icon"
-            onclick="window.location.href='index.html'"
-            alt="go back"
-            class="arrow-icon"
-          />
-        </div>
+        <!-- <div class="go-back-arrow" onclick="goBack()"> -->
+        <a href="index.html"></a>
+        <img
+          src="/assets/svg/arrow-left-line.svg"
+          alt=""
+          class="arrow-icon"
+          onclick="window.location.href='index.html'"
+        />
         <div>
           <p class="headline">Sign up</p>
           <hr class="underline" />
@@ -28,9 +26,10 @@
       </div>
       <div class="input-wrapper">
         <input
+          id="name"
           class="input-field"
-          type="name"
-          name="password"
+          type="text"
+          name="name"
           placeholder="Name"
           required
         />
@@ -38,6 +37,7 @@
       </div>
       <div class="input-wrapper">
         <input
+          id="email"
           class="input-field"
           type="text"
           name="email"
@@ -48,8 +48,9 @@
       </div>
       <div class="input-wrapper">
         <input
+          id="password"
           class="input-field"
-          type="password"
+          type="text"
           name="password"
           placeholder="Password"
           required
@@ -58,9 +59,10 @@
       </div>
       <div class="input-wrapper">
         <input
+          id="confirmPassword"
           class="input-field"
-          type="confirm password"
-          name="password"
+          type="password"
+          name="confirmPassword"
           placeholder="Confirm Password"
           required
         />

@@ -53,6 +53,7 @@
 .board-main-container {
     display: flex;
     flex-direction: column;
+    gap:64px;
 }
 
 .board-headline {
@@ -177,6 +178,7 @@ input:focus {
     padding-top: 16px;
     display: flex;
     width: 290px;
+    gap:10px;
     flex-direction: column;
     align-items: center;
 }
@@ -184,7 +186,6 @@ input:focus {
 .board-task-headline {
     position: sticky;
     top: 0;
-    background-color: #F6F7F8;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -416,22 +417,29 @@ p.board-task-card-preview {
     height: 200px;
     border-radius: 20px;
     margin-bottom: 50px;
+    gap:16px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    padding:8px;
 }
 
 .drag-area-highlight {
     background-color: rgba(0, 0, 0, 0.2);
 }
-
+/**
+Here are designed all Task and Todo-Cards
+*/
 .task {
+    display:flex;
+    flex-direction:column;
+    justify-content:start;
+    gap:24px;
     background-color: white;
     width:250px;
     min-height:100px;
     box-shadow: 0 0 10px 2px var(--color-grey);
     border-radius: 24px;
-    padding: 10px;
-    margin: 10px;
+    padding: 16px;
 
 }
 .task:hover{
@@ -460,4 +468,42 @@ p.board-task-card-preview {
     transition: transform 40ms;
 
     }
+}
+.task-text{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task-type{
+    border-radius:8px;
+    padding:4px 16px;
+    width:fit-content;
+    color:var(--use_bg-text-white);
+}
+.task-footer{
+    display:flex;
+    justify-content:space-between;
+}
+.bg-userstory{
+    background-color:var(--use_bg-userstory);
+}
+.bg-technicaltask{
+    background-color:var(--use_bg-technicaltask)
+}
+.emptylane{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color: var(--color-greyish-icon);
+    background-color: var(--color-grey);
+    width:230px;
+    min-height:50px;
+    border: 2px dotted var(--color-greyish-icon);
+    border-radius: 24px;
+    padding: 16px;
+}
+
+.prioSVG{
+    width:32px;
 }
