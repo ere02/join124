@@ -2,6 +2,8 @@
    [  {
         "id": 0,
       "nickname": "guest",
+      "firstname":"g",
+      "familyname": "g",
       "items":{
         "todos":[],
         "progress":[],
@@ -12,7 +14,9 @@
 
     { 
         "id":1,
-      "nickname": "christina",
+      "nickname": "criii",
+      "firstname":"Christina",
+      "familyname": "Troitzsch",
       "email": "christina@troitzsch.de",
       "pword": "*****",
       "items":{
@@ -25,6 +29,8 @@
     {
         "id":2,
       "nickname": "erwin",
+      "firstname":"Erwin",
+      "familyname": "Hoermann",
       "pword": "*****",
       "email": "ere02@bavarian.de",
       "items":{
@@ -37,6 +43,8 @@
       {
         "id":3,
         "nickname": "ardit97",
+        "firstname":"Ardit",
+        "familyname": "Qoku",
         "pword": "*****",
         "email": "ardit@Qoku.de",
         "items":{
@@ -49,6 +57,8 @@
     {
         "id":4,
        "nickname": "cleo",
+       "firstname":"Cleo",
+       "familyname": "Patra",
         "pword": "*****",
         "email": "cleopatra@egypt.eg",
         "items":{
