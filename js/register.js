@@ -1,7 +1,6 @@
 let users = [];
 
-
-async function init(){
+async function init() {
     loadUsers();
 }
 
@@ -24,74 +23,51 @@ registerBtn.addEventListener('click', async function() {
         return;
     }
 
+    // Create the user object and push into the array
+    const newUser = {
+        name: name,
+        email: email,
+        password: password,
+    };
+    users.push(newUser);
+
     try {
-        register(); // Call your existing register function
-        alert('Registration Successful!'); 
-    } catch(e) {
+        await register(); // Call your updated register function
+        alert('Registration Successful!');
+    } catch (e) {
         console.error('Registration Error:', e);
         alert('There was an error during registration.');
     }
 });
 
-async function loadUsers(){
+async function loadUsers() {
     try {
-        users = JSON.parse(await getItem('users'));
-    } catch(e){
+        const storedUsers = await getItem('users');
+        users = storedUsers || []; // Initialize with stored users or an empty array
+    } catch (e) {
         console.error('Loading error:', e);
     }
 }
 
 async function register() {
-  registerBtn.disabled = true;
-
-  const user = {
-    name: name.value,
-    email: email.value,
-    password: password.value,
-  };
-
-  const payload = {
-    value: user,
-    token: STORAGE.TOKEN,
-  };
-
-  try {
-    await fetch(STORAGE.URL, {
-      method: 'POST',
-      body: JSON.stringify(payload),
-    });
-
-    alert('Registration Successful!');
-  } catch (e) {
-    console.error('Registration Error:', e);
-    alert('There was an error during registration.');
-  } finally {
-    resetForm();
-  }
-}
-
-/* async function register() {
     registerBtn.disabled = true;
-    users.push({
-        email: email.value,
-        password: password.value,
-    });
-    await setItem('users', JSON.stringify(users));
-    resetForm();
 
-    const existingUser = users.find(user => user.email === email.value);
-    if (existingUser) {
-        alert('A user with this email already exists.');
-        registerBtn.disabled = false; // Re-enable button
-        return;
+    try {
+        await setItem('users', JSON.stringify(users));  // Store the updated users array 
+        alert('Registration Successful!');
+    } catch (e) {
+        console.error('Registration Error:', e);
+        alert('There was an error during registration.');
+    } finally {
+        resetForm();
+        registerBtn.disabled = false; // Re-enable the button
     }
-
-
 }
 
 function resetForm() {
-    email.value = '';
-    password.value = '';
-    registerBtn.disabled = false;
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('confirmPassword').value = '';
 }
- */
+
