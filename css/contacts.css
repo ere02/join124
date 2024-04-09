@@ -1,0 +1,8 @@
+
+.sidepanel{
+    display:flex;
+    overflow:hidden;
+    scrollbar-width:0;
+    justify-content:center;
+    
+}
