@@ -98,6 +98,7 @@ const loadUsers = "../users_storage.js";
 //const loadTasks = "../tasks_storage.js";
 let currentUser;
 let currentTasks;
+console.log(currentTasks);
 
 
 async function loadAllTasks() {
@@ -126,79 +127,68 @@ async function updateHTML() {
     let done = todos.filter(t => t['category'] == 'inDone');
 
     let laneTodo = document.getElementById('inTodo');
-    laneTodo.innerHTML = '';
-    for (let index = 0; index < toDo.length; index++) {
-        if (toDo.length !== 0) {
+    laneTodo.innerHTML = renderEmptyLane();
+    if (toDo.length !== 0) {
+        laneTodo.innerHTML = '';
+        for (let index = 0; index < toDo.length; index++) {
             const element = toDo[index];
             laneTodo.innerHTML += await renderTaskHTML(element);
             await backgroundType(element);
-        } else {
-            laneTodo.innerHTML = renderEmptyLane();
         }
     }
 
     let laneProgress = document.getElementById('inProgress');
-    laneProgress.innerHTML = '';
-    for (let index = 0; index < inProgress.length; index++) {
-        const element = inProgress[index];
-        laneProgress.innerHTML += await renderTaskHTML(element);
-        await backgroundType(element);
+    laneProgress.innerHTML = renderEmptyLane();
+    if (inProgress.length !== 0) {
+        laneProgress.innerHTML = '';
+        for (let index = 0; index < inProgress.length; index++) {
+            const element = inProgress[index];
+            laneProgress.innerHTML += await renderTaskHTML(element);
+            await backgroundType(element);
+        }
     }
 
     let laneAwait = document.getElementById('awaitFeedback');
-    laneAwait.innerHTML = '';
-    for (let index = 0; index < awaitFeedback.length; index++) {
-        const element = awaitFeedback[index];
-        laneAwait.innerHTML += await renderTaskHTML(element);
-        await backgroundType(element);
+    laneAwait.innerHTML = renderEmptyLane();
+    if (awaitFeedback.length !== 0) {
+        laneAwait.innerHTML = '';
+        for (let index = 0; index < awaitFeedback.length; index++) {
+            const element = awaitFeedback[index];
+            laneAwait.innerHTML += await renderTaskHTML(element);
+            await backgroundType(element);
+        }
     }
 
     let laneDone = document.getElementById('inDone');
-    laneDone.innerHTML = '';
-    for (let index = 0; index < done.length; index++) {
-        const element = done[index];
-        laneDone.innerHTML += await renderTaskHTML(element);
-        await backgroundType(element);
+    laneDone.innerHTML = renderEmptyLane();
+    if (done.length !== 0) {
+        laneDone.innerHTML = '';
+        for (let index = 0; index < done.length; index++) {
+            const element = done[index];
+            laneDone.innerHTML += await renderTaskHTML(element);
+            await backgroundType(element);
+        }
     }
 }
-
-function renderEmptyLane() {
-    return /*html*/ `
+    function renderEmptyLane() {
+        return /*html*/ `
     <div class="emptylane"> No tasks yet.</div>
   `
-}
+    }
 
 
-/* async function loadTodoLane(){
- let todoTasks = currentUser[1].items.todos;
- let laneTodo = document.getElementById('inTodo');
-for(let i = 0; i < todoTasks.length; i++){
-    let todoId = currentTasks.todoTasks;
-    laneTodo.innerHTML += generateTodoHTML(todoId);
-}
-}
 
-function fillCard(id){
- let laneTodo = document.getElementById('inTodo');
- laneTodo.innerHTML = '';
- for (let i = 0; i < toDo.length; i++) {
-     const element = toDo[i];
-     laneTodo.innerHTML += generateTodoHTML(element);
- }
+    function startDragging(id) {
+        currentDraggedElement = id;
+    }
 
-}*/
+    function generateTodoHTML(element) {
+        return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
+    }
 
-function startDragging(id) {
-    currentDraggedElement = id;
-}
+    async function renderTaskHTML(element) {
 
-function generateTodoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
-}
-
-async function renderTaskHTML(element) {
-
-    return /*html*/ `
+        return /*html*/ `
         <div draggable="true" ondragstart="startDragging(${element['id']})" class="task">
             <div id='type${element['id']}' class="task-type">${element['type']}</div>
                 <div class="task-text">
@@ -211,41 +201,41 @@ async function renderTaskHTML(element) {
             </div>
         </div>
     `;
-}
+    }
 
-async function backgroundType(element) {
+    async function backgroundType(element) {
 
-    if (element['type'] == "Technical Task") {
-        document.getElementById(`type${element['id']}`).classList.add("bg-technicaltask");
-    } else {
-        document.getElementById(`type${element['id']}`).classList.add("bg-userstory")
-    };
-}
+        if (element['type'] == "Technical Task") {
+            document.getElementById(`type${element['id']}`).classList.add("bg-technicaltask");
+        } else {
+            document.getElementById(`type${element['id']}`).classList.add("bg-userstory")
+        };
+    }
 
-function allowDrop(ev) {
-    ev.preventDefault();
-}
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
 
-function moveTo(category) {
-    // console.log("Moving element to category:", category);
-    // console.log("Current dragged element:", currentDraggedElement);
+    function moveTo(category) {
+        console.log("Moving element to category:", category);
+        console.log("Current dragged element:", currentDraggedElement);
 
-    todos[currentDraggedElement]['category'] = category;
-    removeHighlight(category); // Hintergrundhervorhebung entfernen
-    updateHTML();
-}
+        todos[currentDraggedElement]['category'] = category;
+        removeHighlight(category);
+        updateHTML();
+    }
 
-function highlight(id) {
-    document.getElementById(id).classList.add('drag-area-highlight');
-}
+    function highlight(id) {
+        document.getElementById(id).classList.add('drag-area-highlight');
+    }
 
-function removeHighlight(id) {
-    document.getElementById(id).classList.remove('drag-area-highlight');
-}
+    function removeHighlight(id) {
+        document.getElementById(id).classList.remove('drag-area-highlight');
+    }
 
-function renderBoard() {
+    function renderBoard() {
 
-    return /*html*/ `
+        return /*html*/ `
     
     <div class="main-container">
         <div class="main-container-body">
@@ -315,4 +305,5 @@ function renderBoard() {
         </div>
     </div>
     `;
-}
+    }
+
