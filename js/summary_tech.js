@@ -1,1 +1,1 @@
-console.log(todos, currentUser)
+console.log(allTasks, currentUser)
