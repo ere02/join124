@@ -1,7 +1,5 @@
 function loginPage() {
-  return `
-    <link rel="stylesheet" href="/css/all_colors.css" />
-    <link rel="stylesheet" href="/css/style.css" />
+  return /*html*/ `
     <div class="login-page">
       <div class="login-header">
         <div></div>
