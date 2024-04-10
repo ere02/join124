@@ -286,7 +286,8 @@ header {
   font-weight: bold;
 }
 
-/* from here login template */
+/**
+ from here login template */
 .headline {
   display: flex;
   align-items: center;

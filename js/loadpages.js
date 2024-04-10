@@ -73,7 +73,6 @@ async function loadSummary(id) {
 function loadAddTask(id) {
   goBackToPage.splice(0, 1);
   goBackToPage.push(() => loadAddTask(id));
-
   allNavButton(id);
   addtask.classList.remove("displaynone");
   addtask.innerHTML = renderAddTask();
@@ -99,6 +98,7 @@ function loadContacts(id) {
   goBackToPage.push(() => loadContacts(id));
   allNavButton(id);
   contacts.classList.remove("displaynone");
+  contacts.innerHTML = renderContacts();
 }
 
 /** CONTENT loads in Policy Section
