@@ -4,11 +4,11 @@
       "nickname": "guest",
       "firstname":"g",
       "familyname": "g",
-      "items":{
-        "todos":[],
-        "progress":[],
-        "await":[],
-        "done":[]   
+  //  "items":{
+  //       "todos":[],
+  //       "progress":[],
+  //       "await":[],
+  //       "done":[]   --
       }
     },
 
@@ -19,11 +19,11 @@
       "familyname": "Troitzsch",
       "email": "christina@troitzsch.de",
       "pword": "*****",
-      "items":{
-        "todos":[1],
-        "progress":[9,3,5],
-        "await":[8],
-        "done":[2,4,6,7]   
+      // "items":{
+      //   "todos":[1],
+      //   "progress":[9,3,5],
+      //   "await":[8],
+      //   "done":[2,4,6,7]   
       }
     },
     {
@@ -33,11 +33,11 @@
       "familyname": "Hoermann",
       "pword": "*****",
       "email": "ere02@bavarian.de",
-      "items":{
-        "todos":[1],
-        "progress":[9,3,5],
-        "await":[8],
-        "done":[2,4,6,7]   
+      // "items":{
+      //   "todos":[1],
+      //   "progress":[9,3,5],
+      //   "await":[8],
+      //   "done":[2,4,6,7]   
       }
     },
       {
@@ -47,11 +47,11 @@
         "familyname": "Qoku",
         "pword": "*****",
         "email": "ardit@Qoku.de",
-        "items":{
-          "todos":[1],
-          "progress":[9,3,5],
-          "await":[8],
-          "done":[2,4,6,7]   
+        // "items":{
+        //   "todos":[1],
+        //   "progress":[9,3,5],
+        //   "await":[8],
+        //   "done":[2,4,6,7]   
         }
     },
     {
@@ -61,11 +61,11 @@
        "familyname": "Patra",
         "pword": "*****",
         "email": "cleopatra@egypt.eg",
-        "items":{
-          "todos":[0,1],
-          "progress":[9],
-          "await":[8],
-          "done":[2]   
+        // "items":{
+        //   "todos":[0,1],
+        //   "progress":[9],
+        //   "await":[8],
+        //   "done":[2]   
         }
     }
 ]
