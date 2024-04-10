@@ -106,8 +106,8 @@ async function loadAllTasks() {
     currentUser = await userResponse.json();
     //currentTasks = await taskResponse.json();
 
-    console.log("loaded User:", currentUser);
-    console.log("loaded Tasks:", currentTasks);
+    // console.log("loaded User:", currentUser);
+    // console.log("loaded Tasks:", currentTasks);
 
 }
 
@@ -227,8 +227,8 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-    console.log("Moving element to category:", category);
-    console.log("Current dragged element:", currentDraggedElement);
+    // console.log("Moving element to category:", category);
+    // console.log("Current dragged element:", currentDraggedElement);
 
     todos[currentDraggedElement]['category'] = category;
     removeHighlight(category); // Hintergrundhervorhebung entfernen
