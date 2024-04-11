@@ -82,12 +82,14 @@ function loadAddTask(id) {
  * CASE: Loading board
  */
 function loadBoard(id) {
+
   goBackToPage.splice(0, 1);
   goBackToPage.push(() => loadBoard(id));
   allNavButton(id);
   board.classList.remove("displaynone");
+  debugger;
   board.innerHTML = renderBoard();
-  updateHTML();
+  updateBoardHTML();
 }
 
 /** CONTENT loads in its Section

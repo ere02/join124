@@ -23,6 +23,7 @@ function renderLogin(){
 async function startContent() {
     await includeHTML();
     await loadSummary('navsummary');
+
 }
 
 function callFramePageSinLogin(from) {
