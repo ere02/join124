@@ -110,6 +110,9 @@ async function loadAllTasks() {
     // currentUser = await userResponse.json();
     let todos = await taskResponse.json();
 
+    // console.log("loaded User:", currentUser);
+    // console.log("loaded Tasks:", currentTasks);
+
     //console.log("loaded User:", currentUser);
     console.log("loaded Tasks:", todos);
 }
@@ -222,7 +225,7 @@ function moveTo(category) {
     console.log("Current dragged element:", currentDraggedElement);
 
     allTasks[currentDraggedElement]['category'] = category;
-    removeHighlight(category); // Hintergrundhervorhebung entfernen
+    removeHighlight(category);
     updateBoardHTML();
 }
 
@@ -245,7 +248,6 @@ function renderBoard() {
                 <div class="board-headline">
                     <div class="board-headline-button">
                         <h1>Board</h1>
-                        <!-- <span class="board-headline-text h1">Board</span> -->
                         <button class="board-button-addTask-mobile"><img src="../assets/svg/add.svg" alt=""
                                 onclick=""></button>
                     </div>
@@ -257,7 +259,7 @@ function renderBoard() {
                                 <img class="board-input-search-icons" src="../assets/svg/search.svg" alt="">
                             </div>
                         </div>
-                        <button class="board-button-addTask" onclick=""><span class="board-text-addTask">Add
+                        <button class="board-button-addTask" onclick="addTask()"><span class="board-text-addTask">Add
                                 task</span><img src="../assets/svg/add-white.svg" alt=""></button>
                     </div>
                 </div>
@@ -306,7 +308,6 @@ function renderBoard() {
             </div>
         </div>
     </div>
-   
     `;
 }
 
