@@ -14,9 +14,19 @@ function renderContacts(){
 
 <button id="addContact"><h5 class="bold">Add new Contact</h5> <img src="../assets/svg/person_add_white.svg" class="icon"></button>
 
+<div id="allContacts">
+    
+<h4 class="letter">A</h4>
+<hr>
+    <div id="user1" class="users">
+          <div class="user-circle">AW</div>
+          <div class="contact-name">
+            <h5>Anton Mayer</h5>
+            <span>email@mayer.de</span>
+        </div>
+      </div>
 
-
-
+</div>
 </div>
 
 
@@ -32,7 +42,7 @@ function loadUserInfo(){
 
 function findAllFirstLettersOfStates() {
     const uniqueInitialsSet = new Set();
-    let userContainer = document.getElementById("allUsers");
+    let contactContainer = document.getElementById("allContacts");
     let findInitial = document.getElementById("allInitials");
       findInitial.innerHTML = '';
   for (let i = 0; i < allUsers.length; i++) {
@@ -42,9 +52,9 @@ function findAllFirstLettersOfStates() {
           let alphabetLetter = document.createElement("div");
           alphabetLetter.innerText = initial;
           alphabetLetter.classList.add("initial-headline");
-          alphabetLetter.addEventListener("click", function () {
-              let userPerLetter = filterByInitial(initial);
-          });
+          alphabetLetter.innerHTML = `
+         
+          `;
            findInitial.appendChild(alphabetLetter);
       }
   }

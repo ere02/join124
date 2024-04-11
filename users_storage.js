@@ -4,6 +4,7 @@ const allUsers =
       "nickname": "guest",
       "firstname":"g",
       "familyname": "g",
+      "projectId": [0],
       // "items":{
       //   "todos":[],
       //   "progress":[],
@@ -19,6 +20,7 @@ const allUsers =
       "familyname": "Troitzsch",
       "email": "christina@troitzsch.de",
       "pword": "*****",
+      "projectId":[1],
       // "items":{
       //   "todos":[1],
       //   "progress":[9,3,5],
@@ -33,6 +35,7 @@ const allUsers =
       "familyname": "Hoermann",
       "pword": "*****",
       "email": "ere02@bavarian.de",
+      "projectId":[1],
       // "items":{
       //   "todos":[1],
       //   "progress":[9,3,5],
@@ -47,6 +50,7 @@ const allUsers =
         "familyname": "Qoku",
         "pword": "*****",
         "email": "ardit@Qoku.de",
+        "projectId":[1],
         // "items":{
         //   "todos":[1],
         //   "progress":[9,3,5],
@@ -61,6 +65,7 @@ const allUsers =
        "familyname": "Patra",
         "pword": "*****",
         "email": "cleopatra@egypt.eg",
+        "projectId":[2],
         // "items":{
         //   "todos":[0,1],
         //   "progress":[9],

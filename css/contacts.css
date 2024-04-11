@@ -14,6 +14,10 @@
     background-color: var(--use_bg-text-white);
 }
 
+.letter{
+    padding:10px 35px;
+}
+
 #addContact{
     height: 3rem;
     border-radius: 10px;
@@ -34,3 +38,37 @@
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4);
     background-color: var(--use_border-button-bg-text-hover);
 }
+
+
+.users{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    line-height: 1.5;
+    padding: 15px 25px;
+    gap: 24px;
+}
+hr {
+    border: 1px solid var(--use_border-text-light);
+}
+.user-circle{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:2px solid var(--use_bg-text-white);
+    background-color: var(--user-specific-color);
+    color:var(--use_bg-text-white);
+
+    background-color: blueviolet;
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+  
+
+}
+#allContacts{
+    margin-top:100px;
+    padding:45px;
+    width:100%;
+}
+
