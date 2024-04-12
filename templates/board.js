@@ -113,7 +113,6 @@ async function loadAllTasks() {
     // console.log("loaded User:", currentUser);
     // console.log("loaded Tasks:", currentTasks);
 
-    //console.log("loaded User:", currentUser);
     console.log("loaded Tasks:", todos);
 }
 

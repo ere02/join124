@@ -4,9 +4,13 @@ const firstnames = allUsers.map(item => item.firstname);
 const familynames = allUsers.map(item => item.familyname);
 const nickname = allUsers.map(item => item.nickname);
 const emails = allUsers.map(item => item.email);
+let contactlist = [];
+let letters = [];
 
 
-function renderContacts(){
+async function renderContacts(){
+
+    findAllFirstLettersOfFirstnames();
 
     return /*html*/ `
 
@@ -34,28 +38,82 @@ function renderContacts(){
 
 }
 
-function loadUserInfo(){
+async function contactInit(){
+    let resp = await fetch('../user_storage.js');
+    allUsers = await resp.json();
+    findAllFirstLettersOfFirstnames();
+}
 
+function generateContactBox(contact, firstname, i){
+    let lastname = contact.familyname;
+  
+    let email = contact.email;
+return /*html*/ `
+    <div id="user${i}" class="users">
+    <div class="user-circle">AW</div>
+    <div class="contact-name">
+      <h5>${firstname} ${lastname}</h5>
+      <span>${email}</span>
+  </div>
+</div>
+`;
+
+}
+
+function findAllFirstLettersOfFirstnames(){
+    
+    let contactPanel = document.getElementdById('allContacts');
+    contactPanel.innerHTML = '';
+    for (let i = 1; i < contactlist.length; i++){
+        const contact = contactlist[i];
+        const firstname = contact['firstname'];
+        contactPanel.innerHTML += generateContactBox(contact,firstname,i);
+        const firstLetter = firstname.charAt(0);
+        if(letters.includes(firstLetter)){
+            letters.push(firstLetter);
+        }
+        renderLetters(firstLetter);
+    }
+    
+}
+
+function renderLetters(firstLetter){
+    let Letterbox = document.getElementById(`letterbox${firstLetter}`);
+    Letterbox.innerHTML= '';
+    for (let index = 0; index < letters.length; index++){
+        const element = letters[index];
+        Letterbox.innerHTML += `
+            <div id=${firstLetter}><h5 class="bold">${letters[index]}</h5></div>
+        `;
+
+    }
 
 }
 
 
-function findAllFirstLettersOfStates() {
-    const uniqueInitialsSet = new Set();
-    let contactContainer = document.getElementById("allContacts");
-    let findInitial = document.getElementById("allInitials");
-      findInitial.innerHTML = '';
-  for (let i = 0; i < allUsers.length; i++) {
-      const initial = allUsers[i].nickname[0];
-      if (!uniqueInitialsSet.has(initial)) {
-          uniqueInitialsSet.add(initial);
-          let alphabetLetter = document.createElement("div");
-          alphabetLetter.innerText = initial;
-          alphabetLetter.classList.add("initial-headline");
-          alphabetLetter.innerHTML = `
+
+// async function init(){
+//     let resp = await fetch('../user_storage.js');
+//     allUsers = await resp.json();
+//     renderUser();
+// }
+// function findAllFirstLettersOfStates() {
+//     const uniqueInitialsSet = new Set();
+//       
+//     let contactContainer = document.getElementById("allContacts");
+// //    let findInitial = document.getElementById("allInitials");
+// //      findInitial.innerHTML = '';
+//   for (let i = 0; i < allUsers.length; i++) {
+//       const initial = allUsers[i].firstname[0];
+//       if (!uniqueInitialsSet.has(initial)) {
+//           uniqueInitialsSet.add(initial);
+//           let alphabetLetter = document.createElement("div");
+//           alphabetLetter.innerText = initial;
+//           alphabetLetter.classList.add("initial-headline");
+//           alphabetLetter.innerHTML = `
          
-          `;
-           findInitial.appendChild(alphabetLetter);
-      }
-  }
-}
+//           `;
+//            findInitial.appendChild(alphabetLetter);
+//       }
+//   }
+// }

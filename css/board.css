@@ -500,7 +500,7 @@ Here are designed all Task and Todo-Cards
     align-items:center;
     color: var(--color-greyish-icon);
     background-color: rgba(230, 240, 240, 0.6);
-    width:230px;
+    width:250px;
     height:30px;
     box-sizing:border-box;
     border: 2px dotted var(--color-greyish-icon);

@@ -4,14 +4,6 @@ const allUsers =
       "nickname": "guest",
       "firstname":"g",
       "familyname": "g",
-<<<<<<< HEAD
-  //  "items":{
-  //       "todos":[],
-  //       "progress":[],
-  //       "await":[],
-  //       "done":[]   --
-      }
-=======
       "projectId": [0],
       // "items":{
       //   "todos":[],
@@ -19,7 +11,6 @@ const allUsers =
       //   "await":[],
       //   "done":[]   
       // }
->>>>>>> 953cedb7fe7f992f5afc46e9106a6db3d5157236
     },
 
     { 
@@ -29,20 +20,13 @@ const allUsers =
       "familyname": "Troitzsch",
       "email": "christina@troitzsch.de",
       "pword": "*****",
-<<<<<<< HEAD
-=======
       "projectId":[1],
->>>>>>> 953cedb7fe7f992f5afc46e9106a6db3d5157236
       // "items":{
       //   "todos":[1],
       //   "progress":[9,3,5],
       //   "await":[8],
       //   "done":[2,4,6,7]   
-<<<<<<< HEAD
-      }
-=======
       // }
->>>>>>> 953cedb7fe7f992f5afc46e9106a6db3d5157236
     },
     {
         "id":2,
@@ -51,21 +35,14 @@ const allUsers =
       "familyname": "Hoermann",
       "pword": "*****",
       "email": "ere02@bavarian.de",
-<<<<<<< HEAD
-=======
       "projectId":[1],
->>>>>>> 953cedb7fe7f992f5afc46e9106a6db3d5157236
+      "contactId":[1,3,4]
       // "items":{
       //   "todos":[1],
       //   "progress":[9,3,5],
       //   "await":[8],
-<<<<<<< HEAD
-      //   "done":[2,4,6,7]   
-      }
-=======
       // //   "done":[2,4,6,7]   
       // }
->>>>>>> 953cedb7fe7f992f5afc46e9106a6db3d5157236
     },
       {
         "id":3,
@@ -74,20 +51,14 @@ const allUsers =
         "familyname": "Qoku",
         "pword": "*****",
         "email": "ardit@Qoku.de",
-<<<<<<< HEAD
-=======
         "projectId":[1],
->>>>>>> 953cedb7fe7f992f5afc46e9106a6db3d5157236
+        "contactId":[1,2,4,6,7,8,9,10]
         // "items":{
         //   "todos":[1],
         //   "progress":[9,3,5],
         //   "await":[8],
         //   "done":[2,4,6,7]   
-<<<<<<< HEAD
-        }
-=======
         // }
->>>>>>> 953cedb7fe7f992f5afc46e9106a6db3d5157236
     },
     {
         "id":4,
@@ -96,19 +67,72 @@ const allUsers =
        "familyname": "Patra",
         "pword": "*****",
         "email": "cleopatra@egypt.eg",
-<<<<<<< HEAD
-=======
         "projectId":[2],
->>>>>>> 953cedb7fe7f992f5afc46e9106a6db3d5157236
         // "items":{
         //   "todos":[0,1],
         //   "progress":[9],
         //   "await":[8],
         //   "done":[2]   
-<<<<<<< HEAD
-        }
-=======
-        // }
->>>>>>> 953cedb7fe7f992f5afc46e9106a6db3d5157236
-    }
+
+      },
+      {
+        "id":5,
+        "nickname": "testuser1",
+        "firstname":"T.",
+        "familyname": "EstUser",
+        "pword": "*****",
+        "email": "t.estuser@web.de",
+        "projectId":[1],
+        "contactId":[1,2,4]
+      },
+      {
+        "id":6,
+        "nickname": "testuser2",
+        "firstname":"Test",
+        "familyname": "User",
+        "pword": "*****",
+        "email": "test@user.de",
+        "projectId":[1],
+        "contactId":[1,2,4]
+      },
+      {
+        "id":7,
+        "nickname": "testuser3",
+        "firstname":"User",
+        "familyname": "Test",
+        "pword": "*****",
+        "email": "user.test@gmx.de",
+        "projectId":[1],
+        "contactId":[1,2,4]
+      },
+      {
+        "id":8,
+        "nickname": "testuser4",
+        "firstname":"U.",
+        "familyname": "Test",
+        "pword": "*****",
+        "email": "u.test@yahoo.de",
+        "projectId":[1],
+        "contactId":[1,2,4]
+      },
+      {
+        "id":9,
+        "nickname": "testuser5",
+        "firstname":"Tess",
+        "familyname": "Tuser",
+        "pword": "*****",
+        "email": "tess.tuser@gmail.com",
+        "projectId":[1],
+        "contactId":[1,2,4]
+      },
+      {
+        "id":10,
+        "nickname": "testuser6",
+        "firstname":"Testu",
+        "familyname": "Ser",
+        "pword": "*****",
+        "email": "test34@googlemail.de",
+        "projectId":[1],
+        "contactId":[1,2,4]
+      }
 ]
