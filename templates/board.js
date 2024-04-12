@@ -169,7 +169,6 @@ async function updateBoardHTML() {
         laneDone.innerHTML = '';
         for (let index = 0; index < done.length; index++) {
             const element = done[index];
-            debugger;
             laneDone.innerHTML += await renderTaskHTML(element);
             await backgroundType(element);
         }

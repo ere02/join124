@@ -87,7 +87,6 @@ function loadBoard(id) {
   goBackToPage.push(() => loadBoard(id));
   allNavButton(id);
   board.classList.remove("displaynone");
-  debugger;
   board.innerHTML = renderBoard();
   updateBoardHTML();
 }

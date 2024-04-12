@@ -7,10 +7,11 @@ const emails = allUsers.map(item => item.email);
 let contactlist = [];
 let letters = [];
 
+ 
+renderContacts()
+
 
 async function renderContacts(){
-
-    findAllFirstLettersOfFirstnames();
 
     return /*html*/ `
 
@@ -19,29 +20,49 @@ async function renderContacts(){
 <button id="addContact"><h5 class="bold">Add new Contact</h5> <img src="../assets/svg/person_add_white.svg" class="icon"></button>
 
 <div id="allContacts">
-    
-<h4 class="letter">A</h4>
-<hr>
-    <div id="user1" class="users">
+    <div id="A">
+        <h4  class="letter">A</h4>
+        <hr>
+        <div id="user1" class="users">
           <div class="user-circle">AW</div>
           <div class="contact-name">
             <h5>Anton Mayer</h5>
             <span>email@mayer.de</span>
+          </div>
         </div>
-      </div>
 
+    </div>
 </div>
 </div>
-
 
     `;
 
 }
 
 async function contactInit(){
+    renderContacts();
     let resp = await fetch('../user_storage.js');
     allUsers = await resp.json();
     findAllFirstLettersOfFirstnames();
+}
+
+function findAllFirstLettersOfFirstnames(){
+    
+    let contactPanel = document.getElementdById('allContacts');
+    contactPanel.innerHTML = '';
+    // sobald der CurrentUser global definiert ist, hier eine If-Abfrage einbauen, die die ProjektId von CurrentUser abfragt 
+    // und nur die User aufnehmen, die die gleiche ProjectId haben
+    for (let i = 1; i < contactlist.length; i++){
+        const contact = contactlist[i];
+        const firstname = contact['firstname'];
+        contactPanel.innerHTML += generateContactBox(contact,firstname,i);
+        const firstLetter = firstname.charAt(0);
+        if(letters.includes(firstLetter)){
+            letters.push(firstLetter);
+        }
+        renderLetters(firstLetter);
+    }
+    
 }
 
 function generateContactBox(contact, firstname, i){
@@ -58,23 +79,6 @@ return /*html*/ `
 </div>
 `;
 
-}
-
-function findAllFirstLettersOfFirstnames(){
-    
-    let contactPanel = document.getElementdById('allContacts');
-    contactPanel.innerHTML = '';
-    for (let i = 1; i < contactlist.length; i++){
-        const contact = contactlist[i];
-        const firstname = contact['firstname'];
-        contactPanel.innerHTML += generateContactBox(contact,firstname,i);
-        const firstLetter = firstname.charAt(0);
-        if(letters.includes(firstLetter)){
-            letters.push(firstLetter);
-        }
-        renderLetters(firstLetter);
-    }
-    
 }
 
 function renderLetters(firstLetter){
