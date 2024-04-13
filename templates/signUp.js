@@ -13,13 +13,13 @@ function signUp() {
       <div class="signup-wrapper">
         <div class="input-container-signup">
           <div class="headline-wrapper-signup">
-            <!-- <div class="go-back-arrow" onclick="goBack()"> -->
-            <a href="index.html"></a>
-            <img
-              src="/assets/svg/arrow-left-line.svg"
+         /*  <a href="index.html"></a> */
+          <img
+          src="/assets/svg/arrow-left-line.svg"
+          <div class="go-back-arrow" onclick="login()">
               alt=""
               class="arrow-icon"
-              onclick="window.location.href='index.html'"
+          /*     onclick="window.location.href='index.html'" */
             />
             <div>
               <p class="headline">Sign up</p>

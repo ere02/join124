@@ -5,7 +5,7 @@ function loginPage() {
         <div></div>
         <div class="new-user">
           <span>Not a Join user?</span>
-          <button class="button" id="signUp" onclick="signup()">
+          <button class="button" onclick="signUp()">
             Sign up
           </button>
         </div>
