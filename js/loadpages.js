@@ -87,7 +87,6 @@ function loadBoard(id) {
   goBackToPage.push(() => loadBoard(id));
   allNavButton(id);
   board.classList.remove("displaynone");
-  debugger;
   board.innerHTML = renderBoard();
   updateBoardHTML();
 }
@@ -95,12 +94,13 @@ function loadBoard(id) {
 /** CONTENT loads in its Section
  * CASE: Loading CONTACTS
  */
-function loadContacts(id) {
+async function loadContacts(id) {
   goBackToPage.splice(0, 1);
   goBackToPage.push(() => loadContacts(id));
   allNavButton(id);
   contacts.classList.remove("displaynone");
-  contacts.innerHTML = renderContacts();
+  contacts.innerHTML =  await renderContacts();
+  await treatAllContacts();
 }
 
 /** CONTENT loads in Policy Section
