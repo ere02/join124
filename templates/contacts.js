@@ -12,7 +12,7 @@ let letters = [];
 
 
 async function renderContacts(){
-
+    
     return  `
 
 <div id="contactList" class="sidepanel">
@@ -39,7 +39,7 @@ async function renderContacts(){
 
 }
 
-function treatAllContacts(){
+async function treatAllContacts(){
     let contact = document.getElementById("allContacts");
     contact.innerHTML = '';
 
@@ -51,16 +51,18 @@ function treatAllContacts(){
 
 
 function renderFirstnames(firstnames,contact){
+    debugger;
 	for (let i = 0; i < firstnames.length; i++) {
-		let name = firstnames[i];
-    definitionOfContactInfo(contact, i,name);
+		let firstname = firstnames[i];
+        let lastname = allUsers[i].familyname;
+	    let email = allUsers[i].email;
+    definitionOfContactInfo(contact, lastname, email, firstname, i);
 	}
 }
 
-function definitionOfContactInfo(contact, i,firstname){
-    let lastname = allUsers[i].familyname;
-	let email = allUsers[i].email;
-    contact.innerHTML = `
+function definitionOfContactInfo(contact, lastname, email,firstname, i){
+    
+    contact.innerHTML += `
         <h4  class="letter">A</h4>
         <hr>
         <div id="user${i}" class="users">
