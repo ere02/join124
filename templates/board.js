@@ -1,4 +1,4 @@
-let todos = [{
+/*let allTasks = [{
     "id": 0,
     "category": "inTodo",
     "title": "[0] Putzen",
@@ -92,24 +92,28 @@ let todos = [{
     "priority": "low",
     "workers": [1, 2, 3, 4],
     "type": "User Story"
-}];
+}];*/
 
-const loadUsers = "../users_storage.js";
-//const loadTasks = "../tasks_storage.js";
-let currentUser;
+const title = allTasks.map(item => item.title);
+const description = allTasks.map(item => item.description);
+const category = allTasks.map(item => item.category);
+const id = allTasks.map(item => item.id);
+
+let currentUser = 3;
 let currentTasks;
-console.log(currentTasks);
+// console.log(currentTasks);
 
 
 async function loadAllTasks() {
-    let userResponse = await fetch(loadUsers).catch(errorFunction);
-    //let taskResponse = await fetch(todos).catch(errorFunction);
-    currentUser = await userResponse.json();
-    //currentTasks = await taskResponse.json();
+    //  let userResponse = await fetch(loadUsers).catch(errorFunction);
+    let taskResponse = await fetch(allTasks).catch(errorFunction);
+    // currentUser = await userResponse.json();
+    let todos = await taskResponse.json();
 
     // console.log("loaded User:", currentUser);
     // console.log("loaded Tasks:", currentTasks);
 
+    console.log("loaded Tasks:", todos);
 }
 
 function errorFunction() {
@@ -118,13 +122,13 @@ function errorFunction() {
 
 let currentDraggedElement;
 
-async function updateHTML() {
-    await loadAllTasks();
+async function updateBoardHTML() {
+    //await loadAllTasks();
     //  await loadTodoLane();
-    let toDo = todos.filter(t => t['category'] == 'inTodo');
-    let inProgress = todos.filter(t => t['category'] == 'inProgress');
-    let awaitFeedback = todos.filter(t => t['category'] == 'awaitFeedback');
-    let done = todos.filter(t => t['category'] == 'inDone');
+    let toDo = allTasks.filter(t => t['category'] == 'inTodo');
+    let inProgress = allTasks.filter(t => t['category'] == 'inProgress');
+    let awaitFeedback = allTasks.filter(t => t['category'] == 'awaitFeedback');
+    let done = allTasks.filter(t => t['category'] == 'inDone');
 
     let laneTodo = document.getElementById('inTodo');
     laneTodo.innerHTML = renderEmptyLane();
@@ -176,8 +180,15 @@ function renderEmptyLane() {
   `
 }
 
+function startDragging(id) {
+    currentDraggedElement = id;
+}
 
+function generateTodoHTML(element) {
+    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
+}
 
+<<<<<<< HEAD
 function startDragging(id) {
     currentDraggedElement = id;
 }
@@ -188,6 +199,10 @@ function generateTodoHTML(element) {
 
 async function renderTaskHTML(element) {
 
+=======
+async function renderTaskHTML(element) {
+
+>>>>>>> 18c35c24de24467554d7a6f4c15e4e3b8cc4dc8a
     return /*html*/ `
         <div draggable="true" ondragstart="startDragging(${element['id']})" class="task">
             <div id='type${element['id']}' class="task-type">${element['type']}</div>
@@ -220,9 +235,15 @@ function moveTo(category) {
     console.log("Moving element to category:", category);
     console.log("Current dragged element:", currentDraggedElement);
 
+<<<<<<< HEAD
     todos[currentDraggedElement]['category'] = category;
     removeHighlight(category);
     updateHTML();
+=======
+    allTasks[currentDraggedElement]['category'] = category;
+    removeHighlight(category);
+    updateBoardHTML();
+>>>>>>> 18c35c24de24467554d7a6f4c15e4e3b8cc4dc8a
 }
 
 function highlight(id) {
@@ -306,6 +327,7 @@ function renderBoard() {
     </div>
     `;
 }
+<<<<<<< HEAD
 
 function openAddTaskCard() {
     const overlay = document.createElement('div');
@@ -448,4 +470,6 @@ function closeAddTaskCard() {
         document.getElementById('overlay-container').classList.remove('d-none');
     }
 }
+=======
+>>>>>>> 18c35c24de24467554d7a6f4c15e4e3b8cc4dc8a
 

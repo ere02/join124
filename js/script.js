@@ -19,9 +19,11 @@ function renderLogin(){
     login.innerHTML = loginPage();
 }
 
+ 
 async function startContent() {
     await includeHTML();
     await loadSummary('navsummary');
+
 }
 
 function callFramePageSinLogin(from) {
