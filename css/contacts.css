@@ -56,10 +56,8 @@ hr {
     justify-content:center;
     align-items:center;
     border:2px solid var(--use_bg-text-white);
-    background-color: var(--user-specific-color);
+    /*background-color: var(--user-specific-color);*/
     color:var(--use_bg-text-white);
-
-    background-color: blueviolet;
     width: 40px;
     height: 40px;
     border-radius: 30px;
@@ -70,5 +68,9 @@ hr {
     margin-top:100px;
     padding:45px;
     width:100%;
+    height:80%;
+    overflow-y:scroll;
+    scrollbar-width:none;
+    margin-bottom:100px;
 }
 

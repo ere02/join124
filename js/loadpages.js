@@ -32,7 +32,9 @@ function resetAllSections() {
   contacts.classList.add("displaynone");
   policy.classList.add("displaynone");
 }
-
+/**
+ * Reset the Background-Color of Nav-Buttons for all
+ */
 function resetAllNavButtons() {
   document.getElementById("navsummary").classList.remove("bg-darker");
   document.getElementById("navaddtask").classList.remove("bg-darker");
@@ -170,6 +172,9 @@ function sayHello() {
   }
 }
 
+/**
+ * Fore Special Pages, it is needed to treat the behavior of the header-Icons for "User" and "Help"
+ */
 function disableHeaderIcons(id) {
   let headericons = document.getElementById("headerIcons");
   let helpicon = document.getElementById("helpIcon");
