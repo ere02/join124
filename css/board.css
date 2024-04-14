@@ -204,6 +204,58 @@ input:focus {
     padding-bottom: 24px;
 }
 
+.overlay {
+    /* display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); Hintergrund halbtransparent machen */
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Ein semi-transparenter Hintergrund, um den Rest der Seite zu verdunkeln */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Stelle sicher, dass das Popup über anderen Inhalten liegt */
+}
+
+/* .view-task {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: rgb(65, 65, 65);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+} */
+
+.add-task-popup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.add-task-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* sicherstellen, dass das Overlay über anderen Inhalten liegt */
+}
+
 .board-add-task-headline {
     color: var(--menu-color, #42526E);
     font-size: 20px;
@@ -508,3 +560,53 @@ Here are designed all Task and Todo-Cards
 .prioSVG{
     width:32px;
 }
+
+.add-task-popup {
+    position: fixed;
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.add-task-prio-high-popup, .add-task-prio-medium-popup, .add-task-prio-low-popup {
+    width: 136px;
+    height: 30px;
+    border-radius: 10px;
+    padding: 12px 2px 7px;
+    border: 0px;
+    /* background-color: var(--use_bg-text-white); */
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.add-task-clear-button-popup {
+    /* height: 56px; */
+    width: 110px;
+    border-radius: 10px;
+    padding: 16px;
+    color: var(--color-dark-bg);
+    font-size: 21px;
+    border: 1px solid var(--color-dark-bg);
+    transition: background-color 0.3s ease;
+    background-image: url('../assets/svg/close.svg');
+    background-repeat: no-repeat;
+    background-position: right 7px center; 
+    align-items: baseline;
+  }
+  
+  .add-task-clear-button-popup:hover {
+    background-color: var(--use_bg-text-white);
+    border: 1px solid var(--color-cyan);
+    color: var(--color-dark-cyan);
+    cursor: pointer;
+    background-image: url('../assets/svg/close-1.svg'); 
+    background-position: right 2px center; 
+  }

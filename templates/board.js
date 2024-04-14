@@ -170,25 +170,25 @@ async function updateHTML() {
         }
     }
 }
-    function renderEmptyLane() {
-        return /*html*/ `
+function renderEmptyLane() {
+    return /*html*/ `
     <div class="emptylane"> No tasks yet.</div>
   `
-    }
+}
 
 
 
-    function startDragging(id) {
-        currentDraggedElement = id;
-    }
+function startDragging(id) {
+    currentDraggedElement = id;
+}
 
-    function generateTodoHTML(element) {
-        return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
-    }
+function generateTodoHTML(element) {
+    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
+}
 
-    async function renderTaskHTML(element) {
+async function renderTaskHTML(element) {
 
-        return /*html*/ `
+    return /*html*/ `
         <div draggable="true" ondragstart="startDragging(${element['id']})" class="task">
             <div id='type${element['id']}' class="task-type">${element['type']}</div>
                 <div class="task-text">
@@ -201,46 +201,46 @@ async function updateHTML() {
             </div>
         </div>
     `;
-    }
+}
 
-    async function backgroundType(element) {
+async function backgroundType(element) {
 
-        if (element['type'] == "Technical Task") {
-            document.getElementById(`type${element['id']}`).classList.add("bg-technicaltask");
-        } else {
-            document.getElementById(`type${element['id']}`).classList.add("bg-userstory")
-        };
-    }
+    if (element['type'] == "Technical Task") {
+        document.getElementById(`type${element['id']}`).classList.add("bg-technicaltask");
+    } else {
+        document.getElementById(`type${element['id']}`).classList.add("bg-userstory")
+    };
+}
 
-    function allowDrop(ev) {
-        ev.preventDefault();
-    }
+function allowDrop(ev) {
+    ev.preventDefault();
+}
 
-    function moveTo(category) {
-        console.log("Moving element to category:", category);
-        console.log("Current dragged element:", currentDraggedElement);
+function moveTo(category) {
+    console.log("Moving element to category:", category);
+    console.log("Current dragged element:", currentDraggedElement);
 
-        todos[currentDraggedElement]['category'] = category;
-        removeHighlight(category);
-        updateHTML();
-    }
+    todos[currentDraggedElement]['category'] = category;
+    removeHighlight(category);
+    updateHTML();
+}
 
-    function highlight(id) {
-        document.getElementById(id).classList.add('drag-area-highlight');
-    }
+function highlight(id) {
+    document.getElementById(id).classList.add('drag-area-highlight');
+}
 
-    function removeHighlight(id) {
-        document.getElementById(id).classList.remove('drag-area-highlight');
-    }
+function removeHighlight(id) {
+    document.getElementById(id).classList.remove('drag-area-highlight');
+}
 
-    function renderBoard() {
+function renderBoard() {
 
-        return /*html*/ `
+    return /*html*/ `
     
-    <div class="main-container">
+    <div class="main-container" id="container">
         <div class="main-container-body">
 
-            <div class="board-main-container">
+            <div class="board-main-container" id="overlay-container">
                 <div class="board-headline">
                     <div class="board-headline-button">
                         <h1>Board</h1>
@@ -255,8 +255,8 @@ async function updateHTML() {
                                 <img class="board-input-search-icons" src="../assets/svg/search.svg" alt="">
                             </div>
                         </div>
-                        <button class="board-button-addTask" onclick="addTask()"><span class="board-text-addTask">Add
-                                task</span><img src="../assets/svg/add-white.svg" alt=""></button>
+                        <button id="add_task_button" class="board-button-addTask" onclick="renderAddTaskCard()"><span class="board-text-addTask" >
+                            Add task</span><img src="../assets/svg/add-white.svg" alt=""></button>
                     </div>
                 </div>
                 <div class="board-task-main">
@@ -305,5 +305,147 @@ async function updateHTML() {
         </div>
     </div>
     `;
+}
+
+function openAddTaskCard() {
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+
+    overlay.innerHTML = /*html*/ `
+    <div class="add-task-popup">
+    <div id="overlay" class="overlay">
+      <div class="add-task-popup">
+
+<div class="add-task-header-container">
+  <h1 class="add-task-headline">Add Task</h1>
+</div>
+
+<div class="add-task-content d-flex-ai-center-jc-center">
+  <div class="add-task-container-left">
+    <form>
+      <h3 class="h3">Title <span class="required-star">*</span></h3>
+      <label for="title" class="add-task-label" id="">
+        <input type="text" name="title" class="add-task-title" id="" minlength="3" maxlength="20"
+          placeholder="Enter a Title" required="">
+      </label>
+
+      <div class="extra-small d-none" id="">This field is required</div>
+
+      <h3 class="m-top-32 h3">Description</h3>
+      <label for="description" class="add-task-label m-bottom-32">
+        <textarea name="description" id="" placeholder="Enter a Description"
+          class="add-task-description"></textarea>
+      </label>
+
+      <h3 class="h3">Assigned to:</h3>
+      <label for="assigned" class="add-task-label bgC-white" onclick="">
+        <input type="text" name="assigned" id="" class="add-task-title add-task-assigned-to"
+          placeholder="Choose contacts" autocomplete="off" onclick="">
+        <img src="../assets/svg/arrow_drop_down-1.svg" onclick="" class="cursor-pointer margin-right"
+          id="">
+        <img src="../assets/svg/arrow_drop_down-2.svg" onclick="" class="cursor-pointer d-none"
+          id="">
+      </label>
+
+      <div class="m-top-20 assignedToOutput" id="">
+        <div class="container initialsOverview">
+          <span onclick="">AQ</span>
+        </div>
+      </div>
+
+      <div class="add-task-required-info">* This field is required</div>
+
+    </form>
+  </div>
+
+  <div class="add-task-seperator"></div>
+
+  <div class="add-task-container-right" id="">
+
+    <h3 class="h3">Due date <span class="required-star">*</span></h3>
+    <label for="dueDate" class="add-task-label" id="">
+      <input type="date" name="dueDate" class="add-task-due-date" id="" required="">
+    </label>
+
+    <div class="extra-small d-none" id="">This field is required</div>
+
+    <h3 class="m-top-32 h3">Prio</h3>
+    <div class="add-task-prio">
+      <div id="" class="add-task-prio-high-popup" onclick="">
+        Urgent
+        <img id="" src="../assets/svg/high.svg">
+      </div>
+      <div id="" class="add-task-prio-medium-popup add-task-prio-medium-pressed-button" onclick="">
+        Medium
+        <img id="" src="../assets/svg/Medium.svg">
+      </div>
+      <div id="add_task_prio_low" class="add-task-prio-low-popup" onclick="">
+        Low
+        <img id="" src="../assets/svg/Low.svg">
+      </div>
+    </div>
+
+    <h3 class="h3">Category<span class="required-star">*</span></h3>
+
+    <label for="category" class="add-task-label bgC-white" id="">
+      <div class="add-task-category-input" id="" onclick="">User Story</div>
+    </label>
+
+    <div class="d-none" id="">
+      <div class="addTaskCategorySelect" onclick="">Technical Task</div>
+      <div class="addTaskCategorySelect" onclick="">User Story</div>
+    </div>
+
+    <div class="extra-small d-none" id="">This field is required</div>
+
+    <div class="d-none" id="" onclick=""></div>
+
+    <h3 class="m-top-32 h3">Subtasks</h3>
+    <label for="subtaskAddTask" class="add-task-label bgC-white">
+      <input type="text" name="subtaskAddTask" class="add-task-title" id="add_task_subtask"
+        placeholder="Add new Subtask" autocomplete="off" maxlength="20">
+      <img src="../assets/svg/add.svg" class="add-subtask-img cursor-pointer" id="" onclick="">
+    </label>
+
+    <div id="outputSubtasks" class="outputSubtaskClass"></div>
+
+    <div class="add-task-bottom-container">
+      <div class="add-task-required-info-bottom">* This field is required</div>
+      <div class="add-task-buttons-container">
+        <button type="reset" class="add-task-clear-button-popup d-flex-ai-center-jc-center" onclick="closeAddTaskCard()">Cancel</button>
+        <button class="add-task-add-button d-flex-ai-center-jc-center" id="">Create Task<img
+            src="../assets/svg/check_white.svg"></button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="add-task-popup-container d-none" id="">
+    <div class="add-task-popup-reg" id="">Task added to Board <img src="" alt="board picture"></div>
+  </div>
+</div>
+</div>
+</div>
+</div>`
+
+document.body.appendChild(overlay);
+    // renderAddTaskCard(overlay);
+}
+
+function renderAddTaskCard(){
+    document.getElementById('container').classList.add('add-task-popup');
+    document.getElementById('overlay-container').classList.add('d-none');
+
+    openAddTaskCard();
+
+}
+
+function closeAddTaskCard() {
+    const overlay = document.querySelector('.overlay');
+    if (overlay) {
+        overlay.remove();
+        document.getElementById('container').classList.remove('add-task-popup');
+        document.getElementById('overlay-container').classList.remove('d-none');
     }
+}
 
