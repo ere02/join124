@@ -188,7 +188,6 @@ function generateTodoHTML(element) {
     return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
 }
 
-<<<<<<< HEAD
 function startDragging(id) {
     currentDraggedElement = id;
 }
@@ -199,10 +198,6 @@ function generateTodoHTML(element) {
 
 async function renderTaskHTML(element) {
 
-=======
-async function renderTaskHTML(element) {
-
->>>>>>> 18c35c24de24467554d7a6f4c15e4e3b8cc4dc8a
     return /*html*/ `
         <div draggable="true" ondragstart="startDragging(${element['id']})" class="task">
             <div id='type${element['id']}' class="task-type">${element['type']}</div>
@@ -235,15 +230,9 @@ function moveTo(category) {
     console.log("Moving element to category:", category);
     console.log("Current dragged element:", currentDraggedElement);
 
-<<<<<<< HEAD
     todos[currentDraggedElement]['category'] = category;
     removeHighlight(category);
     updateHTML();
-=======
-    allTasks[currentDraggedElement]['category'] = category;
-    removeHighlight(category);
-    updateBoardHTML();
->>>>>>> 18c35c24de24467554d7a6f4c15e4e3b8cc4dc8a
 }
 
 function highlight(id) {
@@ -327,7 +316,6 @@ function renderBoard() {
     </div>
     `;
 }
-<<<<<<< HEAD
 
 function openAddTaskCard() {
     const overlay = document.createElement('div');
@@ -470,6 +458,4 @@ function closeAddTaskCard() {
         document.getElementById('overlay-container').classList.remove('d-none');
     }
 }
-=======
->>>>>>> 18c35c24de24467554d7a6f4c15e4e3b8cc4dc8a
 
