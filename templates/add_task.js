@@ -117,10 +117,7 @@ function renderAddTask(){
       </div>
     </div>
   </div>
-
-
 `;
-
 }
 
 function resetForm() {

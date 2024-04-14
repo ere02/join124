@@ -16,7 +16,7 @@ function signUp() {
          /*  <a href="index.html"></a> */
           <img
           src="/assets/svg/arrow-left-line.svg"
-          <div class="go-back-arrow" onclick="login()">
+          <div class="go-back-arrow" onclick="goMainPage()">
               alt=""
               class="arrow-icon"
           /*     onclick="window.location.href='index.html'" */
