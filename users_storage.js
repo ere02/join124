@@ -2,8 +2,7 @@ const allUsers =
    [  {
         "id": 0,
       "nickname": "guest",
-      "firstname":"g",
-      "familyname": "g",
+      "firstname": "guest",
       "personalColor": "var(--color-grey)",
       "projectId": [0]
     },
