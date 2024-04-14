@@ -100,7 +100,7 @@ async function loadContacts(id) {
   allNavButton(id);
   contacts.classList.remove("displaynone");
   contacts.innerHTML =  await renderContacts();
-  await treatAllContacts();
+  await findAllFirstLettersOfContacts();
 }
 
 /** CONTENT loads in Policy Section

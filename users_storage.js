@@ -4,7 +4,8 @@ const allUsers =
       "nickname": "guest",
       "firstname":"g",
       "familyname": "g",
-      "projectId": [0],
+      "personalColor": "var(--color_grey)",
+      "projectId": [0]
       // "items":{
       //   "todos":[],
       //   "progress":[],
@@ -20,6 +21,7 @@ const allUsers =
       "familyname": "Troitzsch",
       "email": "christina@troitzsch.de",
       "pword": "*****",
+      "personalColor": "var(--color_yellowgreen)",
       "projectId":[1],
       // "items":{
       //   "todos":[1],

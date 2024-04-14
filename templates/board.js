@@ -99,7 +99,7 @@ const description = allTasks.map(item => item.description);
 const category = allTasks.map(item => item.category);
 const id = allTasks.map(item => item.id);
 
-let currentUser;
+let currentUser = 3;
 let currentTasks;
 // console.log(currentTasks);
 

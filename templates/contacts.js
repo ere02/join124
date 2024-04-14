@@ -7,12 +7,8 @@ const emails = allUsers.map(item => item.email);
 let contactlist = [];
 let letters = [];
 
-
-
-
-
 async function renderContacts(){
-    
+   
     return  `
 
 <div id="contactList" class="sidepanel">
@@ -39,19 +35,83 @@ async function renderContacts(){
 
 }
 
-async function treatAllContacts(){
+async function findAllFirstLettersOfContacts(){
     let contact = document.getElementById("allContacts");
-    contact.innerHTML = '';
+    const uniqueInitialsSet = new Set();
 
-    if(firstnames !== undefined){
-        renderFirstnames(firstnames, contact)
-    } 
-    return ;
+    // let findInitial = document.getElementById("allInitials");
+    //   findInitial.innerHTML = '';
+  for (let i = 0; i < allUsers.length; i++) {
+      let initial = allUsers[i].firstname[0];
+            
+            if (!uniqueInitialsSet.has(initial)) {
+                initial = initial.toUpperCase();
+              uniqueInitialsSet.add(`${initial}`);
+            }
+        contactlist = Array.from(uniqueInitialsSet);
+        contactlist.sort(); 
+  }
+  renderFirstLetterArray(contact);
+}
+
+
+function  renderFirstLetterArray(contact){
+    
+    for (let i = 0; i < contactlist.length; i++){
+            let initial = contactlist[i];
+            let initialHeadline = document.createElement("div");
+            initialHeadline.id = initial;
+            initialHeadline.innerHTML = `
+            <div id="${initial}"> <h4  class="letter">${initial}</h4>
+          <hr>
+        </div>
+            `;
+          //   initialHeadline.classList.add("letter");
+          //   initialButton.addEventListener("click", function () {
+          //       let firstname = filterByInitial(initial);
+          //   });
+          
+             contact.appendChild(initialHeadline);
+       }
+       treatAllContacts();
+    }
+
+
+async function treatAllContacts(){
+    for (let i = 0; i < allUsers.length; i++){
+        
+        let firstname = allUsers[i].firstname;
+        let initial = firstname[0];
+        initial = initial.toUpperCase();
+        let lastname = allUsers[i].familyname;
+        let initialLastname = lastname[0];
+        let email = allUsers[i].email;
+        let personalColor = allUsers[i].personalColor;
+        
+        let sortByInitial = document.getElementById(`${initial}`);
+        sortByInitial.innerHTML += `
+        <div id="user${i}" class="users" style="backgroundColor:${personalColor}">
+          <div class="user-circle user-color">${initial}${initialLastname}</div>
+          <div class="contact-name">
+            <h5>${firstname} ${lastname}</h5>
+            <span>${email}</span>
+          </div>
+        `;
+
+    }
+//     let contact = document.getElementById("allContacts");
+//     contact.innerHTML = '';
+// await findAllFirstLettersOfContacts(contact);
+
+    // if(firstnames !== undefined){
+    //     renderFirstnames(firstnames, contact)
+    // } 
+    // return ;
 }
 
 
 function renderFirstnames(firstnames,contact){
-    debugger;
+   
 	for (let i = 0; i < firstnames.length; i++) {
 		let firstname = firstnames[i];
         let lastname = allUsers[i].familyname;
