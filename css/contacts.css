@@ -17,7 +17,9 @@
 .letter{
     padding:10px 35px;
 }
-
+.email{
+    color:var(--color-dark-cyan);
+}
 #addContact{
     height: 3rem;
     border-radius: 10px;
@@ -41,6 +43,7 @@
 
 
 .users{
+    border-radius:10px;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -48,8 +51,16 @@
     padding: 15px 25px;
     gap: 24px;
 }
+.users:hover{
+    cursor:pointer;
+    background-image: linear-gradient(rgba(200, 200, 200, 0.1),rgba(100, 100,100, 0.1));
+    
+}
+
+    
 hr {
     border: 1px solid var(--use_border-text-light);
+    margin: 5px 0;
 }
 .user-circle{
     display:flex;

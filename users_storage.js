@@ -85,7 +85,7 @@ const allUsers =
         "familyname": "Test",
         "pword": "*****",
         "email": "u.test@yahoo.de",
-        "personalColor": "var(--color-violet)",
+        "personalColor": "var(--color-violett)",
         "projectId":[1,2] 
            },
       {
