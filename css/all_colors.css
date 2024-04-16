@@ -1,20 +1,20 @@
 
 :root{
-    /* FARBEN RANDOM für MITGLIEDER BUBBLES */
+    /** FARBEN RANDOM für MITGLIEDER BUBBLES */
     --color-orange: rgb(255,122,0);
     --color-pink:rgb(255,94,179);
     --color-lila: rgb(110,82,255);
     --color-violett: rgb(147,39,255);
     --color-cyan:rgb(0,190,232);
-    --color-dark-cyan:rgb(0, 130, 236);
+    --color-dark-cyan:rgb(0, 130, 236,1);
     --color-aquamarin:rgb(31,215,193);
     --color-redorange:rgb(255,116,94);
     --color-brightorange:rgb(255,163,94);
     --color-fuchsia:rgb(252,113,255);
     --color-blue:rgb(0,56,255);
     --color-yelloworange:rgb(255,199,1);
-
-     /* FARBEN ZU HELL ODER NUR für STYLE-ELEMENTE) */
+  
+     /** FARBEN ZU HELL ODER NUR für STYLE-ELEMENTE) */
     --color-sunnyyellow:rgb(255,230,43);
     --color-red:rgb(255,70,70);
     --color-greyish-icon:rgb(168,168,168);
@@ -30,7 +30,7 @@
 
 
 
-    /* VARIABLEN für alle ITEMS mit der selben FARBE */
+    /** VARIABLEN für alle ITEMS mit der selben FARBE */
     --use_border-button-bg-text:var(--color-dark-bg);
     --use_nav-hover:var(--color-darkblue);
     --use_border-button-bg-text-hover:var(--color-cyan);

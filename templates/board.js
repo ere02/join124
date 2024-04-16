@@ -146,9 +146,9 @@ function moveTo(category) {
     console.log("Moving element to category:", category);
     console.log("Current dragged element:", currentDraggedElement);
 
-    todos[currentDraggedElement]['category'] = category;
+    allTasks[currentDraggedElement]['category'] = category;
     removeHighlight(category);
-    updateHTML();
+    updateBoardHTML();
 }
 
 function highlight(id) {

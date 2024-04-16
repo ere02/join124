@@ -88,12 +88,40 @@ async function treatAllContacts(){
           <div class="user-circle" style="background-color:${personalColor}">${initial}${initialLastname}</div>
           <div class="contact-name">
             <h5>${firstname} ${lastname}</h5>
-            <span>${email}</span>
+            <span class="email">${email}</span>
           </div>
         `;
-
+    }
     }
 
+  // const users = document.querySelectorAll('.users');
+
+  //   function handleClick(event) {
+        
+  //         users.forEach(user => {
+  //             user.style.backgroundColor = '';
+  //         });
+  //         if (event.target) {
+  //           event.target.style.backgroundColor = 'var(--use_border-button-bg-text)';
+  //           console.log(currentColor);
+  //       } else {
+  //           console.error("Target element is undefined.");
+  //       }
+  //     }
+
+  //     users.forEach(user => {
+  //         user.addEventListener('click', handleClick);
+  //     });
+
+
+      function updateColor(event) {
+        if (event.target) {
+            event.target.style.backgroundColor = currentColor;
+            console.log(currentColor);
+        } else {
+            console.error("Target element is undefined.");
+        }
+    }
 
 
 function renderFirstnames(firstnames,contact){
@@ -118,5 +146,4 @@ function definitionOfContactInfo(contact, lastname, email,firstname, i){
             <span>${email}</span>
           </div>
 `;
-}
 }
