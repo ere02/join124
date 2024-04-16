@@ -298,20 +298,20 @@ function openAddTaskCard() {
     <div class="extra-small d-none" id="">This field is required</div>
 
     <h3 class="m-top-32 h3">Prio</h3>
-    <div class="add-task-prio">
-      <div id="" class="add-task-prio-high-popup" onclick="">
-        Urgent
-        <img id="" src="../assets/svg/high.svg">
-      </div>
-      <div id="" class="add-task-prio-medium-popup add-task-prio-medium-pressed-button" onclick="">
-        Medium
-        <img id="" src="../assets/svg/Medium.svg">
-      </div>
-      <div id="add_task_prio_low" class="add-task-prio-low-popup" onclick="">
-        Low
-        <img id="" src="../assets/svg/Low.svg">
-      </div>
-    </div>
+        <div class="add-task-prio">
+          <div id="" class="add-task-prio-high" onclick="">
+            Urgent
+            <img id="" src="../assets/svg/urgent.svg" class="prioSVG">
+          </div>
+          <div id="" class="add-task-prio-medium add-task-prio-medium-pressed-button" onclick="">
+            Medium
+            <img id="" src="../assets/svg/medium_white.svg" class="prioSVG">
+          </div>
+          <div id="add_task_prio_low" class="add-task-prio-low" onclick="">
+            Low
+            <img id="" src="../assets/svg/low.svg" class="prioSVG">
+          </div>
+        </div>
 
     <h3 class="h3">Category<span class="required-star">*</span></h3>
 
