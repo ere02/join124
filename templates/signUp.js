@@ -14,7 +14,7 @@ function signUp() {
           <a href="index.html">
             <img src="/assets/svg/arrow-left-line.svg" alt="" class="arrow-icon" />
           </a>
-          <div>
+          <div class="headline-wrapper">
             <p class="headline">Sign up</p>
             <hr class="underline" />
           </div>

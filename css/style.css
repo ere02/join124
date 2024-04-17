@@ -472,7 +472,7 @@ header {
 .button:hover,
 .button-guest:hover,
 .tile:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
   transition: all 0.2s;
   box-shadow: 0 5px 20px 0 var(--use_border-text-light),
     0 2px 10px 0 var(--use_border-text-light);
