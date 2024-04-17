@@ -428,7 +428,7 @@ header {
   gap: 2.5rem;
   align-items: center;
   width: 41rem;
-  height: 31rem;
+  height: 35rem;
   background-color: var(--use_bg-text-white);
   border: 1px solid var(--use_border-text-light);
   border-radius: 2.5rem;
@@ -441,7 +441,8 @@ header {
   align-items: center;
   width: 41rem;
   height: 35rem;
-  background-color: var(--use_background-white);
+  background-color: var(--use_bg-text-white);
+  border: 1px solid var(--use_border-text-light);
   border-radius: 2.5rem;
 }
 
