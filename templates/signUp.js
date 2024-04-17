@@ -1,10 +1,10 @@
 function signUp() {
-    // Get the element with class "new-user"
-    const newUserDiv = document.querySelector('.new-user');
+  // Get the element with class "new-user"
+  const newUserDiv = document.querySelector('.new-user');
 
-    // Hide the element using style.display
-    newUserDiv.style.display = 'none';
-  
+  // Hide the element using style.display
+  newUserDiv.style.display = 'none';
+
   let content = document.getElementById('content');
   content.innerHTML = `
   <div class="input-container-signUp">
@@ -47,6 +47,22 @@ function signUp() {
     </div>
   </div>
   `;
+
+  const submitButton = document.querySelector('.button');
+  submitButton.addEventListener('click', () => {
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+
+    if (nameInput.value && emailInput.value && passwordInput.value && confirmPasswordInput.value) {
+      // All input fields have a value
+      // Perform sign up logic here
+    } else {
+      // At least one input field is empty
+      // Display an error message or prevent form submission
+    }
+  });
 
   const goBack = () => {
     window.location.href = 'index.html';
