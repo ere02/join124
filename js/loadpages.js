@@ -103,6 +103,7 @@ async function loadContacts(id) {
   contacts.classList.remove("displaynone");
   contacts.innerHTML =  await renderContacts();
   await findAllFirstLettersOfContacts();
+  contacts.innerHTML += generateEditContactHTML();
 }
 
 /** CONTENT loads in Policy Section
@@ -196,3 +197,4 @@ function disableHeaderIcons(id) {
       break;
   }
 }
+

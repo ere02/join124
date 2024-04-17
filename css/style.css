@@ -15,8 +15,11 @@ body {
 }
 
 .contentsection {
-  margin-top: 10rem;
+  margin-top: 12rem;
   margin-left: 20rem;
+}
+.marginLeft46rem{
+  margin-left:46rem;
 }
 
 /** Seitenüberschriften  61px
@@ -291,7 +294,6 @@ header {
 .headline {
   display: flex;
   align-items: center;
-  justify-content: center;
   font-family: 'inter';
   font-size: 3rem;
   font-weight: bolder;
