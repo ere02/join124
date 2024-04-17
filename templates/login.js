@@ -1,15 +1,6 @@
 function loginPage() {
   return `
-    <div class="login-page">
-      <div class="login-header">
-        <div></div>
-        <div class="new-user">
-          <span>Not a Join user?</span>
-          <button class="button" onclick="signUp()">
-            Sign up
-          </button>
-        </div>
-      </div>
+
       <div class="input-container-login">
         <div class="headline-wrapper">
           <p class="headline">Log in</p>

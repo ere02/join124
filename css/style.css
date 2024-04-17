@@ -108,9 +108,13 @@ HEAD a {
   animation-name: movinglogo;
   animation-duration: 500ms;
   animation-direction: reverse;
+  /*Index Page new design by Erwin*/
   top: -38vh;
-  left: 10vw;
+  left: -38vw;
 }
+  /* top: -38vh;
+  left: 10vw;
+} */
 
 #content {
   opacity: 0;
