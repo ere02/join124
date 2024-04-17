@@ -5,6 +5,7 @@ async function init() {
     renderLogin();
     introAnimation();
     
+    
 }
 
    let login =  document.getElementById("content");
@@ -13,6 +14,13 @@ function introAnimation() {
     document.getElementById("logo").classList.add("animation");
     document.getElementById("layer").classList.add("small");
     document.getElementById("content").classList.add("visible");
+}
+
+async function returnLoginHTML(){
+    let login = document.getElementById("content");
+    login.innerHTML = `
+    <div w3-include-html="templates/login.html"></div>
+    `;
 }
 
 function renderLogin(){
