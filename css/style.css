@@ -108,9 +108,13 @@ HEAD a {
   animation-name: movinglogo;
   animation-duration: 500ms;
   animation-direction: reverse;
+  /*Index Page new design by Erwin*/
   top: -38vh;
-  left: 10vw;
+  left: -38vw;
 }
+  /* top: -38vh;
+  left: 10vw;
+} */
 
 #content {
   opacity: 0;
@@ -424,7 +428,7 @@ header {
   gap: 2.5rem;
   align-items: center;
   width: 41rem;
-  height: 31rem;
+  height: 35rem;
   background-color: var(--use_bg-text-white);
   border: 1px solid var(--use_border-text-light);
   border-radius: 2.5rem;
@@ -437,7 +441,8 @@ header {
   align-items: center;
   width: 41rem;
   height: 35rem;
-  background-color: var(--use_background-white);
+  background-color: var(--use_bg-text-white);
+  border: 1px solid var(--use_border-text-light);
   border-radius: 2.5rem;
 }
 
@@ -467,7 +472,7 @@ header {
 .button:hover,
 .button-guest:hover,
 .tile:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
   transition: all 0.2s;
   box-shadow: 0 5px 20px 0 var(--use_border-text-light),
     0 2px 10px 0 var(--use_border-text-light);
