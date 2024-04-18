@@ -198,3 +198,22 @@ function disableHeaderIcons(id) {
   }
 }
 
+  // Füge den EventListener für alle <div>-Tags mit der Klasse "users" hinzu
+  const userDivs = document.querySelectorAll(".users");
+  userDivs.forEach(div => {
+      div.addEventListener("click", () => {
+        handleContactOnClick(div);
+      });
+  });
+
+  // Funktion zum Ändern der Farbe
+ function handleContactOnClick(users) {
+      // Wenn bereits ein aktiver Button existiert, setze seine Farbe zurück
+      if (activeContact) {
+          activeContact.classList.remove("active");
+      }
+      // Setze die Farbe des angeklickten Buttons auf gelb
+      users.classList.add("active");
+      // Aktualisiere den aktiven Button
+      activeContact = users;
+  }
