@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
  */
 
 const summary = document.getElementById("section-summary");
-// const addtask = document.getElementById("section-addtask");
-// const board = document.getElementById("section-board");
-// const contacts = document.getElementById("section-contacts");
-// const policy = document.getElementById("section-policy");
+const addtask = document.getElementById("section-addtask");
+const board = document.getElementById("section-board");
+const contacts = document.getElementById("section-contacts");
+const policy = document.getElementById("section-policy");
 
 
 /**
@@ -27,10 +27,10 @@ const summary = document.getElementById("section-summary");
  */
 function resetAllSections() {
      summary.classList.add("displaynone");
-  // addtask.classList.add("displaynone");
-  // board.classList.add("displaynone");
-  // contacts.classList.add("displaynone");
-  // policy.classList.add("displaynone");
+  addtask.classList.add("displaynone");
+  board.classList.add("displaynone");
+  contacts.classList.add("displaynone");
+  policy.classList.add("displaynone");
 
   }
 
