@@ -36,6 +36,7 @@ async function startContent() {
 
 }
 
+
 function callFramePageSinLogin(from) {
     const url = `../subpages/frame-page_sinLogin.html?from=${from}`;
     window.location = url;

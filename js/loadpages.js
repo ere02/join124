@@ -26,12 +26,14 @@ const policy = document.getElementById("section-policy");
  * Makes sure that all NavBar-Menu-Points are not highlighted anymore - then highlighting clicked Nav Point
  */
 function resetAllSections() {
-  summary.classList.add("displaynone");
+     summary.classList.add("displaynone");
   addtask.classList.add("displaynone");
   board.classList.add("displaynone");
   contacts.classList.add("displaynone");
   policy.classList.add("displaynone");
-}
+
+  }
+
 /**
  * Reset the Background-Color of Nav-Buttons for all
  */
@@ -103,7 +105,7 @@ async function loadContacts(id) {
   contacts.classList.remove("displaynone");
   contacts.innerHTML =  await renderContacts();
   await findAllFirstLettersOfContacts();
-  contacts.innerHTML += generateEditContactHTML();
+  contacts.innerHTML +=generateEditContactHTML();
 }
 
 /** CONTENT loads in Policy Section
@@ -198,22 +200,3 @@ function disableHeaderIcons(id) {
   }
 }
 
-  // Füge den EventListener für alle <div>-Tags mit der Klasse "users" hinzu
-  const userDivs = document.querySelectorAll(".users");
-  userDivs.forEach(div => {
-      div.addEventListener("click", () => {
-        handleContactOnClick(div);
-      });
-  });
-
-  // Funktion zum Ändern der Farbe
- function handleContactOnClick(users) {
-      // Wenn bereits ein aktiver Button existiert, setze seine Farbe zurück
-      if (activeContact) {
-          activeContact.classList.remove("active");
-      }
-      // Setze die Farbe des angeklickten Buttons auf gelb
-      users.classList.add("active");
-      // Aktualisiere den aktiven Button
-      activeContact = users;
-  }
