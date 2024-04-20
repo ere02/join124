@@ -41,7 +41,8 @@
     background-color: var(--use_border-button-bg-text-hover);
 }
 
-
+/** Eventlistener is added to the Class
+*/
 .users{
     border-radius:10px;
     display: flex;
