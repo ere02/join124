@@ -1,9 +1,10 @@
-// TOKEN FÜR SPÄTER REMOTE DATENSPEICHERUNG  VJOV8Y8IUZO3FYNKTN886RO1F4GPQUZG86SP8SQP
+// TOKEN FÜR SPÄTER REMOTE DATENSPEICHERUNG 
 let goBackToPage = [];
 
 async function init() {
     renderLogin();
     introAnimation();
+    
     
 }
 
@@ -15,16 +16,26 @@ function introAnimation() {
     document.getElementById("content").classList.add("visible");
 }
 
-function renderLogin(){
-    login.innerHTML = loginPage();
+async function returnLoginHTML(){
+    let login = document.getElementById("content");
+    login.innerHTML = `
+    <div w3-include-html="templates/login.html"></div>
+    `;
 }
 
- 
+function renderLogin(){
+    login.innerHTML = loginPage();
+    const newUserDiv = document.querySelector('.new-user');
+    newUserDiv.style.display = '';
+}
+
+ /** COPIERT UND IM JEWEILIGEN PAGE-SCRiPT VERBAUT */
 async function startContent() {
     await includeHTML();
     await loadSummary('navsummary');
 
 }
+
 
 function callFramePageSinLogin(from) {
     const url = `../subpages/frame-page_sinLogin.html?from=${from}`;
@@ -70,5 +81,4 @@ async function includeHTML() {
         }
     }
 }
-
 

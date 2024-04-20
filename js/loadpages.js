@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("navlegal");
   document.getElementById("headerIcons");
   document.getElementById("helpIcon");
+
 });
 
 /**
@@ -26,12 +27,14 @@ const policy = document.getElementById("section-policy");
  * Makes sure that all NavBar-Menu-Points are not highlighted anymore - then highlighting clicked Nav Point
  */
 function resetAllSections() {
-  summary.classList.add("displaynone");
+     summary.classList.add("displaynone");
   addtask.classList.add("displaynone");
   board.classList.add("displaynone");
   contacts.classList.add("displaynone");
   policy.classList.add("displaynone");
-}
+
+  }
+
 /**
  * Reset the Background-Color of Nav-Buttons for all
  */
@@ -56,42 +59,35 @@ function goBackButton() {
   policy.classList.add("displaynone");
 }
 
-/** CONTENT loads in its Section
- * CASE: Loading Summary
+/** CONTENT loads the HTML
+ * CASE: Loading Summary-Content in its section
  * Nav-Button-Treatment for the Case "Summary" and "Greet the User" by Daytime
  * Fill the loadSummary()-Function in the goBacktoPage-Array
  */
 async function loadSummary(id) {
   goBackToPage.splice(0, 1);
   goBackToPage.push(() => loadSummary(id));
-  allNavButton(id);
-  summary.classList.remove("displaynone");
-  summary.innerHTML = renderSummary();
-  renderSayHello();
-}
-/** CONTENT loads in its Section
- * CASE: Loading addtask
+  goToSummaryHTML();
+  }
+
+/** CONTENT loads the HTML
+ * CASE: Loading addtask-Content in its Section
  */
-function loadAddTask(id) {
+async function loadAddTask(id) {
   goBackToPage.splice(0, 1);
   goBackToPage.push(() => loadAddTask(id));
-  allNavButton(id);
-  addtask.classList.remove("displaynone");
-  addtask.innerHTML = renderAddTask();
+  
+  await goToAddTaskHTML();
 }
 
-/** CONTENT loads in its Section
- * CASE: Loading board
+/** CONTENT loads the HTML
+ * CASE: Loading board in its section
  */
-function loadBoard(id) {
+async function loadBoard(id) {
 
   goBackToPage.splice(0, 1);
   goBackToPage.push(() => loadBoard(id));
-  allNavButton(id);
-  board.classList.remove("displaynone");
-  board.innerHTML = renderBoard();
-  startApp();
-  // updateBoardHTML();
+  await goToBoardHTML();
 }
 
 /** CONTENT loads in its Section
@@ -100,28 +96,23 @@ function loadBoard(id) {
 async function loadContacts(id) {
   goBackToPage.splice(0, 1);
   goBackToPage.push(() => loadContacts(id));
-  allNavButton(id);
-  contacts.classList.remove("displaynone");
-  contacts.innerHTML =  await renderContacts();
-  await findAllFirstLettersOfContacts();
+  await goToContactsHTML();
 }
 
 /** CONTENT loads in Policy Section
  * CASE: Loading Privacy Policy
  */
-function loadPrivacy(id) {
-  allNavButton(id);
-  policy.classList.remove("displaynone");
-  policy.innerHTML = renderPrivacy("DE");
+async function loadPrivacy() {
+  
+  await goToPrivacyHTML();
+
 }
 
 /** CONTENT loads in Policy Section
  * CASE: Loading Legal Notice
  */
-function loadLegal(id) {
-  allNavButton(id);
-  policy.classList.remove("displaynone");
-  policy.innerHTML = renderLegal("DE");
+async function loadLegal() {
+  await goToLegalHTML();
 }
 /** CONTENT loads in Policy Section
  * CASE: Loading HELP Information
@@ -137,7 +128,6 @@ function loadHelp(id) {
  */
 function allNavButton(id) {
   disableHeaderIcons(id);
-  resetAllSections();
   resetAllNavButtons();
   const navbutton = document.getElementById(id);
   navbutton.classList.add("bg-darker");
@@ -197,3 +187,8 @@ function disableHeaderIcons(id) {
       break;
   }
 }
+
+function goBack() {
+  window.history.back();
+}
+

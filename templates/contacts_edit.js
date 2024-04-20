@@ -1,18 +1,18 @@
 function generateEditContactHTML() {
   return `
-    <link rel="stylesheet" href="/css/all_colors.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-    </div>
-    <div class="edit-task">
-      <div class="label-wrapper">
-        <div class="label-position">
-          <img src="/assets/svg/logo_light.svg" alt="logo" class="logo-small" />
-          <p class="headline-dark">Edit contact</p>
-          <hr class="underline-dark" />
+  <div class="Headlinecontainer">
+  <div class="headline"><h1 class="padding20 right-border-2px">Contact</h1><h4 class="padding20">Better with a Team</h4>
+</div>
+<div id="start-container">
         </div>
-      </div>
+  `;
+}
 
-      <div class="edit-task-wrapper">
+function generateUserInfo(){
+  let container = document.getElementById("start-container");
+  
+  container.innerHTML = /*html*/ `
+  <form>
         <div class="letter-box">
           <img src="/assets/svg/letter-box.svg" alt="email icon" class="icon" />
         </div>
@@ -35,12 +35,8 @@ function generateEditContactHTML() {
         <button class="button-guest" type="submit">Delete</button>
         <button class="button" type="submit">Save</button>
       </div>
-    </div>
-
-    </div>
-
-    </div>
+    </form>
   `;
 }
 
-module.exports = generateEditContactHTML;
+// module.exports = generateEditContactHTML;
