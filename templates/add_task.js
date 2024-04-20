@@ -85,10 +85,10 @@ function renderAddTask(){
         <label for="category" class="add-task-label bgC-white" id="">
           <!-- <div class="add-task-category-input" id="" onclick="">Select task category</div> -->
        
-        <select placeholder="Select task category" class="add-task-category-input">
-              <option>Select task category</option>      
-              <option>Technical Task</option>
-              <option>User Story</option>
+        <select required class="add-task-category-input">
+              <option value="">Select task category</option>      
+              <option value="Technical Task">Technical Task</option>
+              <option value="User Story">User Story</option>
             </select>  
         </label>
 
