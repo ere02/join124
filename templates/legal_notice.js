@@ -1,4 +1,14 @@
 
+async function goToLegalHTML(){
+  window.location.href = '../subpages/legal.html';
+}
+
+async function startLegal(id) {
+  await includeHTML();
+  policy.classList.remove("displaynone");
+  policy.innerHTML = renderLegal("DE");
+  allNavButton(id);  
+}
 
 function renderLegal(lan) {
   switch (lan) {
@@ -8,7 +18,7 @@ function renderLegal(lan) {
 <div class="start-container">
    
     <div class ="policy">
-             <div class="back-head"><h1 class="">Legal Notice </h1><div onclick="goBackButton()"><img src="../assets/svg/back.svg" class="backarrow"></div>
+             <div class="back-head"><h1 class="">Legal Notice </h1><div onclick="goBack()"><img src="../assets/svg/back.svg" class="backarrow"></div>
     </div>
    <h4 class="bold"> Impressum</h4>
    <p>

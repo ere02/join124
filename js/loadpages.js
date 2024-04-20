@@ -101,19 +101,17 @@ async function loadContacts(id) {
 /** CONTENT loads in Policy Section
  * CASE: Loading Privacy Policy
  */
-function loadPrivacy(id) {
-  allNavButton(id);
-  policy.classList.remove("displaynone");
-  policy.innerHTML = renderPrivacy("DE");
+async function loadPrivacy() {
+  
+  await goToPrivacyHTML();
+
 }
 
 /** CONTENT loads in Policy Section
  * CASE: Loading Legal Notice
  */
-function loadLegal(id) {
-  allNavButton(id);
-  policy.classList.remove("displaynone");
-  policy.innerHTML = renderLegal("DE");
+async function loadLegal() {
+  await goToLegalHTML();
 }
 /** CONTENT loads in Policy Section
  * CASE: Loading HELP Information
@@ -189,3 +187,6 @@ function disableHeaderIcons(id) {
   }
 }
 
+function goBack() {
+  window.history.back();
+}
