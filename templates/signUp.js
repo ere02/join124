@@ -11,9 +11,9 @@ function signUp() {
     <div class="signup-wrapper">
       <div class="input-container-signup">
         <div class="headline-wrapper-signup">
-          <a href="index.html">
-            <img src="/assets/svg/arrow-left-line.svg" alt="" class="arrow-icon" />
-          </a>
+        <div onclick="renderLogin()">  
+                <img src="/assets/svg/arrow-left-line.svg" alt="" class="arrow-icon" />
+          </div>
           <div class="headline-wrapper">
             <p class="headline">Sign up</p>
             <hr class="underline" />
@@ -64,10 +64,11 @@ function signUp() {
     }
   });
 
-  const goBack = () => {
+/*   const goBack = () => {
     window.location.href = 'index.html';
-  };
+  }; */
 
-  const arrowIcon = document.querySelector('.arrow-icon');
+/*   const arrowIcon = document.querySelector('.arrow-icon');
   arrowIcon.addEventListener('click', goBack);
+  */
 }
