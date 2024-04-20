@@ -28,6 +28,11 @@ function errorFunction() {
 
 let currentDraggedElement;
 
+function startApp() {
+    updateBoardHTML();
+    addSearchEventListener();
+}
+
 /**
  * The draggable Objects for all lanes are handled here
  */
@@ -81,6 +86,13 @@ async function updateBoardHTML() {
             await backgroundType(element);
         }
     }
+
+    searchInput = document.getElementById('search');
+    if (searchInput) {
+        searchInput.addEventListener('keyup', search);
+    } else {
+        console.error('Das Suchfeld wurde nicht gefunden.');
+    }
 }
 /**
  * EMPTY LANE rendering
@@ -102,9 +114,9 @@ function generateTodoHTML(element) {
     return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
 }
 
-function startDragging(id) {
-    currentDraggedElement = id;
-}
+// function startDragging(id) {
+//     currentDraggedElement = id;
+// }
 
 function generateTodoHTML(element) {
     return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
@@ -177,10 +189,10 @@ function renderBoard() {
                     </div>
                     <div class="board-headline-container-search-add">
                         <div class="board-input-search-container">
-                            <input id="" class="board-input-search" type="search" placeholder="Find Task"
+                            <input id="search" class="board-input-search" type="search" onkeyup="" placeholder="Find Task"
                                 autocomplete="off">
                             <div class="board-input-search-icons">
-                                <img class="board-input-search-icons" src="../assets/svg/search.svg" alt="">
+                                <img class="board-input-search-icons" onclick="renderAddTaskCard()" src="../assets/svg/search.svg" alt="">
                             </div>
                         </div>
                         <button id="add_task_button" class="board-button-addTask" onclick="renderAddTaskCard()"><span class="board-text-addTask" >
@@ -192,7 +204,7 @@ function renderBoard() {
                     <div class="board-task-category">
                         <div class="board-task-headline">
                             <span class="board-add-task-headline">To do</span>
-                            <img class="board-add-task-add-icon" src="../assets/svg/add.svg" alt="">
+                            <img class="board-add-task-add-icon" onclick="renderAddTaskCard()" src="../assets/svg/add.svg" alt="">
                         </div>
                         <div class="board-task-container drag-area" id="inTodo" ondrop="moveTo('inTodo')"
                             ondragleave="removeHighlight('inTodo')" ondragover="allowDrop(event); highlight('inTodo')">
@@ -202,7 +214,7 @@ function renderBoard() {
                     <div class="board-task-category">
                         <div class="board-task-headline">
                             <span class="board-add-task-headline">In progress</span>
-                            <img class="board-add-task-add-icon" src="../assets/svg/add.svg" alt="">
+                            <img class="board-add-task-add-icon" onclick="renderAddTaskCard()" src="../assets/svg/add.svg" alt="">
                         </div>
                         <div class="board-task-container drag-area" id="inProgress" ondrop="moveTo('inProgress')"
                             ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')">
@@ -212,7 +224,7 @@ function renderBoard() {
                     <div class="board-task-category">
                         <div class="board-task-headline">
                             <span class="board-add-task-headline">Await feedback</span>
-                            <img class="board-add-task-add-icon" src="../assets/svg/add.svg" alt="">
+                            <img class="board-add-task-add-icon" onclick="renderAddTaskCard()" src="../assets/svg/add.svg" alt="">
                         </div>
                         <div class="board-task-container drag-area" id="awaitFeedback" ondrop="moveTo('awaitFeedback')"
                             ondragleave="removeHighlight('awaitFeedback')" ondragover="allowDrop(event); highlight('awaitFeedback')">
@@ -316,13 +328,24 @@ function openAddTaskCard() {
     <h3 class="h3">Category<span class="required-star">*</span></h3>
 
     <label for="category" class="add-task-label bgC-white" id="">
+          <!-- <div class="add-task-category-input" id="" onclick="">Select task category</div> -->
+       
+        <select required class="add-task-category-input">
+              <option value="">Select task category</option>      
+              <option value="Technical Task">Technical Task</option>
+              <option value="User Story">User Story</option>
+            </select>  
+        </label>
+
+<!-- 
+    <label for="category" class="add-task-label bgC-white" id="">
       <div class="add-task-category-input" id="" onclick="">User Story</div>
     </label>
 
     <div class="d-none" id="">
       <div class="addTaskCategorySelect" onclick="">Technical Task</div>
       <div class="addTaskCategorySelect" onclick="">User Story</div>
-    </div>
+    </div> -->
 
     <div class="extra-small d-none" id="">This field is required</div>
 
@@ -377,3 +400,40 @@ function closeAddTaskCard() {
     }
 }
 
+async function search(e) {
+    const tasks = document.querySelectorAll('.task');
+    const searchTerm = e.target.value.trim().toLowerCase();
+
+    // Warte darauf, dass die Task-Elemente vollständig geladen sind
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    tasks.forEach((task) => {
+        const titleElement = task.querySelector('.task-title');
+        const descriptionElement = task.querySelector('.task-description');
+        const categoryElement = task.querySelector('.task-type');
+
+        // Überprüfen, ob die Elemente vorhanden sind, bevor auf ihre Eigenschaften zugegriffen wird
+        if (titleElement && descriptionElement && categoryElement) {
+            const title = titleElement.textContent.toLowerCase();
+            const description = descriptionElement.textContent.toLowerCase();
+            const category = categoryElement.textContent.toLowerCase();
+
+            if (title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) {
+                task.style.display = 'flex';
+            } else {
+                task.style.display = 'none';
+            }
+        } else {
+            console.error('Ein oder mehrere Elemente fehlen.');
+        }
+    });
+}
+
+function addSearchEventListener() {
+    const searchInput = document.getElementById('search');
+    if (searchInput) {
+        searchInput.addEventListener('keyup', search);
+    } else {
+        console.error('Das Suchfeld wurde nicht gefunden.');
+    }
+}

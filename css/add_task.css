@@ -146,8 +146,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-weight: 400;
   text-align: center;
   display: flex;
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .add-task-prio-medium:hover,
@@ -160,7 +160,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .add-task-prio-medium img,
 .add-task-prio-low img,
 .add-task-prio-high img {
- /* width: 20px;
+  /* width: 20px;
   height: 14px;*/
   margin-left: 10px;
 }
@@ -267,9 +267,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 21px;
   border: 1px solid var(--color-dark-bg);
   transition: background-color 0.3s ease;
-  background-image: url('../assets/svg/close.svg'); /* Standard-SVG */
+  background-image: url('../assets/svg/close.svg');
+  /* Standard-SVG */
   background-repeat: no-repeat;
-  background-position: right 11px center; /* Bild rechts mit 10px Abstand */
+  background-position: right 11px center;
+  /* Bild rechts mit 10px Abstand */
 }
 
 .add-task-clear-button:hover {
@@ -277,8 +279,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border: 1px solid var(--color-cyan);
   color: var(--color-dark-cyan);
   cursor: pointer;
-  background-image: url('../assets/svg/close-1.svg'); /* SVG beim Hover */
-  background-position: right 5px center; /* Behält die gleiche Position wie im normalen Zustand bei */
+  background-image: url('../assets/svg/close-1.svg');
+  /* SVG beim Hover */
+  background-position: right 5px center;
+  /* Behält die gleiche Position wie im normalen Zustand bei */
 }
 
 .m-bottom-32 {
@@ -393,13 +397,27 @@ label input {
   height: 50px;
   outline: none;
   border-radius: 10px;
-  padding: 12px 5px;
-  font-size: 16px;
   cursor: pointer;
   background-color: var(--use_bg-text-white);
   background-origin: content-box;
   background-size: auto;
   border-color: var(--use_bg-text-white);
+  font-size: 20px;
+  border: 0px solid rgba(209, 209, 209, 1);
+  border-radius: 10px;
+  padding: 12px 15px;
+}
+
+select:required:invalid {
+  color: rgb(209, 209, 209);
+}
+
+option[value=""][disabled] {
+  display: none;
+}
+
+option {
+  color: #000;
 }
 
 .selectField {
