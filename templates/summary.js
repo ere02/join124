@@ -58,14 +58,3 @@ return /*html*/ `
     `;
 }
 
-/**
- * Reset the Background-Color of Nav-Buttons for all
- */
-function resetAllNavButtons() {
-    document.getElementById("navsummary").classList.remove("bg-darker");
-    document.getElementById("navaddtask").classList.remove("bg-darker");
-    document.getElementById("navboard").classList.remove("bg-darker");
-    document.getElementById("navcontacts").classList.remove("bg-darker");
-    document.getElementById("navprivacy").classList.remove("bg-darker");
-    document.getElementById("navlegal").classList.remove("bg-darker");
-  }

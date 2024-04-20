@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("navlegal");
   document.getElementById("headerIcons");
   document.getElementById("helpIcon");
+
 });
 
 /**
@@ -190,3 +191,4 @@ function disableHeaderIcons(id) {
 function goBack() {
   window.history.back();
 }
+
