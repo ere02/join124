@@ -40,15 +40,15 @@ function signUp() {
           <input type="checkbox" name="police" id="police" />
           <label for="remember">I accept the <a href="#">Privacy policy</a></label>
         </div>
-        <div class="submit-container" id="submit">
-          <button class="button" type="submitLogin">Sign up</button>
+        <div class="submit-container">
+          <button class="button" type="submitLogin" onclick="register()">Sign up</button>
         </div>
       </div>
     </div>
   </div>
   `;
 
-  const submitButton = document.querySelector('.button');
+ /*  const submitButton = document.querySelector('.button');
   submitButton.addEventListener('click', () => {
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
@@ -63,7 +63,7 @@ function signUp() {
       // Display an error message or prevent form submission
     }
   });
-
+ */
 /*   const goBack = () => {
     window.location.href = 'index.html';
   }; */
