@@ -8,6 +8,17 @@ const id = allTasks.map(item => item.id);
 let currentUser = 1;
 let currentTasks;
 
+async function goToBoardHTML(){
+    window.location.href = '../subpages/board.html';
+  }
+  
+  async function startBoard(id) {
+    await includeHTML();
+allNavButton(id);
+board.classList.remove("displaynone");
+board.innerHTML = renderBoard();
+updateBoardHTML()
+  }
 /**
  * Preparing Show all Task by Loading them
  */

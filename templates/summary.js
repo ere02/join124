@@ -1,3 +1,17 @@
+function goToSummaryHTML(){
+    window.location.href = '../subpages/summary.html';
+}
+
+async function startSummary(id) {
+    await includeHTML();
+    summary.classList.remove("displaynone");
+    summary.innerHTML =  renderSummary();
+
+renderSayHello();
+allNavButton(id);
+}
+
+
 function renderSummary() {
 
 

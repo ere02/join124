@@ -1,4 +1,15 @@
 
+async function goToAddTaskHTML(){
+  window.location.href = '../subpages/add_task.html';
+}
+
+async function startAddTask(id) {
+  await includeHTML();
+  addtask.classList.remove("displaynone");
+  addtask.innerHTML = renderAddTask();
+  allNavButton(id);
+}
+
 function renderAddTask(){
     return /*html*/  `
     <!-- <div class="add-task-container"> -->

@@ -1,4 +1,6 @@
 
+
+
 /**
  * DECLARING ALL NEEDED INFORMATION From USERS_STORAGE.js
  */
@@ -9,6 +11,24 @@ const emails = allUsers.map(item => item.email);
 let sameProject = [];
 let initialList = [];
 let letters = [];
+
+
+/**
+ * CALL HTML-FILE
+ */
+async function goToContactsHTML(){
+  window.location.href = '../subpages/contacts.html';
+}
+
+async function startContacts(id) {
+  await includeHTML();
+  allNavButton(id);
+  contacts.classList.remove("displaynone");
+  contacts.innerHTML =  await renderContacts();
+  await findAllFirstLettersOfContacts();
+  contacts.innerHTML +=generateEditContactHTML();
+
+}
 
 /**
  * The CONTACT-List on the right side, will prepared hier 
@@ -72,29 +92,40 @@ function renderFirstLetterArray(contact) {
 
 
 async function treatAllContacts() {
+  const userDivs = document.querySelectorAll(".users");
 
   for (let i = 0; i < sameProject.length; i++) {
+      let firstname = sameProject[i].firstname;
+      let initial = firstname[0].toUpperCase();
+      let lastname = sameProject[i].familyname;
+      let initialLastname = lastname[0].toUpperCase();
+      let email = sameProject[i].email;
+      let personalColor = sameProject[i].personalColor;
 
-    let firstname = sameProject[i].firstname;
-    let initial = firstname[0].toUpperCase();
-    let lastname = sameProject[i].familyname;
-    let initialLastname = lastname[0].toUpperCase();
-    let email = sameProject[i].email;
-    let personalColor = sameProject[i].personalColor;
-
-    let sortByInitial = document.getElementById(`${initial}`);
-    sortByInitial.innerHTML += `
-        <div id="user${i}" class="users" >
-          <div class="user-circle" style="background-color:${personalColor}">${initial}${initialLastname}</div>
-          <div class="contact-name">
-            <h5>${firstname} ${lastname}</h5>
-            <span class="email">${email}</span>
-          </div>
-        `;
+      let sortByInitial = document.getElementById(`${initial}`);
+      sortByInitial.innerHTML += `
+          <div id="user${i}" class="users">
+              <div class="user-circle" style="background-color:${personalColor}">${initial}${initialLastname}</div>
+              <div class="contact-name">
+                  <h5>${firstname} ${lastname}</h5>
+                  <span class="email">${email}</span>
+              </div>
+          </div>`; 
   }
- 
+      userDivs.forEach(div => {
+          div.addEventListener("click", () => {
+              handleContactOnClick(div);
+          });
+      });
+  }
+
+
+function handleContactOnClick(div) {
+  if (activeContact) {
+      activeContact.classList.remove("active");
+  }
+  div.classList.add("active"); 
+  activeContact = div;
 }
-
-
 
 

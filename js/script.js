@@ -1,4 +1,4 @@
-// TOKEN FÜR SPÄTER REMOTE DATENSPEICHERUNG  VJOV8Y8IUZO3FYNKTN886RO1F4GPQUZG86SP8SQP
+// TOKEN FÜR SPÄTER REMOTE DATENSPEICHERUNG 
 let goBackToPage = [];
 
 async function init() {
@@ -27,7 +27,7 @@ function renderLogin(){
     login.innerHTML = loginPage();
 }
 
- 
+ /** COPIERT UND IM JEWEILIGEN PAGE-SCRiPT VERBAUT */
 async function startContent() {
     await includeHTML();
     await loadSummary('navsummary');
@@ -79,5 +79,4 @@ async function includeHTML() {
         }
     }
 }
-
 
