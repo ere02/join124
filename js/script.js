@@ -25,6 +25,8 @@ async function returnLoginHTML(){
 
 function renderLogin(){
     login.innerHTML = loginPage();
+    const newUserDiv = document.querySelector('.new-user');
+    newUserDiv.style.display = '';
 }
 
  /** COPIERT UND IM JEWEILIGEN PAGE-SCRiPT VERBAUT */
