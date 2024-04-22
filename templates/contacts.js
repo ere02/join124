@@ -1,7 +1,13 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const userDivs = document.querySelectorAll(".users");
-  doEventlistenerOnContacts(userDivs);
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const userDiv = document.querySelectorAll(".box");
+  userDiv.forEach(user => {
+    user.addEventListener("click", () => handleContactOnClick(userDiv));
+  });
 });
+
+
 
 /**
  * DECLARING ALL NEEDED INFORMATION From USERS_STORAGE.js
@@ -83,12 +89,12 @@ function renderFirstLetterArray(contact) {
 
 async function treatAllContacts() {
   for (let i = 0; i < sameProject.length; i++) {
-      const { firstname, familyname, email, personalColor } = sameProject[i];
-      const initial = firstname[0].toUpperCase();
-      const initialLastname = familyname[0].toUpperCase();
+    const { firstname, familyname, email, personalColor } = sameProject[i];
+    const initial = firstname[0].toUpperCase();
+    const initialLastname = familyname[0].toUpperCase();
 
-      const sortByInitial = document.getElementById(initial);
-      const userHtml = `
+    const sortByInitial = document.getElementById(initial);
+    const userHtml = `
           <div id="user${i}" class="users">
               <div class="user-circle" style="background-color:${personalColor}">${initial}${initialLastname}</div>
               <div class="contact-name">
@@ -96,25 +102,18 @@ async function treatAllContacts() {
                   <span class="email">${email}</span>
               </div>
           </div>`;
-      sortByInitial.innerHTML += userHtml;
-  }
+    sortByInitial.innerHTML += userHtml;
+}
 }
 
-const userDivs = document.querySelectorAll(".users");
 
-function doEventlistenerOnContacts() {
-  userDivs.forEach((div) => {
-      div.addEventListener("click", () => {
-          handleContactOnClick(div);
-      });
-  });
-}
+  function handleContactOnClick(userDivs) {
+    let activeContact = document.getElementsByClassName("active");
 
-function handleContactOnClick(div) {
-  if (activeContact) {
+    if (activeContact) {
       activeContact.classList.remove("active");
+    }
+    userDivs.classList.add("active");
+    activeContact = userDivs;
   }
-  div.classList.add("active");
-  activeContact = div;
-}
 

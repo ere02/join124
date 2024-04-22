@@ -475,10 +475,13 @@ p.board-task-card-preview {
     align-items: center;
     padding: 8px;
     box-sizing: border-box;
+    border:2px solid var(--use_background);
 }
 
 .drag-area-highlight {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(100, 100, 100, 0.1);
+    border:2px dotted var(--use_border-text-light);
+    box-sizing:border-box;
 }
 
 /**

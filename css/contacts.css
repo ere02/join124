@@ -59,6 +59,7 @@
 }
 .active{
     background-color: var(--use_border-button-bg-text);
+    color: var(--use_bg-text-white);
 }
     
 hr {
