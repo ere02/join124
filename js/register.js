@@ -1,73 +1,53 @@
 let users = [];
 
 async function init() {
-    loadUsers();
+  loadUsers();
 }
 
-const registerBtn = document.getElementById('registerBtn'); // Get reference to the button
-
-registerBtn.addEventListener('click', async function() {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-    const privacyPolicyCheckbox = document.getElementById('police');
-
-    if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-    }
-
-    if (!privacyPolicyCheckbox.checked) {
-        alert('Please accept the privacy policy');
-        return;
-    }
-
-    // Create the user object and push into the array
-    const newUser = {
-        name: name,
-        email: email,
-        password: password,
-    };
-    users.push(newUser);
-
-    try {
-        await register(); // Call your updated register function
-        alert('Registration Successful!');
-    } catch (e) {
-        console.error('Registration Error:', e);
-        alert('There was an error during registration.');
-    }
-});
-
 async function loadUsers() {
-    try {
-        const storedUsers = await getItem('users');
-        users = storedUsers || []; // Initialize with stored users or an empty array
-    } catch (e) {
-        console.error('Loading error:', e);
-    }
+  users = await getItem('users');
 }
 
 async function register() {
-    registerBtn.disabled = true;
+  registerBtn.disabled = true;
+  users.push({
+    email: email.value,
+    password: password.value,
+  });
 
-    try {
-        await setItem('users', JSON.stringify(users));  // Store the updated users array 
-        alert('Registration Successful!');
-    } catch (e) {
-        console.error('Registration Error:', e);
-        alert('There was an error during registration.');
-    } finally {
-        resetForm();
-        registerBtn.disabled = false; // Re-enable the button
+  await setItem('users', JSON.stringify(users));
+
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const confirmPasswordInput = document.getElementById('confirmPassword');
+
+  if (
+    nameInput.value &&
+    emailInput.value &&
+    passwordInput.value &&
+    confirmPasswordInput.value
+  ) {
+    if (passwordInput.value === confirmPasswordInput.value) {
+      try {
+        await setItem(emailInput.value, passwordInput.value);
+        alert('You are registered');
+        renderLogin();
+      } catch (error) {
+        alert('Registration failed');
+      }
+    } else {
+      alert('Passwords do not match');
     }
+  } else {
+    alert('Please fill in all fields');
+  }
+
+  resetForm();
 }
 
 function resetForm() {
-    document.getElementById('name').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('password').value = '';
-    document.getElementById('confirmPassword').value = '';
+  email.value = '';
+  password.value = '';
+  registerBtn.disabled = false;
 }
-
