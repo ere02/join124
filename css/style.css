@@ -89,15 +89,15 @@ HEAD a {
 @keyframes movinglogo {
   0% {
     width: 4.2rem;
-    left: 10vw;
     top: -38vh;
+    left: -38vw;
     scale: 1.5;
   }
 
   100% {
-    top: 0;
-    left: 50vw;
-    scale: 4;
+    top: -5vh;
+    left: 0vw;
+    scale: 4.4;
   }
 }
 
@@ -106,19 +106,17 @@ HEAD a {
   scale: 1.5;
   position: relative;
   animation-name: movinglogo;
-  animation-duration: 500ms;
+  animation-duration: 75ms;
   animation-direction: reverse;
   /*Index Page new design by Erwin*/
   top: -38vh;
   left: -38vw;
+
 }
-  /* top: -38vh;
-  left: 10vw;
-} */
 
 #content {
   opacity: 0;
-  transition: opacity 2s ease-in;
+  transition: opacity 175ms ease-in;
 }
 
 #content.visible {
