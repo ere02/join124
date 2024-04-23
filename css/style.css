@@ -116,7 +116,7 @@ HEAD a {
 
 #content {
   opacity: 0;
-  transition: opacity 175ms ease-in;
+  transition: opacity 125ms ease-in;
 }
 
 #content.visible {
