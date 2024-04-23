@@ -11,6 +11,7 @@ async function loadUsers() {
 async function register() {
   registerBtn.disabled = true;
   users.push({
+    name: name.value,
     email: email.value,
     password: password.value,
   });
@@ -42,12 +43,12 @@ async function register() {
   } else {
     alert('Please fill in all fields');
   }
-
+console.log(users);
   resetForm();
 }
 
 function resetForm() {
   email.value = '';
   password.value = '';
-  registerBtn.disabled = false;
+  registerBtn.enabled = true;
 }

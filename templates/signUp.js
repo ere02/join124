@@ -42,11 +42,11 @@ function signUp() {
             <label for="remember">I accept the <a href="#">Privacy policy</a></label>
           </div>
           <div class="submit-container">
-            <button id="registerBtn" class="button" type="submit">Sign up</button>
           </div>
-        </div>
-      </div>
-    </div>
+          </div>
+          </div>
+          </div>
+          <button id="registerBtn" class="button" type="submit">Sign up</button>
   </form>
   `;
 };
