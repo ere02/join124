@@ -8,17 +8,17 @@ const id = allTasks.map(item => item.id);
 let currentUser = 1;
 let currentTasks;
 
-async function goToBoardHTML(){
+async function goToBoardHTML() {
     window.location.href = '../subpages/board.html';
-  }
-  
-  async function startBoard(id) {
+}
+
+async function startBoard(id) {
     await includeHTML();
-allNavButton(id);
-board.classList.remove("displaynone");
-board.innerHTML = renderBoard();
-updateBoardHTML()
-  }
+    allNavButton(id);
+    board.classList.remove("displaynone");
+    board.innerHTML = renderBoard();
+    updateBoardHTML()
+}
 /**
  * Preparing Show all Task by Loading them
  */
@@ -121,9 +121,9 @@ function startDragging(id) {
     currentDraggedElement = id;
 }
 
-function generateTodoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
-}
+// function generateTodoHTML(element) {
+//     return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
+// }
 
 // function startDragging(id) {
 //     currentDraggedElement = id;
@@ -322,18 +322,20 @@ function openAddTaskCard() {
 
     <h3 class="m-top-32 h3">Prio</h3>
         <div class="add-task-prio">
-          <div id="" class="add-task-prio-high" onclick="">
-            Urgent
-            <img id="" src="../assets/svg/urgent.svg" class="prioSVG">
-          </div>
-          <div id="" class="add-task-prio-medium add-task-prio-medium-pressed-button" onclick="">
-            Medium
-            <img id="" src="../assets/svg/medium_white.svg" class="prioSVG">
-          </div>
-          <div id="add_task_prio_low" class="add-task-prio-low" onclick="">
-            Low
-            <img id="" src="../assets/svg/low.svg" class="prioSVG">
-          </div>
+            <div id="high_priority" class="add-task-prio-high" onclick="changePriority('high')">
+                Urgent
+                <img id="urgent_icon" src="../assets/svg/urgent.svg" class="prioSVG">
+            </div>
+
+            <div id="medium_priority" class="add-task-prio-medium add-task-prio-medium-pressed-button" onclick="changePriority('medium')">
+                Medium
+                <img id="medium_icon" src="../assets/svg/medium_white.svg" class="prioSVG">
+            </div>
+
+            <div id="low_priority" class="add-task-prio-low" onclick="changePriority('low')">
+                Low
+                <img id="low_icon" src="../assets/svg/low.svg" class="prioSVG">
+            </div>
         </div>
 
     <h3 class="h3">Category<span class="required-star">*</span></h3>
@@ -390,11 +392,11 @@ function openAddTaskCard() {
 </div>
 </div>`
 
-document.body.appendChild(overlay);
+    document.body.appendChild(overlay);
     // renderAddTaskCard(overlay);
 }
 
-function renderAddTaskCard(){
+function renderAddTaskCard() {
     document.getElementById('container').classList.add('add-task-popup');
     document.getElementById('overlay-container').classList.add('d-none');
 
@@ -446,5 +448,49 @@ function addSearchEventListener() {
         searchInput.addEventListener('keyup', search);
     } else {
         console.error('Das Suchfeld wurde nicht gefunden.');
+    }
+}
+
+function changePriority(priority) {
+    const highPriority = document.getElementById('high_priority');
+    const mediumPriority = document.getElementById('medium_priority');
+    const lowPriority = document.getElementById('low_priority');
+
+    // Setze Hintergrundfarbe und Textfarbe basierend auf der ausgewählten Priorität
+    if (priority === 'high') {
+        highPriority.classList.add('add-task-prio-high-pressed-button');
+        highPriority.style.color = 'white';
+        mediumPriority.classList.remove('add-task-prio-medium-pressed-button');
+        mediumPriority.style.color = 'black';
+        lowPriority.classList.remove('add-task-prio-low-pressed-button');
+        lowPriority.style.color = 'black';
+    } else if (priority === 'medium') {
+        mediumPriority.classList.add('add-task-prio-medium-pressed-button');
+        mediumPriority.style.color = 'white';
+        highPriority.classList.remove('add-task-prio-high-pressed-button');
+        highPriority.style.color = 'black';
+        lowPriority.classList.remove('add-task-prio-low-pressed-button');
+        lowPriority.style.color = 'black';
+    } else if (priority === 'low') {
+        lowPriority.classList.add('add-task-prio-low-pressed-button');
+        lowPriority.style.color = 'white';
+        highPriority.classList.remove('add-task-prio-high-pressed-button');
+        highPriority.style.color = 'black';
+        mediumPriority.classList.remove('add-task-prio-medium-pressed-button');
+        mediumPriority.style.color = 'black';
+    }
+
+    if (priority === 'high') {
+        urgent_icon.src = '../assets/svg/urgent_white.svg';
+        medium_icon.src = '../assets/svg/medium.svg';
+        low_icon.src = '../assets/svg/low.svg';
+    } else if (priority === 'medium') {
+        urgent_icon.src = '../assets/svg/urgent.svg';
+        medium_icon.src = '../assets/svg/medium_white.svg';
+        low_icon.src = '../assets/svg/low.svg';
+    } else if (priority === 'low') {
+        urgent_icon.src = '../assets/svg/urgent.svg';
+        medium_icon.src = '../assets/svg/medium.svg';
+        low_icon.src = '../assets/svg/low_white.svg';
     }
 }

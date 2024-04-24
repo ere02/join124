@@ -166,7 +166,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .add-task-prio-low-pressed-button {
-  background-color: var(--color-yellowgreen);
+  background-color: var(--color-lowgreen);
   color: var(--use_bg-text-white);
 }
 
@@ -176,8 +176,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .add-task-prio-high-pressed-button {
-  background-color: var(--color-red);
+  background-color: var(--color-urgentred);
   color: var(--use_bg-text-white);
+  height: bold;
 }
 
 .required-star {

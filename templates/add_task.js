@@ -1,5 +1,5 @@
 
-async function goToAddTaskHTML(){
+async function goToAddTaskHTML() {
   window.location.href = '../subpages/add_task.html';
 }
 
@@ -10,8 +10,8 @@ async function startAddTask(id) {
   allNavButton(id);
 }
 
-function renderAddTask(){
-    return /*html*/  `
+function renderAddTask() {
+  return /*html*/  `
     <!-- <div class="add-task-container"> -->
     <div class="add-task-header-container">
       <h1 class="add-task-headline" onclick="openAddTaskCard()">Add Task</h1>
@@ -66,18 +66,20 @@ function renderAddTask(){
 
         <h3 class="m-top-32 h3">Prio</h3>
         <div class="add-task-prio">
-          <div id="" class="add-task-prio-high" onclick="">
-            Urgent
-            <img id="" src="../assets/svg/urgent.svg" class="prioSVG">
-          </div>
-          <div id="" class="add-task-prio-medium add-task-prio-medium-pressed-button" onclick="">
-            Medium
-            <img id="" src="../assets/svg/medium_white.svg" class="prioSVG">
-          </div>
-          <div id="add_task_prio_low" class="add-task-prio-low" onclick="">
-            Low
-            <img id="" src="../assets/svg/low.svg" class="prioSVG">
-          </div>
+            <div id="high_priority" class="add-task-prio-high" onclick="changePriority('high')">
+                Urgent
+                <img id="urgent_icon" src="../assets/svg/urgent.svg" class="prioSVG">
+            </div>
+
+            <div id="medium_priority" class="add-task-prio-medium add-task-prio-medium-pressed-button" onclick="changePriority('medium')">
+                Medium
+                <img id="medium_icon" src="../assets/svg/medium_white.svg" class="prioSVG">
+            </div>
+
+            <div id="low_priority" class="add-task-prio-low" onclick="changePriority('low')">
+                Low
+                <img id="low_icon" src="../assets/svg/low.svg" class="prioSVG">
+            </div>
         </div>
 
         <h3 class="h3">Category<span class="required-star">*</span></h3>

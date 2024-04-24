@@ -17,11 +17,13 @@
      /** FARBEN ZU HELL ODER NUR für STYLE-ELEMENTE) */
     --color-sunnyyellow:rgb(255,230,43);
     --color-red:rgb(255,70,70);
+    --color-urgentred:rgb(255,60,0);
     --color-greyish-icon:rgb(168,168,168);
     --color-lightgrey:rgb(246,247,248);
     --color-grey:rgb(209,209,209);
     --color-lightlila:rgba(226,230,236,0.4);
     --color-yellowgreen:rgb(195,255,43);
+    --color-lowgreen:rgb(121,227,41);
     --color-darker-bg:rgb(9,25,49);
     --color-dark-bg:rgb(42,54,71);
     --color-darkblue: rgb(42, 61, 89);
