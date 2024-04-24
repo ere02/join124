@@ -1,14 +1,6 @@
-function generateEditContactHTML() {
-  return `
-  <div class="Headlinecontainer">
-  <div class="headline"><h1 class="padding20 right-border-2px">Contact</h1><h4 class="padding20">Better with a Team</h4>
-</div>
-<div id="start-container">
-        </div>
-  `;
-}
 
-function generateUserInfo(){
+
+function editUserInfo(){
   let container = document.getElementById("start-container");
   
   container.innerHTML = /*html*/ `
