@@ -1,4 +1,8 @@
 
+#section-contacts{
+    overflow-x:hidden;
+}
+
 .sidepanel{
     display: flex;
     overflow: hidden;
@@ -80,15 +84,61 @@ hr {
 .size40px{
     width: 40px;
     height: 40px;
+    aspect-ratio: 1;
 }
 .size56px{
     width: 56px;
     height: 56px;
+    aspect-ratio: 1;
 }
 
 .size120px{
     width: 120px;
     height: 120px;
+    aspect-ratio: 1;
+    margin-right:60px;
+}
+
+.height16px{
+    height:16px;
+    gap:10px
+}
+.height16px:hover{
+    color: var(--use_border-button-bg-text-hover);
+    cursor:pointer;
+    .svg-color{
+        fill:var(--use_border-button-bg-text-hover);
+    }
+}
+
+.svg-color{
+    fill:#2a3647;
+}
+
+.width50vh{
+width: 50%;
+}
+
+
+.contact-container{
+    margin: 6rem 1.2rem;
+    justify-content:space-between;
+    height:400px;
+    position:relative;
+    
+}
+.aniContact{
+    animation: slideIn 2s forwards, fadeOut 2s 2s forwards;
+}
+
+.flex{
+    display:flex;
+}
+.flex-column{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+
 }
 
 #allContacts{
@@ -101,3 +151,23 @@ hr {
     margin-bottom:100px;
 }
 
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
