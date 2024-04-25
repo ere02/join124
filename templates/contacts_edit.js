@@ -1,7 +1,7 @@
 
 
 function editUserInfo(){
-  let container = document.getElementById("start-container");
+  let container = document.getElementById("editLayer");
   
   container.innerHTML = /*html*/ `
   <form>
