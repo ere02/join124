@@ -86,6 +86,10 @@ HEAD a {
   z-index: 2;
 }
 
+.displaynone {
+  display: none;
+}
+
 @keyframes movinglogo {
   0% {
     width: 4.2rem;
@@ -232,7 +236,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 998;
+  z-index: 8;
 }
 
 .nav-logo {

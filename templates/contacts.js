@@ -158,7 +158,7 @@ function restartAnimation(){
 
 function editLayer(){
   let layer = document.getElementById("editLayer");
-
+ layer.classList.remove("displaynone");
   layer.classList.add("aniEditLayer"); 
 }
 
