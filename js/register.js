@@ -6,6 +6,12 @@ let passwordInput = document.getElementById('password');
 let confirmPasswordInput = document.getElementById('confirmPassword');
 let registerBtn = document.getElementById('registerBtn');
 
+// Add event listeners to input fields
+nameInput.addEventListener('input', checkFormCompletion);
+emailInput.addEventListener('input', checkFormCompletion);
+passwordInput.addEventListener('input', checkFormCompletion);
+confirmPasswordInput.addEventListener('input', checkFormCompletion);
+
 async function init() {
   loadUsers();
 }
@@ -60,11 +66,24 @@ function resetForm() {
   emailInput.value = '';
   passwordInput.value = '';
   confirmPasswordInput.value = '';
-  registerBtn.disabled = false; 
+  registerBtn.disabled = true; // Disable the button after form submission
 }
 
 // Implement a password hashing function (replace with your chosen hashing algorithm)
-function hashPassword() {
+function hashPassword(password) {
   // ... your hashing implementation here ...
   return 'hashedPassword'; // Replace with actual hashed password
+}
+
+function checkFormCompletion() {
+  if (
+    nameInput.value &&
+    emailInput.value &&
+    passwordInput.value &&
+    confirmPasswordInput.value
+  ) {
+    registerBtn.disabled = false; // Enable the button if the form is complete
+  } else {
+    registerBtn.disabled = true; // Disable the button if the form is incomplete
+  }
 }

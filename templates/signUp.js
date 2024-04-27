@@ -20,7 +20,7 @@ function signUp() {
         </div>
       </div>
       <div class="input-wrapper">
-      <form onsubmit="register(); return false;">
+        <form onsubmit="register(); return false;">
           <input id="name" class="input-field" type="text" name="name" placeholder="Name" required />
           <img src="/assets/svg/person.svg" alt="lock icon" class="icon" />
       </div>
@@ -42,9 +42,9 @@ function signUp() {
         <label for="remember">I accept the <a href="#">Privacy policy</a></label>
       </div>
       <div class="submit-container">
-      <button id="registerBtn" class="button" type="submit">Sign up</button>
+        <button id="registerBtn" class="button" type="submit">Sign up</button>
+        </form>
       </div>
-      </form>
     </div>
   </div>
 </div>
