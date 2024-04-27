@@ -1,28 +1,26 @@
-let users = [];
+let users = []; // Not recommended for real applications due to security concerns
+
+let nameInput = document.getElementById('name');
+let emailInput = document.getElementById('email');
+let passwordInput = document.getElementById('password');
+let confirmPasswordInput = document.getElementById('confirmPassword');
+let registerBtn = document.getElementById('registerBtn');
 
 async function init() {
   loadUsers();
 }
 
 async function loadUsers() {
-  users = await getItem('users');
+  try {
+    users = JSON.parse(await getItem('users'));
+  } catch(e){
+    console.error('Loading error:', e);
+  }
 }
 
 async function register() {
   registerBtn.disabled = true;
-  users.push({
-    name: name.value,
-    email: email.value,
-    password: password.value,
-  });
-
-  await setItem('users', JSON.stringify(users));
-
-  const nameInput = document.getElementById('name');
-  const emailInput = document.getElementById('email');
-  const passwordInput = document.getElementById('password');
-  const confirmPasswordInput = document.getElementById('confirmPassword');
-
+  
   if (
     nameInput.value &&
     emailInput.value &&
@@ -31,9 +29,20 @@ async function register() {
   ) {
     if (passwordInput.value === confirmPasswordInput.value) {
       try {
-        await setItem(emailInput.value, passwordInput.value);
-        alert('You are registered');
-        renderLogin();
+        // Don't use setItem to store user data locally (insecure)
+        // You would typically send user data to the server for secure storage
+
+        // Hash the password before sending (recommended)
+        const hashedPassword = hashPassword(passwordInput.value); // Implement password hashing function
+
+        const response = await setItem(emailInput.value, hashedPassword); // Send to server
+
+        if (response.success) {
+          alert('You are registered');
+          renderLogin();
+        } else {
+          alert('Registration failed');
+        }
       } catch (error) {
         alert('Registration failed');
       }
@@ -43,12 +52,19 @@ async function register() {
   } else {
     alert('Please fill in all fields');
   }
-console.log(users);
   resetForm();
 }
 
 function resetForm() {
-  email.value = '';
-  password.value = '';
-  registerBtn.enabled = true;
+  nameInput.value = '';
+  emailInput.value = '';
+  passwordInput.value = '';
+  confirmPasswordInput.value = '';
+  registerBtn.disabled = false; 
+}
+
+// Implement a password hashing function (replace with your chosen hashing algorithm)
+function hashPassword() {
+  // ... your hashing implementation here ...
+  return 'hashedPassword'; // Replace with actual hashed password
 }
