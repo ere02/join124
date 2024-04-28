@@ -36,7 +36,7 @@ function renderRightSide(i){
 
   containerRight.innerHTML = /*html*/ `
     <div class="closeEdit">
-            <img src="/assets/svg/close.svg" alt="Schließen" />
+            <img class="closeIMG" src="/assets/svg/close.svg" alt="Schließen" />
           </div>
           <div class="rightSideContent">
  <div class="letter-box">
@@ -57,8 +57,8 @@ function renderRightSide(i){
             <img src="/assets/svg/call.svg" alt="lock icon" class="icon" />
           </div>
       <div class="submit-container" id="submit">
-        <button class="button-guest" type="submit">Delete</button>
-        <button class="button" type="submit">Save</button>
+        <button class="button-guest" type="submit"><h5>Delete</h5></button>
+        <button class="button" type="submit"><h5>Save</h5></button>
       </div>
     </form>
 </div>

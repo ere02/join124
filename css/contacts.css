@@ -227,6 +227,16 @@ h2.white{
     justify-content:right;
     margin-bottom:10%;
 }
+.closeIMG{
+    padding:10px;
+    border:1px solid white;
+    border-radius:50%;
+    cursor:pointer;
+
+}
+.closeIMG:hover{
+    background-color: var(--use_border-text-light);
+}
 
 .submit-container{
     margin: 40px 0 0 0;
