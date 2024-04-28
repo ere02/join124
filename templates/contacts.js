@@ -17,6 +17,8 @@ let firstname,
   initialLastname,
   phone;
 
+
+
 /**
  * CALL HTML-FILE
  */
@@ -156,10 +158,23 @@ function restartAnimation(){
   container.style.animation = "slideIn 300ms ease-out";
 }
 
-function editLayer(){
+function editLayer(i){
+  let contact = document.getElementById("editableContact");
   let layer = document.getElementById("editLayer");
- layer.classList.remove("displaynone");
-  layer.classList.add("aniEditLayer"); 
+  activate(layer);
+  contact.classList.add("aniEditForm");
+  activate(contact);
+  let clickableBG = document.getElementById("clickableBG");
+  clickableBG.classList.add("fadeBG");
+  editUserInfo(i);
+}
+
+function activate(div){
+  div.classList.remove("displaynone");
+}
+
+function deactivate(div){
+  div.classList.add("displaynone");
 }
 
 function returnEditSVG() {
