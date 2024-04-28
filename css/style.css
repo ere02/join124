@@ -366,20 +366,18 @@ header {
 .button {
   background-color: var(--use_border-button-bg-text);
   color: var(--use_bg-text-white);
-  /*font-family: "Inter";*/
-  font-weight: bold;
+  font-weight: 700;
   border-radius: 0.5rem;
-  height: 2.2rem;
-  width: 5rem;
+  height: 2.8rem;
+  width: 7rem;
 }
 
 .button-guest {
   background-color: var(--use_bg-text-white);
   color: var(--color-dark-bg);
-  /*font-family: "Inter";*/
-  font-weight: bold;
+  font-weight: 700;
   border-radius: 0.5rem;
-  height: 2.2rem;
+  height: 2.8rem;
   width: 7rem;
 }
 

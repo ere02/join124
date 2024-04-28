@@ -203,10 +203,16 @@ img.marginBottom30px{
 h2.white{
     color: var(--use_bg-text-white);
 }
-
 #rightSide{
     display: flex;
-    padding: 50px;
+    flex-direction:column;
+    justify-content:start;
+    align-items: center;
+    padding:50px;
+}
+.rightSideContent{
+    display: flex;
+ 
     align-items: center;
 }
 .contactForm{

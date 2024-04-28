@@ -35,14 +35,15 @@ function renderRightSide(i){
   let containerRight = document.getElementById("rightSide");
 
   containerRight.innerHTML = /*html*/ `
+    <div class="closeEdit">
+            <img src="/assets/svg/close.svg" alt="Schließen" />
+          </div>
+          <div class="rightSideContent">
  <div class="letter-box">
         <div class="user-circle size120px" style="background-color:${personalColor}"><h3>${initial}${initialLastname}</h3></div>
         </div>
   <form class="contactForm">
  
-          <div class="closeEdit">
-            <img src="/assets/svg/close.svg" alt="Schließen" />
-          </div>
           <div class="input-wrapper">
             <input class="input-field" type="name" name="password" placeholder="Name" required />
             <img src="/assets/svg/person.svg" alt="lock icon" class="icon" />
@@ -60,6 +61,7 @@ function renderRightSide(i){
         <button class="button" type="submit">Save</button>
       </div>
     </form>
+</div>
   `;
 }
 
