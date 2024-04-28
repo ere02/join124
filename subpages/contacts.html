@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../favicon.ico" />
     <link rel="stylesheet" type="text/css" href="../css/all_colors.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+  
     <link rel="stylesheet" type="text/css" href="../css/add_task.css">
     <link rel="stylesheet" type="text/css" href="../css/board.css"> 
     <link rel="stylesheet" type="text/css" href="../css/summary.css">
    <link rel="stylesheet" type="text/css" href="../css/contacts.css"> 
+   <link rel="stylesheet" type="text/css" href="../css/style.css">
 
     <script src="../tasks_storage.js"></script>
     <script src="../users_storage.js"></script>
@@ -17,7 +18,7 @@
     <script src="../templates/summary.js"></script>
     <script src="../templates/add_task.js"></script>
     <script src="../templates/board.js"></script>
-    <script defer src="../templates/contacts.js"></script> 
+    <script src="../templates/contacts.js"></script> 
     <script src="../templates/contacts_edit.js"></script>  
     <script src="../templates/privacy_policy.js"></script>
     <script src="../templates/legal_notice.js"></script>
@@ -29,8 +30,11 @@
 
 </head>
 <body onload="startContacts('navcontacts')">
-   
-    
+  
+    <div id="editLayer" class="contactLayer displaynone">
+      <div id="editableContact" class="editContactForm displaynone"></div>
+      <div id="clickableBG" class="clickableBackground" onclick="deactivate(this.parentElement)"></div>
+    </div>
     <div w3-include-html="../templates/header.html"></div>
 
     <navbar w3-include-html="../templates/navbar.html"></navbar>

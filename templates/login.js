@@ -23,8 +23,8 @@ function loginPage() {
           <label for="remember">Remember me</label>
         </div>
         <div class="submit-container" id="submit">
-          <button class="button" type="submit">Log in</button>
-          <button class="button-guest" type="submit">Guest Log in</button>
+          <button class="button" type="submit"><h5>Log in</h5></button>
+          <button class="button-guest" type="submit"><h5>Guest Log in</h5></button>
         </div>
       </div>
       <div class="login-footer">

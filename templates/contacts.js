@@ -17,6 +17,8 @@ let firstname,
   initialLastname,
   phone;
 
+
+
 /**
  * CALL HTML-FILE
  */
@@ -119,7 +121,7 @@ function generateUserInfo(index) {
               <div class="flex-column">
                   <h3>${firstname} ${familyname}</h3>
                   <div class="flex">
-                  <div class="flex height16px width50vh">${returnEditSVG()}Edit </div>
+                  <div class="flex height16px width50vh" onclick="editLayer(${index})">${returnEditSVG()}Edit </div>
                   <div class="flex height16px width50vh">${returnDeleteSVG()}Delete</div>
                 </div>
               </div>
@@ -141,20 +143,38 @@ function animationContactContainer(){
   let container = document.getElementById("start-container");
   let aniContact = document.querySelector(".aniContact");
 
- if (aniContact) {
-    restartAnimation()
+ if (aniContact) { 
+    restartAnimation();
    }
 
-  container.classList.add("aniContact");
+  container.classList.add("aniContact"); 
 }
 
 
 function restartAnimation(){
-
   const container = document.querySelector(".aniContact");
   container.style.animation = "none"; // Animation zurücksetzen
   void container.offsetWidth; // Trigger für Neustart
-  container.style.animation = "slideIn 2s forwards, fadeOut 2s 2s forwards";
+  container.style.animation = "slideIn 300ms ease-out";
+}
+
+function editLayer(i){
+  let contact = document.getElementById("editableContact");
+  let layer = document.getElementById("editLayer");
+  activate(layer);
+  contact.classList.add("aniEditForm");
+  activate(contact);
+  let clickableBG = document.getElementById("clickableBG");
+  clickableBG.classList.add("fadeBG");
+  editUserInfo(i);
+}
+
+function activate(div){
+  div.classList.remove("displaynone");
+}
+
+function deactivate(div){
+  div.classList.add("displaynone");
 }
 
 function returnEditSVG() {
