@@ -347,8 +347,8 @@ function openAddTaskCard() {
               <option value="">Select task category</option>      
               <option value="Technical Task">Technical Task</option>
               <option value="User Story">User Story</option>
-            </select>  
-        </label>
+        </select>  
+    </label>
 
 <!-- 
     <label for="category" class="add-task-label bgC-white" id="">
@@ -377,7 +377,7 @@ function openAddTaskCard() {
       <div class="add-task-required-info-bottom">* This field is required</div>
       <div class="add-task-buttons-container">
         <button type="reset" class="add-task-clear-button-popup d-flex-ai-center-jc-center" onclick="closeAddTaskCard()">Cancel</button>
-        <button class="add-task-add-button d-flex-ai-center-jc-center" id="">Create Task<img
+        <button onclick="createTask()" class="add-task-add-button d-flex-ai-center-jc-center" id="">Create Task<img
             src="../assets/svg/check_white.svg"></button>
       </div>
 
@@ -385,7 +385,7 @@ function openAddTaskCard() {
   </div>
 
   <div class="add-task-popup-container d-none" id="">
-    <div class="add-task-popup-reg" id="">Task added to Board <img src="" alt="board picture"></div>
+    <div class="add-task-popup-reg" id="">Task added to Board <img src="../assets/svg/canban-1.svg" alt="board picture"></div>
   </div>
 </div>
 </div>
@@ -402,6 +402,8 @@ function renderAddTaskCard() {
 
     openAddTaskCard();
 
+    const createTaskButton = document.querySelector('.add-task-add-button');
+    createTaskButton.addEventListener('click', createTask);
 }
 
 function closeAddTaskCard() {
@@ -493,4 +495,61 @@ function changePriority(priority) {
         medium_icon.src = '../assets/svg/medium.svg';
         low_icon.src = '../assets/svg/low_white.svg';
     }
+}
+
+function createTask() {
+    // Lese die Daten aus den Eingabefeldern aus
+    const title = document.querySelector('.add-task-title').value;
+    const description = document.querySelector('.add-task-description').value;
+    const dueDate = document.querySelector('.add-task-due-date').value;
+    const priorityElement = document.querySelector('.add-task-prio-high-pressed-button');
+    let priority;
+    if (priorityElement) {
+        priority = 'high';
+    } else {
+        const mediumPriorityElement = document.querySelector('.add-task-prio-medium-pressed-button');
+        if (mediumPriorityElement) {
+            priority = 'medium';
+        } else {
+            priority = 'low';
+        }
+    }
+    const category = document.querySelector('.add-task-category-input').value; // Lese die ausgewählte Kategorie aus
+
+    // Überprüfe, ob die Aufgabe bereits existiert (basierend auf dem Titel)
+    const existingTask = allTasks.find(task => task.title === title);
+    if (existingTask) {
+        // Wenn die Aufgabe bereits existiert, breche ab und zeige eine Meldung an
+        // alert('Die Aufgabe existiert bereits.');
+        return;
+    }
+
+    // Erstelle eine neue Aufgabe
+    const newTask = {
+        id: allTasks.length, // Neue ID basierend auf der Anzahl der vorhandenen Aufgaben
+        title: title,
+        description: description,
+        dueDate: dueDate,
+        priority: priority,
+        category: 'inTodo', // Setze die Kategorie auf die ausgewählte Kategorie
+        workers: [], // Leeres Array für Arbeitskräfte
+        type: category // Typ der Aufgabe entspricht der Kategorie
+        // Füge weitere Eigenschaften hinzu, wie Assigned to und Subtasks
+    };
+
+    // Füge die neue Aufgabe dem allTasks Array hinzu
+    allTasks.push(newTask);
+
+    // Aktualisiere das Board, um die neue Aufgabe anzuzeigen
+    updateBoardHTML();
+
+    // Hier fügst du den Code für das Popup hinzu
+    const popup = document.querySelector('.add-task-popup-container');
+    popup.classList.remove('d-none');
+
+    // Setze einen Timer, um das Popup nach 3 Sekunden auszublenden
+    setTimeout(() => {
+        popup.classList.add('d-none');
+        closeAddTaskCard(); // Schließe das Add Task-Popup
+    }, 1500);
 }
