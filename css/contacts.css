@@ -172,17 +172,59 @@ hr {
 .firstDIV{
     display:flex;
     position:relative;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    padding:20px;
+    height:100%;
+    background-color:var(--use_bg-text-white);
+    border-radius:30px;
+
 }
 
 #leftSide{
     display:flex;
-    justify-content:start;
+    align-items:start;
+    flex-direction:column;
+    justify-content:center;
+    border-top-left-radius:30px;
+    border-bottom-left-radius:30px;
+    padding:50px;
+    height:100%;
+    gap:30px;
     background-color:var(--use_border-button-bg-text);
+    box-sizing:border-box;
+}
+
+hr.short-cyan{
+    border:2px solid var(--color-cyan);
+    width:86px;
+}
+img.marginBottom30px{
+    margin-bottom:30px;
+}
+
+h2.white{
+    color: var(--use_bg-text-white);
+}
+
+#rightSide{
+    display: flex;
+    padding: 50px;
+    align-items: center;
+}
+.contactForm{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    align-items:start;
+}
+
+.closeEdit{
+    width:100%;
+    display:flex;
+    justify-content:right;
+    margin-bottom:10%;
+}
+
+.submit-container{
+    margin: 40px 0 0 0;
 }
 
 .flex {
