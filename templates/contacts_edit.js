@@ -33,10 +33,11 @@ function renderLeftSide(){
 
 function renderRightSide(i){
   let containerRight = document.getElementById("rightSide");
+  let closeLayer = document.getElementById("editLayer");
 
   containerRight.innerHTML = /*html*/ `
     <div class="closeEdit">
-            <img class="closeIMG" src="/assets/svg/close.svg" alt="Schließen" />
+            <img class="closeIMG" src="/assets/svg/close.svg" alt="Schließen" onclick="deactivate(closeLayer)" />
           </div>
           <div class="rightSideContent">
  <div class="letter-box">
