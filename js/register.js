@@ -1,89 +1,113 @@
-let users = []; // Not recommended for real applications due to security concerns
-
-let nameInput = document.getElementById('name');
-let emailInput = document.getElementById('email');
-let passwordInput = document.getElementById('password');
-let confirmPasswordInput = document.getElementById('confirmPassword');
-let registerBtn = document.getElementById('registerBtn');
-
-// Add event listeners to input fields
-nameInput.addEventListener('input', checkFormCompletion);
-emailInput.addEventListener('input', checkFormCompletion);
-passwordInput.addEventListener('input', checkFormCompletion);
-confirmPasswordInput.addEventListener('input', checkFormCompletion);
-
-async function init() {
-  loadUsers();
+async function initSignUp() {
+    await init();
+    checkUserIsLoggedIn();
+    passwordInputIconChange();
 }
 
-async function loadUsers() {
-  try {
-    users = JSON.parse(await getItem('users'));
-  } catch(e){
-    console.error('Loading error:', e);
-  }
+
+/**
+ * get user data from html5 form and check if user is registered
+ */
+function addUser() {
+    let nameAssign = document.getElementById('name_assign');
+    let emailAssign = document.getElementById('email_assign');
+    nameAssign.classList.add('display-none');
+    emailAssign.classList.add('display-none');
+    let userName = document.getElementById('user_name').value;
+    let userEmail = document.getElementById('user_email').value;
+    let userPassword = document.getElementById('user_password').value;
+    checkIsUserRegistered(userName, userEmail, userPassword);
 }
 
-async function register() {
-  registerBtn.disabled = true;
-  
-  if (
-    nameInput.value &&
-    emailInput.value &&
-    passwordInput.value &&
-    confirmPasswordInput.value
-  ) {
-    if (passwordInput.value === confirmPasswordInput.value) {
-      try {
-        // Don't use setItem to store user data locally (insecure)
-        // You would typically send user data to the server for secure storage
 
-        // Hash the password before sending (recommended)
-        const hashedPassword = hashPassword(passwordInput.value); // Implement password hashing function
+/**
+ * checks the array users contains name and email adress in lower case 
+ * @param {string} userName is the name of the user who wants to register
+ * @param {string} userEmail ist the email adress of the user who wants to register
+ * @param {string} userPassword password of the user who wants to register
+ */
+function checkIsUserRegistered(userName, userEmail, userPassword) {
+    let indexOfName = users.findIndex(user => user.nameMatchCode == userName.toLowerCase());
+    let indexOfEmail = users.findIndex(user => user.emailMatchCode == userEmail.toLowerCase());
+    checkRegistrationData(indexOfName, indexOfEmail);
+}
 
-        const response = await setItem(emailInput.value, hashedPassword); // Send to server
 
-        if (response.success) {
-          alert('You are registered');
-          renderLogin();
-        } else {
-          alert('Registration failed');
-        }
-      } catch (error) {
-        alert('Registration failed');
-      }
-    } else {
-      alert('Passwords do not match');
+/**
+ * Shows the user a error message if the choosen name oder email adress is registered
+ * @param {number} indexOfName is the index of the users name in the array users, if the array don't contains this name the value is -1
+ * @param {string} indexOfEmail is the index of the users email adress in the array users, if the array don't contains this email adress the value is -1
+ */
+function checkRegistrationData(indexOfName, indexOfEmail) {
+    let userName = document.getElementById('user_name').value;
+    let userEmail = document.getElementById('user_email').value;
+    let userPassword = document.getElementById('user_password').value;
+    if (indexOfName == -1 && indexOfEmail == -1) {
+        userRegister(userName, userEmail, userPassword);
     }
-  } else {
-    alert('Please fill in all fields');
-  }
-  resetForm();
+    userNameIsRegistered(indexOfName);
+    userEmailIsRegistered(indexOfEmail);
 }
 
-function resetForm() {
-  nameInput.value = '';
-  emailInput.value = '';
-  passwordInput.value = '';
-  confirmPasswordInput.value = '';
-  registerBtn.disabled = true; // Disable the button after form submission
+
+function userNameIsRegistered(indexOfName) {
+    let nameAssign = document.getElementById('name_assign');
+    if (indexOfName != -1) {
+        nameAssign.classList.remove('display-none');
+    }
 }
 
-// Implement a password hashing function (replace with your chosen hashing algorithm)
-function hashPassword(password) {
-  // ... your hashing implementation here ...
-  return 'hashedPassword'; // Replace with actual hashed password
+
+function userEmailIsRegistered(indexOfEmail) {
+    let emailAssign = document.getElementById('email_assign');
+    if (indexOfEmail != -1) {
+        emailAssign.classList.remove('display-none');
+    }
 }
 
-function checkFormCompletion() {
-  if (
-    nameInput.value &&
-    emailInput.value &&
-    passwordInput.value &&
-    confirmPasswordInput.value
-  ) {
-    registerBtn.disabled = false; // Enable the button if the form is complete
-  } else {
-    registerBtn.disabled = true; // Disable the button if the form is incomplete
-  }
+
+/**
+ * register the user and added the user data in the array users and save this array in the backend
+ * @param {string} userName is the choosen user name to register
+ * @param {string} userEmail is the choosen email adress to register
+ * @param {string} userPassword ist the choosen password string to register
+ */
+function userRegister(userName, userEmail, userPassword) {
+    pushNewUser(userName, userEmail, userPassword);
+    backend.setItem('users', JSON.stringify(users));
+    sessionStorage.setItem('loggedIn', 'false');
+    localStorage.setItem('rememberMe', 'false');
+    registrationComplete();
+}
+
+
+/**
+ * push the opject with user data to the array users
+ * @param {string} userName is the name of the user to push
+ * @param {string} userEmail is the email adress from the user to push
+ * @param {string} userPassword ist the password from the user to push
+ */
+function pushNewUser(userName, userEmail, userPassword) {
+    users.push({
+        'name': userName,
+        'nameMatchCode': userName.toLowerCase(),
+        'email': userEmail,
+        'emailMatchCode': userEmail.toLowerCase(),
+        'password': userPassword,
+        'tasks': [],
+        'contacts': [],
+        'lettertask': [],
+        'category':
+            [{ taskCategory: 'Sales', taskColor: 'purpleCategory' },
+            { taskCategory: 'Backoffice', taskColor: 'blueCategory' }]
+    });
+}
+
+
+/**
+ * reders a success message, when user completed registration
+ */
+function registrationComplete() {
+    let signupContent = document.getElementById('sign_up');
+    signupContent.innerHTML = registrationCompleteTemplate();
 }
