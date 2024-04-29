@@ -150,7 +150,7 @@ hr {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 50;
+  z-index: 110;
   top: 0;
   display: flex;
   justify-content: center;
