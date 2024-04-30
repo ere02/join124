@@ -120,7 +120,7 @@ function generateUserInfo(index) {
   <div class="user-circle size120px" style="background-color:${personalColor}"><h3>${initial}${initialLastname}</h3></div>
               <div class="flex-column">
                   <h3>${firstname} ${familyname}</h3>
-                  <div class="flex">
+                  <div class="flex" style="min-width:150px">
                   <div class="flex height16px width50vh" onclick="editLayer(${index})">${returnEditSVG()}Edit </div>
                   <div class="flex height16px width50vh">${returnDeleteSVG()}Delete</div>
                 </div>
