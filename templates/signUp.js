@@ -9,19 +9,19 @@ function signUp() {
   content.innerHTML = /*html*/ `
     <form onsubmit="register()">
       <div>
-        <input type="text" id="name-reg" placeholder="Name" >
+        <input type="text" id="name-reg" placeholder="Name" required>
       </div>
       <div>
-        <input type="email" id="email-reg" placeholder="Email" >
+        <input type="email" id="email-reg" placeholder="Email" required>
       </div>
       <div>
-        <input type="password" id="password-reg" placeholder="Password" >
+        <input type="password" id="password-reg" placeholder="Password" required>
       </div>
       <div>
-        <input type="password" id="confirmPassword-reg" placeholder="Confirm Password" >
+        <input type="password" id="confirmPassword-reg" placeholder="Confirm Password" required>
       </div>
       <div>
-        <input type="checkbox" id="agree-reg">
+        <input type="checkbox" id="agree-reg" required>
         <label for="agree-reg">I agree to the terms and conditions</label>
       </div>
       <button type="submit">Register</button>
