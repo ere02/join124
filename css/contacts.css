@@ -248,7 +248,10 @@ h2.white{
 .flex-column {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+}
+
+.gap16{
+    gap:16px;
 }
 
 #allContacts {

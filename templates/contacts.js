@@ -104,7 +104,7 @@ function returnContactContainer() {
     <div class="Headlinecontainer">
     <div class="headline"><h1 class="padding20 right-border-2px">Contact</h1><h4 class="padding20">Better with a Team</h4>
   </div>
-  <div id="start-container" class="contact-container flex-column">
+  <div id="start-container" class="contact-container flex-column gap16">
           </div>
     `;
 }
@@ -118,7 +118,7 @@ function generateUserInfo(index) {
   container.innerHTML = /*html*/ `
 <div class="flex">
   <div class="user-circle size120px" style="background-color:${personalColor}"><h3>${initial}${initialLastname}</h3></div>
-              <div class="flex-column">
+              <div class="flex-column gap16">
                   <h3>${firstname} ${familyname}</h3>
                   <div class="flex" style="min-width:150px">
                   <div class="flex height16px width50vh" onclick="editLayer(${index})">${returnEditSVG()}Edit </div>
@@ -127,7 +127,7 @@ function generateUserInfo(index) {
               </div>
 </div>   
   <h4>Contact Information</h4>       
-<div class="flex-column">
+<div class="flex-column gap16">
               <h5 class=bold>E-mail</h5>
                   <span class="email">${email}</span>
               <h5 class="bold">Phone</h5>
