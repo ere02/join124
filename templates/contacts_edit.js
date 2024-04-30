@@ -25,7 +25,7 @@ function editUserInfo(i){
 
 function renderLeftSide(){
   document.getElementById("leftSide").innerHTML = `
-  <img src="/assets/svg/logo_light.svg" class="marginBottom30px">
+  <img src="../assets/svg/logo_light.svg" class="marginBottom30px">
   <h2 class="white">Edit contact</h2>
   <hr class="short-cyan">
   `;
