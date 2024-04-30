@@ -14,7 +14,7 @@ function renderAddTask() {
   return /*html*/  `
     <!-- <div class="add-task-container"> -->
     <div class="add-task-header-container">
-      <h1 class="add-task-headline" onclick="openAddTaskCard()">Add Task</h1>
+      <h1 class="add-task-headline">Add Task</h1>
     </div>
 
     <div class="add-task-content d-flex-ai-center-jc-center">
@@ -118,7 +118,7 @@ function renderAddTask() {
           <div class="add-task-required-info-bottom">* This field is required</div>
           <div class="add-task-buttons-container">
             <button type="reset" class="add-task-clear-button d-flex-ai-center-jc-center" onclick="resetForm()">Clear</button>
-            <button class="add-task-add-button d-flex-ai-center-jc-center" id="">Create Task<img
+            <button onclick="createTask()" class="add-task-add-button d-flex-ai-center-jc-center" id="">Create Task<img
                 src="../assets/svg/check_white.svg"></button>
           </div>
 
@@ -126,7 +126,7 @@ function renderAddTask() {
       </div>
 
       <div class="add-task-popup-container d-none" id="">
-        <div class="add-task-popup-reg" id="">Task added to Board<img src="" alt="board picture"></div>
+        <div class="add-task-popup-reg" id="">Task added to Board<img src="../assets/svg/canban-1.svg" alt="board picture"></div>
       </div>
     </div>
   </div>
