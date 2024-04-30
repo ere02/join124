@@ -5,14 +5,14 @@ function goToSummaryHTML(){
 async function startSummary(id) {
     await includeHTML();
     summary.classList.remove("displaynone");
-    summary.innerHTML =  renderSummary();
+    summary.innerHTML =  renderSummary(); // eventuell in generateSummaryHTML ändern
 
 renderSayHello();
 allNavButton(id);
 }
 
 
-function renderSummary() {
+function renderSummary() {// eventuell in generateSummaryHTML ändern
 
 
 return /*html*/ `

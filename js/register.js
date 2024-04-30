@@ -1,15 +1,19 @@
 let users = []; // Not recommended for real applications due to security concerns
+/* await */ init();{
 
-let nameInput = document.getElementById('name');
-let emailInput = document.getElementById('email');
-let passwordInput = document.getElementById('password');
-let confirmPasswordInput = document.getElementById('confirmPassword');
+}
+
+let nameInput = document.getElementById('name-reg');
+let emailInput = document.getElementById('email-reg');
+let passwordInput = document.getElementById('password-reg');
+let confirmPasswordInput = document.getElementById('confirmPassword-reg');
+let isCheckBoxChecked = document.getElementById('agree-reg').checked === true;
 
 // Add event listeners to input fields
-nameInput.addEventListener('input', checkFormCompletion);
+/* nameInput.addEventListener('input', checkFormCompletion);
 emailInput.addEventListener('input', checkFormCompletion);
 passwordInput.addEventListener('input', checkFormCompletion);
-confirmPasswordInput.addEventListener('input', checkFormCompletion);
+confirmPasswordInput.addEventListener('input', checkFormCompletion); */
 
 async function init() {
   loadUsers();
@@ -86,3 +90,19 @@ function checkFormCompletion() {
     registerBtn.disabled = true; // Disable the button if the form is incomplete
   }
 }
+
+function showSignUp() {
+  // Get the element with class "new-user"
+  const newUserDiv = document.querySelector('.new-user');
+  
+  // Hide the element using style.display
+  newUserDiv.style.display = 'none';
+
+  let content = document.getElementById('content');
+  content.innerHTML = generateSignUpHTML();
+}
+
+
+  
+  
+  
