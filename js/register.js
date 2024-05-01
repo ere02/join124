@@ -1,13 +1,68 @@
 let users = []; // Not recommended for real applications due to security concerns
-/* await */ init();{
+/* await */ init();
+{
+}
+async function register(event) {
+  event.preventDefault(); // Prevent default form submission behavior
 
+  registerBtn.disabled = true;
+
+  // Get element references using modern techniques (querySelector)
+  const nameInput = document.querySelector('#name-reg');
+  const emailInput = document.querySelector('#email-reg');
+  const passwordInput = document.querySelector('#password-reg');
+  const confirmPasswordInput = document.querySelector('#confirmPassword-reg');
+  const agreeCheckbox = document.querySelector('#agree-reg');
+
+  // Validate input values (add validation logic as needed)
+  // ... your validation logic here ...
+
+  // Assuming validation passes, create a user object with normalized data
+  const user = {
+    name: nameInput.value.trim(), // Trim leading/trailing whitespace
+    email: emailInput.value.toLowerCase().trim(), // Normalize email (optional)
+    password: passwordInput.value,
+    confirmPassword: confirmPasswordInput.value,
+  };
+
+  // Check if agreeCheckbox is checked
+  if (!agreeCheckbox.checked) {
+    // Handle the case where the user hasn't agreed to terms
+    // ... display an error message or prevent registration ...
+    return;
+  }
+
+  try {
+    const users = await getItem('users') || []; // Get existing users (or initialize if none)
+    users.push(user);
+    await setItem('users', JSON.stringify(users));
+    resetForm();
+  } catch (error) {
+    // Handle storage errors gracefully
+    console.error('Error saving user data:', error);
+    // ... display an error message to the user ...
+  } finally {
+    registerBtn.disabled = false; // Enable the button again regardless of success/failure
+  }
 }
 
-let nameInput = document.getElementById('name-reg');
+/* let nameInput = document.getElementById('name-reg');
 let emailInput = document.getElementById('email-reg');
 let passwordInput = document.getElementById('password-reg');
 let confirmPasswordInput = document.getElementById('confirmPassword-reg');
 let isCheckBoxChecked = document.getElementById('agree-reg').checked === true;
+
+async function register() {
+  registerBtn.disabled = true;
+  users.push({
+    nameInput: name-reg.value,
+    emailInput: email-reg.value,
+    passwordInput: password-reg.value,
+    confirmPasswordInput: confirmPassword-reg.value,
+  });
+  await setItem('users', JSON.stringify(users));
+  resetForm();
+} */
 
 // Add event listeners to input fields
 /* nameInput.addEventListener('input', checkFormCompletion);
@@ -22,14 +77,14 @@ async function init() {
 async function loadUsers() {
   try {
     users = JSON.parse(await getItem('users'));
-  } catch(e){
+  } catch (e) {
     console.error('Loading error:', e);
   }
 }
 
 async function register() {
   registerBtn.disabled = true;
-  
+
   if (
     nameInput.value &&
     emailInput.value &&
@@ -94,15 +149,10 @@ function checkFormCompletion() {
 function showSignUp() {
   // Get the element with class "new-user"
   const newUserDiv = document.querySelector('.new-user');
-  
+
   // Hide the element using style.display
   newUserDiv.style.display = 'none';
 
   let content = document.getElementById('content');
   content.innerHTML = generateSignUpHTML();
 }
-
-
-  
-  
-  
