@@ -53,6 +53,7 @@ async function updateBoardHTML() {
     let inProgress = allTasks.filter(t => t['category'] == 'inProgress');
     let awaitFeedback = allTasks.filter(t => t['category'] == 'awaitFeedback');
     let done = allTasks.filter(t => t['category'] == 'inDone');
+    const lanes = ['inTodo', 'inProgress', 'awaitFeedback', 'inDone'];
 
     let laneTodo = document.getElementById('inTodo');
     laneTodo.innerHTML = renderEmptyLane();
@@ -60,7 +61,11 @@ async function updateBoardHTML() {
         laneTodo.innerHTML = '';
         for (let index = 0; index < toDo.length; index++) {
             const element = toDo[index];
-            laneTodo.innerHTML += await renderTaskHTML(element);
+            const taskElement = await renderTaskHTML(element);
+            const taskDiv = document.createElement('div');
+            taskDiv.innerHTML = taskElement;
+            taskDiv.addEventListener('click', () => openTaskPopup(element));
+            laneTodo.appendChild(taskDiv);
             await backgroundType(element);
         }
     }
@@ -95,6 +100,28 @@ async function updateBoardHTML() {
             const element = done[index];
             laneDone.innerHTML += await renderTaskHTML(element);
             await backgroundType(element);
+        }
+    }
+
+    for (let lane of lanes) {
+        let tasksInLane = allTasks.filter(t => t.category === lane);
+        let laneElement = document.getElementById(lane);
+        laneElement.innerHTML = renderEmptyLane();
+
+        if (tasksInLane.length !== 0) {
+            laneElement.innerHTML = '';
+            for (let task of tasksInLane) {
+                const taskElement = await renderTaskHTML(task);
+                const taskDiv = document.createElement('div');
+                taskDiv.innerHTML = taskElement;
+                taskDiv.addEventListener('click', (event) => {
+                    if (event.type === 'click') {
+                        openTaskPopup(task);
+                    }
+                });
+                laneElement.appendChild(taskDiv);
+                await backgroundType(task);
+            }
         }
     }
 
@@ -136,7 +163,7 @@ function generateTodoHTML(element) {
 async function renderTaskHTML(element) {
 
     return /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${element['id']})" class="task">
+        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskPopup()" class="task">
             <div id='type${element['id']}' class="task-type">${element['type']}</div>
                 <div class="task-text">
                     <div class="task-title bold"> ${element['title']} </div>
@@ -552,4 +579,30 @@ function createTask() {
         popup.classList.add('d-none');
         closeAddTaskCard(); // Schließe das Add Task-Popup
     }, 1500);
+}
+
+function openTaskPopup(task) {
+    console.log('Task:', task)
+    const popupContent = /*html*/ `
+        <div class="task-popup add-task-popup">
+            <h3>${task.title}</h2>
+            <div>Description: ${task.description}</div>
+            <div>Due Date: ${task.dueDate}</div>
+            <div>Priority: ${task.priority}</div>
+            <div>Type: ${task.type}</div>
+            <!-- Weitere Informationen hier einfügen -->
+            <button class="close-button">Close</button>
+        </div>
+    `;
+
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    overlay.innerHTML = popupContent;
+
+    const closeButton = overlay.querySelector('.close-button');
+    closeButton.addEventListener('click', () => {
+        overlay.remove();
+    });
+
+    document.body.appendChild(overlay);
 }
