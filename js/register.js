@@ -8,11 +8,11 @@ async function register(event) {
   registerBtn.disabled = true;
 
   // Get element references using modern techniques (querySelector)
-  const nameInput = document.querySelector('#name-reg');
-  const emailInput = document.querySelector('#email-reg');
-  const passwordInput = document.querySelector('#password-reg');
-  const confirmPasswordInput = document.querySelector('#confirmPassword-reg');
-  const agreeCheckbox = document.querySelector('#agree-reg');
+  const nameInput = document.querySelector('name-reg');
+  const emailInput = document.querySelector('email-reg');
+  const passwordInput = document.querySelector('password-reg');
+  const confirmPasswordInput = document.querySelector('confirmPassword-reg');
+  const agreeCheckbox = document.querySelector('agree-reg');
 
   // Validate input values (add validation logic as needed)
   // ... your validation logic here ...
@@ -32,7 +32,6 @@ async function register(event) {
     return;
   }
 
-  try {
     const users = await getItem('users') || []; // Get existing users (or initialize if none)
     users.push(user);
     await setItem('users', JSON.stringify(users));
@@ -44,31 +43,6 @@ async function register(event) {
   } finally {
     registerBtn.disabled = false; // Enable the button again regardless of success/failure
   }
-}
-
-/* let nameInput = document.getElementById('name-reg');
-let emailInput = document.getElementById('email-reg');
-let passwordInput = document.getElementById('password-reg');
-let confirmPasswordInput = document.getElementById('confirmPassword-reg');
-let isCheckBoxChecked = document.getElementById('agree-reg').checked === true;
-
-async function register() {
-  registerBtn.disabled = true;
-  users.push({
-    nameInput: name-reg.value,
-    emailInput: email-reg.value,
-    passwordInput: password-reg.value,
-    confirmPasswordInput: confirmPassword-reg.value,
-  });
-  await setItem('users', JSON.stringify(users));
-  resetForm();
-} */
-
-// Add event listeners to input fields
-/* nameInput.addEventListener('input', checkFormCompletion);
-emailInput.addEventListener('input', checkFormCompletion);
-passwordInput.addEventListener('input', checkFormCompletion);
-confirmPasswordInput.addEventListener('input', checkFormCompletion); */
 
 async function init() {
   loadUsers();
