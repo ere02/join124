@@ -4,7 +4,7 @@ let goBackToPage = [];
 async function init() {
     renderLogin();
     introAnimation();
-    
+    await renderUserIcon();
     
 }
 
@@ -80,5 +80,11 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
+}
+
+async function renderUserIcon(){
+ let initial = document.getElementById("userIcon");
+ initial.innerHTML = `${initial}${initiallastname}`
+   
 }
 
