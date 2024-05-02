@@ -36,6 +36,9 @@ async function register(event) {
     users.push(user);
     await setItem('users', JSON.stringify(users));
     resetForm();
+  } 
+  try {
+    // Code that may throw an error
   } catch (error) {
     // Handle storage errors gracefully
     console.error('Error saving user data:', error);
@@ -78,6 +81,13 @@ async function register() {
         if (response.success) {
           alert('You are registered');
           renderLogin();
+          const user = {
+            name: nameInput.value.trim(), // Trim leading/trailing whitespace
+            email: emailInput.value.toLowerCase().trim(), // Normalize email (optional)
+            password: hashedPassword,
+            confirmPassword: hashedPassword,
+          };
+          users.push(user);
         } else {
           alert('Registration failed');
         }
