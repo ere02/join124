@@ -1,51 +1,4 @@
-let users = []; // Not recommended for real applications due to security concerns
-/* await */ init();
-{
-}
-async function register(event) {
-  event.preventDefault(); // Prevent default form submission behavior
-
-  registerBtn.disabled = true;
-
-  // Get element references using modern techniques (querySelector)
-  const nameInput = document.querySelector('name-reg');
-  const emailInput = document.querySelector('email-reg');
-  const passwordInput = document.querySelector('password-reg');
-  const confirmPasswordInput = document.querySelector('confirmPassword-reg');
-  const agreeCheckbox = document.querySelector('agree-reg');
-
-  // Validate input values (add validation logic as needed)
-  // ... your validation logic here ...
-
-  // Assuming validation passes, create a user object with normalized data
-  const user = {
-    name: nameInput.value.trim(), // Trim leading/trailing whitespace
-    email: emailInput.value.toLowerCase().trim(), // Normalize email (optional)
-    password: passwordInput.value,
-    confirmPassword: confirmPasswordInput.value,
-  };
-
-  // Check if agreeCheckbox is checked
-  if (!agreeCheckbox.checked) {
-    // Handle the case where the user hasn't agreed to terms
-    // ... display an error message or prevent registration ...
-    return;
-  }
-
-    const users = await getItem('users') || []; // Get existing users (or initialize if none)
-    users.push(user);
-    await setItem('users', JSON.stringify(users));
-    resetForm();
-  } 
-  try {
-    // Code that may throw an error
-  } catch (error) {
-    // Handle storage errors gracefully
-    console.error('Error saving user data:', error);
-    // ... display an error message to the user ...
-  } finally {
-    registerBtn.disabled = false; // Enable the button again regardless of success/failure
-  }
+let users = []; 
 
 async function init() {
   loadUsers();
@@ -60,50 +13,58 @@ async function loadUsers() {
 }
 
 async function register() {
-  registerBtn.disabled = true;
-
+  const nameInput = document.getElementById('name-reg');
+  const emailInput = document.getElementById('email-reg');
+  const passwordInput = document.getElementById('password-reg');
+  const confirmPasswordInput = document.getElementById('confirmPassword-reg');
+  const agreeCheckbox = document.getElementById('agree-reg');
+  const registerBtn = document.getElementById('registerBtn');
+  
   if (
     nameInput.value &&
-    emailInput.value &&
-    passwordInput.value &&
-    confirmPasswordInput.value
+    emailInput.value && 
+    passwordInput.value && 
+    confirmPasswordInput.value && 
+    passwordInput.value === confirmPasswordInput.value &&
+    agreeCheckbox.checked
   ) {
-    if (passwordInput.value === confirmPasswordInput.value) {
-      try {
-        // Don't use setItem to store user data locally (insecure)
-        // You would typically send user data to the server for secure storage
+    registerBtn.disabled = true;
+    try {
+      // Don't use setItem to store user data locally (insecure)
+      // You would typically send user data to the server for secure storage
+      
+      // Hash the password before sending (recommended)
+      const hashedPassword = hashPassword(passwordInput.value); // Implement password hashing function
+     console.log(hashedPassword)
+     const user = {
+      name: nameInput.value.trim(), // Trim leading/trailing whitespace
+      email: emailInput.value.toLowerCase().trim(), // Normalize email (optional)
+      password: hashedPassword,
+      confirmPassword: hashedPassword,
+    };   
+     users.push(user);
 
-        // Hash the password before sending (recommended)
-        const hashedPassword = hashPassword(passwordInput.value); // Implement password hashing function
+      const response = await setItem('users',users); // Send to server
+      if (response.status === 'success') {
+        alert('You are registered');
 
-        const response = await setItem(emailInput.value, hashedPassword); // Send to server
-
-        if (response.success) {
-          alert('You are registered');
-          renderLogin();
-          const user = {
-            name: nameInput.value.trim(), // Trim leading/trailing whitespace
-            email: emailInput.value.toLowerCase().trim(), // Normalize email (optional)
-            password: hashedPassword,
-            confirmPassword: hashedPassword,
-          };
-          users.push(user);
-        } else {
-          alert('Registration failed');
-        }
-      } catch (error) {
-        alert('Registration failed');
-      }
-    } else {
-      alert('Passwords do not match');
+        renderLogin();
+        
+        console.log(user);   
+      } 
+      console.log('users', users)
+    } catch (error) {
+      alert('Registration failed');
     }
   } else {
-    alert('Please fill in all fields');
+    alert('Passwords do not match');
   }
-  resetForm();
+
+  resetForm(nameInput, emailInput, passwordInput, confirmPasswordInput, registerBtn); // Reset the form after submission
 }
 
-function resetForm() {
+function resetForm(nameInput, emailInput, passwordInput, confirmPasswordInput, registerBtn) {
+
   nameInput.value = '';
   emailInput.value = '';
   passwordInput.value = '';
@@ -114,7 +75,7 @@ function resetForm() {
 // Implement a password hashing function (replace with your chosen hashing algorithm)
 function hashPassword(password) {
   // ... your hashing implementation here ...
-  return 'hashedPassword'; // Replace with actual hashed password
+  return password; // Replace with actual hashed password
 }
 
 function checkFormCompletion() {
@@ -140,3 +101,4 @@ function showSignUp() {
   let content = document.getElementById('content');
   content.innerHTML = generateSignUpHTML();
 }
+// Todos: button disable/enable, password hashing, error handling, 

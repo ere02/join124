@@ -2,11 +2,11 @@
 function generateSignUpHTML() {
   
     return /*html*/ `
-     <form onsubmit="register()">
+     <form onsubmit="register();return false;"> 
        <div>
          <input type="text" id="name-reg" placeholder="Name" required>
          <small></small>
-       </div>
+       </div> 
        <div>
          <input type="email" id="email-reg" placeholder="Email" required>
          <small></small>
