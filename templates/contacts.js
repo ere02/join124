@@ -121,7 +121,7 @@ function generateUserInfo(index) {
               <div class="flex-column gap16">
                   <h3>${firstname} ${familyname}</h3>
                   <div class="flex" style="min-width:150px">
-                  <div class="flex height16px width50vh" onclick="editLayer(${index})">${returnEditSVG()}Edit </div>
+                  <div class="flex height16px width50vh" onclick="toggleEditLayer(${index})">${returnEditSVG()}Edit </div>
                   <div class="flex height16px width50vh">${returnDeleteSVG()}Delete</div>
                 </div>
               </div>
@@ -158,15 +158,26 @@ function restartAnimation(){
   container.style.animation = "slideIn 300ms ease-out";
 }
 
-function editLayer(i){
+function toggleEditLayer(i){
   let contact = document.getElementById("editableContact");
   let layer = document.getElementById("editLayer");
-  activate(layer);
-  contact.classList.add("aniEditForm");
-  activate(contact);
   let clickableBG = document.getElementById("clickableBG");
-  clickableBG.classList.add("fadeBG");
+  let aniEdit = document.querySelector(".aniEditForm");
+  if (aniEdit) {
+    contact.classList.remove("aniEditForm");
+    contact.classList.add("aniOutForm");
+  
+    clickableBG.classList.add("fadeOutBG");
+    deactivate(layer);
+} else {
+  activate(contact);
+  contact.classList.add("aniEditForm");
+  contact.classList.remove("aniOutForm");
+  activate(layer);
+  clickableBG.classList.add("fadeInBG");
   editUserInfo(i);
+}
+
 }
 
 function activate(div){
@@ -175,6 +186,16 @@ function activate(div){
 
 function deactivate(div){
   div.classList.add("displaynone");
+}
+
+function slideOut(){
+  let contact = document.getElementById("editableContact");
+  let layer = document.getElementById("editLayer");
+  contact.classList.remove("aniEditForm");
+  contact.classList.add("aniOutForm");
+  let clickableBG = document.getElementById("clickableBG");
+  clickableBG.classList.add("fadeBG");
+  deactivate(layer);
 }
 
 function returnEditSVG() {

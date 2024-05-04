@@ -134,10 +134,19 @@ hr {
 .aniEditForm {
   animation: slideInForm 200ms ease-in-out;
 }
+.aniOutForm {
+  animation: slideOutForm 200ms ease-in-out;
+}
 
-.fadeBG {
+.fadeInBG {
   animation: fadeIn 125ms;
 }
+
+.fadeOutBG{
+  animation: fadeIn 125ms reverse;
+}
+
+
 
 .clickableBackground {
   position: absolute;
@@ -250,6 +259,10 @@ h2.white{
   flex-direction: column;
 }
 
+.lineheight1{
+  line-height:1;
+}
+
 .gap16{
     gap:16px;
 }
@@ -283,6 +296,19 @@ h2.white{
       /* right:0; */
     }
   }
+
+  
+@keyframes slideOutForm {
+  from {
+    transform: translateX(0);
+    
+  }
+  to {
+    transform: translateX(100%);
+   
+     
+  }
+}
 
 @keyframes fadeIn {
   from {
