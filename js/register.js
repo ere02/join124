@@ -35,20 +35,25 @@ async function register() {
       
       // Hash the password before sending (recommended)
       const hashedPassword = hashPassword(passwordInput.value); // Implement password hashing function
-     console.log(hashedPassword)
-     const user = {
-      name: nameInput.value.trim(), // Trim leading/trailing whitespace
-      email: emailInput.value.toLowerCase().trim(), // Normalize email (optional)
-      password: hashedPassword,
-      confirmPassword: hashedPassword,
-    };   
-     users.push(user);
+      console.log(hashedPassword)
+      const user = {
+        name: nameInput.value.trim(), // Trim leading/trailing whitespace
+        email: emailInput.value.toLowerCase().trim(), // Normalize email (optional)
+        password: hashedPassword,
+        confirmPassword: hashedPassword,
+      };
+    
+    users.push(user);
+    // Add the user object to the users array
 
-      const response = await setItem('users',users); // Send to server
+// Log the user object to the console
+console.log(user);
+      const response = await setItem('users', JSON.stringify(users)); // Send to server
       if (response.status === 'success') {
         alert('You are registered');
 
         renderLogin();
+        storage();
         
         console.log(user);   
       } 
@@ -61,7 +66,7 @@ async function register() {
   }
 
   resetForm(nameInput, emailInput, passwordInput, confirmPasswordInput, registerBtn); // Reset the form after submission
-}
+
 
 function resetForm(nameInput, emailInput, passwordInput, confirmPasswordInput, registerBtn) {
 
@@ -100,5 +105,5 @@ function showSignUp() {
 
   let content = document.getElementById('content');
   content.innerHTML = generateSignUpHTML();
-}
+};
 // Todos: button disable/enable, password hashing, error handling, 
