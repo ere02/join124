@@ -630,3 +630,14 @@ Here are designed all Task and Todo-Cards
     background-image: url('../assets/svg/close-1.svg');
     background-position: right 2px center;
 }
+
+.board-task-detail-card {
+    width: 525px;
+}
+
+.task-popup-type-close {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}

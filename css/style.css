@@ -22,6 +22,10 @@ body {
   margin-left:46rem;
 }
 
+.font32 {
+  font-size: 32px;
+}
+
 /** Seitenüberschriften  61px
 */
 h1 {
