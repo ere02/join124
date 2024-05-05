@@ -4,6 +4,10 @@ const title = allTasks.map(item => item.title);
 const description = allTasks.map(item => item.description);
 const category = allTasks.map(item => item.category);
 const id = allTasks.map(item => item.id);
+let toDo = allTasks.filter(t => t['category'] == 'inTodo');
+let inProgress = allTasks.filter(t => t['category'] == 'inProgress');
+let awaitFeedback = allTasks.filter(t => t['category'] == 'awaitFeedback');
+let done = allTasks.filter(t => t['category'] == 'inDone');
 
 let currentUser = 1;
 let currentTasks;
@@ -49,10 +53,10 @@ function startApp() {
  */
 async function updateBoardHTML() {
 
-    let toDo = allTasks.filter(t => t['category'] == 'inTodo');
-    let inProgress = allTasks.filter(t => t['category'] == 'inProgress');
-    let awaitFeedback = allTasks.filter(t => t['category'] == 'awaitFeedback');
-    let done = allTasks.filter(t => t['category'] == 'inDone');
+    // let toDo = allTasks.filter(t => t['category'] == 'inTodo');
+    // let inProgress = allTasks.filter(t => t['category'] == 'inProgress');
+    // let awaitFeedback = allTasks.filter(t => t['category'] == 'awaitFeedback');
+    // let done = allTasks.filter(t => t['category'] == 'inDone');
     const lanes = ['inTodo', 'inProgress', 'awaitFeedback', 'inDone'];
 
     let laneTodo = document.getElementById('inTodo');
