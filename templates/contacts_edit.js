@@ -96,10 +96,10 @@ function resetContactForm(nameInput, emailInput, phoneInput,bubble) {
   bubble.style.background = "var(--color-greyish-icon)";
   bubble.innerHTML = returnPersonSVG();
   let saveBtn = document.getElementById("saveBTN");
-  let deleteBtn = document.getElementById("deleteBTN")
-  deleteBtn.classList.add("displaynone");
+  document.getElementById("deleteBTN").classList.add("displaynone");
+  
   let isValid = true;
-  if (nameInput == "" || emailInput == "" || phoneInput  == ""){
+  if (nameInput === "" && emailInput === "" && phoneInput  === ""){
   for (let i = 0; i < inputs.length; i++) {
         const changedNameInput = nameInput[i].value.trim();
         const changedEmailInput = emailInput[i].value.trim();

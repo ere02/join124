@@ -18,6 +18,7 @@ function renderSummary() {// eventuell in generateSummaryHTML ändern
     let inProgressNumber = inProgress.length;
     let awaitFeedbackNumber = awaitFeedback.length;
     let allTasksNumber = todoNumber + inProgressNumber + awaitFeedbackNumber + doneNumber;
+    
 
 
 return /*html*/ `
@@ -40,7 +41,7 @@ return /*html*/ `
                 <div id="urgent" class="circle bg-urgent urgent">
                 </div>
                  <div class="flex-center flex-column">
-                        <h2>1</h2><br>
+                        <h2>${urgent}</h2><br>
                     <span class="span">Urgent</span>
                 </div>
             
