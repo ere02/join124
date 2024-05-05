@@ -31,6 +31,7 @@
   justify-content: space-around;
   align-items: center;
   position: absolute;
+  cursor:pointer;
   gap: 10px;
   background-color: var(--use_border-button-bg-text);
   color: var(--use_bg-text-white);
@@ -134,10 +135,19 @@ hr {
 .aniEditForm {
   animation: slideInForm 200ms ease-in-out;
 }
+.aniOutForm {
+  animation: slideOutForm 200ms ease-in-out;
+}
 
-.fadeBG {
+.fadeInBG {
   animation: fadeIn 125ms;
 }
+
+.fadeOutBG{
+  animation: fadeIn 125ms reverse;
+}
+
+
 
 .clickableBackground {
   position: absolute;
@@ -166,7 +176,7 @@ hr {
   width: 1200px;
   border-radius: 30px;
   z-index: 5;
-  border:1px solid var(--use_border-text-light);
+  border:1px solid rgba(240, 240, 240, 0.25);
   
 }
 .firstDIV{
@@ -187,7 +197,7 @@ hr {
     border-bottom-left-radius:30px;
     padding:50px;
     height:100%;
-    gap:30px;
+    gap:16px;
     background-color:var(--use_border-button-bg-text);
     box-sizing:border-box;
 }
@@ -212,7 +222,7 @@ h2.white{
 }
 .rightSideContent{
     display: flex;
-    align-items: center;
+   /* align-items: center;*/
 }
 .contactForm{
     display:flex;
@@ -250,6 +260,10 @@ h2.white{
   flex-direction: column;
 }
 
+.lineheight1{
+  line-height:1;
+}
+
 .gap16{
     gap:16px;
 }
@@ -283,6 +297,19 @@ h2.white{
       /* right:0; */
     }
   }
+
+  
+@keyframes slideOutForm {
+  from {
+    transform: translateX(0);
+    
+  }
+  to {
+    transform: translateX(100%);
+   
+     
+  }
+}
 
 @keyframes fadeIn {
   from {
