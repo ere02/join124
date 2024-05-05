@@ -41,10 +41,10 @@ function renderRightSide(i) {
       <img class="closeIMG" src="../assets/svg/close.svg" alt="Schließen" onclick="toggleEditLayer(${i})" />
     </div>
     <div class="rightSideContent">
-      <div class="letter-box">
-        <div class="user-circle size120px" style="background-color:${personalColor}"><h3>${initial}${initialLastname}</h3></div>
+      <div class="letter-box" style="">
+        <div id="bubble" class="user-circle size120px" style="background-color:${personalColor};"><h3>${initial}${initialLastname}</h3></div>
       </div>
-      <form class="contactForm">
+      <form class="contactForm" >
         <div class="input-wrapper">
           <input id="name" class="input-field" type="name" name="name" placeholder="Name" required />
             <img src="../assets/svg/person.svg" alt="lock icon" class="icon" />
@@ -63,31 +63,37 @@ function renderRightSide(i) {
     </div>
   `;
 
+fillContactForm(i);
+
+}
+
+function fillContactForm(i){
   const nameInput = document.getElementById("name");
   const emailInput = document.getElementById("email");
   const phoneInput = document.getElementById("phone");
- let button = document.getElementById("submit");
+ let buttons = document.getElementById("submit");
 
- button.innterHTML = /*html*/`
+ buttons.innerHTML = /*html*/`
  <button class="button-guest" type="submit" onclick="resetContactForm(nameInput, emailInput, phoneInput)"><h5>Delete</h5></button>
  <button class="button" type="submit"><h5>Save</h5></button>
  `;
   if (i === null){
-    resetContactForm(nameInput, emailInput, phoneInput);
+    resetContactForm(nameInput, emailInput, phoneInput,bubble);
  } else {
 
     nameInput.value = `${firstname}` + " " + `${familyname}`;
   emailInput.value = `${email}`;
   phoneInput.value = `${phone}`;
  }
-
-
 }
 
-function resetContactForm(nameInput, emailInput, phoneInput) {
+
+function resetContactForm(nameInput, emailInput, phoneInput,bubble) {
 
   nameInput.value = "";
   emailInput.value = "";
   phoneInput.value = "";
+  bubble.style.background = "var(--color-greyish-icon)";
+  bubble.innerHTML = returnPersonSVG();
 }
 

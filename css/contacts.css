@@ -222,7 +222,7 @@ h2.white{
 }
 .rightSideContent{
     display: flex;
-    align-items: center;
+   /* align-items: center;*/
 }
 .contactForm{
     display:flex;
