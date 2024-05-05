@@ -96,7 +96,7 @@ function checkFormCompletion() {
   }
 }
 
-function showSignUp() {
+await function showSignUp() {
   // Get the element with class "new-user"
   const newUserDiv = document.querySelector('.new-user');
 
@@ -106,5 +106,5 @@ function showSignUp() {
   let content = document.getElementById('content');
   content.innerHTML = generateSignUpHTML();
 };
-}
+
 // Todos: button disable/enable, password hashing, error handling, //
