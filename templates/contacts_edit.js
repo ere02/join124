@@ -16,7 +16,7 @@ function renderLeftSide(i) {
   document.getElementById("leftSide").innerHTML = `
   <img src="../assets/svg/logo_light.svg" class="marginBottom30px">
   <h2 id="contactLine" class="white lineheight1"></h2>
-  <h3 id="contactSubLine" class="white"></h3>
+  <h4 id="contactSubLine" class="white"></h4>
   <hr class="short-cyan">
   `;
   let contactLine = document.getElementById("contactLine");
@@ -58,8 +58,6 @@ function renderRightSide(i) {
           <img src="../assets/svg/call.svg" alt="lock icon" class="icon" />
         </div>
         <div class="submit-container" id="submit">
-          <button class="button-guest" type="submit" onclick="resetContactForm()"><h5>Delete</h5></button>
-          <button class="button" type="submit"><h5>Save</h5></button>
         </div>
       </form>
     </div>
@@ -68,16 +66,26 @@ function renderRightSide(i) {
   const nameInput = document.getElementById("name");
   const emailInput = document.getElementById("email");
   const phoneInput = document.getElementById("phone");
+ let button = document.getElementById("submit");
 
-  nameInput.value = `${firstname}` + " " + `${familyname}`;
+ button.innterHTML = /*html*/`
+ <button class="button-guest" type="submit" onclick="resetContactForm(nameInput, emailInput, phoneInput)"><h5>Delete</h5></button>
+ <button class="button" type="submit"><h5>Save</h5></button>
+ `;
+  if (i === null){
+    resetContactForm(nameInput, emailInput, phoneInput);
+ } else {
+
+    nameInput.value = `${firstname}` + " " + `${familyname}`;
   emailInput.value = `${email}`;
   phoneInput.value = `${phone}`;
+ }
+
+
 }
 
-function resetContactForm() {
-  const nameInput = document.getElementById("name");
-  const emailInput = document.getElementById("email");
-  const phoneInput = document.getElementById("phone");
+function resetContactForm(nameInput, emailInput, phoneInput) {
+
   nameInput.value = "";
   emailInput.value = "";
   phoneInput.value = "";

@@ -31,6 +31,7 @@
   justify-content: space-around;
   align-items: center;
   position: absolute;
+  cursor:pointer;
   gap: 10px;
   background-color: var(--use_border-button-bg-text);
   color: var(--use_bg-text-white);
@@ -175,7 +176,7 @@ hr {
   width: 1200px;
   border-radius: 30px;
   z-index: 5;
-  border:1px solid var(--use_border-text-light);
+  border:1px solid rgba(240, 240, 240, 0.25);
   
 }
 .firstDIV{
@@ -196,7 +197,7 @@ hr {
     border-bottom-left-radius:30px;
     padding:50px;
     height:100%;
-    gap:30px;
+    gap:16px;
     background-color:var(--use_border-button-bg-text);
     box-sizing:border-box;
 }

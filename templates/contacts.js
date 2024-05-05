@@ -17,8 +17,6 @@ let firstname,
   initialLastname,
   phone;
 
-
-
 /**
  * CALL HTML-FILE
  */
@@ -135,60 +133,62 @@ function generateUserInfo(index) {
   </div>
 </div>
 `;
-animationContactContainer();
+  animationContactContainer();
 }
 
-
-function animationContactContainer(){
+function animationContactContainer() {
   let container = document.getElementById("start-container");
   let aniContact = document.querySelector(".aniContact");
 
- if (aniContact) { 
+  if (aniContact) {
     restartAnimation();
-   }
+  }
 
-  container.classList.add("aniContact"); 
+  container.classList.add("aniContact");
 }
 
-
-function restartAnimation(){
+function restartAnimation() {
   const container = document.querySelector(".aniContact");
   container.style.animation = "none"; // Animation zurücksetzen
   void container.offsetWidth; // Trigger für Neustart
   container.style.animation = "slideIn 300ms ease-out";
 }
 
-function toggleEditLayer(i){
+function toggleEditLayer(i) {
   let contact = document.getElementById("editableContact");
   let layer = document.getElementById("editLayer");
   let clickableBG = document.getElementById("clickableBG");
   let aniEdit = document.querySelector(".aniEditForm");
+ 
   if (aniEdit) {
     contact.classList.remove("aniEditForm");
     contact.classList.add("aniOutForm");
-  
     clickableBG.classList.add("fadeOutBG");
     deactivate(layer);
-} else {
-  activate(contact);
-  contact.classList.add("aniEditForm");
-  contact.classList.remove("aniOutForm");
-  activate(layer);
-  clickableBG.classList.add("fadeInBG");
-  editUserInfo(i);
+  } else {
+    activate(contact);
+    contact.classList.add("aniEditForm");
+    contact.classList.remove("aniOutForm");
+    activate(layer);
+    clickableBG.classList.add("fadeInBG");
+    if (i !== null){
+      editUserInfo(i);
+    } else {
+      editUserInfo(null);
+    }
+
+  }
 }
 
-}
-
-function activate(div){
+function activate(div) {
   div.classList.remove("displaynone");
 }
 
-function deactivate(div){
+function deactivate(div) {
   div.classList.add("displaynone");
 }
 
-function slideOut(){
+function slideOut() {
   let contact = document.getElementById("editableContact");
   let layer = document.getElementById("editLayer");
   contact.classList.remove("aniEditForm");
