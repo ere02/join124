@@ -111,24 +111,24 @@ async function updateBoardHTML() {
         let tasksInLane = allTasks.filter(t => t.category === lane);
         let laneElement = document.getElementById(lane);
         laneElement.innerHTML = renderEmptyLane();
-
+    
         if (tasksInLane.length !== 0) {
             laneElement.innerHTML = '';
             for (let task of tasksInLane) {
                 const taskElement = await renderTaskHTML(task);
                 const taskDiv = document.createElement('div');
                 taskDiv.innerHTML = taskElement;
-                taskDiv.addEventListener('click', (event) => {
-                    if (event.type === 'click') {
-                        openTaskPopup(task);
-                    }
-                });
+    
+                // Hier setzen Sie die aktuelle Aufgabe für den Klick-Eventlistener
+                let clickedTask = task;
+    
+                taskDiv.addEventListener('click', () => openTaskPopup(clickedTask));
                 laneElement.appendChild(taskDiv);
                 await backgroundType(task);
             }
         }
     }
-
+    
     searchInput = document.getElementById('search');
     if (searchInput) {
         searchInput.addEventListener('keyup', search);
@@ -167,7 +167,7 @@ function generateTodoHTML(element) {
 async function renderTaskHTML(element) {
 
     return /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskPopup()" class="task">
+        <div draggable="true" ondragstart="startDragging(${element['id']})" class="task">
             <div id='type${element['id']}' class="task-type">${element['type']}</div>
                 <div class="task-text">
                     <div class="task-title bold"> ${element['title']} </div>
@@ -180,6 +180,7 @@ async function renderTaskHTML(element) {
         </div>
     `;
 }
+
 /**
  * Background-Color setting of "Technical Task" and "User story" inside the task
  */
@@ -585,28 +586,48 @@ function createTask() {
     }, 1500);
 }
 
-function openTaskPopup(task) {
-    console.log('Task:', task)
+async function openTaskPopup(task) {
+    // Prioritätsbild entsprechend der Task-Priorität
+    let priorityImage = '';
+    if (task.priority === 'urgent') {
+        priorityImage = '<img class="prioSVG" src="../assets/svg/urgent.svg" alt="Urgent Priority">';
+    } else if (task.priority === 'medium') {
+        priorityImage = '<img class="prioSVG" src="../assets/svg/medium.svg" alt="Medium Priority">';
+    } else if (task.priority === 'low') {
+        priorityImage = '<img class="prioSVG" src="../assets/svg/low.svg" alt="Low Priority">';
+    }
+
+    const taskTypeClass = task.type === 'User Story' ? 'bg-userstory' : 'bg-technicaltask';
+
+    // Popup-Inhalt mit dynamisch generiertem Prioritätsbild
     const popupContent = /*html*/ `
-        <div class="task-popup add-task-popup">
-            <h3>${task.title}</h2>
-            <div>Description: ${task.description}</div>
-            <div>Due Date: ${task.dueDate}</div>
-            <div>Priority: ${task.priority}</div>
-            <div>Type: ${task.type}</div>
-            <!-- Weitere Informationen hier einfügen -->
-            <button class="close-button">Close</button>
+        <div class="board-task-detail-main jc-center ai-center d-flex">  
+            <div class="task-popup add-task-popup board-task-detail-card d-flex flex-d-col board-task-detail-card-in">
+                <div class="m-bottom-32 task-popup-type-close">
+                    <div class="task-type ${taskTypeClass} font32">${task.type}</div>
+                    <button class="close-button">Close</button>
+                </div>
+                <h3 class="m-bottom-20">${task.title}</h3>
+                <div class="m-bottom-20">${task.description}</div>
+                <div class="m-bottom-20">Due Date: ${task.dueDate}</div>
+                <div class="m-bottom-20 d-flex ai-center">Priority: ${task.priority} ${priorityImage}</div>
+                
+                <!-- Weitere Informationen hier einfügen -->
+            </div>
         </div>
     `;
 
+    // Overlay erstellen und Inhalt einfügen
     const overlay = document.createElement('div');
     overlay.classList.add('overlay');
     overlay.innerHTML = popupContent;
 
+    // Schließen-Button hinzufügen und Event-Listener setzen
     const closeButton = overlay.querySelector('.close-button');
     closeButton.addEventListener('click', () => {
         overlay.remove();
     });
 
+    // Overlay zum Body hinzufügen
     document.body.appendChild(overlay);
 }
