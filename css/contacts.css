@@ -251,6 +251,16 @@ h2.white{
 .submit-container{
     margin: 40px 0 0 0;
 }
+#saveBTN[disabled],#saveBTN:disabled{
+  opacity: 0.6;
+  cursor:unset;
+  transform:none;
+  box-shadow:none;
+  color: var(--use_bg-text-white);
+  border: 1px solid var(--use_border-text-light);
+  background-color: var(--color-grey);
+}
+
 
 .flex {
   display: flex;

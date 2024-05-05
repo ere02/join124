@@ -13,6 +13,12 @@ allNavButton(id);
 
 
 function renderSummary() {// eventuell in generateSummaryHTML ändern
+    let todoNumber = toDo.length;
+    let doneNumber = done.length;
+    let inProgressNumber = inProgress.length;
+    let awaitFeedbackNumber = awaitFeedback.length;
+    let allTasksNumber = todoNumber + inProgressNumber + awaitFeedbackNumber + doneNumber;
+    
 
 
 return /*html*/ `
@@ -23,19 +29,19 @@ return /*html*/ `
        
             <div id="summary-todo" class="tile flex-center border-bg">
                 <div id="todo" class="circle bg-dark edit"></div>
-                <div class="flex-center flex-column"><h2>1</h2><br>
+                <div class="flex-center flex-column"><h2>${todoNumber}</h2><br>
                 <h5>To-do</h5></div>
             </div>
             <div id="summary-done" class="tile flex-center border-bg">
                 <div id="done" class="circle bg-dark check"></div>
-                <div class="flex-center flex-column"><h2>1</h2><br>
+                <div class="flex-center flex-column"><h2>${doneNumber}</h2><br>
                 <h5>Done</h5></div>
             </div>
             <div id="summary-urgent" class="tile flex-center border-bg">
                 <div id="urgent" class="circle bg-urgent urgent">
                 </div>
                  <div class="flex-center flex-column">
-                        <h2>1</h2><br>
+                        <h2>${urgent}</h2><br>
                     <span class="span">Urgent</span>
                 </div>
             
@@ -45,12 +51,12 @@ return /*html*/ `
                 </div>
             </div>
             <div id="summary-board" class="tile flex-center border-bg">
-                <div class="flex-center flex-column"><h2>1</h2><br>
+                <div class="flex-center flex-column"><h2>${allTasksNumber}</h2><br>
                     <h5>Tasks in <br>Board</h5></div>
                 </div>
-            <div id="summary-progress" class="tile flex-center border-bg"><div class="flex-center flex-column"><h2>2</h2><br>
+            <div id="summary-progress" class="tile flex-center border-bg"><div class="flex-center flex-column"><h2>${inProgressNumber}</h2><br>
                 <h5>Tasks in <br>Progress</h5></div></div>   
-            <div id="summary-feedback" class="tile flex-center border-bg"><div class="flex-center flex-column"><h2>2</h2><br>
+            <div id="summary-feedback" class="tile flex-center border-bg"><div class="flex-center flex-column"><h2>${awaitFeedbackNumber}</h2><br>
                 <h5>Awaiting <br>Feedback</h5></div></div>    
             <div id="summary-greet">7</div>
     </div>

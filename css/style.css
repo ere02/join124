@@ -385,6 +385,7 @@ header {
   border-radius: 0.5rem;
   height: 2.8rem;
   padding:0 20px;
+  cursor:pointer;
 }
 
 .input-field {
@@ -469,12 +470,12 @@ header {
 } */
 .button:hover {
   background-color: var(--use_border-button-bg-text-hover);
-  border-color: var(--use_border-button-bg-text-hover);
+  border: 1px solid var(--use_border-button-bg-text-hover);
 }
 
 .button-guest:hover {
   color: var(--use_border-button-bg-text-hover);
-  border-color: var(--use_border-button-bg-text-hover);
+  border: 1px solid var(--use_border-button-bg-text-hover);
 }
 
 .button:hover,

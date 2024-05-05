@@ -4,6 +4,14 @@ const title = allTasks.map(item => item.title);
 const description = allTasks.map(item => item.description);
 const category = allTasks.map(item => item.category);
 const id = allTasks.map(item => item.id);
+let prio = allTasks.map(item => item.priority);
+let urgent = allTasks.filter(t => t['priority'] === 'urgent' && t.category !== 'inDone').length;
+
+let toDo = allTasks.filter(t => t['category'] == 'inTodo');
+let inProgress = allTasks.filter(t => t['category'] == 'inProgress');
+let awaitFeedback = allTasks.filter(t => t['category'] == 'awaitFeedback');
+let done = allTasks.filter(t => t['category'] == 'inDone');
+
 
 let currentUser = 1;
 let currentTasks;
@@ -48,13 +56,7 @@ function startApp() {
  * The draggable Objects for all lanes are handled here
  */
 async function updateBoardHTML() {
-
-    let toDo = allTasks.filter(t => t['category'] == 'inTodo');
-    let inProgress = allTasks.filter(t => t['category'] == 'inProgress');
-    let awaitFeedback = allTasks.filter(t => t['category'] == 'awaitFeedback');
-    let done = allTasks.filter(t => t['category'] == 'inDone');
     const lanes = ['inTodo', 'inProgress', 'awaitFeedback', 'inDone'];
-
     let laneTodo = document.getElementById('inTodo');
     laneTodo.innerHTML = renderEmptyLane();
     if (toDo.length !== 0) {
