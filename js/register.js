@@ -106,4 +106,4 @@ function showSignUp() {
   let content = document.getElementById('content');
   content.innerHTML = generateSignUpHTML();
 };
-// Todos: button disable/enable, password hashing, error handling, 
+// Todos: button disable/enable, password hashing, error handling, //
