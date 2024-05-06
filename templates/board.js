@@ -310,7 +310,7 @@ function openAddTaskCard() {
           placeholder="Enter a Title" required="">
       </label>
 
-      <div class="extra-small d-none" id="">This field is required</div>
+      <!-- <div class="extra-small d-none" id="">This field is required</div> -->
 
       <h3 class="m-top-32 h3">Description</h3>
       <label for="description" class="add-task-label m-bottom-32">
@@ -334,7 +334,7 @@ function openAddTaskCard() {
         </div>
       </div>
 
-      <div class="add-task-required-info">* This field is required</div>
+      <div class="add-task-required-info"><div class="required-star">*</div> This field is required</div>
 
     </form>
   </div>
@@ -348,7 +348,7 @@ function openAddTaskCard() {
       <input type="date" name="dueDate" class="add-task-due-date" id="" required="">
     </label>
 
-    <div class="extra-small d-none" id="">This field is required</div>
+    <!-- <div class="extra-small d-none" id="">This field is required</div> -->
 
     <h3 class="m-top-32 h3">Prio</h3>
         <div class="add-task-prio">
@@ -390,7 +390,7 @@ function openAddTaskCard() {
       <div class="addTaskCategorySelect" onclick="">User Story</div>
     </div> -->
 
-    <div class="extra-small d-none" id="">This field is required</div>
+    <!-- <div class="extra-small d-none" id="">This field is required</div> -->
 
     <div class="d-none" id="" onclick=""></div>
 
@@ -404,10 +404,10 @@ function openAddTaskCard() {
     <div id="outputSubtasks" class="outputSubtaskClass"></div>
 
     <div class="add-task-bottom-container">
-      <div class="add-task-required-info-bottom">* This field is required</div>
+      <!-- <div class="add-task-required-info-bottom">* This field is required</div> -->
       <div class="add-task-buttons-container">
         <button type="reset" class="add-task-clear-button-popup d-flex-ai-center-jc-center" onclick="closeAddTaskCard()">Cancel</button>
-        <button onclick="createTask()" class="add-task-add-button d-flex-ai-center-jc-center" id="">Create Task<img
+        <button class="add-task-add-button d-flex-ai-center-jc-center" id="">Create Task<img
             src="../assets/svg/check_white.svg"></button>
       </div>
 
@@ -527,7 +527,28 @@ function changePriority(priority) {
     }
 }
 
+function validateForm() {
+    // Lese die Werte der erforderlichen Felder aus
+    const title = document.querySelector('.add-task-title').value;
+    const dueDate = document.querySelector('.add-task-due-date').value;
+    const category = document.querySelector('.add-task-category-input').value;
+
+    // Überprüfe, ob die erforderlichen Felder ausgefüllt sind
+    const isTitleValid = title.trim() !== ''; // Überprüfe, ob der Titel nicht leer ist
+    const isDueDateValid = dueDate.trim() !== ''; // Überprüfe, ob das Fälligkeitsdatum nicht leer ist
+    const isCategoryValid = category.trim() !== ''; // Überprüfe, ob die Kategorie ausgewählt wurde
+
+    // Gib zurück, ob alle erforderlichen Felder ausgefüllt sind
+    return isTitleValid && isDueDateValid && isCategoryValid;
+}
+
 function createTask() {
+
+    if (!validateForm()) {
+        // Wenn das Formular nicht gültig ist, zeige eine Fehlermeldung an oder führe keine Aktion aus
+        alert('Bitte füllen Sie alle erforderlichen Felder aus.');
+        return;
+    }
     // Lese die Daten aus den Eingabefeldern aus
     const title = document.querySelector('.add-task-title').value;
     const description = document.querySelector('.add-task-description').value;
@@ -609,6 +630,7 @@ async function openTaskPopup(task) {
                 <div class="m-bottom-20">${task.description}</div>
                 <div class="m-bottom-20">Due Date: ${task.dueDate}</div>
                 <div class="m-bottom-20 d-flex ai-center">Priority: ${task.priority} ${priorityImage}</div>
+                <div class="m-bottom-20 ">Assigned to: ${task.assignedTo}</div>
                 
                 <!-- Weitere Informationen hier einfügen -->
             </div>

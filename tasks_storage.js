@@ -7,7 +7,9 @@ let allTasks = [{
     "description": "nicht nur sauber, sondern rein",
     "priority": "urgent",
     "workers": [],
-    "type": "User Story"
+    "type": "User Story",
+    "dueDate": "07.07.2024",
+    "assignedTo": "XYZ"
 },
 {
     "id": 1,
@@ -16,7 +18,9 @@ let allTasks = [{
     "description": "auch wenn sie nicht wollen",
     "priority": "medium",
     "workers": [1, 2, 3, 4],
-    "type": "User Story"
+    "type": "User Story",
+    "dueDate": "10.05.2024",
+    "assignedTo": "XYZ"
 },
 {
     "id": 2,
@@ -25,7 +29,9 @@ let allTasks = [{
     "description": "... super task",
     "priority": "urgent",
     "workers": [1, 2, 3, 4],
-    "type": "Technical Task"
+    "type": "Technical Task",
+    "dueDate": "22.05.2024",
+    "assignedTo": "XYZ"
 },
 {
     "id": 3,
@@ -34,7 +40,9 @@ let allTasks = [{
     "description": "morgen vielleicht",
     "priority": "medium",
     "workers": [1, 2, 3],
-    "type": "Technical Task"
+    "type": "Technical Task",
+    "dueDate": "28.08.2024",
+    "assignedTo": "XYZ"
 },
 {
     "id": 4,
@@ -43,7 +51,9 @@ let allTasks = [{
     "description": "die Nachbarn gegrüßt",
     "priority": "low",
     "workers": [1, 2, 3],
-    "type": "User Story"
+    "type": "User Story",
+    "dueDate": "14.10.2024",
+    "assignedTo": "XYZ"
 },
 {
     "id": 5,
@@ -53,7 +63,9 @@ let allTasks = [{
         "Wenn Schäfchen Schäfchen zählen, zählen sie sich dann mit? ",
     "priority": "low",
     "workers": [1, 2, 3],
-    "type": "Technical Task"
+    "type": "Technical Task",
+    "dueDate": "01.04.2024",
+    "assignedTo": "XYZ"
 },
 {
     "id": 6,
@@ -63,7 +75,9 @@ let allTasks = [{
         "Wenn Schäfchen Schäfchen zählen, zählen sie sich dann mit? ",
     "priority": "low",
     "workers": [1, 2, 3],
-    "type": "User Story"
+    "type": "User Story",
+    "dueDate": "11.11.2024",
+    "assignedTo": "XYZ"
 },
 {
     "id": 7,
@@ -73,7 +87,9 @@ let allTasks = [{
         "Wenn Schäfchen Schäfchen zählen, zählen sie sich dann mit? ",
     "priority": "medium",
     "workers": [1, 2, 3],
-    "type": "Technical Task"
+    "type": "Technical Task",
+    "dueDate": "09.05.2024",
+    "assignedTo": "XYZ"
 },
 {
     "id": 8,
@@ -83,7 +99,9 @@ let allTasks = [{
         "Wenn Schäfchen Schäfchen zählen, zählen sie sich dann mit? ",
     "priority": "low",
     "workers": [1, 2, 3, 4],
-    "type": "Technical Task"
+    "type": "Technical Task",
+    "dueDate": "11.05.2024",
+    "assignedTo": "XYZ"
 },
 {
     "id": 9,
@@ -93,5 +111,7 @@ let allTasks = [{
         "Wenn Schäfchen Schäfchen zählen, zählen sie sich dann mit? ",
     "priority": "low",
     "workers": [1, 2, 3, 4],
-    "type": "User Story"
+    "type": "User Story",
+    "dueDate": "11.05.2024",
+    "assignedTo": "XYZ"
 }];

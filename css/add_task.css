@@ -183,6 +183,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .required-star {
   color: var(--color-redorange);
+  /* gap: 3px; */
 }
 
 .add-task-required-small {
@@ -191,11 +192,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .add-task-required-info {
-  color: var(--color-red);
+  /* color: var(--color-red); */
   font-size: 16px;
   font-weight: 400;
-  margin-top: 80px;
+  margin-top: 30px;
   width: 100%;
+  display: flex;
+  gap: 3px;
 }
 
 .add-task-required-info-bottom {
