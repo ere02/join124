@@ -630,6 +630,7 @@ async function openTaskPopup(task) {
                 <div class="m-bottom-20">${task.description}</div>
                 <div class="m-bottom-20">Due Date: ${task.dueDate}</div>
                 <div class="m-bottom-20 d-flex ai-center">Priority: ${task.priority} ${priorityImage}</div>
+                <div class="m-bottom-20 ">Assigned to: ${task.assignedTo}</div>
                 
                 <!-- Weitere Informationen hier einfügen -->
             </div>
