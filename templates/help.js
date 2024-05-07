@@ -1,4 +1,13 @@
+async function goToHelpHTML(){
+  window.location.href = '../subpages/help.html';
+}
 
+async function startHelp() {
+  await includeHTML();
+  policy.classList.remove("displaynone");
+  policy.innerHTML = renderHelp("DE");
+  //allNavButton(id);  
+}
 
 function renderHelp(lan) {
   switch (lan) {

@@ -117,10 +117,8 @@ async function loadLegal() {
 /** CONTENT loads in Policy Section
  * CASE: Loading HELP Information
  */
-function loadHelp(id) {
-  allNavButton(id);
-  policy.classList.remove("displaynone");
-  policy.innerHTML = renderHelp("DE");
+async function loadHelp() {
+  await goToHelpHTML();
 }
 
 /** Control the behavior of the Nav-Button
