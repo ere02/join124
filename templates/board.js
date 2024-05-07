@@ -556,7 +556,7 @@ function createTask() {
     const priorityElement = document.querySelector('.add-task-prio-high-pressed-button');
     let priority;
     if (priorityElement) {
-        priority = 'high';
+        priority = 'urgent';
     } else {
         const mediumPriorityElement = document.querySelector('.add-task-prio-medium-pressed-button');
         if (mediumPriorityElement) {
