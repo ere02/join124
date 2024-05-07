@@ -2,11 +2,20 @@ let users = [];
 
 async function init() {
   loadUsers();
+  loadTasks();
 }
 
 async function loadUsers() {
   try {
     users = JSON.parse(await getItem('users'));
+  } catch (e) {
+    console.error('Loading error:', e);
+  }
+}
+
+async function loadTasks() {
+  try {
+    users = JSON.parse(await getItem('tasks'));
   } catch (e) {
     console.error('Loading error:', e);
   }
@@ -28,7 +37,7 @@ async function register() {
     passwordInput.value === confirmPasswordInput.value &&
     agreeCheckbox.checked
   ) {
-    registerBtn.disabled = true;
+    registerBtn.disabled = false;
     try {
       // Don't use setItem to store user data locally (insecure)
       // You would typically send user data to the server for secure storage
