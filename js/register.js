@@ -3,6 +3,7 @@ let users = [];
 async function init() {
   loadUsers();
   loadTasks();
+  allTasks();
 }
 
 async function loadUsers() {

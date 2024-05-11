@@ -116,5 +116,6 @@ const allUsers = [
     phone: '+49 199 99999999',
     personalColor: 'var(--color-cyan)',
     projectId: [1],
-  },
+  }
 ];
+
