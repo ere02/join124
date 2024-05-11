@@ -53,7 +53,7 @@ async function register() {
         confirmPassword: hashedPassword,
       };
 
-      users.push(user);
+      users.push({nameInput:nameInput.value, emailInput:emailInput.value, passwordInput:passwordInput.value});
       // Add the user object to the users array
 
       // Log the user object to the console
