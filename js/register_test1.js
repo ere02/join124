@@ -53,7 +53,7 @@ async function register(event) {
       registerBtn.disabled = false; // Enable the button again regardless of success/failure
     }
   }
-}
+
 /*   try {
     // Code that may throw an error
   } catch (error) {

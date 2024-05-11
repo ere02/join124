@@ -133,7 +133,7 @@ let allTasks = [{
     "description":
         "Wenn Schäfchen Schäfchen zählen, zählen sie sich dann mit? ",
     "priority": "low",
-    "workers": [1, 2, 3, 4],
+    "workers": [1, 2, 4, 6],
     "type": "User Story",
     "dueDate": "11.05.2024",
     "assignedTo": "XYZ",
@@ -142,18 +142,18 @@ let allTasks = [{
         { "id": 15, "title": "Subtask 14", "completed": true }
     ]}];
 
-// async function allTask() {
-//     // Assuming allTasks is an array of tasks
-//     const allTasks = JSON.stringify(allTasks);
-//     const response = await setItem('allTasks', JSON.stringify(allTasks));
-//     await setItem('allTasks', JSON.stringify(allTasks)); // Send to server
-//     if (response.status === 'success') {
-//         alert('All tasks are stored');
-
-//         storage();
-
-//         console.log(allTasks);
-//     } else {
-//         alert('Failed to store tasks');
-//     }
-// }
+async function allTasks() {
+    // Assuming allTasks is an array of tasks
+    const allTasks = JSON.stringify(allTasks);
+    /* const response = await setItem('allTasks', JSON.stringify(allTasks)); */
+ await setItem('allTasks', JSON.stringify(allTasks)); // Send to server
+    if (response.status === 'success') {
+      alert('All tasks are stored');
+  
+      storage();
+  
+      console.log(allTasks);
+    } else {
+      alert('Failed to store tasks');
+    }
+  }
