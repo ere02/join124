@@ -17,7 +17,7 @@ function renderHelp(lan) {
 <div class="start-container">
    
     <div class ="policy">
-             <div class="back-head"><h1 class="">Hilfe </h1><div id="backButton" onclick="goBackButton()"><img src="../assets/svg/back.svg" class="backarrow"></div>
+             <div class="back-head"><h1 class="">Hilfe </h1><div id="backButton" onclick="goBack()"><img src="../assets/svg/back.svg" class="backarrow"></div>
     </div>
 
 <p>Willkommen auf der Hilfeseite von <span class="highlighted">JOIN</span>, dein Leitfaden zur Verwendung unseres Kanban-Projektmanagement-Tools. Hier geben wir einen Überblick darüber, was <span class="highlighted">JOIN</span> ist, wie du es verwenden und davon profitieren kannst.

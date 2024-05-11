@@ -116,7 +116,7 @@ let allTasks = [{
     "assignedTo": "XYZ"
 }];
 
-function allTask() {
+async function allTasks() {
     // Assuming allTasks is an array of tasks
     const allTasks = JSON.stringify(allTasks);
     /* const response = await setItem('allTasks', JSON.stringify(allTasks)); */
