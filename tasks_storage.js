@@ -110,7 +110,7 @@ let allTasks = [{
     "description":
         "Wenn Schäfchen Schäfchen zählen, zählen sie sich dann mit? ",
     "priority": "low",
-    "workers": [1, 2, 3, 4],
+    "workers": [1, 2, 4, 6],
     "type": "User Story",
     "dueDate": "11.05.2024",
     "assignedTo": "XYZ"
