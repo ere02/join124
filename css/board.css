@@ -641,3 +641,31 @@ Here are designed all Task and Todo-Cards
     align-items: center;
     flex-direction: row;
 }
+
+.close-button {
+    background: none;
+    border: none;
+}
+
+.close-button:hover {
+    cursor: pointer;
+}
+
+/* Stile für die Subtask-Liste und die einzelnen Subtask-Elemente */
+.subtasks-list {
+    margin-bottom: 20px;
+}
+
+.subtask-item {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-bottom: 10px;
+    margin-left: 12px;
+}
+
+
+/* Stile für die neue Subtask-Checkbox */
+#new-subtask {
+    margin-left: 12px;
+}

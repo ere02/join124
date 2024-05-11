@@ -9,7 +9,11 @@ let allTasks = [{
     "workers": [],
     "type": "User Story",
     "dueDate": "07.07.2024",
-    "assignedTo": "XYZ"
+    "assignedTo": "XYZ",
+    "subtasks": [
+        { "id": 0, "title": "Subtask 1", "completed": false },
+        { "id": 1, "title": "Subtask 2", "completed": true }
+    ]
 },
 {
     "id": 1,
@@ -20,8 +24,10 @@ let allTasks = [{
     "workers": [1, 2, 3, 4],
     "type": "User Story",
     "dueDate": "10.05.2024",
-    "assignedTo": "XYZ"
-},
+    "assignedTo": "XYZ",
+    "subtasks": [
+        { "id": 3, "title": "Subtask 3", "completed": false },
+    ]},
 {
     "id": 2,
     "title": "[2] Schokolade aufessen",
@@ -31,8 +37,11 @@ let allTasks = [{
     "workers": [1, 2, 3, 4],
     "type": "Technical Task",
     "dueDate": "22.05.2024",
-    "assignedTo": "XYZ"
-},
+    "assignedTo": "XYZ",
+    "subtasks": [
+        { "id": 4, "title": "Subtask 4", "completed": false },
+        { "id": 5, "title": "Subtask 5", "completed": true }
+    ]},
 {
     "id": 3,
     "title": "[3] Hirn benutzen",
@@ -42,8 +51,10 @@ let allTasks = [{
     "workers": [1, 2, 3],
     "type": "Technical Task",
     "dueDate": "28.08.2024",
-    "assignedTo": "XYZ"
-},
+    "assignedTo": "XYZ",
+    "subtasks": [
+        { "id": 6, "title": "Subtask 6", "completed": true }
+    ]},
 {
     "id": 4,
     "title": "[4] krasse Sachen machen",
@@ -53,8 +64,10 @@ let allTasks = [{
     "workers": [1, 2, 3],
     "type": "User Story",
     "dueDate": "14.10.2024",
-    "assignedTo": "XYZ"
-},
+    "assignedTo": "XYZ",
+    "subtasks": [
+        { "id": 7, "title": "Subtask 7", "completed": true }
+    ]},
 {
     "id": 5,
     "title": "[5] Schäfchen zählen",
@@ -65,8 +78,12 @@ let allTasks = [{
     "workers": [1, 2, 3],
     "type": "Technical Task",
     "dueDate": "01.04.2024",
-    "assignedTo": "XYZ"
-},
+    "assignedTo": "XYZ",
+    "subtasks": [
+        { "id": 8, "title": "Subtask 8", "completed": false },
+        { "id": 9, "title": "Subtask 9", "completed": true },
+        { "id": 10, "title": "Subtask 10", "completed": true }
+    ]},
 {
     "id": 6,
     "title": "[6] Schäfchen zählen",
@@ -77,8 +94,10 @@ let allTasks = [{
     "workers": [1, 2, 3],
     "type": "User Story",
     "dueDate": "11.11.2024",
-    "assignedTo": "XYZ"
-},
+    "assignedTo": "XYZ",
+    "subtasks": [
+        { "id": 11, "title": "Subtask 11", "completed": true }
+    ]},
 {
     "id": 7,
     "title": "[7] Schäfchen zählen",
@@ -89,8 +108,10 @@ let allTasks = [{
     "workers": [1, 2, 3],
     "type": "Technical Task",
     "dueDate": "09.05.2024",
-    "assignedTo": "XYZ"
-},
+    "assignedTo": "XYZ",
+    "subtasks": [
+        { "id": 12, "title": "Subtask 12", "completed": true }
+    ]},
 {
     "id": 8,
     "title": "[8] Schäfchen zählen",
@@ -101,8 +122,10 @@ let allTasks = [{
     "workers": [1, 2, 3, 4],
     "type": "Technical Task",
     "dueDate": "11.05.2024",
-    "assignedTo": "XYZ"
-},
+    "assignedTo": "XYZ",
+    "subtasks": [
+        { "id": 13, "title": "Subtask 13", "completed": false },
+    ]},
 {
     "id": 9,
     "title": "[9] Schäfchen zählen",
@@ -113,21 +136,24 @@ let allTasks = [{
     "workers": [1, 2, 3, 4],
     "type": "User Story",
     "dueDate": "11.05.2024",
-    "assignedTo": "XYZ"
-}];
+    "assignedTo": "XYZ",
+    "subtasks": [
+        { "id": 14, "title": "Subtask 13", "completed": false },
+        { "id": 15, "title": "Subtask 14", "completed": true }
+    ]}];
 
-function allTask() {
-    // Assuming allTasks is an array of tasks
-    const allTasks = JSON.stringify(allTasks);
-    /* const response = await setItem('allTasks', JSON.stringify(allTasks)); */
- await setItem('allTasks', JSON.stringify(allTasks)); // Send to server
-    if (response.status === 'success') {
-      alert('All tasks are stored');
-  
-      storage();
-  
-      console.log(allTasks);
-    } else {
-      alert('Failed to store tasks');
-    }
-  }
+// async function allTask() {
+//     // Assuming allTasks is an array of tasks
+//     const allTasks = JSON.stringify(allTasks);
+//     const response = await setItem('allTasks', JSON.stringify(allTasks));
+//     await setItem('allTasks', JSON.stringify(allTasks)); // Send to server
+//     if (response.status === 'success') {
+//         alert('All tasks are stored');
+
+//         storage();
+
+//         console.log(allTasks);
+//     } else {
+//         alert('Failed to store tasks');
+//     }
+// }

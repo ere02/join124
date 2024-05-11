@@ -84,7 +84,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
-.add-task-title {
+.add-task-title,
+.add-task-subtask {
   height: 30px;
   width: 440px;
   font-size: 20px;
@@ -297,6 +298,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-bottom: 20px;
 }
 
+.m-bottom-7 {
+  margin-bottom: 7px;
+}
+
 .extra-small {
   color: var(--color-red);
   font-size: 10px;
@@ -308,6 +313,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .m-top-20 {
   margin-top: 20px;
+}
+
+.m-top-0 {
+  margin-top: 0px;
 }
 
 .bgC-white {

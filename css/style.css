@@ -42,6 +42,11 @@ h2 {
   line-height: 2rem;
 }
 
+.h2 {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
 /** Summary Begrüßung : Good Morning 47px
 */
 h3 {
@@ -656,4 +661,8 @@ ol.helplist {
 
 .text-greyish {
   color: var(--color-greyish-icon);
+}
+
+.no-border {
+  border: none;
 }

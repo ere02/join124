@@ -109,24 +109,24 @@ async function updateBoardHTML() {
         let tasksInLane = allTasks.filter(t => t.category === lane);
         let laneElement = document.getElementById(lane);
         laneElement.innerHTML = renderEmptyLane();
-    
+
         if (tasksInLane.length !== 0) {
             laneElement.innerHTML = '';
             for (let task of tasksInLane) {
                 const taskElement = await renderTaskHTML(task);
                 const taskDiv = document.createElement('div');
                 taskDiv.innerHTML = taskElement;
-    
+
                 // Hier setzen Sie die aktuelle Aufgabe für den Klick-Eventlistener
                 let clickedTask = task;
-    
+
                 taskDiv.addEventListener('click', () => openTaskPopup(clickedTask));
                 laneElement.appendChild(taskDiv);
                 await backgroundType(task);
             }
         }
     }
-    
+
     searchInput = document.getElementById('search');
     if (searchInput) {
         searchInput.addEventListener('keyup', search);
@@ -380,25 +380,13 @@ function openAddTaskCard() {
         </select>  
     </label>
 
-<!-- 
-    <label for="category" class="add-task-label bgC-white" id="">
-      <div class="add-task-category-input" id="" onclick="">User Story</div>
-    </label>
-
-    <div class="d-none" id="">
-      <div class="addTaskCategorySelect" onclick="">Technical Task</div>
-      <div class="addTaskCategorySelect" onclick="">User Story</div>
-    </div> -->
-
-    <!-- <div class="extra-small d-none" id="">This field is required</div> -->
-
     <div class="d-none" id="" onclick=""></div>
 
     <h3 class="m-top-32 h3">Subtasks</h3>
     <label for="subtaskAddTask" class="add-task-label bgC-white">
-      <input type="text" name="subtaskAddTask" class="add-task-title" id="add_task_subtask"
+      <input type="text" name="subtaskAddTask" class="add-task-subtask" id="add_task_subtask"
         placeholder="Add new Subtask" autocomplete="off" maxlength="20">
-      <img src="../assets/svg/add.svg" class="add-subtask-img cursor-pointer" id="" onclick="">
+        <img src="../assets/svg/add.svg" class="add-subtask-img cursor-pointer" id="add-subtask-button" onclick="addSubtaskToNewTask()">
     </label>
 
     <div id="outputSubtasks" class="outputSubtaskClass"></div>
@@ -527,6 +515,26 @@ function changePriority(priority) {
     }
 }
 
+function addSubtask(taskId) {
+    const subtaskInput = document.querySelector('.add-task-subtask');
+    const subtaskText = subtaskInput.value.trim(); // Text des Subtasks
+
+    // Überprüfen, ob die Task-ID im gültigen Bereich liegt
+    if (taskId >= 0 && taskId < allTasks.length) {
+        if (subtaskText !== '') {
+            // Subtask zum entsprechenden Task hinzufügen
+            if (!allTasks[taskId].subtasks) {
+                allTasks[taskId].subtasks = []; // Array initialisieren, falls es nicht existiert
+            }
+            allTasks[taskId].subtasks.push({ title: subtaskText, completed: false });
+            console.log(allTasks); // Zum Debuggen, um zu überprüfen, ob der Subtask hinzugefügt wurde
+            subtaskInput.value = ''; // Eingabefeld leeren
+        }
+    } else {
+        console.error('Invalid task ID:', taskId);
+    }
+}
+
 function validateForm() {
     // Lese die Werte der erforderlichen Felder aus
     const title = document.querySelector('.add-task-title').value;
@@ -584,12 +592,16 @@ function createTask() {
         priority: priority,
         category: 'inTodo', // Setze die Kategorie auf die ausgewählte Kategorie
         workers: [], // Leeres Array für Arbeitskräfte
-        type: category // Typ der Aufgabe entspricht der Kategorie
-        // Füge weitere Eigenschaften hinzu, wie Assigned to und Subtasks
+        type: category, // Typ der Aufgabe entspricht der Kategorie
+        subtasks: []
+        // Füge weitere Eigenschaften hinzu, wie Assigned to
     };
 
     // Füge die neue Aufgabe dem allTasks Array hinzu
     allTasks.push(newTask);
+
+    // Rufe addSubtaskToNewTask auf und übergebe die neue Aufgabe
+    addSubtaskToNewTask(newTask);
 
     // Aktualisiere das Board, um die neue Aufgabe anzuzeigen
     updateBoardHTML();
@@ -603,9 +615,50 @@ function createTask() {
         popup.classList.add('d-none');
         closeAddTaskCard(); // Schließe das Add Task-Popup
     }, 1500);
+
+    return newTask.id;
+}
+
+function addSubtaskToNewTask(newTask) {
+    const subtaskInput = document.querySelector('.add-task-subtask');
+    const subtaskText = subtaskInput.value.trim(); // Text des Subtasks
+
+    // Überprüfen, ob das Textfeld mit der ID "add_task_subtask" ausgefüllt ist
+    if (subtaskText === '') {
+        alert('Bitte fügen Sie einen Text hinzu!');
+        return; // Beende die Funktion, wenn das Textfeld leer ist
+    }
+
+    // Erstelle das HTML-Element für den Subtask
+    const outputSubtasks = document.getElementById('outputSubtasks');
+    const subtaskDiv = document.createElement('div');
+    subtaskDiv.textContent = subtaskText;
+    outputSubtasks.appendChild(subtaskDiv);
+
+    // Initialisiere das Subtask-Array, falls es nicht vorhanden ist
+    if (!newTask.subtasks) {
+        newTask.subtasks = [];
+    }
+
+    // Füge den Subtask zum Array der Subtasks der neuen Aufgabe hinzu
+    const newSubtask = { 
+        "id": newTask.subtasks.length, // Verwende die Länge des Subtask-Arrays der neuen Aufgabe als eindeutige ID
+        "title": subtaskText, 
+        "completed": false 
+    };
+    newTask.subtasks.push(newSubtask);
+
+    // Lösche den Inhalt des Textfelds
+    subtaskInput.value = '';
 }
 
 async function openTaskPopup(task) {
+    // Überprüfen, ob task.subtasks ein Array ist
+    if (!Array.isArray(task.subtasks)) {
+        // Wenn nicht, setze task.subtasks auf ein leeres Array
+        task.subtasks = [];
+    }
+
     // Prioritätsbild entsprechend der Task-Priorität
     let priorityImage = '';
     if (task.priority === 'urgent') {
@@ -619,30 +672,45 @@ async function openTaskPopup(task) {
     const taskTypeClass = task.type === 'User Story' ? 'bg-userstory' : 'bg-technicaltask';
 
     // Popup-Inhalt mit dynamisch generiertem Prioritätsbild
-    const popupContent = /*html*/ `
+    let popupContent = `
         <div class="board-task-detail-main jc-center ai-center d-flex">  
             <div class="task-popup add-task-popup board-task-detail-card d-flex flex-d-col board-task-detail-card-in">
                 <div class="m-bottom-32 task-popup-type-close">
                     <div class="task-type ${taskTypeClass} font32">${task.type}</div>
-                    <button class="close-button">Close</button>
+                    <button class="close-button"><img src="../assets/svg/close.svg" style="width: 12px;"></button>
                 </div>
-                <h3 class="m-bottom-20">${task.title}</h3>
+                <div class="h2 m-bottom-20">${task.title}</div>
                 <div class="m-bottom-20">${task.description}</div>
                 <div class="m-bottom-20">Due Date: ${task.dueDate}</div>
                 <div class="m-bottom-20 d-flex ai-center">Priority: ${task.priority} ${priorityImage}</div>
-                <div class="m-bottom-20 ">Assigned to: ${task.assignedTo}</div>
-                
-                <!-- Weitere Informationen hier einfügen -->
+                <div class="m-bottom-20">Assigned to: ${task.assignedTo}</div>
+                <div class="m-bottom-7">Subtasks</div>`;
+
+    // Wenn Subtasks vorhanden sind, füge sie dem Popup-Inhalt hinzu
+    if (task.subtasks.length > 0) {
+        popupContent += `
+            <div class="subtasks-list">`;
+        task.subtasks.forEach(subtask => {
+            popupContent += `
+                <div class="subtask-item">
+                    <input type="checkbox" id="subtask-${subtask.id}" ${subtask.completed ? 'checked' : ''}>
+                    <label class="no-border m-top-0" for="subtask-${subtask.id}">${subtask.title}</label>
+                </div>`;
+        });
+        popupContent += `
+            </div>`;
+    }
+
+    // Schließen-Button hinzufügen und Event-Listener setzen
+    popupContent += `
             </div>
-        </div>
-    `;
+        </div>`;
 
     // Overlay erstellen und Inhalt einfügen
     const overlay = document.createElement('div');
     overlay.classList.add('overlay');
     overlay.innerHTML = popupContent;
 
-    // Schließen-Button hinzufügen und Event-Listener setzen
     const closeButton = overlay.querySelector('.close-button');
     closeButton.addEventListener('click', () => {
         overlay.remove();
