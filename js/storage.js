@@ -18,3 +18,16 @@ async function getItem(key) {
         } throw `Could not find data with key "${key}".`;
     });
 }
+
+async function allTasks(tasks) {
+    // Assuming tasks is an array of tasks
+    const allTasks = JSON.stringify(tasks);
+    const response = await setItem('allTasks', allTasks); // Send to server
+    if (response.status === 'success') {
+      alert('All tasks are stored');
+      storage();
+      console.log(allTasks);
+    } else {
+      alert('Failed to store tasks');
+    }
+  }

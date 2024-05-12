@@ -142,18 +142,3 @@ let allTasks = [{
         { "id": 15, "title": "Subtask 14", "completed": true }
     ]}];
 
-// async function allTasks() {
-//     // Assuming allTasks is an array of tasks
-//     const allTasks = JSON.stringify(allTasks);
-//     /* const response = await setItem('allTasks', JSON.stringify(allTasks)); */
-//  await setItem('allTasks', JSON.stringify(allTasks)); // Send to server
-//     if (response.status === 'success') {
-//       alert('All tasks are stored');
-  
-//       storage();
-  
-//       console.log(allTasks);
-//     } else {
-//       alert('Failed to store tasks');
-//     }
-//   }

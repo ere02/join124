@@ -2,7 +2,7 @@ let users = [];
 
 async function init() {
   loadUsers();
-  loadTasks();
+  loadUserTasks();
   allTasks();
 }
 
@@ -14,9 +14,12 @@ async function loadUsers() {
   }
 }
 
-async function loadTasks() {
+async function loadUserTasks() {
   try {
-    users = JSON.parse(await getItem('tasks'));
+    const tasks = JSON.parse(await getItem('tasks'));
+    users.forEach((user) => {
+      user.tasks = tasks.filter((task) => task.userId === user.id);
+    });
   } catch (e) {
     console.error('Loading error:', e);
   }
@@ -53,12 +56,15 @@ async function register() {
         confirmPassword: hashedPassword,
       };
 
-      users.push({nameInput:nameInput.value, emailInput:emailInput.value, passwordInput:passwordInput.value});
       // Add the user object to the users array
+      users.push(user);
 
       // Log the user object to the console
       console.log(user);
-      const response = await setItem('users', JSON.stringify(users)); // Send to server
+
+      // Send the user data to the server for secure storage
+      const response = await sendUserData(user); // Implement sendUserData function
+
       if (response.status === 'success') {
         alert('You are registered');
 
@@ -66,8 +72,9 @@ async function register() {
         storage();
 
         console.log(user);
+      } else {
+        alert('Registration failed');
       }
-      console.log('users', users);
     } catch (error) {
       alert('Registration failed');
     }
@@ -127,4 +134,3 @@ function showSignUp() {
   let content = document.getElementById('content');
   content.innerHTML = generateSignUpHTML();
 };
-// Todos: button disable/enable, password hashing, error handling, 
