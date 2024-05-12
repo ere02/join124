@@ -39,8 +39,8 @@ function generateSignUpHTML() {
             </div>
             <div class="submit-container">
               <button id="registerBtn" class="button" type="submit">Sign up</button>
-            </div>
-          </form>
+              </div>
+            </form>
         </div>
       </div>
   </div>`
