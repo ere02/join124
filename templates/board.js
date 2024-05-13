@@ -1,20 +1,40 @@
 
 
-const title = allTasks.map(item => item.title);
-const description = allTasks.map(item => item.description);
-const category = allTasks.map(item => item.category);
-const id = allTasks.map(item => item.id);
-let prio = allTasks.map(item => item.priority);
-let urgent = allTasks.filter(t => t['priority'] === 'urgent' && t.category !== 'inDone').length;
 
-let toDo = allTasks.filter(t => t['category'] == 'inTodo');
-let inProgress = allTasks.filter(t => t['category'] == 'inProgress');
-let awaitFeedback = allTasks.filter(t => t['category'] == 'awaitFeedback');
-let done = allTasks.filter(t => t['category'] == 'inDone');
-
-
+/**
+ * Filter die Daten nach User-Id
+ */
 let currentUser = 1;
-let currentTasks;
+
+// const allTitle = allTasks.map(item => item.title);
+// const allDescription = allTasks.map(item => item.description);
+// const allCategories = allTasks.map(item => item.category);
+// const allIds = allTasks.map(item => item.id);
+// const allPrios = allTasks.map(item => item.priority);
+
+let currentTasks = allTasks.filter(t => t['workers'][currentUser]);
+let title = currentTasks.map(item => item.title);
+const description = currentTasks.map(item => item.description);
+const category = currentTasks.map(item => item.category);
+const id = currentTasks.map(item => item.id);
+const prio = currentTasks.map(item => item.priority);
+
+
+let urgent = currentTasks.filter(c => c['priority'] === 'urgent' && c.category !== 'inDone');
+let toDo = currentTasks.filter(c => c['category'] == 'inTodo');
+let inProgress = currentTasks.filter(c => c['category'] == 'inProgress');
+let awaitFeedback = currentTasks.filter(c => c['category'] == 'awaitFeedback');
+let done = currentTasks.filter(c => c['category'] == 'inDone');
+
+// let urgent = allTasks.filter(t => t['priority'] === 'urgent' && t.category !== 'inDone').length;
+// let toDo = allTasks.filter(t => t['category'] == 'inTodo');
+// let inProgress = allTasks.filter(t => t['category'] == 'inProgress');
+// let awaitFeedback = allTasks.filter(t => t['category'] == 'awaitFeedback');
+// let done = allTasks.filter(t => t['category'] == 'inDone');
+
+
+
+
 
 async function goToBoardHTML() {
     window.location.href = '../subpages/board.html';
@@ -30,9 +50,9 @@ async function startBoard(id) {
 /**
  * Preparing Show all Task by Loading them
  */
-async function loadAllTasks() {
+async function loadCurrentTasks() {
     //  let userResponse = await fetch(loadUsers).catch(errorFunction);
-    let taskResponse = await fetch(allTasks).catch(errorFunction);
+    let taskResponse = await fetch(currentTasks).catch(errorFunction);
     // currentUser = await userResponse.json();
     let todos = await taskResponse.json();
 

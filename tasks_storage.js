@@ -6,7 +6,7 @@ let allTasks = [{
     "title": "[0] Putzen",
     "description": "nicht nur sauber, sondern rein",
     "priority": "urgent",
-    "workers": [],
+    "workers": [0],
     "type": "User Story",
     "dueDate": "07.07.2024",
     "assignedTo": "XYZ",

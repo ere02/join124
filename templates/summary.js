@@ -1,18 +1,29 @@
+/**
+ * Call of summary.html
+ */
+
 function goToSummaryHTML(){
     window.location.href = '../subpages/summary.html';
 }
 
+/**
+ * Declaring Summary-Container for Content 
+ * Find Day-time for Greeting
+ * Change color of active Menu point
+ */
 async function startSummary(id) {
     await includeHTML();
     summary.classList.remove("displaynone");
-    summary.innerHTML =  renderSummary(); // eventuell in generateSummaryHTML ändern
+    summary.innerHTML =  renderSummary(); 
 
 renderSayHello();
 allNavButton(id);
 }
 
-
-function renderSummary() {// eventuell in generateSummaryHTML ändern
+/**
+ * Sum all Numbers for Content on Summary-Dashboard
+ */
+function renderSummary() {
     let todoNumber = toDo.length;
     let doneNumber = done.length;
     let inProgressNumber = inProgress.length;
@@ -64,3 +75,11 @@ return /*html*/ `
     `;
 }
 
+/**
+ * Treat all Due Dates on Tasks for Summary Dashboard
+ */
+
+function nextDueDateForSummary(){
+    
+    const untilDue = allTasks[worker][currentUser]
+}
