@@ -2,6 +2,7 @@
 
 let allTasks = [{
     "id": 0,
+    "projectId": 0,
     "category": "inTodo",
     "title": "[0] Putzen",
     "description": "nicht nur sauber, sondern rein",
@@ -17,6 +18,7 @@ let allTasks = [{
 },
 {
     "id": 1,
+    "projectId": 1,
     "title": "[1] Omas über die Straße helfen",
     "category": "inProgress",
     "description": "auch wenn sie nicht wollen",
@@ -30,6 +32,7 @@ let allTasks = [{
     ]},
 {
     "id": 2,
+    "projectId": 1,
     "title": "[2] Schokolade aufessen",
     "category": "inDone",
     "description": "... super task",
@@ -44,6 +47,7 @@ let allTasks = [{
     ]},
 {
     "id": 3,
+    "projectId": 1,
     "title": "[3] Hirn benutzen",
     "category": "inProgress",
     "description": "morgen vielleicht",
@@ -57,6 +61,7 @@ let allTasks = [{
     ]},
 {
     "id": 4,
+    "projectId": 1,
     "title": "[4] krasse Sachen machen",
     "category": "inDone",
     "description": "die Nachbarn gegrüßt",
@@ -70,6 +75,7 @@ let allTasks = [{
     ]},
 {
     "id": 5,
+    "projectId": 1,
     "title": "[5] Schäfchen zählen",
     "category": "inProgress",
     "description":
@@ -86,6 +92,7 @@ let allTasks = [{
     ]},
 {
     "id": 6,
+    "projectId": 1,
     "title": "[6] Schäfchen zählen",
     "category": "inDone",
     "description":
@@ -100,6 +107,7 @@ let allTasks = [{
     ]},
 {
     "id": 7,
+    "projectId": 1,
     "title": "[7] Schäfchen zählen",
     "category": "inDone",
     "description":
@@ -114,6 +122,7 @@ let allTasks = [{
     ]},
 {
     "id": 8,
+    "projectId": 1,
     "title": "[8] Schäfchen zählen",
     "category": "awaitFeedback",
     "description":
@@ -128,6 +137,7 @@ let allTasks = [{
     ]},
 {
     "id": 9,
+    "projectId": 1,
     "title": "[9] Schäfchen zählen",
     "category": "inProgress",
     "description":

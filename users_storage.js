@@ -49,7 +49,7 @@ const allUsers = [
     email: 'cleopatra@egypt.eg',
     phone: '+49 199 99999999',
     personalColor: 'var(--color-lila)',
-    projectId: [2],
+    projectId: [1],
   },
   {
     id: 5,

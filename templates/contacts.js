@@ -1,11 +1,19 @@
 /**
  * DECLARING ALL NEEDED INFORMATION From USERS_STORAGE.js
  */
-const firstnames = allUsers.map((item) => item.firstname);
-const familynames = allUsers.map((item) => item.familyname);
-const nickname = allUsers.map((item) => item.nickname);
-const emails = allUsers.map((item) => item.email);
-let sameProject = [];
+// const firstnames = allUsers.map((item) => item.firstname);
+// const familynames = allUsers.map((item) => item.familyname);
+// const nickname = allUsers.map((item) => item.nickname);
+// const emails = allUsers.map((item) => item.email);
+//let sameProject = [];
+// let currentProject = allUsers.filter(t => t['projectId'][0]);
+
+
+// const firstnames = currentProject.map(item => item.firstname);
+// const familynames = currentProject.map(item => item.familyname);
+// const emails = currentProject.map(item => item.email);
+
+
 let initialList = [];
 let letters = [];
 
@@ -35,7 +43,7 @@ async function findAllFirstLettersOfContacts() {
   let contact = document.getElementById("allContacts");
   const uniqueInitialsSet = new Set();
 
-  let currentProject = allUsers[currentUser].projectId[0];
+ let currentProject = allUsers[currentUser].projectId[0];
   sameProject = allUsers.filter((user) =>
     user.projectId.includes(currentProject)
   );

@@ -12,19 +12,22 @@ let currentUser = 1;
 // const allIds = allTasks.map(item => item.id);
 // const allPrios = allTasks.map(item => item.priority);
 
-let currentTasks = allTasks.filter(t => t['workers'][currentUser]);
-let title = currentTasks.map(item => item.title);
-const description = currentTasks.map(item => item.description);
-const category = currentTasks.map(item => item.category);
-const id = currentTasks.map(item => item.id);
-const prio = currentTasks.map(item => item.priority);
+
+let currentProject = allUsers[currentUser].projectId[0];
+let sameProject = allTasks.filter((item) => item.projectId === currentProject);
+
+let title = sameProject.title;
+const description = sameProject.description;
+const category = sameProject.category;
+const id = sameProject.id;
+const prio = sameProject.priority;
 
 
-let urgent = currentTasks.filter(c => c['priority'] === 'urgent' && c.category !== 'inDone');
-let toDo = currentTasks.filter(c => c['category'] == 'inTodo');
-let inProgress = currentTasks.filter(c => c['category'] == 'inProgress');
-let awaitFeedback = currentTasks.filter(c => c['category'] == 'awaitFeedback');
-let done = currentTasks.filter(c => c['category'] == 'inDone');
+let urgent = sameProject.filter(c => c['priority'] === 'urgent' && c.category !== 'inDone');
+let toDo = sameProject.filter(c => c['category'] == 'inTodo');
+let inProgress = sameProject.filter(c => c['category'] == 'inProgress');
+let awaitFeedback = sameProject.filter(c => c['category'] == 'awaitFeedback');
+let done = sameProject.filter(c => c['category'] == 'inDone');
 
 // let urgent = allTasks.filter(t => t['priority'] === 'urgent' && t.category !== 'inDone').length;
 // let toDo = allTasks.filter(t => t['category'] == 'inTodo');
@@ -52,7 +55,7 @@ async function startBoard(id) {
  */
 async function loadCurrentTasks() {
     //  let userResponse = await fetch(loadUsers).catch(errorFunction);
-    let taskResponse = await fetch(currentTasks).catch(errorFunction);
+    let taskResponse = await fetch(sameProject).catch(errorFunction);
     // currentUser = await userResponse.json();
     let todos = await taskResponse.json();
 
@@ -126,7 +129,7 @@ async function updateBoardHTML() {
     }
 
     for (let lane of lanes) {
-        let tasksInLane = allTasks.filter(t => t.category === lane);
+        let tasksInLane = sameProject.filter(t => t.category === lane);
         let laneElement = document.getElementById(lane);
         laneElement.innerHTML = renderEmptyLane();
 
@@ -596,7 +599,7 @@ function createTask() {
     const category = document.querySelector('.add-task-category-input').value; // Lese die ausgewählte Kategorie aus
 
     // Überprüfe, ob die Aufgabe bereits existiert (basierend auf dem Titel)
-    const existingTask = allTasks.find(task => task.title === title);
+    const existingTask = currentTasks.find(task => task.title === title);
     if (existingTask) {
         // Wenn die Aufgabe bereits existiert, breche ab und zeige eine Meldung an
         // alert('Die Aufgabe existiert bereits.');
