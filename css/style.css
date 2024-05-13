@@ -98,6 +98,37 @@ HEAD a {
 .displaynone {
   display: none;
 }
+.logoutMenu{
+  object-fit:contain;
+  position: absolute;
+  top: 80px;
+  right: -100%;
+  color: var(--use_border-text-light);
+  background-color: var(--color-dark-bg);
+  border-radius: 30px 0 30px 30px;
+  padding:20px 10px;
+  z-index: 20;
+
+}
+
+.nav-logout{
+  padding: 0px 10px 10px;
+  font-size: 14px;
+}
+.nav-logout:hover{
+  cursor:pointer;
+  color: var(--use_bg-text-white);
+  background-color: var(--use_nav-hover);
+}
+
+.paddingBottomUnset{
+  padding-bottom:unset;
+}
+
+.aniLogout{
+  animation: slideIn 100ms ease-out;
+  right: 30px;
+}
 
 @keyframes movinglogo {
   0% {

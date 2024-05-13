@@ -93,5 +93,14 @@ function showSignUp() {
   
     let content = document.getElementById('content');
     content.innerHTML = generateSignUpHTML();
-  };
+  }
   
+
+  function logoutMenuSlider() {
+    let slider = document.getElementById("logoutMenu");
+    if(slider.classList.contains("aniLogout")){
+      slider.classList.remove("aniLogout");
+    } else {
+       slider.classList.add("aniLogout");
+    }
+  }
