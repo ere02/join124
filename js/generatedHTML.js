@@ -14,8 +14,9 @@ function generateSignUpHTML() {
               <hr class="underline" />
             </div>
           </div>
-          <div class="input-wrapper">
-            <form onsubmit="register(); return false;">
+          <div class="inpnput-container">
+          <form onsubmit="register(); return false;">
+            <div class="input-wrapper">
               <input id="name_reg" class="input-field" type="text" name="name" placeholder="Name" required />
               <img src="/assets/svg/person.svg" alt="lock icon" class="icon" />
             </div>
@@ -25,25 +26,25 @@ function generateSignUpHTML() {
             </div>
             <div class="input-wrapper">
               <input id="password_reg" class="input-field" type="password" name="password" placeholder="Password"
-                required />
+              required />
               <img src="/assets/svg/lock.svg" alt="lock icon" class="icon" />
             </div>
             <div class="input-wrapper">
               <input id="confirmPassword_reg" class="input-field" type="password" name="confirmPassword"
-                placeholder="Confirm Password" required />
+              placeholder="Confirm Password" required />
               <img src="/assets/svg/lock.svg" alt="lock icon" class="icon" />
             </div>
             <div class="checkbox-container">
-              <input type="checkbox" name="police" id="police" />
+              <input type="checkbox" name="police" id="agree_reg" />
               <label for="remember">I accept the <a href="#">Privacy policy</a></label>
             </div>
             <div class="submit-container">
-              <button id="registerBtn" class="button" type="submit">Sign up</button>
-              </div>
-            </form>
+              <button id="registerBtn" class="button" type="submit  ">Sign up</button>
+            </div>
+          </form>
         </div>
       </div>
-  </div>`
+    </div>`
 }
 //LogIn
 

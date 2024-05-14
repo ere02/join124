@@ -4,7 +4,7 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 async function setItem(key, value) {
     const payload = { key:key, value:value, token: STORAGE_TOKEN };
-    return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload) })
+    return await fetch(STORAGE_URL, { method: 'POST', body:[JSON.stringify(payload) ]})
         .then(res => res.json());
 }
 
@@ -24,7 +24,7 @@ async function getItem(key) {
     }
 }
 
-async function allTasks(tasks) {
+async function getAllTasks(tasks) {
     // Assuming tasks is an array of tasks
     const allTasks = JSON.stringify(tasks);
     const response = await setItem('allTasks', allTasks); // Send to server
@@ -35,4 +35,10 @@ async function allTasks(tasks) {
     } else {
       alert('Failed to store tasks');
     }
+  }
+
+  async function deleteItem(key){
+    const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+    await fetch(url) 
+
   }

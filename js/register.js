@@ -1,15 +1,10 @@
 let users = [];
 
-async function init() {
-  await loadUsers();
-  await loadUserTasks();
-  // Assuming allTasks is an async function that needs to be awaited.
-  await allTasks(); 
-}
-
 async function loadUsers() {
+    console.log(`test`)
   try {
     users = JSON.parse(await getItem('users'));
+    console.log(users)
   } catch (e) {
     console.error('Loading error:', e);
   }
@@ -26,17 +21,12 @@ async function loadUserTasks() {
   }
 }
 
-async function register(event) {
-  event.preventDefault(); // Prevent default form submission
-
-  const nameInput = document.getElementById('name-reg');
-  const emailInput = document.getElementById('email-reg');
-  const passwordInput = document.getElementById('password-reg');
-  const confirmPasswordInput = document.getElementById('confirmPassword-reg');
-  const agreeCheckbox = document.getElementById('agree-reg');
-  const registerBtn = document.getElementById('registerBtn');
-
-  checkFormCompletion(); // Call this function to check form completion and enable/disable the register button
+async function register() {
+  const nameInput = document.getElementById('name_reg');
+  const emailInput = document.getElementById('email_reg');
+  const passwordInput = document.getElementById('password_reg');
+  const confirmPasswordInput = document.getElementById('confirmPassword_reg');
+  const agreeCheckbox = document.getElementById('agree_reg');
 
   if (
     nameInput.value &&
@@ -46,19 +36,20 @@ async function register(event) {
     passwordInput.value === confirmPasswordInput.value &&
     agreeCheckbox.checked
   ) {
+  
+    const hashedPassword = hashPassword(passwordInput.value);
+    const user = {
+      name: nameInput.value.trim(),
+      email: emailInput.value.toLowerCase().trim(),
+      password: hashedPassword,
+    };
+    console.log(users);
+    users.push(user);
+    console.log(user);
+    
     try {
-      const hashedPassword = hashPassword(passwordInput.value);
-      const user = {
-        name: nameInput.value.trim(),
-        email: emailInput.value.toLowerCase().trim(),
-        password: hashedPassword,
-      };
-
-      users.push(user);
-      console.log(user);
-
-      const response = await sendUserData(user);
-
+      const response = await setItem('users',users);
+console.log(response)
       if (response.status === 'success') {
         alert('You are registered');
         renderLogin();
@@ -78,34 +69,17 @@ async function register(event) {
 }
 
 function resetForm() {
-  document.getElementById('name-reg').value = '';
-  document.getElementById('email-reg').value = '';
-  document.getElementById('password-reg').value = '';
-  document.getElementById('confirmPassword-reg').value = '';
-  document.getElementById('agree-reg').checked = false;
+  document.getElementById('name_reg').value = '';
+  document.getElementById('email_reg').value = '';
+  document.getElementById('password_reg').value = '';
+  document.getElementById('confirmPassword_reg').value = '';
+  document.getElementById('agree_reg').checked = false;
   document.getElementById('registerBtn').disabled = true;
 }
 
 function hashPassword(password) {
   // Implement a real hashing algorithm here
   return password; // Replace with actual hashed password
-}
-
-function checkFormCompletion() {
-  const nameInput = document.getElementById('name-reg');
-  const emailInput = document.getElementById('email-reg');
-  const passwordInput = document.getElementById('password-reg');
-  const confirmPasswordInput = document.getElementById('confirmPassword-reg');
-  const agreeCheckbox = document.getElementById('agree-reg');
-  const registerBtn = document.getElementById('registerBtn');
-
-  registerBtn.disabled = !(
-    nameInput.value &&
-    emailInput.value &&
-    passwordInput.value &&
-    confirmPasswordInput.value &&
-    agreeCheckbox.checked
-  );
 }
 
 function showSignUp() {
@@ -115,5 +89,3 @@ function showSignUp() {
   let content = document.getElementById('content');
   content.innerHTML = generateSignUpHTML(); // Assuming generateSignUpHTML is defined elsewhere
 }
-
-// Assuming getItem and sendUserData are defined elsewhere

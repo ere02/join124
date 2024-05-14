@@ -2,9 +2,10 @@
 let goBackToPage = [];
 
 async function init() {
+  await loadUsers();
   renderLogin();
   introAnimation();
-  await renderUserIcon();
+  /* await renderUserIcon(); */
 }
 
 let login = document.getElementById('content');

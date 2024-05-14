@@ -1,5 +1,3 @@
-// setItems(allTask, id:id, category:catogery)//
-
 let allTasks = [{
     "id": 0,
     "projectId": 0,
