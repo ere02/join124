@@ -10,13 +10,18 @@ async function setItem(key, value) {
 
 async function getItem(key) {
     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-    return fetch(url).then(res => res.json()).then(res => {
-        // Verbesserter code
-        console.log(res)
-        if (res.data) {
-            return res.data.value;
-        } throw `Could not find data with key "${key}".`;
-    });
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data.data) {
+            return data.data.value;
+        } else {
+            throw new Error(`Could not find data with key "${key}".`);
+        }
+    } catch (error) {
+        console.error('An error occurred while fetching the item:', error);
+        throw error; // Re-throw the error to be handled by the caller
+    }
 }
 
 async function allTasks(tasks) {

@@ -1,9 +1,10 @@
 let users = [];
 
 async function init() {
-  loadUsers();
-  loadUserTasks();
-  allTasks();
+  await loadUsers();
+  await loadUserTasks();
+  // Assuming allTasks is an async function that needs to be awaited.
+  await allTasks(); 
 }
 
 async function loadUsers() {
@@ -25,13 +26,17 @@ async function loadUserTasks() {
   }
 }
 
-async function register() {
+async function register(event) {
+  event.preventDefault(); // Prevent default form submission
+
   const nameInput = document.getElementById('name-reg');
   const emailInput = document.getElementById('email-reg');
   const passwordInput = document.getElementById('password-reg');
   const confirmPasswordInput = document.getElementById('confirmPassword-reg');
   const agreeCheckbox = document.getElementById('agree-reg');
   const registerBtn = document.getElementById('registerBtn');
+
+  checkFormCompletion(); // Call this function to check form completion and enable/disable the register button
 
   if (
     nameInput.value &&
@@ -41,37 +46,23 @@ async function register() {
     passwordInput.value === confirmPasswordInput.value &&
     agreeCheckbox.checked
   ) {
-    registerBtn.disabled = false;
     try {
-      // Don't use setItem to store user data locally (insecure)
-      // You would typically send user data to the server for secure storage
-
-      // Hash the password before sending (recommended)
-      const hashedPassword = hashPassword(passwordInput.value); // Implement password hashing function
-      console.log(hashedPassword);
+      const hashedPassword = hashPassword(passwordInput.value);
       const user = {
-        name: nameInput.value.trim(), // Trim leading/trailing whitespace
-        email: emailInput.value.toLowerCase().trim(), // Normalize email (optional)
+        name: nameInput.value.trim(),
+        email: emailInput.value.toLowerCase().trim(),
         password: hashedPassword,
-        confirmPassword: hashedPassword,
       };
 
-      // Add the user object to the users array
       users.push(user);
-
-      // Log the user object to the console
       console.log(user);
 
-      // Send the user data to the server for secure storage
-      const response = await sendUserData(user); // Implement sendUserData function
+      const response = await sendUserData(user);
 
       if (response.status === 'success') {
         alert('You are registered');
-
         renderLogin();
         storage();
-
-        console.log(user);
       } else {
         alert('Registration failed');
       }
@@ -79,58 +70,50 @@ async function register() {
       alert('Registration failed');
     }
   } else {
-    alert('Passwords do not match');
+    alert('Passwords do not match or form is incomplete');
+    return; // Exit the function if validation fails
   }
 
-  resetForm(
-    nameInput,
-    emailInput,
-    passwordInput,
-    confirmPasswordInput,
-    registerBtn
-  ); // Reset the form after submission
+  resetForm(); // Reset the form after successful submission
+}
 
-  function resetForm(
-    nameInput,
-    emailInput,
-    passwordInput,
-    confirmPasswordInput,
-    registerBtn
-  ) {
-    nameInput.value = '';
-    emailInput.value = '';
-    passwordInput.value = '';
-    confirmPasswordInput.value = '';
-    registerBtn.disabled = true; // Disable the button after form submission
-  }
+function resetForm() {
+  document.getElementById('name-reg').value = '';
+  document.getElementById('email-reg').value = '';
+  document.getElementById('password-reg').value = '';
+  document.getElementById('confirmPassword-reg').value = '';
+  document.getElementById('agree-reg').checked = false;
+  document.getElementById('registerBtn').disabled = true;
+}
 
-  // Implement a password hashing function (replace with your chosen hashing algorithm)
-  function hashPassword(password) {
-    // ... your hashing implementation here ...
-    return password; // Replace with actual hashed password
-  }
+function hashPassword(password) {
+  // Implement a real hashing algorithm here
+  return password; // Replace with actual hashed password
+}
 
-  function checkFormCompletion() {
-    if (
-      nameInput.value &&
-      emailInput.value &&
-      passwordInput.value &&
-      confirmPasswordInput.value
-    ) {
-      registerBtn.disabled = false; // Enable the button if the form is complete
-    } else {
-      registerBtn.disabled = true; // Disable the button if the form is incomplete
-    }
-  }
+function checkFormCompletion() {
+  const nameInput = document.getElementById('name-reg');
+  const emailInput = document.getElementById('email-reg');
+  const passwordInput = document.getElementById('password-reg');
+  const confirmPasswordInput = document.getElementById('confirmPassword-reg');
+  const agreeCheckbox = document.getElementById('agree-reg');
+  const registerBtn = document.getElementById('registerBtn');
+
+  registerBtn.disabled = !(
+    nameInput.value &&
+    emailInput.value &&
+    passwordInput.value &&
+    confirmPasswordInput.value &&
+    agreeCheckbox.checked
+  );
 }
 
 function showSignUp() {
-  // Get the element with class "new-user"
   const newUserDiv = document.querySelector('.new-user');
-
-  // Hide the element using style.display
-  newUserDiv.style.display = 'none';
+  newUserDiv.style.display = 'block'; // Assuming we want to show the sign-up form
 
   let content = document.getElementById('content');
-  content.innerHTML = generateSignUpHTML();
-};
+  content.innerHTML = generateSignUpHTML(); // Assuming generateSignUpHTML is defined elsewhere
+}
+
+// Assuming getItem and sendUserData are defined elsewhere
