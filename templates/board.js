@@ -4,7 +4,7 @@
 /**
  * Filter die Daten nach User-Id
  */
-let currentUser = 1;
+let currentUser = 1; // HIER MÜSSEN WIR BEIM LOGIN die USER-ID reinschreiben
 
 // const allTitle = allTasks.map(item => item.title);
 // const allDescription = allTasks.map(item => item.description);
