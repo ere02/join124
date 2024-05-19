@@ -4,7 +4,7 @@
 /**
  * Filter die Daten nach User-Id
  */
-let currentUser = 1; // HIER MÜSSEN WIR BEIM LOGIN die USER-ID reinschreiben
+let currentUser = 1; // HIER MÜSSEN WIR BEIM LOGIN die USER-ID AUSLESEN und reinschreiben
 
 // const allTitle = allTasks.map(item => item.title);
 // const allDescription = allTasks.map(item => item.description);
@@ -13,7 +13,7 @@ let currentUser = 1; // HIER MÜSSEN WIR BEIM LOGIN die USER-ID reinschreiben
 // const allPrios = allTasks.map(item => item.priority);
 
 
-let currentProject = allUsers[currentUser].projectId[0];
+let currentProject = 1;// allUsers[currentUser].projectId[0];
 let sameProject = allTasks.filter((item) => item.projectId === currentProject);
 
 let title = sameProject.title;
