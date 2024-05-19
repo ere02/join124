@@ -25,21 +25,21 @@ function generateSignUpHTML() {
               <img src="/assets/svg/mail.svg" alt="email icon" class="icon" />
             </div>
             <div class="input-wrapper">
-              <input id="password_reg" class="input-field" type="password" name="password" placeholder="Password"
+              <input id="password_reg" class="input-field" type="password" minlength="7" name="password" placeholder="Password"
               required />
-              <img src="/assets/svg/lock.svg" alt="lock icon" class="icon" />
+              <img src="/assets/svg/visibility_off.svg" id="lockpic" alt="lock icon" class="icon" onclick="togglePw('password_reg','lockpic')"/>
             </div>
             <div class="input-wrapper">
               <input id="confirmPassword_reg" class="input-field" type="password" name="confirmPassword"
               placeholder="Confirm Password" required />
-              <img src="/assets/svg/lock.svg" alt="lock icon" class="icon" />
+              <img src="/assets/svg/visibility_off.svg" id="lockpicConfirm" alt="lock icon" class="icon" onclick="togglePw('confirmPassword_reg','lockpicConfirm')" />
             </div>
             <div class="checkbox-container">
               <input type="checkbox" name="police" id="agree_reg" />
               <label for="remember">I accept the <a href="#">Privacy policy</a></label>
             </div>
             <div class="submit-container">
-              <button id="registerBtn" class="button" type="submit  ">Sign up</button>
+              <button id="registerBtn" class="button" type="submit  "><h5>Sign up</h5></button>
             </div>
           </form>
         </div>
