@@ -156,7 +156,7 @@ hr {
   height: 100%;
 }
 
-.contactLayer {
+.transparentLayer {
   width: 100vw;
   height: 100vh;
   position: absolute;
@@ -165,11 +165,10 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 30px;
   overflow: hidden;
 }
 
-.editContactForm {
+.editForm {
   margin: auto;
   position: relative;
   height: 540px;
@@ -235,8 +234,20 @@ h2.white{
     width:100%;
     display:flex;
     justify-content:right;
-    margin-bottom:10%;
+    margin-bottom:50px;
+
 }
+
+.margin-unset{
+  margin:unset;
+}
+
+.size-unset{
+  width: unset;
+  height: unset;
+}
+
+
 .closeIMG{
     padding:10px;
     border:1px solid white;
