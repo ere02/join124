@@ -4,6 +4,13 @@
   justify-content: flex-start;
 }
 
+.d-flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .index-body {
   width: 100%;
   max-width: 1440px;
@@ -16,8 +23,9 @@
 
 .add-task-header-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  width:100%;
+  /* justify-content: center;
+  align-items: center; */
 }
 
 .add-task-container {
@@ -50,7 +58,7 @@
 }
 
 .add-task-headline {
-  width: 100%;
+  /* width: 100%; */
   margin-bottom: 40px;
   font-size: 61px;
 }

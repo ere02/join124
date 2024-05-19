@@ -95,9 +95,6 @@ HEAD a {
   z-index: 2;
 }
 
-.displaynone {
-  display: none;
-}
 .logoutMenu{
   object-fit:contain;
   position: absolute;
@@ -699,4 +696,8 @@ ol.helplist {
 
 .no-border {
   border: none;
+}
+
+.displaynone {
+  display: none;
 }
