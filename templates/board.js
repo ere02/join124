@@ -5,6 +5,7 @@
  * Filter die Daten nach User-Id
  */
 let currentUser = 1;
+let subtasks = [];
 
 // const allTitle = allTasks.map(item => item.title);
 // const allDescription = allTasks.map(item => item.description);
@@ -13,7 +14,7 @@ let currentUser = 1;
 // const allPrios = allTasks.map(item => item.priority);
 
 
-let currentProject = allUsers[currentUser].projectId[0];
+let currentProject = 1; //allUsers[currentUser].projectId[0];
 let sameProject = allTasks.filter((item) => item.projectId === currentProject);
 
 let title = sameProject.title;
@@ -23,19 +24,17 @@ const id = sameProject.id;
 const prio = sameProject.priority;
 
 
-let urgent = sameProject.filter(c => c['priority'] === 'urgent' && c.category !== 'inDone');
-let toDo = sameProject.filter(c => c['category'] == 'inTodo');
-let inProgress = sameProject.filter(c => c['category'] == 'inProgress');
-let awaitFeedback = sameProject.filter(c => c['category'] == 'awaitFeedback');
-let done = sameProject.filter(c => c['category'] == 'inDone');
+// let urgent = sameProject.filter(c => c['priority'] === 'urgent' && c.category !== 'inDone');
+// let toDo = sameProject.filter(c => c['category'] == 'inTodo');
+// let inProgress = sameProject.filter(c => c['category'] == 'inProgress');
+// let awaitFeedback = sameProject.filter(c => c['category'] == 'awaitFeedback');
+// let done = sameProject.filter(c => c['category'] == 'inDone');
 
-// let urgent = allTasks.filter(t => t['priority'] === 'urgent' && t.category !== 'inDone').length;
-// let toDo = allTasks.filter(t => t['category'] == 'inTodo');
-// let inProgress = allTasks.filter(t => t['category'] == 'inProgress');
-// let awaitFeedback = allTasks.filter(t => t['category'] == 'awaitFeedback');
-// let done = allTasks.filter(t => t['category'] == 'inDone');
-
-
+let urgent = allTasks.filter(t => t['priority'] === 'urgent' && t.category !== 'inDone').length;
+let toDo = allTasks.filter(t => t['category'] == 'inTodo');
+let inProgress = allTasks.filter(t => t['category'] == 'inProgress');
+let awaitFeedback = allTasks.filter(t => t['category'] == 'awaitFeedback');
+let done = allTasks.filter(t => t['category'] == 'inDone');
 
 
 
@@ -53,14 +52,14 @@ async function startBoard(id) {
 /**
  * Preparing Show all Task by Loading them
  */
-async function loadCurrentTasks() {
-    //  let userResponse = await fetch(loadUsers).catch(errorFunction);
-    let taskResponse = await fetch(sameProject).catch(errorFunction);
-    // currentUser = await userResponse.json();
-    let todos = await taskResponse.json();
+// async function loadCurrentTasks() {
+//     //  let userResponse = await fetch(loadUsers).catch(errorFunction);
+//     let taskResponse = await fetch(sameProject).catch(errorFunction);
+//     // currentUser = await userResponse.json();
+//     let todos = await taskResponse.json();
 
-    console.log("loaded Tasks:", todos);
-}
+//     console.log("loaded Tasks:", todos);
+// }
 /**
  * Giving Feedback by Error
  */
@@ -129,7 +128,8 @@ async function updateBoardHTML() {
     }
 
     for (let lane of lanes) {
-        let tasksInLane = sameProject.filter(t => t.category === lane);
+        // let tasksInLane = sameProject.filter(t => t.category === lane);
+        let tasksInLane = allTasks.filter(t => t.category === lane);
         let laneElement = document.getElementById(lane);
         laneElement.innerHTML = renderEmptyLane();
 
@@ -140,7 +140,6 @@ async function updateBoardHTML() {
                 const taskDiv = document.createElement('div');
                 taskDiv.innerHTML = taskElement;
 
-                // Hier setzen Sie die aktuelle Aufgabe für den Klick-Eventlistener
                 let clickedTask = task;
 
                 taskDiv.addEventListener('click', () => openTaskPopup(clickedTask));
@@ -409,10 +408,10 @@ function openAddTaskCard() {
     <label for="subtaskAddTask" class="add-task-label bgC-white">
       <input type="text" name="subtaskAddTask" class="add-task-subtask" id="add_task_subtask"
         placeholder="Add new Subtask" autocomplete="off" maxlength="20">
-        <img src="../assets/svg/add.svg" class="add-subtask-img cursor-pointer" id="add-subtask-button" onclick="addSubtaskToNewTask()">
+        <img src="../assets/svg/add.svg" class="add-subtask-img cursor-pointer" id="add-subtask-button" onclick="addSubtask()">
     </label>
 
-    <div id="outputSubtasks" class="outputSubtaskClass"></div>
+    <div id="outputSubtasks" class="output-subtask"></div>
 
     <div class="add-task-bottom-container">
       <!-- <div class="add-task-required-info-bottom">* This field is required</div> -->
@@ -538,24 +537,24 @@ function changePriority(priority) {
     }
 }
 
-function addSubtask(taskId) {
+function addSubtask() {
     const subtaskInput = document.querySelector('.add-task-subtask');
     const subtaskText = subtaskInput.value.trim(); // Text des Subtasks
 
-    // Überprüfen, ob die Task-ID im gültigen Bereich liegt
-    if (taskId >= 0 && taskId < allTasks.length) {
-        if (subtaskText !== '') {
-            // Subtask zum entsprechenden Task hinzufügen
-            if (!allTasks[taskId].subtasks) {
-                allTasks[taskId].subtasks = []; // Array initialisieren, falls es nicht existiert
-            }
-            allTasks[taskId].subtasks.push({ title: subtaskText, completed: false });
-            console.log(allTasks); // Zum Debuggen, um zu überprüfen, ob der Subtask hinzugefügt wurde
-            subtaskInput.value = ''; // Eingabefeld leeren
-        }
-    } else {
-        console.error('Invalid task ID:', taskId);
+    // Überprüfen, ob das Textfeld leer ist
+    if (subtaskText === '') {
+        alert('Bitte fügen Sie einen Text hinzu!');
+        return; // Beende die Funktion, wenn das Textfeld leer ist
     }
+
+    // Erstelle das HTML-Element für den Subtask
+    const outputSubtasks = document.getElementById('outputSubtasks');
+    const subtaskDiv = document.createElement('div');
+    subtaskDiv.textContent = subtaskText;
+    outputSubtasks.appendChild(subtaskDiv);
+
+    // Lösche den Inhalt des Textfelds
+    subtaskInput.value = '';
 }
 
 function validateForm() {
@@ -574,12 +573,12 @@ function validateForm() {
 }
 
 function createTask() {
-
     if (!validateForm()) {
         // Wenn das Formular nicht gültig ist, zeige eine Fehlermeldung an oder führe keine Aktion aus
         alert('Bitte füllen Sie alle erforderlichen Felder aus.');
         return;
     }
+    
     // Lese die Daten aus den Eingabefeldern aus
     const title = document.querySelector('.add-task-title').value;
     const description = document.querySelector('.add-task-description').value;
@@ -598,14 +597,6 @@ function createTask() {
     }
     const category = document.querySelector('.add-task-category-input').value; // Lese die ausgewählte Kategorie aus
 
-    // Überprüfe, ob die Aufgabe bereits existiert (basierend auf dem Titel)
-    const existingTask = currentTasks.find(task => task.title === title);
-    if (existingTask) {
-        // Wenn die Aufgabe bereits existiert, breche ab und zeige eine Meldung an
-        // alert('Die Aufgabe existiert bereits.');
-        return;
-    }
-
     // Erstelle eine neue Aufgabe
     const newTask = {
         id: allTasks.length, // Neue ID basierend auf der Anzahl der vorhandenen Aufgaben
@@ -616,7 +607,8 @@ function createTask() {
         category: 'inTodo', // Setze die Kategorie auf die ausgewählte Kategorie
         workers: [], // Leeres Array für Arbeitskräfte
         type: category, // Typ der Aufgabe entspricht der Kategorie
-        subtasks: []
+        subtasks: [],
+        // projectId: currentProject
         // Füge weitere Eigenschaften hinzu, wie Assigned to
     };
 
@@ -643,36 +635,20 @@ function createTask() {
 }
 
 function addSubtaskToNewTask(newTask) {
-    const subtaskInput = document.querySelector('.add-task-subtask');
-    const subtaskText = subtaskInput.value.trim(); // Text des Subtasks
+    const subtasks = document.querySelectorAll('#outputSubtasks > div');
+    subtasks.forEach((subtaskDiv, index) => {
+        const subtaskText = subtaskDiv.textContent.trim();
 
-    // Überprüfen, ob das Textfeld mit der ID "add_task_subtask" ausgefüllt ist
-    if (subtaskText === '') {
-        alert('Bitte fügen Sie einen Text hinzu!');
-        return; // Beende die Funktion, wenn das Textfeld leer ist
-    }
+        if (subtaskText !== '') {
+            const newSubtask = {
+                id: index,
+                title: subtaskText,
+                completed: false
+            };
 
-    // Erstelle das HTML-Element für den Subtask
-    const outputSubtasks = document.getElementById('outputSubtasks');
-    const subtaskDiv = document.createElement('div');
-    subtaskDiv.textContent = subtaskText;
-    outputSubtasks.appendChild(subtaskDiv);
-
-    // Initialisiere das Subtask-Array, falls es nicht vorhanden ist
-    if (!newTask.subtasks) {
-        newTask.subtasks = [];
-    }
-
-    // Füge den Subtask zum Array der Subtasks der neuen Aufgabe hinzu
-    const newSubtask = { 
-        "id": newTask.subtasks.length, // Verwende die Länge des Subtask-Arrays der neuen Aufgabe als eindeutige ID
-        "title": subtaskText, 
-        "completed": false 
-    };
-    newTask.subtasks.push(newSubtask);
-
-    // Lösche den Inhalt des Textfelds
-    subtaskInput.value = '';
+            newTask.subtasks.push(newSubtask);
+        }
+    });
 }
 
 async function openTaskPopup(task) {
@@ -704,9 +680,15 @@ async function openTaskPopup(task) {
                 </div>
                 <div class="h2 m-bottom-20">${task.title}</div>
                 <div class="m-bottom-20">${task.description}</div>
-                <div class="m-bottom-20">Due Date: ${task.dueDate}</div>
-                <div class="m-bottom-20 d-flex ai-center">Priority: ${task.priority} ${priorityImage}</div>
-                <div class="m-bottom-20">Assigned to: ${task.assignedTo}</div>
+                <div class="m-bottom-20 d-flex-row duedate">
+                    <div>Due Date:</div> ${task.dueDate}
+                </div>
+                <div class="m-bottom-20 d-flex-row priority">
+                    <div>Priority:</div> ${task.priority} ${priorityImage}
+                </div>
+                <div class="m-bottom-20 d-flex-row">
+                    <div>Assigned to:</div> ${task.assignedTo}
+                </div>
                 <div class="m-bottom-7">Subtasks</div>`;
 
     // Wenn Subtasks vorhanden sind, füge sie dem Popup-Inhalt hinzu
@@ -724,21 +706,61 @@ async function openTaskPopup(task) {
             </div>`;
     }
 
-    // Schließen-Button hinzufügen und Event-Listener setzen
+    // Buttons hinzufügen
     popupContent += `
+            <div class="popup-buttons">
+                <button class="delete-button">Delete</button>
+                <button class="edit-button">Edit</button>
             </div>
-        </div>`;
+        </div>
+    </div>`;
 
     // Overlay erstellen und Inhalt einfügen
     const overlay = document.createElement('div');
     overlay.classList.add('overlay');
     overlay.innerHTML = popupContent;
 
+    // Event-Listener für den Schließen-Button
     const closeButton = overlay.querySelector('.close-button');
     closeButton.addEventListener('click', () => {
         overlay.remove();
     });
 
+    // Event-Listener für den Delete-Button
+    const deleteButton = overlay.querySelector('.delete-button');
+    deleteButton.addEventListener('click', () => {
+        deleteTask(task.id);
+        overlay.remove();
+    });
+
+    // Event-Listener für den Edit-Button
+    const editButton = overlay.querySelector('.edit-button');
+    editButton.addEventListener('click', () => {
+        editTask(task.id);
+    });
+
     // Overlay zum Body hinzufügen
     document.body.appendChild(overlay);
+}
+
+// Beispielhafte Implementierung der deleteTask und editTask Funktionen
+function deleteTask(taskId) {
+    // Finde den Index der zu löschenden Aufgabe
+    const taskIndex = allTasks.findIndex(task => task.id === taskId);
+    if (taskIndex > -1) {
+        // Entferne die Aufgabe aus dem Array
+        allTasks.splice(taskIndex, 1);
+        // Entferne die Aufgabe auch aus der Benutzeroberfläche
+        const taskElement = document.getElementById(`task-${taskId}`);
+        if (taskElement) {
+            taskElement.remove();
+        }
+    }
+
+    updateBoardHTML();
+}
+
+function editTask(taskId) {
+    // Hier kannst du den Code zum Bearbeiten der Aufgabe hinzufügen
+    alert(`Edit task with ID: ${taskId}`);
 }

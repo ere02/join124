@@ -4,6 +4,13 @@
   justify-content: flex-start;
 }
 
+.d-flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .index-body {
   width: 100%;
   max-width: 1440px;

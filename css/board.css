@@ -30,6 +30,13 @@
     align-items: center;
 }
 
+.d-flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
 .pr-8 {
     padding-right: 8px;
 }
@@ -586,7 +593,7 @@ Here are designed all Task and Todo-Cards
     background-color: white;
     padding: 20px;
     padding-left: 39px;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
@@ -668,4 +675,19 @@ Here are designed all Task and Todo-Cards
 /* Stile für die neue Subtask-Checkbox */
 #new-subtask {
     margin-left: 12px;
+}
+
+.duedate {
+    gap: 10px;
+}
+
+.priority {
+    gap: 26px;
+}
+
+.popup-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
 }
