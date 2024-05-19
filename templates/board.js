@@ -1,6 +1,3 @@
-
-
-
 /**
  * Filter die Daten nach User-Id
  */
@@ -19,7 +16,7 @@ let sameProject = allTasks.filter((item) => item.projectId === currentProject);
 
 let title = sameProject.title;
 const description = sameProject.description;
-const category = sameProject.category;
+var category = sameProject.category;
 const id = sameProject.id;
 const prio = sameProject.priority;
 
@@ -39,15 +36,15 @@ let done = allTasks.filter(t => t['category'] == 'inDone');
 
 
 async function goToBoardHTML() {
-    window.location.href = '../subpages/board.html';
+  window.location.href = "../subpages/board.html";
 }
 
 async function startBoard(id) {
-    await includeHTML();
-    allNavButton(id);
-    board.classList.remove("displaynone");
-    board.innerHTML = renderBoard();
-    updateBoardHTML()
+  await includeHTML();
+  allNavButton(id);
+  board.classList.remove("displaynone");
+  board.innerHTML = renderBoard();
+  updateBoardHTML();
 }
 /**
  * Preparing Show all Task by Loading them
@@ -64,68 +61,68 @@ async function startBoard(id) {
  * Giving Feedback by Error
  */
 function errorFunction() {
-    console.log("Fehler aufgetreten");
+  console.log("Fehler aufgetreten");
 }
 
 let currentDraggedElement;
 
 function startApp() {
-    updateBoardHTML();
-    addSearchEventListener();
+  updateBoardHTML();
+  addSearchEventListener();
 }
 
 /**
  * The draggable Objects for all lanes are handled here
  */
 async function updateBoardHTML() {
-    const lanes = ['inTodo', 'inProgress', 'awaitFeedback', 'inDone'];
-    let laneTodo = document.getElementById('inTodo');
-    laneTodo.innerHTML = renderEmptyLane();
-    if (toDo.length !== 0) {
-        laneTodo.innerHTML = '';
-        for (let index = 0; index < toDo.length; index++) {
-            const element = toDo[index];
-            const taskElement = await renderTaskHTML(element);
-            const taskDiv = document.createElement('div');
-            taskDiv.innerHTML = taskElement;
-            taskDiv.addEventListener('click', () => openTaskPopup(element));
-            laneTodo.appendChild(taskDiv);
-            await backgroundType(element);
-        }
+  const lanes = ["inTodo", "inProgress", "awaitFeedback", "inDone"];
+  let laneTodo = document.getElementById("inTodo");
+  laneTodo.innerHTML = renderEmptyLane();
+  if (toDo.length !== 0) {
+    laneTodo.innerHTML = "";
+    for (let index = 0; index < toDo.length; index++) {
+      const element = toDo[index];
+      const taskElement = await renderTaskHTML(element);
+      const taskDiv = document.createElement("div");
+      taskDiv.innerHTML = taskElement;
+      taskDiv.addEventListener("click", () => openTaskPopup(element));
+      laneTodo.appendChild(taskDiv);
+      await backgroundType(element);
     }
+  }
 
-    let laneProgress = document.getElementById('inProgress');
-    laneProgress.innerHTML = renderEmptyLane();
-    if (inProgress.length !== 0) {
-        laneProgress.innerHTML = '';
-        for (let index = 0; index < inProgress.length; index++) {
-            const element = inProgress[index];
-            laneProgress.innerHTML += await renderTaskHTML(element);
-            await backgroundType(element);
-        }
+  let laneProgress = document.getElementById("inProgress");
+  laneProgress.innerHTML = renderEmptyLane();
+  if (inProgress.length !== 0) {
+    laneProgress.innerHTML = "";
+    for (let index = 0; index < inProgress.length; index++) {
+      const element = inProgress[index];
+      laneProgress.innerHTML += await renderTaskHTML(element);
+      await backgroundType(element);
     }
+  }
 
-    let laneAwait = document.getElementById('awaitFeedback');
-    laneAwait.innerHTML = renderEmptyLane();
-    if (awaitFeedback.length !== 0) {
-        laneAwait.innerHTML = '';
-        for (let index = 0; index < awaitFeedback.length; index++) {
-            const element = awaitFeedback[index];
-            laneAwait.innerHTML += await renderTaskHTML(element);
-            await backgroundType(element);
-        }
+  let laneAwait = document.getElementById("awaitFeedback");
+  laneAwait.innerHTML = renderEmptyLane();
+  if (awaitFeedback.length !== 0) {
+    laneAwait.innerHTML = "";
+    for (let index = 0; index < awaitFeedback.length; index++) {
+      const element = awaitFeedback[index];
+      laneAwait.innerHTML += await renderTaskHTML(element);
+      await backgroundType(element);
     }
+  }
 
-    let laneDone = document.getElementById('inDone');
-    laneDone.innerHTML = renderEmptyLane();
-    if (done.length !== 0) {
-        laneDone.innerHTML = '';
-        for (let index = 0; index < done.length; index++) {
-            const element = done[index];
-            laneDone.innerHTML += await renderTaskHTML(element);
-            await backgroundType(element);
-        }
+  let laneDone = document.getElementById("inDone");
+  laneDone.innerHTML = renderEmptyLane();
+  if (done.length !== 0) {
+    laneDone.innerHTML = "";
+    for (let index = 0; index < done.length; index++) {
+      const element = done[index];
+      laneDone.innerHTML += await renderTaskHTML(element);
+      await backgroundType(element);
     }
+  }
 
     for (let lane of lanes) {
         // let tasksInLane = sameProject.filter(t => t.category === lane);
@@ -133,43 +130,43 @@ async function updateBoardHTML() {
         let laneElement = document.getElementById(lane);
         laneElement.innerHTML = renderEmptyLane();
 
-        if (tasksInLane.length !== 0) {
-            laneElement.innerHTML = '';
-            for (let task of tasksInLane) {
-                const taskElement = await renderTaskHTML(task);
-                const taskDiv = document.createElement('div');
-                taskDiv.innerHTML = taskElement;
+    if (tasksInLane.length !== 0) {
+      laneElement.innerHTML = "";
+      for (let task of tasksInLane) {
+        const taskElement = await renderTaskHTML(task);
+        const taskDiv = document.createElement("div");
+        taskDiv.innerHTML = taskElement;
 
                 let clickedTask = task;
 
-                taskDiv.addEventListener('click', () => openTaskPopup(clickedTask));
-                laneElement.appendChild(taskDiv);
-                await backgroundType(task);
-            }
-        }
+        taskDiv.addEventListener("click", () => openTaskPopup(clickedTask));
+        laneElement.appendChild(taskDiv);
+        await backgroundType(task);
+      }
     }
+  }
 
-    searchInput = document.getElementById('search');
-    if (searchInput) {
-        searchInput.addEventListener('keyup', search);
-    } else {
-        console.error('Das Suchfeld wurde nicht gefunden.');
-    }
+  searchInput = document.getElementById("search");
+  if (searchInput) {
+    searchInput.addEventListener("keyup", search);
+  } else {
+    console.error("Das Suchfeld wurde nicht gefunden.");
+  }
 }
 /**
  * EMPTY LANE rendering
  */
 function renderEmptyLane() {
-    return /*html*/ `
+  return /*html*/ `
     <div class="emptylane"> No tasks yet.</div>
-  `
+  `;
 }
 
 /**
- * DRAGGING behavior 
+ * DRAGGING behavior
  */
 function startDragging(id) {
-    currentDraggedElement = id;
+  currentDraggedElement = id;
 }
 
 // function generateTodoHTML(element) {
@@ -181,21 +178,20 @@ function startDragging(id) {
 // }
 
 function generateTodoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="task">${element['title']} </div>`;
+  return `<div draggable="true" ondragstart="startDragging(${element["id"]})" class="task">${element["title"]} </div>`;
 }
 
 async function renderTaskHTML(element) {
-
-    return /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${element['id']})" class="task">
-            <div id='type${element['id']}' class="task-type">${element['type']}</div>
+  return /*html*/ `
+        <div draggable="true" ondragstart="startDragging(${element["id"]})" class="task">
+            <div id='type${element["id"]}' class="task-type">${element["type"]}</div>
                 <div class="task-text">
-                    <div class="task-title bold"> ${element['title']} </div>
-                    <div class="task-description text-greyish">${element['description']}</div>
+                    <div class="task-title bold"> ${element["title"]} </div>
+                    <div class="task-description text-greyish">${element["description"]}</div>
                 </div>
             <div class="task-footer">
                 <div class="task-worker"></div>
-                <div class="task-prio"><img src="../assets/svg/${element['priority']}.svg" class="prioSVG"></div>
+                <div class="task-prio"><img src="../assets/svg/${element["priority"]}.svg" class="prioSVG"></div>
             </div>
         </div>
     `;
@@ -205,40 +201,42 @@ async function renderTaskHTML(element) {
  * Background-Color setting of "Technical Task" and "User story" inside the task
  */
 async function backgroundType(element) {
-
-    if (element['type'] == "Technical Task") {
-        document.getElementById(`type${element['id']}`).classList.add("bg-technicaltask");
-    } else {
-        document.getElementById(`type${element['id']}`).classList.add("bg-userstory")
-    };
+  if (element["type"] == "Technical Task") {
+    document
+      .getElementById(`type${element["id"]}`)
+      .classList.add("bg-technicaltask");
+  } else {
+    document
+      .getElementById(`type${element["id"]}`)
+      .classList.add("bg-userstory");
+  }
 }
 
 function allowDrop(ev) {
-    ev.preventDefault();
+  ev.preventDefault();
 }
 
 function moveTo(category) {
-    console.log("Moving element to category:", category);
-    console.log("Current dragged element:", currentDraggedElement);
+  console.log("Moving element to category:", category);
+  console.log("Current dragged element:", currentDraggedElement);
 
-    allTasks[currentDraggedElement]['category'] = category;
-    removeHighlight(category);
-    updateBoardHTML();
+  allTasks[currentDraggedElement]["category"] = category;
+  removeHighlight(category);
+  updateBoardHTML();
 }
 
 function highlight(id) {
-    document.getElementById(id).classList.add('drag-area-highlight');
+  document.getElementById(id).classList.add("drag-area-highlight");
 }
 
 function removeHighlight(id) {
-    document.getElementById(id).classList.remove('drag-area-highlight');
+  document.getElementById(id).classList.remove("drag-area-highlight");
 }
 /**
  * DESIGN OF the WHOLE BOARD
  */
 function renderBoard() {
-
-    return /*html*/ `
+  return /*html*/ `
     
     <div class="main-container" id="container">
         <div class="main-container-body">
@@ -311,10 +309,10 @@ function renderBoard() {
 }
 
 function openAddTaskCard() {
-    const overlay = document.createElement('div');
-    overlay.classList.add('overlay');
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay");
 
-    overlay.innerHTML = /*html*/ `
+  overlay.innerHTML = /*html*/ `
     <div class="add-task-popup">
     <div id="overlay" class="overlay">
       <div class="add-task-popup">
@@ -430,42 +428,42 @@ function openAddTaskCard() {
 </div>
 </div>
 </div>
-</div>`
+</div>`;
 
-    document.body.appendChild(overlay);
-    // renderAddTaskCard(overlay);
+  document.body.appendChild(overlay);
+  // renderAddTaskCard(overlay);
 }
 
 function renderAddTaskCard() {
-    document.getElementById('container').classList.add('add-task-popup');
-    document.getElementById('overlay-container').classList.add('d-none');
+  document.getElementById("container").classList.add("add-task-popup");
+  document.getElementById("overlay-container").classList.add("d-none");
 
-    openAddTaskCard();
+  openAddTaskCard();
 
-    const createTaskButton = document.querySelector('.add-task-add-button');
-    createTaskButton.addEventListener('click', createTask);
+  const createTaskButton = document.querySelector(".add-task-add-button");
+  createTaskButton.addEventListener("click", createTask);
 }
 
 function closeAddTaskCard() {
-    const overlay = document.querySelector('.overlay');
-    if (overlay) {
-        overlay.remove();
-        document.getElementById('container').classList.remove('add-task-popup');
-        document.getElementById('overlay-container').classList.remove('d-none');
-    }
+  const overlay = document.querySelector(".overlay");
+  if (overlay) {
+    overlay.remove();
+    document.getElementById("container").classList.remove("add-task-popup");
+    document.getElementById("overlay-container").classList.remove("d-none");
+  }
 }
 
 async function search(e) {
-    const tasks = document.querySelectorAll('.task');
-    const searchTerm = e.target.value.trim().toLowerCase();
+  const tasks = document.querySelectorAll(".task");
+  const searchTerm = e.target.value.trim().toLowerCase();
 
-    // Warte darauf, dass die Task-Elemente vollständig geladen sind
-    await new Promise((resolve) => setTimeout(resolve, 0));
+  // Warte darauf, dass die Task-Elemente vollständig geladen sind
+  await new Promise((resolve) => setTimeout(resolve, 0));
 
-    tasks.forEach((task) => {
-        const titleElement = task.querySelector('.task-title');
-        const descriptionElement = task.querySelector('.task-description');
-        const categoryElement = task.querySelector('.task-type');
+  tasks.forEach((task) => {
+    const titleElement = task.querySelector(".task-title");
+    const descriptionElement = task.querySelector(".task-description");
+    const categoryElement = task.querySelector(".task-type");
 
         // Überprüfen, ob die Elemente vorhanden sind, bevor auf ihre Eigenschaften zugegriffen wird
         if (titleElement && descriptionElement && categoryElement) {
@@ -473,68 +471,72 @@ async function search(e) {
             const description = descriptionElement.textContent.toLowerCase();
             const category = categoryElement.textContent.toLowerCase();
 
-            if (title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) {
-                task.style.display = 'flex';
-            } else {
-                task.style.display = 'none';
-            }
-        } else {
-            console.error('Ein oder mehrere Elemente fehlen.');
-        }
-    });
+      if (
+        title.includes(searchTerm) ||
+        description.includes(searchTerm) ||
+        category.includes(searchTerm)
+      ) {
+        task.style.display = "flex";
+      } else {
+        task.style.display = "none";
+      }
+    } else {
+      console.error("Ein oder mehrere Elemente fehlen.");
+    }
+  });
 }
 
 function addSearchEventListener() {
-    const searchInput = document.getElementById('search');
-    if (searchInput) {
-        searchInput.addEventListener('keyup', search);
-    } else {
-        console.error('Das Suchfeld wurde nicht gefunden.');
-    }
+  const searchInput = document.getElementById("search");
+  if (searchInput) {
+    searchInput.addEventListener("keyup", search);
+  } else {
+    console.error("Das Suchfeld wurde nicht gefunden.");
+  }
 }
 
 function changePriority(priority) {
-    const highPriority = document.getElementById('high_priority');
-    const mediumPriority = document.getElementById('medium_priority');
-    const lowPriority = document.getElementById('low_priority');
+  const highPriority = document.getElementById("high_priority");
+  const mediumPriority = document.getElementById("medium_priority");
+  const lowPriority = document.getElementById("low_priority");
 
-    // Setze Hintergrundfarbe und Textfarbe basierend auf der ausgewählten Priorität
-    if (priority === 'high') {
-        highPriority.classList.add('add-task-prio-high-pressed-button');
-        highPriority.style.color = 'white';
-        mediumPriority.classList.remove('add-task-prio-medium-pressed-button');
-        mediumPriority.style.color = 'black';
-        lowPriority.classList.remove('add-task-prio-low-pressed-button');
-        lowPriority.style.color = 'black';
-    } else if (priority === 'medium') {
-        mediumPriority.classList.add('add-task-prio-medium-pressed-button');
-        mediumPriority.style.color = 'white';
-        highPriority.classList.remove('add-task-prio-high-pressed-button');
-        highPriority.style.color = 'black';
-        lowPriority.classList.remove('add-task-prio-low-pressed-button');
-        lowPriority.style.color = 'black';
-    } else if (priority === 'low') {
-        lowPriority.classList.add('add-task-prio-low-pressed-button');
-        lowPriority.style.color = 'white';
-        highPriority.classList.remove('add-task-prio-high-pressed-button');
-        highPriority.style.color = 'black';
-        mediumPriority.classList.remove('add-task-prio-medium-pressed-button');
-        mediumPriority.style.color = 'black';
-    }
+  // Setze Hintergrundfarbe und Textfarbe basierend auf der ausgewählten Priorität
+  if (priority === "high") {
+    highPriority.classList.add("add-task-prio-high-pressed-button");
+    highPriority.style.color = "white";
+    mediumPriority.classList.remove("add-task-prio-medium-pressed-button");
+    mediumPriority.style.color = "black";
+    lowPriority.classList.remove("add-task-prio-low-pressed-button");
+    lowPriority.style.color = "black";
+  } else if (priority === "medium") {
+    mediumPriority.classList.add("add-task-prio-medium-pressed-button");
+    mediumPriority.style.color = "white";
+    highPriority.classList.remove("add-task-prio-high-pressed-button");
+    highPriority.style.color = "black";
+    lowPriority.classList.remove("add-task-prio-low-pressed-button");
+    lowPriority.style.color = "black";
+  } else if (priority === "low") {
+    lowPriority.classList.add("add-task-prio-low-pressed-button");
+    lowPriority.style.color = "white";
+    highPriority.classList.remove("add-task-prio-high-pressed-button");
+    highPriority.style.color = "black";
+    mediumPriority.classList.remove("add-task-prio-medium-pressed-button");
+    mediumPriority.style.color = "black";
+  }
 
-    if (priority === 'high') {
-        urgent_icon.src = '../assets/svg/urgent_white.svg';
-        medium_icon.src = '../assets/svg/medium.svg';
-        low_icon.src = '../assets/svg/low.svg';
-    } else if (priority === 'medium') {
-        urgent_icon.src = '../assets/svg/urgent.svg';
-        medium_icon.src = '../assets/svg/medium_white.svg';
-        low_icon.src = '../assets/svg/low.svg';
-    } else if (priority === 'low') {
-        urgent_icon.src = '../assets/svg/urgent.svg';
-        medium_icon.src = '../assets/svg/medium.svg';
-        low_icon.src = '../assets/svg/low_white.svg';
-    }
+  if (priority === "high") {
+    urgent_icon.src = "../assets/svg/urgent_white.svg";
+    medium_icon.src = "../assets/svg/medium.svg";
+    low_icon.src = "../assets/svg/low.svg";
+  } else if (priority === "medium") {
+    urgent_icon.src = "../assets/svg/urgent.svg";
+    medium_icon.src = "../assets/svg/medium_white.svg";
+    low_icon.src = "../assets/svg/low.svg";
+  } else if (priority === "low") {
+    urgent_icon.src = "../assets/svg/urgent.svg";
+    medium_icon.src = "../assets/svg/medium.svg";
+    low_icon.src = "../assets/svg/low_white.svg";
+  }
 }
 
 function addSubtask() {
@@ -563,13 +565,13 @@ function validateForm() {
     const dueDate = document.querySelector('.add-task-due-date').value;
     const category = document.querySelector('.add-task-category-input').value;
 
-    // Überprüfe, ob die erforderlichen Felder ausgefüllt sind
-    const isTitleValid = title.trim() !== ''; // Überprüfe, ob der Titel nicht leer ist
-    const isDueDateValid = dueDate.trim() !== ''; // Überprüfe, ob das Fälligkeitsdatum nicht leer ist
-    const isCategoryValid = category.trim() !== ''; // Überprüfe, ob die Kategorie ausgewählt wurde
+  // Überprüfe, ob die erforderlichen Felder ausgefüllt sind
+  const isTitleValid = title.trim() !== ""; // Überprüfe, ob der Titel nicht leer ist
+  const isDueDateValid = dueDate.trim() !== ""; // Überprüfe, ob das Fälligkeitsdatum nicht leer ist
+  const isCategoryValid = category.trim() !== ""; // Überprüfe, ob die Kategorie ausgewählt wurde
 
-    // Gib zurück, ob alle erforderlichen Felder ausgefüllt sind
-    return isTitleValid && isDueDateValid && isCategoryValid;
+  // Gib zurück, ob alle erforderlichen Felder ausgefüllt sind
+  return isTitleValid && isDueDateValid && isCategoryValid;
 }
 
 function createTask() {
@@ -652,26 +654,30 @@ function addSubtaskToNewTask(newTask) {
 }
 
 async function openTaskPopup(task) {
-    // Überprüfen, ob task.subtasks ein Array ist
-    if (!Array.isArray(task.subtasks)) {
-        // Wenn nicht, setze task.subtasks auf ein leeres Array
-        task.subtasks = [];
-    }
+  // Überprüfen, ob task.subtasks ein Array ist
+  if (!Array.isArray(task.subtasks)) {
+    // Wenn nicht, setze task.subtasks auf ein leeres Array
+    task.subtasks = [];
+  }
 
-    // Prioritätsbild entsprechend der Task-Priorität
-    let priorityImage = '';
-    if (task.priority === 'urgent') {
-        priorityImage = '<img class="prioSVG" src="../assets/svg/urgent.svg" alt="Urgent Priority">';
-    } else if (task.priority === 'medium') {
-        priorityImage = '<img class="prioSVG" src="../assets/svg/medium.svg" alt="Medium Priority">';
-    } else if (task.priority === 'low') {
-        priorityImage = '<img class="prioSVG" src="../assets/svg/low.svg" alt="Low Priority">';
-    }
+  // Prioritätsbild entsprechend der Task-Priorität
+  let priorityImage = "";
+  if (task.priority === "urgent") {
+    priorityImage =
+      '<img class="prioSVG" src="../assets/svg/urgent.svg" alt="Urgent Priority">';
+  } else if (task.priority === "medium") {
+    priorityImage =
+      '<img class="prioSVG" src="../assets/svg/medium.svg" alt="Medium Priority">';
+  } else if (task.priority === "low") {
+    priorityImage =
+      '<img class="prioSVG" src="../assets/svg/low.svg" alt="Low Priority">';
+  }
 
-    const taskTypeClass = task.type === 'User Story' ? 'bg-userstory' : 'bg-technicaltask';
+  const taskTypeClass =
+    task.type === "User Story" ? "bg-userstory" : "bg-technicaltask";
 
-    // Popup-Inhalt mit dynamisch generiertem Prioritätsbild
-    let popupContent = `
+  // Popup-Inhalt mit dynamisch generiertem Prioritätsbild
+  let popupContent = `
         <div class="board-task-detail-main jc-center ai-center d-flex">  
             <div class="task-popup add-task-popup board-task-detail-card d-flex flex-d-col board-task-detail-card-in">
                 <div class="m-bottom-32 task-popup-type-close">
@@ -715,10 +721,10 @@ async function openTaskPopup(task) {
         </div>
     </div>`;
 
-    // Overlay erstellen und Inhalt einfügen
-    const overlay = document.createElement('div');
-    overlay.classList.add('overlay');
-    overlay.innerHTML = popupContent;
+  // Overlay erstellen und Inhalt einfügen
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+  overlay.innerHTML = popupContent;
 
     // Event-Listener für den Schließen-Button
     const closeButton = overlay.querySelector('.close-button');
