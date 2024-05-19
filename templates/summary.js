@@ -18,6 +18,7 @@ async function startSummary(id) {
 
 renderSayHello();
 allNavButton(id);
+findClosestDueDate()
 }
 
 /**
@@ -28,8 +29,9 @@ function renderSummary() {
     let doneNumber = done.length;
     let inProgressNumber = inProgress.length;
     let awaitFeedbackNumber = awaitFeedback.length;
+    let urgentNumber = urgent.length;
     let allTasksNumber = todoNumber + inProgressNumber + awaitFeedbackNumber + doneNumber;
-    
+
 
 
 return /*html*/ `
@@ -52,12 +54,12 @@ return /*html*/ `
                 <div id="urgent" class="circle bg-urgent urgent">
                 </div>
                  <div class="flex-center flex-column">
-                        <h2>${urgent}</h2><br>
+                        <h2>${urgentNumber}</h2><br>
                     <span class="span">Urgent</span>
                 </div>
             
                 <div class="left-border-2px">
-                    <span class="bold span">16. Oktober 2024</span><br>
+                    <span id="dueDate" class="bold span"></span><br>
                     <span class="span">Upcoming Deadline</span>
                 </div>
             </div>
@@ -79,7 +81,43 @@ return /*html*/ `
  * Treat all Due Dates on Tasks for Summary Dashboard
  */
 
-function nextDueDateForSummary(){
-    
-    const untilDue = allTasks[worker][currentUser]
+function findClosestDueDate() {
+
+    let dueDateValue = document.getElementById("dueDate");
+    const now = new Date(); // Aktuelles Datum und Uhrzeit
+    let closestDate = null; // Das nächste Datum
+    let minDifference = Infinity; // Der kleinste Unterschied (initial auf unendlich gesetzt)
+
+    for (const task of sameProject) {
+        if (task.dueDate) {
+            const setDueDate = new Date(task.dueDate);
+            // let dueDateISO = formatDateToISO(setDueDate);
+            const difference = Math.abs(setDueDate - now); // Zeitdifferenz in Millisekunden
+
+            // Überprüfe, ob das Datum in der Zukunft liegt oder nicht mehr als 7 Tage zurück
+            if (setDueDate > now || difference <= 7 * 24 * 60 * 60 * 1000) {
+                if (difference < minDifference) {
+                    minDifference = difference;
+                    closestDate = dueDate;
+                }
+            }
+        }
+    }
+
+   dueDateValue.innerHTML = closestDate;
 }
+
+function formatDateToISO(dateString) {
+    const [day, month, year] = dateString.split(".");
+    const date = new Date(`${year}-${month}-${day}`);
+    const isoDate = date.toISOString().replace("Z", "+02:00");
+
+    return isoDate;
+}
+
+// const closestDueDate = findClosestDueDate(tasks);
+// if (closestDueDate) {
+//     console.log("Das nächste fällige Datum ist:", closestDueDate);
+// } else {
+//     console.log("Kein fälliges Datum gefunden.");
+// }
