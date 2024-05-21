@@ -94,3 +94,11 @@ function loginPage() {
 </div>
 `;
 }
+
+//success Logo
+function generateSuccessLabel() {
+  return `
+  <div id="success" class="showSuccess">
+    <h5>You signed Up successfully</h5>
+  </div>`
+}

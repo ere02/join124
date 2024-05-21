@@ -368,6 +368,18 @@ header {
   justify-content: center;
 }
 
+.showSuccess {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--use_border-button-bg-text);
+  color: var(--use_bg-text-white);
+  font-weight: 700;
+  border-radius: 1.5rem;
+  height: 4.5rem;
+  width: 20rem;
+}
+
 .arrow-icon {
   margin-left: -8rem;
   overflow-clip-margin: content-box;
