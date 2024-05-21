@@ -15,7 +15,7 @@ function generateSignUpHTML() {
             </div>
           </div>
           <div class="inpnput-container">
-          <form onsubmit="register(); return false;">
+          <form onsubmit="register(); return false;" class="formRegister">
             <div class="input-wrapper">
               <input id="name_reg" class="input-field" type="text" name="name" placeholder="Name" required />
               <img src="/assets/svg/person.svg" alt="lock icon" class="icon" />

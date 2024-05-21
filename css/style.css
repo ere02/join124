@@ -489,6 +489,13 @@ header {
   background-color: var(--use_bg-text-white);
   border: 1px solid var(--use_border-text-light);
   border-radius: 2.5rem;
+  gap: 1.5rem;
+}
+
+.formRegister{
+  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .checkbox-container {
