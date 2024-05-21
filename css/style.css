@@ -369,7 +369,7 @@ header {
 }
 
 .arrow-icon {
-  margin-left: -6rem;
+  margin-left: -8rem;
   overflow-clip-margin: content-box;
   overflow: clip;
 }
@@ -501,6 +501,7 @@ header {
 .checkbox-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
 }
 
@@ -570,6 +571,7 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 3;
 }
 
 .new-user {
