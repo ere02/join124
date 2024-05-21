@@ -30,6 +30,7 @@ async function register() {
         return;
       }
     }
+
     const hashedPassword = hashPassword(passwordInput.value);
 
     users.push({
@@ -49,6 +50,7 @@ async function register() {
     return; // Exit the function if validation fails
   }
 }
+
 function isFormValid(nameInput, emailInput, passwordInput) {
   const confirmPasswordInput = document.getElementById('confirmPassword_reg');
   const agreeCheckbox = document.getElementById('agree_reg');
@@ -115,14 +117,32 @@ async function deleteOldUsersEntry() {
     }
   }
 }
+/*
+Verknüpfung zu inputfield email und password herstellen.
+wenn email und PW vorhanden sind bzw Form valide
+Values aus den oben genannten inputfeldern ziehen
 
-/* async function loadUserTasks() {
-  try {
-    const tasks = JSON.parse(await getItem('tasks'));
-    users.forEach((user) => {
-      user.tasks = tasks.filter((task) => task.userId === user.id);
-    });
-  } catch (e) {
-    console.error('Loading error:', e);
-  }
-} */
+email validierung
+
+
+mit User Arrey abgleichen
+Hinweis auf Registrierung geben (signUp)
+Error handling: wrong username or password als info
+
+weiterleitung auf board.js
+*/
+function signIn(){
+  let email = document.getElementById('email');
+  let password = document.getElementById('password');
+
+  if(email.value && password.value ){
+    for (let i = 0; i < users.length; i++) {
+     if(email.value == users[i].email && password.value == users[i].password ){
+        console.log('Erfolgreich')
+        window.location.href="./subpages/summary.html"       
+     } else {
+        console.log('user oder PW nicht gefunden')    
+     }
+    }
+  } 
+}

@@ -384,6 +384,7 @@ header {
   margin-left: -8rem;
   overflow-clip-margin: content-box;
   overflow: clip;
+  cursor:pointer;
 }
 
 .underline {
