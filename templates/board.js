@@ -40,6 +40,7 @@ async function goToBoardHTML() {
 async function startBoard(id) {
   await includeHTML();
   allNavButton(id);
+  //getItem hier rein für die Tasks
   board.classList.remove("displaynone");
   board.innerHTML = renderBoard();
   updateBoardHTML();

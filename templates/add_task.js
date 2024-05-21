@@ -212,7 +212,7 @@ function createFirstTask() {
 
   // Füge die neue Aufgabe dem allTasks Array hinzu
   allTasks.push(newTask);
-
+// setItem hier rein 
   // Hier fügst du den Code für das Popup hinzu
   const popup = document.querySelector('.add-task-popup-container');
   popup.classList.remove('d-none');
