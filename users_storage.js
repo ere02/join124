@@ -9,13 +9,13 @@ const allUsers = [
 
   {
     id: 1,
-    nickname: 'criii',
+    nickname: 'criii', // löschen bei allen
     firstname: 'Christina',
     familyname: 'Troitzsch',
     email: 'christina@troitzsch.de',
     phone: '+49 177 2632522',
     pword: '*****',
-    personalColor: 'var(--color-yellowgreen)',
+    personalColor: 'var(--color-yellowgreen)', // farbe Logik vergeben?
     projectId: [1],
   },
   {
