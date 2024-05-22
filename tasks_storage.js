@@ -1,3 +1,7 @@
+/*
+array an firebase übergeben
+
+*/
 let allTasks = [{
     "id": 0,
     "projectId": 0,
