@@ -4,7 +4,7 @@ users und allUsers mergen
 farben über eine Schleife vergeben 0-14 und dann wieder bei 0 anfangen
 */
 const allUsers = [
-  {
+  { 
     id: 0,
     firstname: 'guest',
     personalColor: 'var(--color-grey)',
