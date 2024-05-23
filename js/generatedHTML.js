@@ -93,14 +93,13 @@ function loginPage() {
         Privacy Policy</span><span class="legal-notice-link" onclick="callFramePageSinLogin('legal')">Legal
         notice</span>
 </div>
-</div>
-`;
+</div>`;
 }
 
 //success Logo
 function generateSuccessLabel() {
-  return `
+  return /*html*/`
   <div id="success" class="showSuccess">
     <h5>You signed Up successfully</h5>
-  </div>`
+  </div>`;
 }
