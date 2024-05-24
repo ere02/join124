@@ -3,5 +3,5 @@ bower_components/
 dist/
 .cache/
 .envcd 
-
+firebase.js
 tests/

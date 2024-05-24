@@ -1,7 +1,11 @@
+/*
+nickname wird nicht mehr benötigt
+users und allUsers mergen
+farben über eine Schleife vergeben 0-14 und dann wieder bei 0 anfangen
+*/
 const allUsers = [
-  {
+  { 
     id: 0,
-    nickname: 'guest',
     firstname: 'guest',
     personalColor: 'var(--color-grey)',
     projectId: [0],
@@ -9,18 +13,16 @@ const allUsers = [
 
   {
     id: 1,
-    nickname: 'criii',
     firstname: 'Christina',
     familyname: 'Troitzsch',
     email: 'christina@troitzsch.de',
     phone: '+49 177 2632522',
     pword: '*****',
-    personalColor: 'var(--color-yellowgreen)',
+    personalColor: 'var(--color-yellowgreen)', // farbe Logik vergeben?
     projectId: [1],
   },
   {
     id: 2,
-    nickname: 'erwin',
     firstname: 'Erwin',
     familyname: 'Hoermann',
     pword: '*****',
@@ -31,7 +33,6 @@ const allUsers = [
   },
   {
     id: 3,
-    nickname: 'ardit97',
     firstname: 'Ardit',
     familyname: 'Qoku',
     pword: '*****',
@@ -42,7 +43,6 @@ const allUsers = [
   },
   {
     id: 4,
-    nickname: 'cleo',
     firstname: 'Cleo',
     familyname: 'Patra',
     pword: '*****',
@@ -53,7 +53,6 @@ const allUsers = [
   },
   {
     id: 5,
-    nickname: 'testuser1',
     firstname: 'T.',
     familyname: 'EstUser',
     pword: '*****',
@@ -64,7 +63,6 @@ const allUsers = [
   },
   {
     id: 6,
-    nickname: 'testuser2',
     firstname: 'Test',
     familyname: 'User',
     pword: '*****',
@@ -75,7 +73,6 @@ const allUsers = [
   },
   {
     id: 7,
-    nickname: 'testuser3',
     firstname: 'User',
     familyname: 'Test',
     pword: '*****',
@@ -86,7 +83,6 @@ const allUsers = [
   },
   {
     id: 8,
-    nickname: 'testuser4',
     firstname: 'U.',
     familyname: 'Test',
     pword: '*****',
@@ -97,7 +93,6 @@ const allUsers = [
   },
   {
     id: 9,
-    nickname: 'testuser5',
     firstname: 'Tess',
     familyname: 'Tuser',
     pword: '*****',
@@ -108,7 +103,6 @@ const allUsers = [
   },
   {
     id: 10,
-    nickname: 'testuser6',
     firstname: 'Testu',
     familyname: 'Ser',
     pword: '*****',

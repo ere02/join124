@@ -29,7 +29,7 @@ function renderSummary() {
     let doneNumber = done.length;
     let inProgressNumber = inProgress.length;
     let awaitFeedbackNumber = awaitFeedback.length;
-    let urgentNumber = urgent.length;
+    let urgentNumber = urgent;
     let allTasksNumber = todoNumber + inProgressNumber + awaitFeedbackNumber + doneNumber;
 
 

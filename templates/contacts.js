@@ -37,6 +37,7 @@ async function startContacts(id) {
   allNavButton(id);
   await findAllFirstLettersOfContacts();
   contacts.innerHTML += returnContactContainer();
+
 }
 
 async function findAllFirstLettersOfContacts() {
@@ -97,6 +98,7 @@ async function treatAllContacts() {
 }
 
 function handleContactOnClick(userDivs, index) {
+
   let activeContact = document.querySelector(".active");
   if (activeContact) {
     activeContact.classList.remove("active");
@@ -141,12 +143,13 @@ function generateUserInfo(index) {
   </div>
 </div>
 `;
+
   animationContactContainer();
 }
 
 function animationContactContainer() {
-  let container = document.getElementById("start-container");
-  let aniContact = document.querySelector(".aniContact");
+ let container = document.getElementById("start-container");
+  let aniContact = document.querySelector(".aniContact"); 
 
   if (aniContact) {
     restartAnimation();
@@ -163,29 +166,37 @@ function restartAnimation() {
 }
 
 function toggleEditLayer(i) {
-  let contact = document.getElementById("editableContact");
+
+ let container = document.getElementById("editableContact");
   let layer = document.getElementById("editLayer");
   let clickableBG = document.getElementById("clickableBG");
   let aniEdit = document.querySelector(".aniEditForm");
  
   if (aniEdit) {
-    contact.classList.remove("aniEditForm");
-    contact.classList.add("aniOutForm");
+ removeAniEdit(container, layer, clickableBG);
+  } else {
+      addAniEdit(container, layer, clickableBG);   
+       if (i !== null){
+        editUserInfo(i);
+      } else {
+        editUserInfo(null);
+      }
+  }
+}
+function addAniEdit(container, layer, clickableBG){ 
+  activate(container);
+     container.classList.add("aniEditForm");
+    container.classList.remove("aniOutForm"); 
+     activate(layer);
+    clickableBG.classList.add("fadeInBG");
+}
+
+function removeAniEdit(container, layer, clickableBG){
+  container.classList.remove("aniEditForm");
+    container.classList.add("aniOutForm");
     clickableBG.classList.add("fadeOutBG");
     deactivate(layer);
-  } else {
-    activate(contact);
-    contact.classList.add("aniEditForm");
-    contact.classList.remove("aniOutForm");
-    activate(layer);
-    clickableBG.classList.add("fadeInBG");
-    if (i !== null){
-      editUserInfo(i);
-    } else {
-      editUserInfo(null);
-    }
-
-  }
+  
 }
 
 function activate(div) {

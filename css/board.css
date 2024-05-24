@@ -589,13 +589,15 @@ Here are designed all Task and Todo-Cards
 }
 
 .add-task-popup {
-    position: fixed;
+    flex-direction:column;
+    align-items:center;
+    /* position: fixed; */
     background-color: white;
-    padding: 20px;
-    padding-left: 39px;
+    padding: 40px;
+    /* padding-left: 39px; */
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 10;
 }
 
 .add-task-prio-high-popup,

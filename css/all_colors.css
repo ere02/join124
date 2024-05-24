@@ -1,6 +1,6 @@
 
 :root{
-    /** FARBEN RANDOM für MITGLIEDER BUBBLES */
+    /** FARBEN RANDOM für MITGLIEDER BUBBLES in ein itterierbares Array packen*/
     --color-orange: rgb(255,122,0);
     --color-pink:rgb(255,94,179);
     --color-lila: rgb(110,82,255);

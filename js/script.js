@@ -2,9 +2,10 @@
 let goBackToPage = [];
 
 async function init() {
+  await loadUsers();
   renderLogin();
   introAnimation();
-  await renderUserIcon();
+  /* await renderUserIcon(); */
 }
 
 let login = document.getElementById('content');
@@ -65,6 +66,7 @@ function loadSinLogin() {
 function loadIntro() {
   window.location = `../index.html`;
 }
+
 async function includeHTML() {
   let includeElements = document.querySelectorAll('[w3-include-html]');
   for (let i = 0; i < includeElements.length; i++) {
