@@ -131,18 +131,38 @@ Error handling: wrong username or password als info
 
 weiterleitung auf board.js
 */
-function signIn(){
+function signIn() {
   let email = document.getElementById('email');
   let password = document.getElementById('password');
 
-  if(email.value && password.value ){
+  if (email.value && password.value) {
     for (let i = 0; i < users.length; i++) {
-     if(email.value == users[i].email && password.value == users[i].password ){
+      if (email.value == users[i].email && password.value == users[i].password) {
         console.log('Erfolgreich')
-        window.location.href="./subpages/summary.html"       
-     } else {
-        console.log('user oder PW nicht gefunden')    
-     }
+        window.location.href = "./subpages/summary.html"
+      } else {
+        console.log('user oder PW nicht gefunden')
+      }
     }
-  } 
+  }
 }
+
+/*handle remember me*/
+function rememberMe() {
+  const rmCheck = document.getElementById('remember');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+
+  if (rmCheck.checked) {
+    // Set values in localStorage only when checkbox is checked
+    localStorage.setItem('username', emailInput.value);
+    localStorage.setItem('password', passwordInput.value);
+  } else {
+    // Clear values from localStorage when checkbox is unchecked
+    localStorage.removeItem('username');
+    localStorage.removeItem('password');
+  }
+}
+
+const rmCheck = document.getElementById('remember');
+rmCheck.addEventListener('change', rememberMe);
