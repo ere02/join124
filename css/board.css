@@ -691,3 +691,7 @@ Here are designed all Task and Todo-Cards
     justify-content: flex-end;
     gap: 10px;
 }
+
+#close-subtask-button, #check-subtask-button {
+    display: none;
+}

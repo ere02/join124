@@ -303,6 +303,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .m-bottom-20 {
   margin-bottom: 20px;
+  word-break: break-word;
 }
 
 .m-bottom-7 {
@@ -572,4 +573,32 @@ option {
 
 .borderColorMistake {
   border: 1px solid var(--color-red);
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+}
+
+.button-wrapper {
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-wrapper:hover {
+  background-color: var(--color-grey);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.separator {
+  width: 1px; 
+  height: 26px; 
+  background-color: var(--color-grey); 
+  margin: 0 5px;
 }

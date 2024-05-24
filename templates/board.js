@@ -10,7 +10,6 @@ let subtasks = [];
 // const allIds = allTasks.map(item => item.id);
 // const allPrios = allTasks.map(item => item.priority);
 
-
 let currentProject = 1; //allUsers[currentUser].projectId[0];
 let sameProject = allTasks.filter((item) => item.projectId === currentProject);
 
@@ -19,7 +18,6 @@ const description = sameProject.description;
 var category = sameProject.category;
 const id = sameProject.id;
 const prio = sameProject.priority;
-
 
 // let urgent = sameProject.filter(c => c['priority'] === 'urgent' && c.category !== 'inDone');
 // let toDo = sameProject.filter(c => c['category'] == 'inTodo');
@@ -32,7 +30,6 @@ let toDo = allTasks.filter(t => t['category'] == 'inTodo');
 let inProgress = allTasks.filter(t => t['category'] == 'inProgress');
 let awaitFeedback = allTasks.filter(t => t['category'] == 'awaitFeedback');
 let done = allTasks.filter(t => t['category'] == 'inDone');
-
 
 
 async function goToBoardHTML() {
@@ -182,19 +179,37 @@ function generateTodoHTML(element) {
 }
 
 async function renderTaskHTML(element) {
+  let subtasks = element.subtasks || []; // Annahme: Die Subtasks sind im Element vorhanden
+  let completedCount = countCompletedSubtasks(subtasks); // Funktion, um die Anzahl der erfüllten Subtasks zu zählen
+
   return /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${element["id"]})" class="task">
+       <div draggable="true" ondragstart="startDragging(${element["id"]})" class="task">
             <div id='type${element["id"]}' class="task-type">${element["type"]}</div>
-                <div class="task-text">
-                    <div class="task-title bold"> ${element["title"]} </div>
-                    <div class="task-description text-greyish">${element["description"]}</div>
+            <div class="task-text">
+                <div class="task-title bold"> ${element["title"]} </div>
+                <div class="task-description text-greyish">${element["description"]}</div>
+            </div>
+            <!-- Aussage über die Anzahl der erfüllten Subtasks -->
+            <div class="subtasks-counter">
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                 </div>
+                ${completedCount}/${subtasks.length} Subtasks
+            </div>
             <div class="task-footer">
                 <div class="task-worker"></div>
                 <div class="task-prio"><img src="../assets/svg/${element["priority"]}.svg" class="prioSVG"></div>
             </div>
         </div>
     `;
+}
+
+// Funktion zum Zählen der erfüllten Subtasks
+function countCompletedSubtasks(subtasks) {
+  if (!subtasks || subtasks.length === 0) return 0;
+
+  let completedCount = subtasks.filter(subtask => subtask.completed).length;
+  return completedCount;
 }
 
 /**
@@ -406,7 +421,9 @@ function openAddTaskCard() {
     <label for="subtaskAddTask" class="add-task-label bgC-white">
       <input type="text" name="subtaskAddTask" class="add-task-subtask" id="add_task_subtask"
         placeholder="Add new Subtask" autocomplete="off" maxlength="20">
-        <img src="../assets/svg/add.svg" class="add-subtask-img cursor-pointer" id="add-subtask-button" onclick="addSubtask()">
+        <div>
+          <img src="../assets/svg/add.svg" class="add-subtask-img cursor-pointer" id="add-subtask-button" onclick="showSubtaskControls()">
+        </div>    
     </label>
 
     <div id="outputSubtasks" class="output-subtask"></div>
@@ -539,24 +556,93 @@ function changePriority(priority) {
   }
 }
 
+function showSubtaskControls() {
+  // Verstecke den Hinzufügen-Button
+  const addSubtaskButton = document.getElementById('add-subtask-button');
+  addSubtaskButton.style.display = 'none';
+  
+  // Zeige das Eingabefeld für den Subtask
+  const subtaskInput = document.getElementById('add_task_subtask');
+  subtaskInput.style.display = 'inline-block';
+  subtaskInput.focus(); // Fokussiere das Eingabefeld
+
+  // Erstelle das HTML-Element für den Container der Buttons
+  const buttonContainer = document.createElement('div');
+  buttonContainer.classList.add('button-container');
+
+  // Erstelle das HTML-Element für den Close-Button Container
+  const closeButtonContainer = document.createElement('div');
+  closeButtonContainer.classList.add('button-wrapper');
+  
+  // Erstelle das HTML-Element für den Close-Button
+  const closeButton = document.createElement('img');
+  closeButton.src = "../assets/svg/close.svg";
+  closeButton.addEventListener('click', function() {
+      // Entferne den Close-Button, den Check-Button und das Eingabefeld
+      buttonContainer.remove();
+      subtaskInput.value = ''; // Lösche den Inhalt des Textfelds
+
+      // Zeige den Hinzufügen-Button wieder an
+      addSubtaskButton.style.display = 'inline-block';
+  });
+
+  // Füge den Close-Button in seinen Container ein
+  closeButtonContainer.appendChild(closeButton);
+
+  // Erstelle das HTML-Element für den Separator
+  const separator = document.createElement('div');
+  separator.classList.add('separator');
+
+  // Erstelle das HTML-Element für den Check-Button Container
+  const checkButtonContainer = document.createElement('div');
+  checkButtonContainer.classList.add('button-wrapper');
+  
+  // Erstelle das HTML-Element für den Check-Button
+  const checkButton = document.createElement('img');
+  checkButton.src = "../assets/svg/check.svg";
+  checkButton.addEventListener('click', function() {
+      // Führe die ursprüngliche addSubtask Funktionalität aus
+      addSubtask();
+      
+      // Entferne den Close-Button und den Check-Button
+      buttonContainer.remove();
+
+      // Zeige den Hinzufügen-Button wieder an
+      addSubtaskButton.style.display = 'inline-block';
+  });
+
+  // Füge den Check-Button in seinen Container ein
+  checkButtonContainer.appendChild(checkButton);
+
+  // Füge die Button-Container und den Separator in den Hauptcontainer ein
+  buttonContainer.appendChild(closeButtonContainer);
+  buttonContainer.appendChild(separator);
+  buttonContainer.appendChild(checkButtonContainer);
+
+  // Füge den Hauptcontainer dem DOM hinzu
+  addSubtaskButton.parentNode.appendChild(buttonContainer);
+}
+
+
+
 function addSubtask() {
-    const subtaskInput = document.querySelector('.add-task-subtask');
-    const subtaskText = subtaskInput.value.trim(); // Text des Subtasks
+  const subtaskInput = document.querySelector('.add-task-subtask');
+  const subtaskText = subtaskInput.value.trim(); // Text des Subtasks
 
-    // Überprüfen, ob das Textfeld leer ist
-    if (subtaskText === '') {
-        alert('Bitte fügen Sie einen Text hinzu!');
-        return; // Beende die Funktion, wenn das Textfeld leer ist
-    }
+  // Überprüfen, ob das Textfeld leer ist
+  if (subtaskText === '') {
+      alert('Bitte fügen Sie einen Text hinzu!');
+      return; // Beende die Funktion, wenn das Textfeld leer ist
+  }
 
-    // Erstelle das HTML-Element für den Subtask
-    const outputSubtasks = document.getElementById('outputSubtasks');
-    const subtaskDiv = document.createElement('div');
-    subtaskDiv.textContent = subtaskText;
-    outputSubtasks.appendChild(subtaskDiv);
+  // Erstelle das HTML-Element für den Subtask
+  const outputSubtasks = document.getElementById('outputSubtasks');
+  const subtaskDiv = document.createElement('div');
+  subtaskDiv.textContent = subtaskText;
+  outputSubtasks.appendChild(subtaskDiv);
 
-    // Lösche den Inhalt des Textfelds
-    subtaskInput.value = '';
+  // Lösche den Inhalt des Textfelds
+  subtaskInput.value = '';
 }
 
 function validateForm() {
@@ -770,3 +856,5 @@ function editTask(taskId) {
     // Hier kannst du den Code zum Bearbeiten der Aufgabe hinzufügen
     alert(`Edit task with ID: ${taskId}`);
 }
+
+
