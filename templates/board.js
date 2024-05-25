@@ -994,7 +994,7 @@ async function openTaskPopup(task) {
   popupContent += `
             <div class="popup-buttons">
                 <button class="delete-button" type="button">Delete</button>
-                <button class="edit-button" type="button">Edit</button>
+                <button class="btn btn-primary active" type="button">Edit</button>
             </div>
         </div>
     </div>`;
