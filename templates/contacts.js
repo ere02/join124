@@ -205,6 +205,7 @@ function activate(div) {
 
 function deactivate(div) {
   div.classList.add("displaynone");
+  debugger;
 }
 
 function slideOut() {
