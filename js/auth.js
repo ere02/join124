@@ -148,21 +148,18 @@ function signIn() {
 }
 
 /*handle remember me*/
-function rememberMe() {
-  const rmCheck = document.getElementById('remember');
-  const emailInput = document.getElementById('email');
+const rememberMeCheck = document.getElementById('remember');
+rememberMeCheck.addEventListener('change', function saveInLocalStorage() {
+  const userNameInput = document.getElementById('username');
   const passwordInput = document.getElementById('password');
 
-  if (rmCheck.checked) {
-    // Set values in localStorage only when checkbox is checked
-    localStorage.setItem('username', emailInput.value);
+  if (rememberMeCheck.checked) {
+    // Store username and password in local storage
+    localStorage.setItem('username', userNameInput.value);
     localStorage.setItem('password', passwordInput.value);
   } else {
-    // Clear values from localStorage when checkbox is unchecked
+    // Remove username and password from local storage
     localStorage.removeItem('username');
     localStorage.removeItem('password');
   }
-}
-
-const rmCheck = document.getElementById('remember');
-rmCheck.addEventListener('change', rememberMe);
+});
