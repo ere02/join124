@@ -564,10 +564,11 @@ Here are designed all Task and Todo-Cards
 
 .bg-userstory {
     background-color: var(--use_bg-userstory);
+    color:white;
 }
 
 .bg-technicaltask {
-    background-color: var(--use_bg-technicaltask)
+    background-color: var(--use_bg-technicaltask);
 }
 
 .emptylane {

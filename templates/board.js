@@ -261,8 +261,8 @@ function renderBoard() {
                 <div class="board-headline">
                     <div class="board-headline-button">
                         <h1>Board</h1>
-                        <button class="board-button-addTask-mobile"><img src="../assets/svg/add.svg" alt=""
-                                onclick=""></button>
+                        <div class="board-button-addTask-mobile"><img src="../assets/svg/add.svg" alt="add task"
+                                onclick="toggleNewTaskLayer(null)"></div>
                     </div>
                     <div class="board-headline-container-search-add">
                         <div class="board-input-search-container">
@@ -330,7 +330,7 @@ function renderBoard() {
 
 // }
 
-function toggleNewTaskLayer(i) {
+function toggleNewTaskLayer() {
   let container = document.getElementById("editableTask");
   let layer = document.getElementById("editLayer");
   // let clickableBG = document.getElementById("clickableBG");
@@ -363,8 +363,8 @@ function createAddTaskCard() {
                 <form>
                   <h3 class="h3">Title <span class="required-star">*</span></h3>
                   <label for="title" class="add-task-label" id="">
-                    <input type="text" name="title" class="add-task-title" id="title" minlength="3" maxlength="20"
-                      placeholder="Enter a Title" required="">
+                    <input type="text" name="title" class="add-task-title" id="task-title" minlength="3" maxlength="20"
+                      placeholder="Enter a Title" required>
                   </label>
 
                   <!-- <div class="extra-small d-none" id="">This field is required</div> -->
@@ -377,7 +377,7 @@ function createAddTaskCard() {
 
                   <h3 class="h3">Assigned to:</h3>
                   <label for="assigned" class="add-task-label bgC-white" onclick="">
-                    <input type="text" name="assigned" id="" class="add-task-title add-task-assigned-to"
+                    <input type="text" name="assigned" id="task-contact" class="add-task-title add-task-assigned-to"
                       placeholder="Choose contacts" autocomplete="off" onclick="">
                     <img src="../assets/svg/arrow_drop_down-1.svg" onclick="" class="cursor-pointer margin-right"
                       id="">
@@ -452,7 +452,7 @@ function createAddTaskCard() {
                   <!-- <div class="add-task-required-info-bottom">* This field is required</div> -->
                     <div class="add-task-buttons-container">
                         <button type="reset" class="add-task-clear-button-popup d-flex ai-center jc-center" onclick="closeAddTaskCard()">Cancel</button>
-                        <button class="add-task-add-button d-flex ai-center jc-center" id="">Create Task<img
+                        <button type ="button" class="add-task-add-button d-flex ai-center jc-center" id="" onclick="toggleNewTaskLayer(null)">Create Task<img
                         src="../assets/svg/check_white.svg"></button>
                     </div>
 
@@ -831,7 +831,7 @@ function addSubtask() {
 
 function validateForm() {
   // Lese die Werte der erforderlichen Felder aus
-  const title = document.querySelector(".add-task-title").value;
+  const title = document.getElementById("task-title").value;
   const dueDate = document.querySelector(".add-task-due-date").value;
   const category = document.querySelector(".add-task-category-input").value;
 
@@ -951,25 +951,25 @@ async function openTaskPopup(task) {
     task.type === "User Story" ? "bg-userstory" : "bg-technicaltask";
 
   // Popup-Inhalt mit dynamisch generiertem Prioritätsbild
-  let popupContent = `
+  let popupContent = /*html*/`
         <div class="board-task-detail-main jc-center ai-center d-flex">  
             <div class="task-popup add-task-popup board-task-detail-card d-flex flex-d-col board-task-detail-card-in">
                 <div class="m-bottom-32 task-popup-type-close">
-                    <div class="task-type ${taskTypeClass} font32">${task.type}</div>
-                    <button class="close-button"><img src="../assets/svg/close.svg" style="width: 12px;"></button>
+                    <div class="task-type ${taskTypeClass} font32"><h4 style="color:white">${task.type}</h4></div>
+                    <button type="button" class="close-button"><img src="../assets/svg/close.svg" style="width: 12px;"></button>
                 </div>
-                <div class="h2 m-bottom-20">${task.title}</div>
-                <div class="m-bottom-20">${task.description}</div>
-                <div class="m-bottom-20 d-flex-row duedate">
+                <div class="m-bottom-20"><h1>${task.title}</h1></div>
+                <div class="m-bottom-20 h5">${task.description}</div>
+                <div class="m-bottom-20 h5 d-flex-row duedate">
                     <div>Due Date:</div> ${task.dueDate}
                 </div>
-                <div class="m-bottom-20 d-flex-row priority">
+                <div class="m-bottom-20 h5 d-flex-row priority">
                     <div>Priority:</div> ${task.priority} ${priorityImage}
                 </div>
-                <div class="m-bottom-20 d-flex-row">
-                    <div>Assigned to:</div> ${task.assignedTo}
+                <div class="m-bottom-20 h5 d-flex-row">
+                    <div>Assigned to:</div>${task.assignedTo}
                 </div>
-                <div class="m-bottom-7">Subtasks</div>`;
+                <div class="m-bottom-7 h5">Subtasks</div>`;
 
   // Wenn Subtasks vorhanden sind, füge sie dem Popup-Inhalt hinzu
   if (task.subtasks.length > 0) {
@@ -993,8 +993,8 @@ async function openTaskPopup(task) {
   // Buttons hinzufügen
   popupContent += `
             <div class="popup-buttons">
-                <button class="delete-button">Delete</button>
-                <button class="edit-button">Edit</button>
+                <button class="delete-button" type="button">Delete</button>
+                <button class="edit-button" type="button">Edit</button>
             </div>
         </div>
     </div>`;

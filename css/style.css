@@ -66,6 +66,9 @@ h4 {
 h5 {
   font-size: 1.25rem;
 }
+.h5{
+  font-size:1.25rem;
+}
 
 HEAD a {
   color: var(--color-dark-bg);
