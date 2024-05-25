@@ -5,6 +5,7 @@ async function init() {
   await loadUsers();
   renderLogin();
   introAnimation();
+  loadFromLocalStorage();
   /* await renderUserIcon(); */
 }
 
@@ -97,7 +98,6 @@ function showSignUp() {
     content.innerHTML = generateSignUpHTML();
   }
   
-
   function logoutMenuSlider() {
     let slider = document.getElementById("logoutMenu");
     if(slider.classList.contains("aniLogout")){

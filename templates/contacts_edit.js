@@ -93,7 +93,7 @@ function resetContactForm(nameInput, emailInput, phoneInput,bubble) {
   nameInput.value = "";
   emailInput.value = "";
   phoneInput.value = "";
-  bubble.style.background = "var(--color-greyish-icon)";
+  bubble.style.background = "var(--color-greyish-icon)"; // muss angepasst werden: users
   bubble.innerHTML = returnPersonSVG();
   let saveBtn = document.getElementById("saveBTN");
   document.getElementById("deleteBTN").classList.add("displaynone");
