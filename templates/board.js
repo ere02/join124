@@ -272,7 +272,7 @@ function renderBoard() {
                                 <img class="board-input-search-icons" onclick="search()" src="../assets/svg/search.svg" alt="">
                             </div>
                         </div>
-                        <button id="add_task_button" class="board-button-addTask" onclick="toggleNewTaskLayer()"><span class="board-text-addTask" >
+                        <button id="add_task_button" class="board-button-addTask" onclick="toggleNewTaskLayer(null)"><span class="board-text-addTask" >
                             Add task</span><img src="../assets/svg/add-white.svg" alt=""></button>
                     </div>
                 </div>
@@ -330,17 +330,17 @@ function renderBoard() {
 
 // }
 
-function toggleNewTaskLayer() {
+function toggleNewTaskLayer(i) {
   let container = document.getElementById("editableTask");
   let layer = document.getElementById("editLayer");
-  let clickableBG = document.getElementById("clickableBG");
+  // let clickableBG = document.getElementById("clickableBG");
   let aniEdit = document.querySelector(".aniEditForm");
 
   if (aniEdit) {
-    removeAniEdit(container, layer, clickableBG);
+    closeAddNewTaskCard(container, layer);
   } else {
-    addAniEdit(container, layer, clickableBG);
-    createAddTaskCard();
+    renderAddNewTaskCard(container, layer, clickableBG);
+    // createAddTaskCard();
   }
 }
 
@@ -350,7 +350,7 @@ function createAddTaskCard() {
   let container = document.getElementById("editableTask");
   container.innerHTML = /*html*/ `
    
-    <div class="add-task-popup"> 
+    <div id="addtask" class="add-task-popup"> 
            <div class="closeEdit margin-unset">
                 <img class="closeIMG" src="../assets/svg/close.svg" alt="Schließen" onclick="toggleNewTaskLayer()" /> 
             </div>
@@ -358,12 +358,12 @@ function createAddTaskCard() {
               <h1 class="add-task-headline">Add Task</h1>
             </div>
 
-            <div class="add-task-content d-flex-ai-center-jc-center">
+            <div class="add-task-content d-flex ai-center jc-center">
               <div class="add-task-container-left">
                 <form>
                   <h3 class="h3">Title <span class="required-star">*</span></h3>
                   <label for="title" class="add-task-label" id="">
-                    <input type="text" name="title" class="add-task-title" id="" minlength="3" maxlength="20"
+                    <input type="text" name="title" class="add-task-title" id="title" minlength="3" maxlength="20"
                       placeholder="Enter a Title" required="">
                   </label>
 
@@ -371,7 +371,7 @@ function createAddTaskCard() {
 
                   <h3 class="m-top-32 h3">Description</h3>
                   <label for="description" class="add-task-label m-bottom-32">
-                    <textarea name="description" id="" placeholder="Enter a Description"
+                    <textarea name="description" id="description" placeholder="Enter a Description"
                       class="add-task-description"></textarea>
                   </label>
 
@@ -402,7 +402,7 @@ function createAddTaskCard() {
 
                 <h3 class="h3">Due date <span class="required-star">*</span></h3>
                 <label for="dueDate" class="add-task-label" id="">
-                  <input type="date" name="dueDate" class="add-task-due-date" id="" required="">
+                  <input type="date" name="dueDate" class="add-task-due-date" id="dueDate" required>
                 </label>
 
                 <!-- <div class="extra-small d-none" id="">This field is required</div> -->
@@ -441,7 +441,7 @@ function createAddTaskCard() {
 
                     <h3 class="m-top-32 h3">Subtasks</h3>
                     <label for="subtaskAddTask" class="add-task-label bgC-white">
-                        <input type="text" name="subtaskAddTask" class="add-task-subtask" id="add_task_subtask"
+                        <input type="text" name="subtaskAddTask" class="add-task-subtask" id="subtaskAddTask"
                     placeholder="Add new Subtask" autocomplete="off" maxlength="20">
                         <img src="../assets/svg/add.svg" class="add-subtask-img cursor-pointer" id="add-subtask-button" onclick="addSubtask()">
                     </label>
@@ -451,8 +451,8 @@ function createAddTaskCard() {
                     <div class="add-task-bottom-container">
                   <!-- <div class="add-task-required-info-bottom">* This field is required</div> -->
                     <div class="add-task-buttons-container">
-                        <button type="reset" class="add-task-clear-button-popup d-flex-ai-center-jc-center" onclick="closeAddTaskCard()">Cancel</button>
-                        <button class="add-task-add-button d-flex-ai-center-jc-center" id="">Create Task<img
+                        <button type="reset" class="add-task-clear-button-popup d-flex ai-center jc-center" onclick="closeAddTaskCard()">Cancel</button>
+                        <button class="add-task-add-button d-flex ai-center jc-center" id="">Create Task<img
                         src="../assets/svg/check_white.svg"></button>
                     </div>
 
@@ -469,188 +469,190 @@ function createAddTaskCard() {
 }
 ///////////////////+++++++++++++++++++ ENDE ++++++++++++++++///////////////////////
 
-function openAddTaskCard() {
-  const overlay = document.createElement("div");
-  overlay.classList.add("overlay");
+// function openAddTaskCard() {
+//   const overlay = document.createElement("div");
+//   overlay.classList.add("overlay");
 
-  overlay.innerHTML = /*html*/ `
-<div class="add-task-popup">
-    <div id="overlay" class="overlay">
-        <div class="add-task-popup">
+//   overlay.innerHTML = /*html*/ `
+// <div class="add-task-popup">
+//     <div id="overlay" class="overlay">
+//         <div class="add-task-popup">
 
-            <div class="add-task-header-container">
-              <h1 class="add-task-headline">Add Task</h1>
-            </div>
+//             <div class="add-task-header-container">
+//               <h1 class="add-task-headline">Add Task</h1>
+//             </div>
 
-            <div class="add-task-content d-flex-ai-center-jc-center">
-              <div class="add-task-container-left">
-                <form>
-                  <h3 class="h3">Title <span class="required-star">*</span></h3>
-                  <label for="title" class="add-task-label" id="">
-                    <input type="text" name="title" class="add-task-title" id="" minlength="3" maxlength="20"
-                      placeholder="Enter a Title" required="">
-                  </label>
+//             <div class="add-task-content d-flex-ai-center-jc-center">
+//               <div class="add-task-container-left">
+//                 <form>
+//                   <h3 class="h3">Title <span class="required-star">*</span></h3>
+//                   <label for="title" class="add-task-label" id="">
+//                     <input type="text" name="title" class="add-task-title" id="" minlength="3" maxlength="20"
+//                       placeholder="Enter a Title" required="">
+//                   </label>
 
-                  <!-- <div class="extra-small d-none" id="">This field is required</div> -->
+//                   <!-- <div class="extra-small d-none" id="">This field is required</div> -->
 
-                  <h3 class="m-top-32 h3">Description</h3>
-                  <label for="description" class="add-task-label m-bottom-32">
-                    <textarea name="description" id="" placeholder="Enter a Description"
-                      class="add-task-description"></textarea>
-                  </label>
+//                   <h3 class="m-top-32 h3">Description</h3>
+//                   <label for="description" class="add-task-label m-bottom-32">
+//                     <textarea name="description" id="" placeholder="Enter a Description"
+//                       class="add-task-description"></textarea>
+//                   </label>
 
-                  <h3 class="h3">Assigned to:</h3>
-                  <label for="assigned" class="add-task-label bgC-white" onclick="">
-                    <input type="text" name="assigned" id="" class="add-task-title add-task-assigned-to"
-                      placeholder="Choose contacts" autocomplete="off" onclick="">
-                    <img src="../assets/svg/arrow_drop_down-1.svg" onclick="" class="cursor-pointer margin-right"
-                      id="">
-                    <img src="../assets/svg/arrow_drop_down-2.svg" onclick="" class="cursor-pointer d-none"
-                      id="">
-                  </label>
+//                   <h3 class="h3">Assigned to:</h3>
+//                   <label for="assigned" class="add-task-label bgC-white" onclick="">
+//                     <input type="text" name="assigned" id="" class="add-task-title add-task-assigned-to"
+//                       placeholder="Choose contacts" autocomplete="off" onclick="">
+//                     <img src="../assets/svg/arrow_drop_down-1.svg" onclick="" class="cursor-pointer margin-right"
+//                       id="">
+//                     <img src="../assets/svg/arrow_drop_down-2.svg" onclick="" class="cursor-pointer d-none"
+//                       id="">
+//                   </label>
 
-                  <div class="m-top-20 assignedToOutput" id="">
-                    <div class="container initialsOverview">
-                      <span onclick="">AQ</span>
-                    </div>
-                  </div>
+//                   <div class="m-top-20 assignedToOutput" id="">
+//                     <div class="container initialsOverview">
+//                       <span onclick="">AQ</span>
+//                     </div>
+//                   </div>
 
-                  <div class="add-task-required-info"><div class="required-star">*</div> This field is required</div>
+//                   <div class="add-task-required-info"><div class="required-star">*</div> This field is required</div>
 
-                </form>
-              </div>
+//                 </form>
+//               </div>
 
-              <div class="add-task-seperator"></div>
+//               <div class="add-task-seperator"></div>
 
-              <div class="add-task-container-right" id="">
+//               <div class="add-task-container-right" id="">
 
-                <h3 class="h3">Due date <span class="required-star">*</span></h3>
-                <label for="dueDate" class="add-task-label" id="">
-                  <input type="date" name="dueDate" class="add-task-due-date" id="" required="">
-                </label>
+//                 <h3 class="h3">Due date <span class="required-star">*</span></h3>
+//                 <label for="dueDate" class="add-task-label" id="">
+//                   <input type="date" name="dueDate" class="add-task-due-date" id="" required="">
+//                 </label>
 
-                <!-- <div class="extra-small d-none" id="">This field is required</div> -->
+//                 <!-- <div class="extra-small d-none" id="">This field is required</div> -->
 
-                <h3 class="m-top-32 h3">Prio</h3>
-                    <div class="add-task-prio">
-                        <div id="high_priority" class="add-task-prio-high" onclick="changePriority('high')">
-                            Urgent
-                            <img id="urgent_icon" src="../assets/svg/urgent.svg" class="prioSVG">
-                        </div>
+//                 <h3 class="m-top-32 h3">Prio</h3>
+//                     <div class="add-task-prio">
+//                         <div id="high_priority" class="add-task-prio-high" onclick="changePriority('high')">
+//                             Urgent
+//                             <img id="urgent_icon" src="../assets/svg/urgent.svg" class="prioSVG">
+//                         </div>
 
-                        <div id="medium_priority" class="add-task-prio-medium add-task-prio-medium-pressed-button" onclick="changePriority('medium')">
-                            Medium
-                            <img id="medium_icon" src="../assets/svg/medium_white.svg" class="prioSVG">
-                        </div>
+//                         <div id="medium_priority" class="add-task-prio-medium add-task-prio-medium-pressed-button" onclick="changePriority('medium')">
+//                             Medium
+//                             <img id="medium_icon" src="../assets/svg/medium_white.svg" class="prioSVG">
+//                         </div>
 
-                        <div id="low_priority" class="add-task-prio-low" onclick="changePriority('low')">
-                            Low
-                            <img id="low_icon" src="../assets/svg/low.svg" class="prioSVG">
-                        </div>
-                    </div>
+//                         <div id="low_priority" class="add-task-prio-low" onclick="changePriority('low')">
+//                             Low
+//                             <img id="low_icon" src="../assets/svg/low.svg" class="prioSVG">
+//                         </div>
+//                     </div>
 
-                    <h3 class="h3">Category<span class="required-star">*</span></h3>
+//                     <h3 class="h3">Category<span class="required-star">*</span></h3>
 
-                    <label for="category" class="add-task-label bgC-white" id="">
-                      <!-- <div class="add-task-category-input" id="" onclick="">Select task category</div> -->
+//                     <label for="category" class="add-task-label bgC-white" id="">
+//                       <!-- <div class="add-task-category-input" id="" onclick="">Select task category</div> -->
 
-                        <select required class="add-task-category-input">
-                          <option value="">Select task category</option>      
-                          <option value="Technical Task">Technical Task</option>
-                          <option value="User Story">User Story</option>
-                        </select>  
-                    </label>
+//                         <select required class="add-task-category-input">
+//                           <option value="">Select task category</option>      
+//                           <option value="Technical Task">Technical Task</option>
+//                           <option value="User Story">User Story</option>
+//                         </select>  
+//                     </label>
 
-                    <div class="d-none" id="" onclick=""></div>
+//                     <div class="d-none" id="" onclick=""></div>
 
-                    <h3 class="m-top-32 h3">Subtasks</h3>
-                    <label for="subtaskAddTask" class="add-task-label bgC-white">
-                        <input type="text" name="subtaskAddTask" class="add-task-subtask" id="add_task_subtask"
-                    placeholder="Add new Subtask" autocomplete="off" maxlength="20">
-                        <img src="../assets/svg/add.svg" class="add-subtask-img cursor-pointer" id="add-subtask-button" onclick="addSubtask()">
-                    </label>
+//                     <h3 class="m-top-32 h3">Subtasks</h3>
+//                     <label for="subtaskAddTask" class="add-task-label bgC-white">
+//                         <input type="text" name="subtaskAddTask" class="add-task-subtask" id="add_task_subtask"
+//                     placeholder="Add new Subtask" autocomplete="off" maxlength="20">
+//                         <img src="../assets/svg/add.svg" class="add-subtask-img cursor-pointer" id="add-subtask-button" onclick="addSubtask()">
+//                     </label>
 
-                    <div id="outputSubtasks" class="output-subtask"></div>
+//                     <div id="outputSubtasks" class="output-subtask"></div>
 
-                    <div class="add-task-bottom-container">
-                  <!-- <div class="add-task-required-info-bottom">* This field is required</div> -->
-                    <div class="add-task-buttons-container">
-                        <button type="reset" class="add-task-clear-button-popup d-flex-ai-center-jc-center" onclick="closeAddTaskCard()">Cancel</button>
-                        <button class="add-task-add-button d-flex-ai-center-jc-center" id="">Create Task<img
-                        src="../assets/svg/check_white.svg"></button>
-                    </div>
+//                     <div class="add-task-bottom-container">
+//                   <!-- <div class="add-task-required-info-bottom">* This field is required</div> -->
+//                     <div class="add-task-buttons-container">
+//                         <button type="reset" class="add-task-clear-button-popup d-flex-ai-center-jc-center" onclick="closeAddTaskCard()">Cancel</button>
+//                         <button class="add-task-add-button d-flex-ai-center-jc-center" id="">Create Task<img
+//                         src="../assets/svg/check_white.svg"></button>
+//                     </div>
 
-                </div>
-              </div>
+//                 </div>
+//               </div>
 
-              <div class="add-task-popup-container d-none" id="">
-                <div class="add-task-popup-reg" id="">Task added to Board <img src="../assets/svg/canban-1.svg" alt="board picture"></div>
-              </div>
-            </div>
-        </div>
-<<<<<<< HEAD
-
-    <h3 class="h3">Category<span class="required-star">*</span></h3>
-
-    <label for="category" class="add-task-label bgC-white" id="">
-          <!-- <div class="add-task-category-input" id="" onclick="">Select task category</div> -->
-       
-        <select required class="add-task-category-input">
-              <option value="">Select task category</option>      
-              <option value="Technical Task">Technical Task</option>
-              <option value="User Story">User Story</option>
-        </select>  
-    </label>
-
-    <div class="d-none" id="" onclick=""></div>
-
-    <h3 class="m-top-32 h3">Subtasks</h3>
-    <label for="subtaskAddTask" class="add-task-label bgC-white">
-      <input type="text" name="subtaskAddTask" class="add-task-subtask" id="add_task_subtask"
-        placeholder="Add new Subtask" autocomplete="off" maxlength="20">
-        <div>
-          <img src="../assets/svg/add.svg" class="add-subtask-img cursor-pointer" id="add-subtask-button" onclick="showSubtaskControls()">
-        </div>    
-    </label>
-
-    <div id="outputSubtasks" class="output-subtask"></div>
-
-    <div class="add-task-bottom-container">
-      <!-- <div class="add-task-required-info-bottom">* This field is required</div> -->
-      <div class="add-task-buttons-container">
-        <button type="reset" class="add-task-clear-button-popup d-flex-ai-center-jc-center" onclick="closeAddTaskCard()">Cancel</button>
-        <button class="add-task-add-button d-flex-ai-center-jc-center" id="">Create Task<img
-            src="../assets/svg/check_white.svg"></button>
-      </div>
-
-=======
+//               <div class="add-task-popup-container d-none" id="">
+//                 <div class="add-task-popup-reg" id="">Task added to Board <img src="../assets/svg/canban-1.svg" alt="board picture"></div>
+//               </div>
+//             </div>
+//         </div>
             
->>>>>>> b6c91edf0b1d3c8c2a49c40825939e857581fb08
-    </div>
-</div>`;
+//     </div>
+// </div>`;
 
-document.body.appendChild(overlay);
+// document.body.appendChild(overlay);
 // renderAddTaskCard(overlay);
+// }
+
+function addAniEditTask(container, layer, clickableBG){ 
+
+  activate(container);
+     container.classList.add("aniEditForm");
+    container.classList.remove("aniOutForm"); 
+     activate(layer);
+    clickableBG.classList.add("fadeInBG"); 
+//      if (i !== null){
+//     editUserInfo(i);
+//   } else {
+//     editUserInfo(null);
+//   }
+// 
 }
 
-// function renderAddTaskCard() {
-//   document.getElementById("container").classList.add("add-task-popup");
-//   document.getElementById("overlay-container").classList.add("d-none");
+function removeAniEditTaskt(container, layer, clickableBG){
+  container.classList.remove("aniEditForm");
+    container.classList.add("aniOutForm");
+    clickableBG.classList.add("fadeOutBG");
+    deactivate(layer);
+  
+}
 
-//   //openAddTaskCard();
+function renderAddNewTaskCard(container, layer, clickableBG) {
+  // container.classList.add("add-task-popup");
 
-//   const createTaskButton = document.querySelector(".add-task-add-button");
-//   createTaskButton.addEventListener("click", createTask);
-// }
+  createAddTaskCard();
+  addAniEditTask(container, layer, clickableBG)
+  const createTaskButton = document.querySelector(".add-task-add-button");
+  createTaskButton.addEventListener("click", createTask);
+}
 
-// function closeAddTaskCard() {
-//   const overlay = document.querySelector(".overlay");
-//   if (overlay) {
-//     overlay.remove();
-//     document.getElementById("container").classList.remove("add-task-popup");
-//     document.getElementById("overlay-container").classList.remove("d-none");
-//   }
-// }
+function closeAddNewTaskCard(container, layer) {
+  const taskLayer = document.getElementById("addtask");
+  taskLayer.remove();
+  container.classList.remove("aniEditForm");
+  layer.classList.add("displaynone");
+}
+
+function renderAddTaskCard() {
+  document.getElementById("container").classList.add("add-task-popup");
+  document.getElementById("overlay-container").classList.add("d-none");
+
+  createAddTaskCard();
+
+  const createTaskButton = document.querySelector(".add-task-add-button");
+  createTaskButton.addEventListener("click", createTask);
+}
+
+function closeAddTaskCard() {
+  const overlay = document.querySelector(".overlay");
+  if (overlay) {
+    overlay.remove();
+    document.getElementById("container").classList.remove("add-task-popup");
+    document.getElementById("overlay-container").classList.remove("d-none");
+  }
+}
 
 async function search(e) {
   const tasks = document.querySelectorAll(".task");
@@ -998,15 +1000,15 @@ async function openTaskPopup(task) {
     </div>`;
 
   // Overlay erstellen und Inhalt einfügen
-  //   const overlay = document.createElement("div");
-  //   overlay.classList.add("overlay");
-  //   overlay.innerHTML = popupContent;
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+    overlay.innerHTML = popupContent;
 
-  // // Event-Listener für den Schließen-Button
-  // const closeButton = overlay.querySelector('.close-button');
-  // closeButton.addEventListener('click', () => {
-  //     overlay.remove();
-  // });
+  // Event-Listener für den Schließen-Button
+  const closeButton = overlay.querySelector('.close-button');
+  closeButton.addEventListener('click', () => {
+      overlay.remove();
+  });
 
   // Event-Listener für den Delete-Button
   const deleteButton = overlay.querySelector(".delete-button");

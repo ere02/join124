@@ -25,6 +25,7 @@ let firstname,
   initialLastname,
   phone;
 
+
 /**
  * CALL HTML-FILE
  */
@@ -166,29 +167,31 @@ function restartAnimation() {
 }
 
 function toggleEditLayer(i) {
-
- let container = document.getElementById("editableContact");
+  let container = document.getElementById("editableContact");
   let layer = document.getElementById("editLayer");
   let clickableBG = document.getElementById("clickableBG");
   let aniEdit = document.querySelector(".aniEditForm");
- 
+
   if (aniEdit) {
  removeAniEdit(container, layer, clickableBG);
   } else {
-      addAniEdit(container, layer, clickableBG);   
-       if (i !== null){
-        editUserInfo(i);
-      } else {
-        editUserInfo(null);
-      }
+      addAniEdit(container, layer, clickableBG, i);   
+
   }
 }
-function addAniEdit(container, layer, clickableBG){ 
+
+function addAniEdit(container, layer, clickableBG, i){ 
+
   activate(container);
      container.classList.add("aniEditForm");
     container.classList.remove("aniOutForm"); 
      activate(layer);
-    clickableBG.classList.add("fadeInBG");
+    clickableBG.classList.add("fadeInBG"); 
+     if (i !== null){
+    editUserInfo(i);
+  } else {
+    editUserInfo(null);
+  }
 }
 
 function removeAniEdit(container, layer, clickableBG){
@@ -205,7 +208,7 @@ function activate(div) {
 
 function deactivate(div) {
   div.classList.add("displaynone");
-  debugger;
+
 }
 
 function slideOut() {
