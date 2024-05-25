@@ -33,11 +33,9 @@ async function register() {
 
     const hashedPassword = hashPassword(passwordInput.value);
 
-    users.push({
-      name: nameInput.value,
-      email: emailInput.value,
-      password: hashedPassword,
-    });
+    let splittedName = nameInput.value.split(' ');
+    let user = buildUser(splittedName,emailInput.value,hashedPassword);
+    users.push(user);
 
     try {
       handleSignUp();
@@ -49,6 +47,28 @@ async function register() {
     alert('Passwords do not match or form is incomplete'); //overlays bauen, kein alert!
     return; // Exit the function if validation fails
   }
+}
+
+function buildUser(splittedName,email,hashedPassword){
+  let newUser = {
+    id:users.length,
+    firstName:splittedName[0],
+    familyName:splittedName[1],
+    email:email,
+    phone:'',
+    password:hashedPassword,
+    personalColor:generateColorCode()
+  }
+  return newUser;
+}
+
+function generateColorCode(){
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
 }
 
 function isFormValid(nameInput, emailInput, passwordInput) {
@@ -138,6 +158,7 @@ function signIn() {
   if (email.value && password.value) {
     for (let i = 0; i < users.length; i++) {
       if (email.value == users[i].email && password.value == users[i].password) {
+        rememberMe();
         console.log('Erfolgreich')
         window.location.href = "./subpages/summary.html"
       } else {
@@ -148,18 +169,39 @@ function signIn() {
 }
 
 /*handle remember me*/
-const rememberMeCheck = document.getElementById('remember');
-rememberMeCheck.addEventListener('change', function saveInLocalStorage() {
-  const userNameInput = document.getElementById('username');
-  const passwordInput = document.getElementById('password');
+function rememberMe(){
+  let rememberMeCheck = document.getElementById('remember');
+    let emailInput = document.getElementById('email');
+    let passwordInput = document.getElementById('password');
+  
+    if (rememberMeCheck.checked) {
+      // Store username and password in local storage
+      localStorage.setItem('email', emailInput.value);
+      localStorage.setItem('password', passwordInput.value);
+    } else {
+      // Remove username and password from local storage
+      localStorage.removeItem('email');
+      localStorage.removeItem('password');
+    }
+}
+/*
+1. Daten aus dem local storage holen: email: password:
+2. verlinkung zu den inputfeldern
+3. value in die Inputfeldern ausfüllen
+4. wenn was im local storage drin steht dann... 
+ansonsten nix
+if(){
+}
+*/
+function loadFromLocalStorage(){
+  let email = localStorage.getItem('email');/* id='email' */
+  let password = localStorage.getItem('password'); /* id='password' */
 
-  if (rememberMeCheck.checked) {
-    // Store username and password in local storage
-    localStorage.setItem('username', userNameInput.value);
-    localStorage.setItem('password', passwordInput.value);
-  } else {
-    // Remove username and password from local storage
-    localStorage.removeItem('username');
-    localStorage.removeItem('password');
+  let emailInput = document.getElementById('email');
+  let passwordInput = document.getElementById('password');
+
+  if(email&&password){
+    emailInput.value = email;
+    passwordInput.value = password;
   }
-});
+}
