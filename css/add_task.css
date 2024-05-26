@@ -243,7 +243,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: var(--color-dark-bg);
   color: var(--use_bg-text-white);
   border: 0px;
-  font-size: 21px;
   gap: 10px;
   transition: background-color 0.3s ease;
 }

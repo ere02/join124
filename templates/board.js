@@ -451,7 +451,7 @@ function createAddTaskCard() {
                     <div class="add-task-bottom-container">
                   <!-- <div class="add-task-required-info-bottom">* This field is required</div> -->
                     <div class="add-task-buttons-container">
-                        <button type="reset" class="add-task-clear-button-popup d-flex ai-center jc-center" onclick="closeAddTaskCard()">Cancel</button>
+                        <button type="reset" class="add-task-clear-button-popup d-flex ai-center jc-center" onclick="closeAddTaskCard()">Cancel&nbsp;</button>
                         <button type ="button" class="add-task-add-button d-flex ai-center jc-center" id="" onclick="toggleNewTaskLayer(null)">Create Task<img
                         src="../assets/svg/check_white.svg"></button>
                     </div>
