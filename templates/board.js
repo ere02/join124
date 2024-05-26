@@ -386,8 +386,8 @@ function createAddTaskCard() {
                   </label>
 
                   <div class="m-top-20 assignedToOutput" id="">
-                    <div class="container initialsOverview">
-                      <span onclick="">AQ</span>
+                    <div class="container initialsOverview" style="background-color:unset">
+                      <div class="user-circle size40px" style="background-color:var(--color-blue)" onclick="">AQ</div>
                     </div>
                   </div>
 
@@ -611,7 +611,7 @@ function addAniEditTask(container, layer, clickableBG){
 // 
 }
 
-function removeAniEditTaskt(container, layer, clickableBG){
+function removeAniEditTask(container, layer, clickableBG){
   container.classList.remove("aniEditForm");
     container.classList.add("aniOutForm");
     clickableBG.classList.add("fadeOutBG");
@@ -635,24 +635,24 @@ function closeAddNewTaskCard(container, layer) {
   layer.classList.add("displaynone");
 }
 
-function renderAddTaskCard() {
-  document.getElementById("container").classList.add("add-task-popup");
-  document.getElementById("overlay-container").classList.add("d-none");
+// function renderAddTaskCard() {
+//   document.getElementById("container").classList.add("add-task-popup");
+//   document.getElementById("overlay-container").classList.add("d-none");
 
-  createAddTaskCard();
+//   createAddTaskCard();
 
-  const createTaskButton = document.querySelector(".add-task-add-button");
-  createTaskButton.addEventListener("click", createTask);
-}
+//   const createTaskButton = document.querySelector(".add-task-add-button");
+//   createTaskButton.addEventListener("click", createTask);
+// }
 
-function closeAddTaskCard() {
-  const overlay = document.querySelector(".overlay");
-  if (overlay) {
-    overlay.remove();
-    document.getElementById("container").classList.remove("add-task-popup");
-    document.getElementById("overlay-container").classList.remove("d-none");
-  }
-}
+// function closeAddTaskCard() {
+//   const overlay = document.querySelector(".overlay");
+//   if (overlay) {
+//     overlay.remove();
+//     document.getElementById("container").classList.remove("add-task-popup");
+//     document.getElementById("overlay-container").classList.remove("d-none");
+//   }
+// }
 
 async function search(e) {
   const tasks = document.querySelectorAll(".task");
@@ -929,11 +929,11 @@ function addSubtaskToNewTask(newTask) {
 
 async function openTaskPopup(task) {
   // Überprüfen, ob task.subtasks ein Array ist
+  debugger;
   if (!Array.isArray(task.subtasks)) {
     // Wenn nicht, setze task.subtasks auf ein leeres Array
     task.subtasks = [];
   }
-
   // Prioritätsbild entsprechend der Task-Priorität
   let priorityImage = "";
   if (task.priority === "urgent") {
@@ -951,7 +951,8 @@ async function openTaskPopup(task) {
     task.type === "User Story" ? "bg-userstory" : "bg-technicaltask";
 
   // Popup-Inhalt mit dynamisch generiertem Prioritätsbild
-  let popupContent = /*html*/`
+  let popupContent = document.getElementById("editableTask");
+  popupContent.innerHTML = /*html*/`
         <div class="board-task-detail-main jc-center ai-center d-flex">  
             <div class="task-popup add-task-popup board-task-detail-card d-flex flex-d-col board-task-detail-card-in">
                 <div class="m-bottom-32 task-popup-type-close">
@@ -973,10 +974,11 @@ async function openTaskPopup(task) {
 
   // Wenn Subtasks vorhanden sind, füge sie dem Popup-Inhalt hinzu
   if (task.subtasks.length > 0) {
-    popupContent += `
+    debugger;
+    popupContent.innerHTML += `
             <div class="subtasks-list">`;
     task.subtasks.forEach((subtask) => {
-      popupContent += `
+      popupContent.innerHTML += `
                 <div class="subtask-item">
                     <input type="checkbox" id="subtask-${subtask.id}" ${
         subtask.completed ? "checked" : ""
@@ -986,46 +988,67 @@ async function openTaskPopup(task) {
                     }">${subtask.title}</label>
                 </div>`;
     });
-    popupContent += `
+    popupContent.innerHTML += `
             </div>`;
   }
 
   // Buttons hinzufügen
-  popupContent += `
+  popupContent.innerHTML += `
             <div class="popup-buttons">
-                <button class="delete-button" type="button">Delete</button>
-                <button class="btn btn-primary active" type="button">Edit</button>
+                <button id="deletebutton" class="delete-button btn btn-secondary" type="button">Delete</button>
+                <button id="editbutton" class="edit-button btn btn-primary active" type="button">Edit</button>
             </div>
         </div>
-    </div>`;
+   `;
 
-  // Overlay erstellen und Inhalt einfügen
-    const overlay = document.createElement("div");
-    overlay.classList.add("overlay");
-    overlay.innerHTML = popupContent;
+ // Open Overlay 
+ openOverlayTask();
+ 
+  // // Overlay erstellen und Inhalt einfügen
+  //   const overlay = document.createElement("div");
+  //   overlay.classList.add("overlay");
+  //   overlay.innerHTML = popupContent;
 
-  // Event-Listener für den Schließen-Button
-  const closeButton = overlay.querySelector('.close-button');
-  closeButton.addEventListener('click', () => {
-      overlay.remove();
-  });
+  // // Event-Listener für den Schließen-Button
+  // const closeButton = overlay.querySelector('.close-button');
+  // closeButton.addEventListener('click', () => {
+  //     overlay.remove();
+  // });
 
   // Event-Listener für den Delete-Button
-  const deleteButton = overlay.querySelector(".delete-button");
+  const deleteButton = popupContent.querySelector("#deletebutton");
+  debugger;
   deleteButton.addEventListener("click", () => {
     deleteTask(task.id);
-    overlay.remove();
+    popupContent.remove();
   });
 
   // Event-Listener für den Edit-Button
-  const editButton = overlay.querySelector(".edit-button");
+  const editButton = popupContent.querySelector("#editbutton");
   editButton.addEventListener("click", () => {
     editTask(task.id);
   });
 
-  // Overlay zum Body hinzufügen
-  document.body.appendChild(overlay);
+ }
+
+/**
+ * Open Card in EditLayer
+ * @param {*} taskId 
+ */
+
+function openOverlayTask(){
+  let container = document.getElementById("editableTask");
+  let layer = document.getElementById("editLayer");
+  let aniEdit = document.querySelector(".aniEditForm");
+  if (aniEdit) {
+    removeAniEditTask(container, layer, clickableBG);
+    container.classList.remove("aniEditForm");
+    container.innerHTML = "";
+  } else {
+    addAniEditTask(container, layer, clickableBG);
+  }
 }
+
 
 // Beispielhafte Implementierung der deleteTask und editTask Funktionen
 function deleteTask(taskId) {
@@ -1040,7 +1063,7 @@ function deleteTask(taskId) {
       taskElement.remove();
     }
   }
-
+ 
   updateBoardHTML();
 }
 
