@@ -102,7 +102,7 @@ async function handleSignUp() {
   await loadUsers();
   await deleteOldUsersEntry();
   //generate overlay you are registered//
-  resetForm();
+  resetForm();  
   renderLogin();
 }
 

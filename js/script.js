@@ -1,5 +1,7 @@
 // TOKEN FÜR SPÄTER REMOTE DATENSPEICHERUNG
 let goBackToPage = [];
+let priority;
+let getTasksResponse;
 
 async function init() {
   await loadUsers();
@@ -106,3 +108,29 @@ function showSignUp() {
        slider.classList.add("aniLogout");
     }
   }
+
+  async function loadTasks() { 
+    try {
+        getTasksResponse = await getItem('/allTasks');
+        let keys = Object.keys(getTasksResponse);
+        let lastKey = keys[keys.length - 1];
+        let lastEntry = getTasksResponse[lastKey];
+        if (lastEntry) {
+            tasks = lastEntry;
+        } else {
+            tasks = [];
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+async function deleteOldTasksEntry() {
+  let keys = Object.keys(getTasksResponse);
+  let lastKey = keys[keys.length - 1];
+  for (let i = 0; i < keys.length; i++) {
+    if (lastKey != keys[i]) {
+      await deleteData('/allTasks/' + keys[i]);
+    }
+  }
+}
