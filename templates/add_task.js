@@ -1,3 +1,4 @@
+let tasks = [];
 
 async function goToAddTaskHTML() {
     window.location.href = '../subpages/add_task.html';
@@ -8,6 +9,7 @@ async function startAddTask(id) {
     addtask.classList.remove("displaynone");
     addtask.innerHTML = renderAddTask();
     allNavButton(id);
+    loadTasks();
 }
 
 function renderAddTask() {
@@ -22,19 +24,19 @@ function renderAddTask() {
                   <h3 class="h3">Title
                       <span class="required-star">*</span>
                   </h3>
-                  <label for="title" class="add-task-label" id="">
+                  <label for="title" class="add-task-label" id="title">
                       <input type="text" name="title" class="add-task-title" id="" minlength="3" maxlength="20"
                           placeholder="Enter a Title" required="">
                   </label>
                   <div class="extra-small d-none" id="">This field is required</div>
                   <h3 class="m-top-32 h3">Description</h3>
                   <label for="description" class="add-task-label m-bottom-32">
-                      <textarea name="description" id="" placeholder="Enter a Description"
+                      <textarea name="description" id="description" placeholder="Enter a Description"
                           class="add-task-description"></textarea>
                   </label>
                   <h3 class="h3">Assigned to:</h3>
                   <label for="assigned" class="add-task-label bgC-white" onclick="">
-                      <input type="text" name="assigned" id="" class="add-task-title add-task-assigned-to"
+                      <input type="text" name="assigned" id="assignedUser" class="add-task-title add-task-assigned-to"
                           placeholder="Choose contacts" autocomplete="off" onclick="">
                       <img src="../assets/svg/arrow_drop_down-1.svg" onclick="" class="cursor-pointer margin-right" id="">
                       <img src="../assets/svg/arrow_drop_down-2.svg" onclick="" class="cursor-pointer d-none" id="">
@@ -53,7 +55,7 @@ function renderAddTask() {
                   <span class="required-star">*</span>
               </h3>
               <label for="dueDate" class="add-task-label" id="">
-                  <input type="date" name="dueDate" class="add-task-due-date" id="" required="">
+                  <input type="date" name="dueDate" class="add-task-due-date" id="dueDate" required="">
               </label>
               <div class="extra-small d-none" id="">This field is required</div>
               <h3 class="m-top-32 h3">Prio</h3>
@@ -69,14 +71,14 @@ function renderAddTask() {
                   </div>
                   <div id="low_priority" class="add-task-prio-low" onclick="changePriority('low')">
                       Low
-                      <img id="low_icon" src="../assets/svg/low.svg" class="prioSVG">
+                      <img id="low_icon" src="../assets/svg/Low.svg" class="prioSVG">
                   </div>
               </div>
               <h3 class="h3">Category
                   <span class="required-star">*</span>
               </h3>
               <label for="category" class="add-task-label bgC-white" id="">
-                  <select required class="add-task-category-input">
+                  <select required class="add-task-category-input" id="selectedCategory">
                       <option value="">Select task category</option>
                       <option value="Technical Task">Technical Task</option>
                       <option value="User Story">User Story</option>
@@ -127,17 +129,16 @@ function resetForm() {
     document.querySelector('.add-task-category-input').selectedIndex = 0;
 }
 
-
-function validateForm() {
+function validateAddTaskForm() {
     // Lese die Werte der erforderlichen Felder aus
-    const title = document.querySelector('.add-task-title').value;
-    const dueDate = document.querySelector('.add-task-due-date').value;
-    const category = document.querySelector('.add-task-category-input').value;
+    const title = document.getElementById('title');
+    const dueDate = document.getElementById('dueDate');
+    const category = document.getElementById('selectedCategory');
 
     // Überprüfe, ob die erforderlichen Felder ausgefüllt sind
-    const isTitleValid = title.trim() !== ''; // Überprüfe, ob der Titel nicht leer ist
-    const isDueDateValid = dueDate.trim() !== ''; // Überprüfe, ob das Fälligkeitsdatum nicht leer ist
-    const isCategoryValid = category.trim() !== ''; // Überprüfe, ob die Kategorie ausgewählt wurde
+    const isTitleValid = title.value !== ''; // Überprüfe, ob der Titel nicht leer ist
+    const isDueDateValid = dueDate.value !== ''; // Überprüfe, ob das Fälligkeitsdatum nicht leer ist
+    const isCategoryValid = category.value !== ''; // Überprüfe, ob die Kategorie ausgewählt wurde
 
     // Gib zurück, ob alle erforderlichen Felder ausgefüllt sind
     return isTitleValid && isDueDateValid && isCategoryValid;
@@ -145,40 +146,41 @@ function validateForm() {
 
 function createFirstTask() {
 
-    if (!validateForm()) {
+    if (!validateAddTaskForm()) {
         // Wenn das Formular nicht gültig ist, zeige eine Fehlermeldung an oder führe keine Aktion aus
         alert('Bitte füllen Sie alle erforderlichen Felder aus.');
         return;
     }
     // Lese die Daten aus den Eingabefeldern aus
-    const title = document.querySelector('.add-task-title').value;
-    const description = document.querySelector('.add-task-description').value;
-    const dueDate = document.querySelector('.add-task-due-date').value;
-    const priorityElement = document.querySelector('.add-task-prio-high-pressed-button');
-    let priority;
-    if (priorityElement) {
-        priority = 'urgent';
-    } else {
-        const mediumPriorityElement = document.querySelector('.add-task-prio-medium-pressed-button');
-        if (mediumPriorityElement) {
-            priority = 'medium';
-        } else {
-            priority = 'low';
-        }
-    }
-    const category = document.querySelector('.add-task-category-input').value; // Lese die ausgewählte Kategorie aus
-
+    const title = document.getElementById('title');
+    const description = document.getElementById('description');
+    const dueDate = document.getElementById('dueDate');
+    const category = document.getElementById('selectedCategory');
     // Überprüfe, ob die Aufgabe bereits existiert (basierend auf dem Titel)
-    const existingTask = allTasks.find(task => task.title === title);
-    if (existingTask) {
-        // Wenn die Aufgabe bereits existiert, breche ab und zeige eine Meldung an
-        // alert('Die Aufgabe existiert bereits.');
-        return;
-    }
 
     // Erstelle eine neue Aufgabe
-    const newTask = {
-        id: allTasks.length, // Neue ID basierend auf der Anzahl der vorhandenen Aufgaben
+    // Füge die neue Aufgabe dem allTasks Array hinzu
+    let newTask = buildTasks(title.value, description.value, dueDate.value, category.value);
+    tasks.push(newTask);
+    try {
+        handleAddTask();
+
+    } catch {
+        return 'alert: did not work'
+    }
+}
+// setItem hier rein 
+
+async function handleAddTask() {
+    await setItem('/allTasks', tasks);
+    await loadTasks();
+    await deleteOldTasksEntry();
+    /*     resetForm(); */ // TaskEntryField empty?
+}
+
+function buildTasks(title, description, dueDate, category,) {
+    let newTask = {
+        id: tasks.length, // Neue ID basierend auf der Anzahl der vorhandenen Aufgaben
         title: title,
         description: description,
         dueDate: dueDate,
@@ -189,46 +191,21 @@ function createFirstTask() {
         subtasks: []
         // Füge weitere Eigenschaften hinzu, wie Assigned to
     };
-
-    // Füge die neue Aufgabe dem allTasks Array hinzu
-    allTasks.push(newTask);
-    try {
-        handleAddTask();
-    } catch {
-        return 'alert: did not work'
-    }
-    // setItem hier rein 
-
-    async function handleAddTask(newTask) {
-        await setItem('/allTasks', allTasks);
-        await loadTasks();
-        /*     resetForm(); */ // TaskEntryField empty?
-    }
-
-    async function loadTasks() {
-        try {
-            getTasksResponse = await getItem('/allTasks');
-            let keys = Object.keys(getTasksResponse);
-            let lastKey = keys[keys.length - 1];
-            let lastEntry = getTasksResponse[lastKey];
-            if (lastEntry) {
-                allTasks = lastEntry;
-            } else {
-                allTasks = [];
-            }
-        } catch (e) {
-            console.log(e)
-        }
-
-    }
-    // Hier fügst du den Code für das Popup hinzu
-    const popup = document.querySelector('.add-task-popup-container');
-    popup.classList.remove('d-none');
-
-    // Setze einen Timer, um das Popup nach 3 Sekunden auszublenden
-    setTimeout(() => {
-        popup.classList.add('d-none');
-    }, 1500);
-
-    return newTask.id;
+    return newTask;
 }
+
+/*     const newTask = {
+        id: allTasks.length, // Neue ID basierend auf der Anzahl der vorhandenen Aufgaben
+        title: title,
+        description: description,
+        dueDate: dueDate,
+        priority: priority,
+        category: 'inTodo', // Setze die Kategorie auf die ausgewählte Kategorie
+        workers: [], // Leeres Array für Arbeitskräfte
+        type: category, // Typ der Aufgabe entspricht der Kategorie
+        subtasks: []
+        // Füge weitere Eigenschaften hinzu, wie Assigned to
+    }; */
+
+// Hier fügst du den Code für das Popup hinzu
+

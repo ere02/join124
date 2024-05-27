@@ -696,48 +696,45 @@ function addSearchEventListener() {
   }
 }
 
-function changePriority(priority) {
+function changePriority(prio) {
   const highPriority = document.getElementById("high_priority");
   const mediumPriority = document.getElementById("medium_priority");
   const lowPriority = document.getElementById("low_priority");
 
   // Setze Hintergrundfarbe und Textfarbe basierend auf der ausgewählten Priorität
-  if (priority === "high") {
+  if (prio === "high") {
     highPriority.classList.add("add-task-prio-high-pressed-button");
     highPriority.style.color = "white";
     mediumPriority.classList.remove("add-task-prio-medium-pressed-button");
     mediumPriority.style.color = "black";
     lowPriority.classList.remove("add-task-prio-low-pressed-button");
     lowPriority.style.color = "black";
-  } else if (priority === "medium") {
+    urgent_icon.src = "../assets/svg/urgent_white.svg";
+    medium_icon.src = "../assets/svg/Medium.svg";
+    low_icon.src = "../assets/svg/Low.svg";
+  } else if (prio === "medium") {
     mediumPriority.classList.add("add-task-prio-medium-pressed-button");
     mediumPriority.style.color = "white";
     highPriority.classList.remove("add-task-prio-high-pressed-button");
     highPriority.style.color = "black";
     lowPriority.classList.remove("add-task-prio-low-pressed-button");
     lowPriority.style.color = "black";
-  } else if (priority === "low") {
+    urgent_icon.src = "../assets/svg/urgent.svg";
+    medium_icon.src = "../assets/svg/medium_white.svg";
+    low_icon.src = "../assets/svg/Low.svg";
+  } else if (prio === "low") {
     lowPriority.classList.add("add-task-prio-low-pressed-button");
     lowPriority.style.color = "white";
     highPriority.classList.remove("add-task-prio-high-pressed-button");
     highPriority.style.color = "black";
     mediumPriority.classList.remove("add-task-prio-medium-pressed-button");
     mediumPriority.style.color = "black";
-  }
-
-  if (priority === "high") {
-    urgent_icon.src = "../assets/svg/urgent_white.svg";
-    medium_icon.src = "../assets/svg/medium.svg";
-    low_icon.src = "../assets/svg/low.svg";
-  } else if (priority === "medium") {
     urgent_icon.src = "../assets/svg/urgent.svg";
-    medium_icon.src = "../assets/svg/medium_white.svg";
-    low_icon.src = "../assets/svg/low.svg";
-  } else if (priority === "low") {
-    urgent_icon.src = "../assets/svg/urgent.svg";
-    medium_icon.src = "../assets/svg/medium.svg";
+    medium_icon.src = "../assets/svg/Medium.svg";
     low_icon.src = "../assets/svg/low_white.svg";
   }
+  priority = prio;
+  console.log(priority);
 }
 
 function showSubtaskControls() {
