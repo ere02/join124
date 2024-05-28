@@ -281,7 +281,7 @@ function renderBoard() {
                     <div class="board-task-category">
                         <div class="board-task-headline">
                             <span class="board-add-task-headline">To do</span>
-                            <img class="board-add-task-add-icon" onclick="toggleNewTaskLayer()" src="../assets/svg/add.svg" alt="">
+                            <img class="board-add-task-add-icon" onclick="toggleNewTaskLayer(null)" src="../assets/svg/add.svg" alt="">
                         </div>
                         <div class="board-task-container drag-area" id="inTodo" ondrop="moveTo('inTodo')"
                             ondragleave="removeHighlight('inTodo')" ondragover="allowDrop(event); highlight('inTodo')">
@@ -291,7 +291,7 @@ function renderBoard() {
                     <div class="board-task-category">
                         <div class="board-task-headline">
                             <span class="board-add-task-headline">In progress</span>
-                            <img class="board-add-task-add-icon" onclick="toggleNewTaskLayer()" src="../assets/svg/add.svg" alt="">
+                            <img class="board-add-task-add-icon" onclick="toggleNewTaskLayer(null)" src="../assets/svg/add.svg" alt="">
                         </div>
                         <div class="board-task-container drag-area" id="inProgress" ondrop="moveTo('inProgress')"
                             ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')">
@@ -301,7 +301,7 @@ function renderBoard() {
                     <div class="board-task-category">
                         <div class="board-task-headline">
                             <span class="board-add-task-headline">Await feedback</span>
-                            <img class="board-add-task-add-icon" onclick="toggleNewTaskLayer()" src="../assets/svg/add.svg" alt="">
+                            <img class="board-add-task-add-icon" onclick="toggleNewTaskLayer(null)" src="../assets/svg/add.svg" alt="">
                         </div>
                         <div class="board-task-container drag-area" id="awaitFeedback" ondrop="moveTo('awaitFeedback')"
                             ondragleave="removeHighlight('awaitFeedback')" ondragover="allowDrop(event); highlight('awaitFeedback')">
@@ -662,7 +662,7 @@ async function search(e) {
   await new Promise((resolve) => setTimeout(resolve, 0));
 
   tasks.forEach((task) => {
-    const titleElement = task.querySelector(".task-title");
+    const titleElement = task.querySelector(".add-task-title");
     const descriptionElement = task.querySelector(".task-description");
     const categoryElement = task.querySelector(".task-type");
 
@@ -828,7 +828,7 @@ function addSubtask() {
 
 function validateForm() {
   // Lese die Werte der erforderlichen Felder aus
-  const title = document.getElementById("task-title").value;
+  const title = document.querySelector(".add-task-title").value;
   const dueDate = document.querySelector(".add-task-due-date").value;
   const category = document.querySelector(".add-task-category-input").value;
 
